@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Index - Logis Bootstrap Template</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+
+    <style>
+        /* Full-page center alignment */
+        .hero {
+            background: linear-gradient(to right, #2ea3b3, #ffffff, #2ea3b3);
+        }
+
+        /* Form container */
+        .form-container {
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        /* Input field styles */
+        .input-field {
+            height: 25px;
+            border: 1px solid #2ea3b3;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Button styling */
+        .submit-btn {
+            background-color: #ff9800;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e68900;
+        }
+
+        .ebclass {
+            background: #F9F7F1;
+            /* padding: 1%; */
+            border-radius: 10px;
+        }
+
+        .ebclass ul li {
+            text-align: left;
+        }
+
+        .eb-title {
+            color: #1D6665;
+        }
+
+        @media only screen and (max-width: 499px) {
+            .ebclass img {
+                display: none;
+            }
+        }
+
+        .help-card div {
+            top: -30px;
+            left: 5px;
+        }
+
+        .help-card small {
+            font-size: 24px;
+            font-weight: 600;
+            color: #023940;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 80%;
+            max-width: 1100px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .custom-carousel {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .custom-carousel-item {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .custom-carousel-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .custom-carousel-indicators {
+            position: absolute;
+            bottom: -18px;
+        }
+
+        .custom-carousel-control {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .custom-carousel-control:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .custom-carousel-control-prev {
+            left: -50px;
+        }
+
+        .custom-carousel-control-next {
+            right: -50px;
+        }
+
+        .custom-carousel-control-icon {
+            filter: invert(1);
+        }
+
+        .swiper {
+            width: 80%;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+        }
+
+        .swiper-slide img {
+            width: 250px;
+            border-radius: 10px;
+        }
+    </style>
+
+    <!-- =======================================================
+  * Template Name: Logis
+  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <img src="assets/nizImg/logo.png" alt="">
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html" class="active">+919789537313<br></a></li>
+                    <li><a href="about.html">Request Demo</a></li>
+                    <li><a href="services.html">Sign Up</a></li>
+                    <li><a href="pricing.html">For Doctors/Clinics</a></li>
+                    <!-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="#">Dropdown 1</a></li>
+                            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                                        class="bi bi-chevron-down toggle-dropdown"></i></a>
+                                <ul>
+                                    <li><a href="#">Deep Dropdown 1</a></li>
+                                    <li><a href="#">Deep Dropdown 2</a></li>
+                                    <li><a href="#">Deep Dropdown 3</a></li>
+                                    <li><a href="#">Deep Dropdown 4</a></li>
+                                    <li><a href="#">Deep Dropdown 5</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Dropdown 2</a></li>
+                            <li><a href="#">Dropdown 3</a></li>
+                            <li><a href="#">Dropdown 4</a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <a class="btn-getstarted" href="get-a-quote.html">Login</a>
+
+        </div>
+    </header>
+
+    <main class="main">
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero section d-flex align-items-center justify-content-center">
+            <img src="assets/nizImg/corporate_banner.png" alt="" class="hero-bg" data-aos="fade-in">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-7">
+
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="form-container bg-white p-4 rounded shadow-lg mx-auto">
+                            <h3 class="mb-4 fw-bold">SCHEDULE DEMO</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label fw-semibold">Full Name</label>
+                                    <input type="text" class="form-control input-field" id="fullName" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="organizationName" class="form-label fw-semibold">Organization
+                                        Name</label>
+                                    <input type="text" class="form-control input-field" id="organizationName"
+                                        placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contactNumber" class="form-label fw-semibold">Contact Number</label>
+                                    <input type="tel" class="form-control input-field" id="contactNumber"
+                                        placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label fw-semibold">Official Email Id</label>
+                                    <input type="email" class="form-control input-field" id="email" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="employeesCount" class="form-label fw-semibold">Employees Count</label>
+                                    <input type="number" class="form-control input-field" id="employeesCount"
+                                        placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="interestedIn" class="form-label fw-semibold">Interested In</label>
+                                    <input type="text" class="form-control input-field" id="interestedIn"
+                                        placeholder="">
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-warning w-100 py-2 fw-bold text-white submit-btn">Schedule
+                                    Demo</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <!-- /Hero Section -->
+
+
+        <section>
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>“The Future of Health & Wellness Today”</span>
+                <h2>“The Future of Health & Wellness Today”</h2>
+                <p class="px-5 mb-5">Our cutting-edge digital platform delivers seamless, 360-degree care experiences.
+                    With a
+                    focus on accessibility, cost-effectiveness, and personalization, we're transforming healthcare for
+                    institutions, insurers, and individuals across India.</p>
+
+
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-12 p-2">
+                        <div class="ebclass d-flex align-items-center">
+                            <img width="45%" src="assets/nizImg/student-img.png">
+                            <div class="p-4">
+                                <h2>Employer Benefits</h2>
+                                <ul>
+                                    <li>Best-in-class Comprehensive Wellness Program</li>
+                                    <li>Ease your workload with dedicated Nizcare support and monitoring</li>
+                                    <li>Nurture a healthy and loyal workforce: improve recruitment and retention of
+                                        employees</li>
+                                    <li>Increase Co-workers bonding during group engagement sessions</li>
+                                    <li>Reduce Health risks and medical costs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 p-2">
+                        <div class="ebclass d-flex align-items-center">
+                            <img width="45%" src="assets/nizImg/student-img.png">
+                            <div class="p-4">
+                                <h2>Employee Benefits</h2>
+                                <ul>
+                                    <li>Increased productivity: quick mind and fit physique</li>
+                                    <li>Reduced stress, enhanced job satisfaction</li>
+                                    <li>A strong peer-to-peer work relationship</li>
+                                    <li>Care for your loved ones: Best in-market discounts on Doctor Consults, Pharmacy,
+                                        Diagnostics & Homecare services</li>
+                                    <li>Reduce out-of-pocket healthcare expenses</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- End Section Title -->
+
+        </section>
+
+        <section>
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>Combined 100+ man years of healthcare and insurance expertise</span>
+                <h2>Combined 100+ man years of healthcare and insurance expertise</h2>
+
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-4">
+                        <div
+                            class="help-card bg-body-secondary d-flex justify-content-start px-3 py-5 mt-5 position-relative rounded-4 shadow">
+                            <div class="position-absolute">
+                                <img width="70px" src="assets/nizImg/help-image-1.png" alt="">
+                            </div>
+                            <small>1.5M Users</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div
+                            class="help-card bg-body-secondary d-flex justify-content-start px-3 py-5 mt-5 position-relative rounded-4 shadow">
+                            <div class="position-absolute">
+                                <img width="70px" src="assets/nizImg/help-image-1.png" alt="">
+                            </div>
+                            <small>1Lac+ Pincodes</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div
+                            class="help-card bg-body-secondary d-flex justify-content-start px-3 py-5 mt-5 position-relative rounded-4 shadow">
+                            <div class="position-absolute">
+                                <img width="70px" src="assets/nizImg/help-image-1.png" alt="">
+                            </div>
+                            <small>5K+ Diagnostic Centres</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div
+                            class="help-card bg-body-secondary d-flex justify-content-start px-3 py-5 mt-5 position-relative rounded-4 shadow">
+                            <div class="position-absolute">
+                                <img width="70px" src="assets/nizImg/help-image-1.png" alt="">
+                            </div>
+                            <small>20+ Specialities</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div
+                            class="help-card bg-body-secondary d-flex justify-content-start px-3 py-5 mt-5 position-relative rounded-4 shadow">
+                            <div class="position-absolute">
+                                <img width="70px" src="assets/nizImg/help-image-1.png" alt="">
+                            </div>
+                            <small>200+ Cities</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div
+                            class="help-card bg-body-secondary d-flex justify-content-start px-3 py-5 mt-5 position-relative rounded-4 shadow">
+                            <div class="position-absolute">
+                                <img width="70px" src="assets/nizImg/help-image-1.png" alt="">
+                            </div>
+                            <small>4K+ Care Centres</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div
+                            class="help-card bg-body-secondary d-flex justify-content-start px-3 py-5 mt-5 position-relative rounded-4 shadow">
+                            <div class="position-absolute">
+                                <img width="70px" src="assets/nizImg/help-image-1.png" alt="">
+                            </div>
+                            <small>2K+ OPD Doctors</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div
+                            class="help-card bg-body-secondary d-flex justify-content-start px-3 py-5 mt-5 position-relative rounded-4 shadow">
+                            <div class="position-absolute">
+                                <img width="70px" src="assets/nizImg/help-image-1.png" alt="">
+                            </div>
+                            <small>5+ Home Offices</small>
+                        </div>
+                    </div>
+
+                </div><!-- End Section Title -->
+
+        </section>
+
+        <section>
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>Transform Your Workplace with Nizcare</span>
+                <h2>Transform Your Workplace with Nizcare</h2><!-- End Section Title -->
+                <p>Our Corporate Wellness Programs deliver a holistic suite of healthcare solutions,
+                    promoting employee wellbeing and driving business success</p>
+
+
+                <div class="carousel-container">
+                    <div id="servicesCarousel" class="carousel slide custom-carousel" data-bs-ride="carousel">
+                        <div class="carousel-indicators custom-carousel-indicators">
+                            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0"
+                                class="active"></button>
+                            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active custom-carousel-item" data-bs-interval="3000">
+                                <img src="assets/nizImg/corporate-banner1.png" alt="Service 1">
+                            </div>
+                            <div class="carousel-item custom-carousel-item" data-bs-interval="3000">
+                                <img src="assets/nizImg/corporate-banner2.png" alt="Service 2">
+                            </div>
+                            <div class="carousel-item custom-carousel-item" data-bs-interval="3000">
+                                <img src="assets/nizImg/corporate-banner3.png" alt="Service 3">
+                            </div>
+                            <div class="carousel-item custom-carousel-item" data-bs-interval="3000">
+                                <img src="assets/nizImg/corporate-banner4.png" alt="Service 3">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev custom-carousel-control custom-carousel-control-prev"
+                            type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon custom-carousel-control-icon"
+                                aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next custom-carousel-control custom-carousel-control-next"
+                            type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon custom-carousel-control-icon"
+                                aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+
+        </section>
+
+        <section>
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>Condition Management Programs</span>
+                <h2>Condition Management Programs</h2><!-- End Section Title -->
+
+
+                <!-- Swiper -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="assets/nizImg/heart-failure.png" alt=""></div>
+                        <div class="swiper-slide"><img src="assets/nizImg/hypertension.png" alt=""></div>
+                        <div class="swiper-slide"><img src="assets/nizImg/mental-health.png" alt=""></div>
+                        <div class="swiper-slide"><img src="assets/nizImg/respiratory.png" alt=""></div>
+                        <div class="swiper-slide"><img src="assets/nizImg/weight-loss.png" alt=""></div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                </div>
+
+                <img width="80%" class="mt-4" src="assets/nizImg/corporate-seventh-banner.png" alt="">
+
+        </section>
+
+        <section>
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>Personalised Corporate App & Customised Dashboard for HRs</span>
+                <h2>Personalised Corporate App & Customised Dashboard for HRs</h2><!-- End Section Title -->
+                
+
+        </section>
+
+        <!-- Faq Section -->
+        <section id="faq" class="faq section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>“The Future of Health & Wellness Today”</span>
+                <h2>“The Future of Health & Wellness Today”</h2>
+                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-10">
+
+                        <div class="faq-container">
+
+                            <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">
+                                <i class="faq-icon bi bi-question-circle"></i>
+                                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                                <div class="faq-content">
+                                    <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus
+                                        laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor
+                                        rhoncus dolor purus non.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- End Faq item-->
+
+                            <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                                <i class="faq-icon bi bi-question-circle"></i>
+                                <h3>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h3>
+                                <div class="faq-content">
+                                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id
+                                        interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus
+                                        scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
+                                        Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- End Faq item-->
+
+                            <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                                <i class="faq-icon bi bi-question-circle"></i>
+                                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
+                                <div class="faq-content">
+                                    <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci.
+                                        Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl
+                                        suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis
+                                        convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                                    </p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- End Faq item-->
+
+                            <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                                <i class="faq-icon bi bi-question-circle"></i>
+                                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
+                                <div class="faq-content">
+                                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id
+                                        interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus
+                                        scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
+                                        Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- End Faq item-->
+
+                            <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+                                <i class="faq-icon bi bi-question-circle"></i>
+                                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</h3>
+                                <div class="faq-content">
+                                    <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse
+                                        in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl
+                                        suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                                    </p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- End Faq item-->
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section><!-- /Faq Section -->
+
+
+
+    </main>
+
+    <footer id="footer" class="footer dark-background">
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-5 col-md-12 footer-about">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <span class="sitename">Logis</span>
+                    </a>
+                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
+                        valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Product Management</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                    <h4>Contact Us</h4>
+                    <p>A108 Adam Street</p>
+                    <p>New York, NY 535022</p>
+                    <p>United States</p>
+                    <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+                    <p><strong>Email:</strong> <span>info@example.com</span></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Logis</strong> <span>All Rights Reserved</span>
+            </p>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you've purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 4,  // Show 4 images at a time
+            spaceBetween: 20,  // Space between images
+            loop: true,  // Infinite loop mode
+            autoplay: {
+                delay: 2000,  // Auto-slide every 3 seconds
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+            320: { slidesPerView: 1 },  // 1 image on small screens
+            768: { slidesPerView: 2 },  // 2 images on tablets
+            1024: { slidesPerView: 4 }  // 4 images on large screens
+        }
+        });
+    </script>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
