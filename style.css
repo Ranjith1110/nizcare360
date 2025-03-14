@@ -14,7 +14,10 @@ body {
 .healthcare-insurance,
 .workplace-nizcare,
 .condition-management,
-.personalised-app-dashboard {
+.personalised-app-dashboard,
+.wellness-revolution,
+.satisfied-leading,
+.mark-class {
     padding: 0px 0px 60px 0px;
 }
 
@@ -25,6 +28,55 @@ body {
 .section-title h2 {
     font-size: 38px;
     font-weight: 600;
+}
+
+.hero {
+    width: 100%;
+    position: relative;
+    padding: 140px 0 60px 0;
+}
+
+.hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+.hero h2 {
+    margin-bottom: 30px;
+    padding: 0;
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.hero p {
+    margin-bottom: 30px;
+    padding: 0;
+    font-size: 18px !important;
+    font-weight: 700;
+    color: #fff;
+}
+
+@media (max-width: 575px) {
+    .hero h2 {
+        font-size: 30px;
+    }
+}
+
+.hero p {
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 40px;
 }
 
 .employe-card {
@@ -57,7 +109,7 @@ body {
 .help-card {
     position: relative;
     background: #F9F7F1;
-    margin-top: 40px;
+    margin-top: 25px;
     margin-bottom: 35px;
     padding: 45px 30px 30px;
     border-radius: 8px;
@@ -218,5 +270,100 @@ body {
     .customized-app-list li {
         font-size: 20px;
         margin: 20px 0;
+    }
+}
+
+.form-container {
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.help-card-last {
+    position: relative;
+    background: #F9F7F1;
+    margin-bottom: 35px;
+    padding: 45px 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.help-card-last div {
+    position: absolute;
+    top: -30px;
+    left: 5px;
+}
+
+.help-card-last small {
+    font-size: 20px;
+    font-weight: 600;
+    color: #023940;
+}
+
+.mark-class {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background: #fff;
+}
+
+.marquee-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.marquee-container {
+    display: flex;
+    gap: 0px;
+    /* No gaps between images */
+    width: 200%;
+    /* Ensures smooth looping */
+    animation: marqueeLTR 20s linear infinite;
+}
+
+.marquee-container.reverse {
+    animation: marqueeRTL 20s linear infinite;
+}
+
+.marquee-container img {
+    width: 60%;
+    /* Each image takes 25% of the parent container */
+    max-width: 100%;
+    height: auto;
+}
+
+/* Left to Right Animation */
+@keyframes marqueeLTR {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Right to Left Animation */
+@keyframes marqueeRTL {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .marquee-container {
+        animation-duration: 20s;
+        /* Slower speed for small screens */
+    }
+
+    .marquee-container img {
+        width: 50%;
+        /* Bigger images on mobile */
     }
 }
