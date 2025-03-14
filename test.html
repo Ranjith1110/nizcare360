@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate App & Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            padding: 10px 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .toggle-btn.active {
+            border-bottom: 3px solid #023940;
+            color: #023940;
+        }
+
+        /* Responsive: Stack buttons on small screens */
+        @media (max-width: 768px) {
+            .d-flex h2 {
+                font-size: 1.3rem;
+                padding: 8px 12px;
+            }
+        }
+
+        .hr {
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(to right, #023940, transparent);
+            margin: 10px auto;
+        }
+
+        /* Transition effect for smooth tab switch */
+        .content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* List Styles */
+        .customized-list li {
+            background: #f1f1f1;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .customized-list li:hover {
+            background: #023940;
+            color: #fff;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center mt-4">
+        <h2 id="corporateAppBtn" class="toggle-btn active">Corporate App</h2>
+        <h2 id="customizedDashboardBtn" class="toggle-btn">Customized Dashboard</h2>
+    </div>
+    <div class="hr my-3"></div>
+
+    <!-- Corporate App Content -->
+    <div class="row gy-5 mt-5 content-section customized-app content-show" id="customized-app">
+        <div class="col-md-6">
+            <ul class="customized-list">
+                <li>📱 Corporate Mobile App</li>
+                <li>🏥 Doctor Consultation</li>
+                <li>💊 Pharmacy Services</li>
+                <li>🏠 Home Healthcare</li>
+                <li>🆘 Emergency Ambulance</li>
+                <li>🩺 Health Monitoring</li>
+                <li>🏥 Surgery Assistance</li>
+                <li>🏃‍♂️ Wellness Programs</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Customized Dashboard Content -->
+    <div class="row gy-5 mt-4 d-none" id="customized-dashboard">
+        <div class="col-md-6">
+            <h2>📊 Customized Corporate Dashboard</h2>
+            <p>Centralized dashboard for HR Managers to efficiently oversee wellness management for corporate employees and insurance holders.</p>
+
+            <div class="row gy-4 mt-4">
+                <div class="d-flex align-items-center">
+                    <div class="col-3">
+                        <img width="80px" src="https://via.placeholder.com/80" alt="Dashboard Feature">
+                    </div>
+                    <div class="col-9 text-start">
+                        <h4>📌 Employee Health Tracking</h4>
+                        <p>Track employee fitness and health progress with detailed insights.</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="col-3">
+                        <img src="nizImg/help-image-1.png" alt="HR Analytics">
+                    </div>
+                    <div class="col-9 text-start">
+                        <h4>📈 HR Insights</h4>
+                        <p>Get real-time analytics on employee well-being and performance.</p>
+                    </div>
+                </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <img width="100%" src="nizha_dashboard.png" alt="Dashboard Preview">
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("corporateAppBtn").addEventListener("click", function () {
+        document.getElementById("customized-app").classList.remove("d-none");
+        document.getElementById("customized-app").classList.add("content-show");
+        document.getElementById("customized-dashboard").classList.add("d-none");
+        document.getElementById("customized-dashboard").classList.remove("d-block");
+
+        // Indication effect
+        this.classList.add("active");
+        document.getElementById("customizedDashboardBtn").classList.remove("active");
+    });
+
+    document.getElementById("customizedDashboardBtn").addEventListener("click", function () {
+        document.getElementById("customized-dashboard").classList.remove("d-none");
+        document.getElementById("customized-dashboard").classList.add("d-block");
+        document.getElementById("customized-app").classList.add("d-none");
+        document.getElementById("customized-app").classList.remove("d-block");
+
+        // Indication effect
+        this.classList.add("active");
+        document.getElementById("corporateAppBtn").classList.remove("active");
+    });
+</script>
+</body>
+</html>
