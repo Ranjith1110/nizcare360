@@ -256,6 +256,10 @@ body {
     pointer-events: auto;
 }
 
+.title-dash-app h2 {
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .title-dash-app h2 {
         font-size: 2rem;
@@ -327,7 +331,7 @@ body {
 }
 
 .marquee-container img {
-    width: 60%;
+    width: 100%;
     /* Each image takes 25% of the parent container */
     max-width: 100%;
     height: auto;
@@ -367,3 +371,43 @@ body {
         /* Bigger images on mobile */
     }
 }
+
+.ip-slide img {
+    width: 120px;
+    /* Adjust the width */
+    height: auto;
+    /* Maintain aspect ratio */
+    max-height: 80px;
+    /* Limit max height */
+    object-fit: contain;
+    /* Ensure proper scaling */
+}
+
+.footer {
+    padding: 60px 0 0 0;
+}
+
+.mini-footer {
+    background: #30686d !important;
+    font-size: 12px;
+    padding: 0.1% 0;
+    text-align: center;
+    color: #afa7a7;
+  }
+
+.main-footer-title {
+    color: #afa7a7;
+    font-size: 22px;
+    margin-bottom: 8%;
+  }
+
+  .address-style {
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .get-link-p {
+    color: white;
+    font-size: 14px;
+  }
