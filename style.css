@@ -321,13 +321,13 @@ body {
     display: flex;
     gap: 0px;
     /* No gaps between images */
-    width: 200%;
+    width: 450%;
     /* Ensures smooth looping */
-    animation: marqueeLTR 20s linear infinite;
+    animation: marqueeLTR 38s linear infinite;
 }
 
 .marquee-container.reverse {
-    animation: marqueeRTL 20s linear infinite;
+    animation: marqueeRTL 33s linear infinite;
 }
 
 .marquee-container img {
@@ -362,13 +362,22 @@ body {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .marquee-container {
-        animation-duration: 20s;
-        /* Slower speed for small screens */
+        width: 600%;
+        animation-duration: 35s;
     }
 
     .marquee-container img {
-        width: 50%;
-        /* Bigger images on mobile */
+        width: 100%;
+    }
+}
+
+@media (max-width: 499px) {
+    .marquee-container {
+        animation-duration: 35s;
+    }
+
+    .marquee-container img {
+        width: 100%;
     }
 }
 
