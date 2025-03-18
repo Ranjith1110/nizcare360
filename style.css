@@ -321,7 +321,7 @@ body {
     display: flex;
     gap: 0px;
     /* No gaps between images */
-    width: 210%;
+    width: 500%;
     /* Ensures smooth looping */
     animation: marqueeLTR 38s linear infinite;
 }
