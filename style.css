@@ -33,7 +33,7 @@ body {
 .hero {
     width: 100%;
     position: relative;
-    padding: 140px 0 60px 0;
+    padding: 170px 0 100px 0;
 }
 
 .hero .hero-bg {
@@ -52,10 +52,10 @@ body {
 }
 
 .hero h2 {
-    margin-bottom: 30px;
+    margin-bottom: 80px;
     padding: 0;
-    font-size: 50px;
-    font-weight: 700;
+    font-size: 65px;
+    font-weight: 800;
     color: #fff;
 }
 
@@ -69,7 +69,7 @@ body {
 
 @media (max-width: 575px) {
     .hero h2 {
-        font-size: 30px;
+        font-size: 40px;
     }
 }
 
