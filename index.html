@@ -10,10 +10,33 @@
     <link rel="stylesheet" href="owl.theme.default.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
 </head>
 
 <body>
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <img src="nizImg/logo.png" alt="">
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="" class="">+919789537313<br></a></li>
+                    <li><a href="">Request Demo</a></li>
+                    <li><a href="">Sign Up</a></li>
+                    <li><a href="">For Doctors/Clinics</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none fa-solid fa-bars"></i>
+            </nav>
+
+            <a class="btn-getstarted" href="get-a-quote.html">Login</a>
+
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section id="hero" class="hero d-flex align-items-center justify-content-center">
@@ -495,7 +518,7 @@
 
     <footer style="background-color: #215d63;" class="footer">
         <div class="container">
-            
+
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <a href="/"><img width="25%" src="nizImg/logo_white.png" /></a>
@@ -632,6 +655,28 @@
         });
 
 
+        (function () {
+            "use strict";
+
+            const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+
+            function mobileNavToogle() {
+                document.querySelector('body').classList.toggle('mobile-nav-active');
+                mobileNavToggleBtn.classList.toggle('fa-bars');
+                mobileNavToggleBtn.classList.toggle('fa-xmark');
+            }
+            mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+
+            document.querySelectorAll('#navmenu a').forEach(navmenu => {
+                navmenu.addEventListener('click', () => {
+                    if (document.querySelector('.mobile-nav-active')) {
+                        mobileNavToogle();
+                    }
+                });
+
+            });
+
+        })();
 
     </script>
 

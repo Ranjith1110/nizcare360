@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo - Elements</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+        h1::first-letter {
+            color: hsl(0, 100%, 50%);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-style: italic;
+        }
+        p::first-line {
+            background-color: hsl(198, 97%, 63%);
+        }
+        p::selection {
+            color: #fafafa;
+            background-color: hsl(60, 85%, 63%);
+        }
+        #fruit li::before {
+            content: "Iam ";
+        }
+        #fruit li::after {
+            content: "🍏";
+        }
+        #fruit li:nth-child(2)::after {
+            content: "🍊";
+        }
+        #fruit li:last-child::after {
+            content: "🍌";
+        }
+        #fruit li::marker {
+            content: "❤️";  
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+
+        <h1>Hello World</h1>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta asperiores vero perspiciatis magni fugit porro! Voluptatibus, dolorem eaque quae expedita totam facilis eius, doloribus ut repudiandae molestias nam quisquam recusandae.</p>
+
+        <ul id="fruit">
+            <li id="apple">Apple</li>
+            <li id="orange">Orange</li>
+            <li id="banana">Banana</li>
+        </ul>
+
+    </div>
+
+</body>
+</html>
