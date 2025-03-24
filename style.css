@@ -26,7 +26,7 @@ body {
 }
 
 .section-title h2 {
-    font-size: 38px;
+    font-size: 48px;
     font-weight: 600;
 }
 
@@ -71,6 +71,9 @@ body {
     .hero h2 {
         font-size: 40px;
     }
+    .section-title h2 {
+        font-size: 34px;
+    }
 }
 
 .hero p {
@@ -86,12 +89,17 @@ body {
 .employe-card h4 {
     font-size: 30px;
     font-weight: 600;
+    color: #fff;
 }
 
 .employe-benefits {
     display: flex;
     align-items: center;
-    background-color: #F9F7F1;
+    background-color: #1da69a;
+}
+
+.employe-benefits-ul li {
+    color: #fff;
 }
 
 @media (max-width: 500px) {
@@ -102,6 +110,10 @@ body {
 
 }
 
+.health-wellness-p {
+    font-size: 20px;
+}
+
 .healthcare-insurance h3 {
     font-weight: 600;
 }
@@ -109,11 +121,11 @@ body {
 .help-card {
     position: relative;
     background: #F9F7F1;
-    margin-top: 25px;
-    margin-bottom: 35px;
     padding: 45px 30px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
+    height: 100%;
 }
 
 .help-card div {
@@ -123,9 +135,14 @@ body {
 }
 
 .help-card small {
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 600;
     color: #023940;
+}
+
+.carousel-bg {
+    background-color: #1da69a;
+    padding: 20px 0;
 }
 
 .carousel-container {
@@ -286,10 +303,11 @@ body {
 .help-card-last {
     position: relative;
     background: #F9F7F1;
-    margin-bottom: 35px;
     padding: 45px 30px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
+    height: 100%;
 }
 
 .help-card-last div {
