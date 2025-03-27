@@ -11,6 +11,7 @@ body {
 }
 
 .health-wellness,
+.wellness-slider,
 .healthcare-insurance,
 .workplace-nizcare,
 .condition-management,
@@ -111,7 +112,13 @@ body {
 }
 
 .health-wellness-p {
-    font-size: 20px;
+    font-size: 18px;
+}
+
+.health-insurance-p {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 0;
 }
 
 .healthcare-insurance h3 {
@@ -134,8 +141,14 @@ body {
     left: 5px;
 }
 
-.help-card small {
+.help-card h5 {
     font-size: 26px;
+    font-weight: 600;
+    color: #023940;
+}
+
+.help-card small {
+    font-size: 18px;
     font-weight: 600;
     color: #023940;
 }
@@ -316,8 +329,14 @@ body {
     left: 5px;
 }
 
+.help-card-last h5 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #023940;
+}
+
 .help-card-last small {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: #023940;
 }
