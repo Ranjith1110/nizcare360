@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="owl.carousel.min.css">
     <link rel="stylesheet" href="owl.theme.default.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />  -->
 
@@ -124,7 +125,7 @@
                 <div class="col-lg-6" data-aos="fade-in" data-aos-delay="150">
                     <div class="employe-benefits rounded">
                         <img width="50%" src="nizImg/emp-ben.png" alt="">
-                        <div class="employe-card">
+                        <div class="employe-card pt-3">
                             <h4>Employer Benefits</h4>
                             <ul class="employe-benefits-ul">
                                 <li>Best-in-class Comprehensive Wellness Program</li>
@@ -140,7 +141,7 @@
                 <div class="col-lg-6" data-aos="fade-in" data-aos-delay="150">
                     <div class="employe-benefits rounded">
                         <img width="50%" src="nizImg/emp-ben-1.png" alt="">
-                        <div class="employe-card">
+                        <div class="employe-card pt-3">
                             <h4>Employer Benefits</h4>
                             <ul class="employe-benefits-ul">
                                 <li>Increased productivity: quick mind and fit physique</li>
@@ -186,8 +187,8 @@
                 <h2 class="text-center">“India’s Wellness Revolution Begins Here”</h2>
             </div>
 
-            <div class="row">
-                <div class="col-lg-3">
+            <div class="row gy-2">
+                <div class="col-lg-3 col-md-6">
                     <div class="mark-card bg-light p-3" data-aos="fade-in">
                         <img width="100%" src="nizImg/emp-ben-1 copy.png" alt="">
                         <div class="pt-3 text-center">
@@ -195,7 +196,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="mark-card bg-light p-3" data-aos="fade-in">
                         <img width="100%" src="nizImg/emp-ben-1 copy.png" alt="">
                         <div class="pt-3 text-center">
@@ -203,7 +204,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="mark-card bg-light p-3" data-aos="fade-in">
                         <img width="100%" src="nizImg/emp-ben-1 copy.png" alt="">
                         <div class="pt-3 text-center">
@@ -211,7 +212,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="mark-card bg-light p-3" data-aos="fade-in">
                         <img width="100%" src="nizImg/emp-ben-1 copy.png" alt="">
                         <div class="pt-3 text-center">
@@ -273,27 +274,26 @@
     </section>
 
 
-    <section class="personalised-app-dashboard">
-
+    <section class="personalised-app-dashboard d-none">
         <div class="container">
             <!-- Section Title -->
             <div class="section-title" data-aos="fade-up">
                 <h2 class="text-center">Personalised Corporate App & Customised Dashboard for HRs</h2>
-                <!-- End Section Title -->
             </div>
-            <div class="title-dash-app d-flex justify-content-evenly align-item-center mt-5">
+
+            <div class="title-dash-app d-flex justify-content-evenly align-items-center mt-5">
                 <h2 id="corporateAppBtn" class="toggle-btn active">Corporate App</h2>
                 <h2 id="customizedDashboardBtn" class="toggle-btn">Customized Dashboard</h2>
             </div>
             <div class="hr"></div>
 
-
+            <!-- Corporate App Section -->
             <div class="container row gy-5 mt-0 mt-lg-3" id="customized-app" data-aos="fade-in">
                 <div class="col-lg-6">
                     <ul class="customized-app-list">
                         <li>Teleconsultation</li>
                         <li>Pharmacy</li>
-                        <li>Online Lab test & Packages</li>
+                        <li>Online Lab Tests & Packages</li>
                         <li>Doctor Home Visit</li>
                         <li>Home Health Care Services</li>
                         <li>Ambulance Services</li>
@@ -303,80 +303,182 @@
                     </ul>
                 </div>
                 <div class="col-lg-6">
-                    <img width="100%" src="nizImg/corporate-app-img.png" alt="">
+                    <img width="100%" src="nizImg/corporate-app-img.png" alt="Corporate App Image">
                 </div>
             </div>
 
-
+            <!-- Customized Dashboard Section -->
             <div class="container row gy-5 mt-3 d-none" id="customized-dashboard" data-aos="fade-in">
                 <div class="col-lg-6">
                     <h2>Customized Corporate Dashboard</h2>
-                    <p class="text-start">Centralized dashboard for HR Managers to efficiently oversee wellness
-                        management for corporate employees and insurance holders</p>
-
+                    <p class="text-start">A centralized dashboard for HR Managers to efficiently oversee wellness
+                        management for corporate employees and insurance holders.</p>
 
                     <div class="row gy-4 mt-4">
-                        <div class="d-flex align-item-center">
+                        <div class="d-flex align-items-center">
                             <div class="col-3">
-                                <img width="80px" src="nizImg/help-image-1.png" alt="">
+                                <img width="80px" src="nizImg/help-image-1.png" alt="Feature Image">
                             </div>
                             <div class="col-9 text-start">
-                                <h4>Personalized Dashboard</h4>
-                                <p>Take total control of employee fittness and progress with detailed, last-mile
-                                    insights, available in minutest</p>
+                                <h4>Health Monitoring</h4>
+                                <p>Track employees' health status with real-time insights and analytics.</p>
                             </div>
                         </div>
-                        <div class="d-flex align-item-center">
+                        <div class="d-flex align-items-center">
                             <div class="col-3">
-                                <img width="80px" src="nizImg/help-image-1.png" alt="">
+                                <img width="80px" src="nizImg/help-image-2.png" alt="Feature Image">
                             </div>
                             <div class="col-9 text-start">
-                                <h4>Personalized Dashboard</h4>
-                                <p>Take total control of employee fittness and progress with detailed, last-mile
-                                    insights, available in minutest</p>
+                                <h4>Custom Reports</h4>
+                                <p>Generate customized reports based on employee health data and trends.</p>
                             </div>
                         </div>
-                        <div class="d-flex align-item-center">
+                        <div class="d-flex align-items-center">
                             <div class="col-3">
-                                <img width="80px" src="nizImg/help-image-1.png" alt="">
+                                <img width="80px" src="nizImg/help-image-3.png" alt="Feature Image">
                             </div>
                             <div class="col-9 text-start">
-                                <h4>Personalized Dashboard</h4>
-                                <p>Take total control of employee fittness and progress with detailed, last-mile
-                                    insights, available in minutest</p>
+                                <h4>Integration with HRMS</h4>
+                                <p>Seamless integration with existing HR management systems.</p>
                             </div>
                         </div>
-                        <div class="d-flex align-item-center">
+                        <div class="d-flex align-items-center">
                             <div class="col-3">
-                                <img width="80px" src="nizImg/help-image-1.png" alt="">
+                                <img width="80px" src="nizImg/help-image-4.png" alt="Feature Image">
                             </div>
                             <div class="col-9 text-start">
-                                <h4>Personalized Dashboard</h4>
-                                <p>Take total control of employee fittness and progress with detailed, last-mile
-                                    insights, available in minutest</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-item-center">
-                            <div class="col-3">
-                                <img width="80px" src="nizImg/help-image-1.png" alt="">
-                            </div>
-                            <div class="col-9 text-start">
-                                <h4>Personalized Dashboard</h4>
-                                <p>Take total control of employee fittness and progress with detailed, last-mile
-                                    insights, available in minutest</p>
+                                <h4>Employee Wellness Programs</h4>
+                                <p>Plan and implement corporate wellness initiatives effectively.</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="col-lg-6">
-                    <img width="100%" src="nizImg/corporate-dashboard.png" alt="">
+                    <img width="100%" src="nizImg/corporate-dashboard.png" alt="Corporate Dashboard Image">
                 </div>
             </div>
         </div>
+    </section>
 
 
+    <section class="personalised-app-dashboard">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2 class="text-center">Personalised Corporate App & Customised Dashboard for HRs</h2>
 
+            <div class="carousel-container">
+                <div class="carousel-wrapper" data-aos="fade-in">
+                    <div id="corporateCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="3000">
+                                <!-- Corporate App Section -->
+                                <h3>Corporate App</h3>
+                                <div class="row gy-2 mt-0 mt-lg-3" id="customized-app" data-aos="fade-in">
+                                    <div class="col-lg-6">
+                                        <ul class="customized-app-list">
+                                            <li>Teleconsultation</li>
+                                            <li>Pharmacy</li>
+                                            <li>Online Lab Tests & Packages</li>
+                                            <li>Doctor Home Visit</li>
+                                            <li>Home Health Care Services</li>
+                                            <li>Ambulance Services</li>
+                                            <li>Surgery Assistance</li>
+                                            <li>Remote Monitoring</li>
+                                            <li>Vitals & Free Health Trackers</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <img width="100%" src="nizImg/corporate-app-img.png" alt="Corporate App Image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <!-- Customized Dashboard Section -->
+                                <h3>Customised Dashboard</h3>
+                                <div class="row gy-2 mt-3" id="customized-dashboard" data-aos="fade-in">
+                                    <div class="col-lg-6">
+                                        <!-- <h4 class="text-start">Customized Corporate Dashboard</h4> -->
+                                        <p class="text-center">A centralized dashboard for HR Managers to efficiently
+                                            oversee
+                                            wellness
+                                            management for corporate employees and insurance holders.</p>
+
+                                        <div class="row gy-2 mt-4">
+                                            <div class="d-flex align-items-center">
+                                                <div class="col-3">
+                                                    <img width="60px" src="nizImg/help-image-1.png" alt="Feature Image">
+                                                </div>
+                                                <div class="col-9 text-start">
+                                                    <h4>Health Monitoring</h4>
+                                                    <p>Track employees' health status with real-time insights and
+                                                        analytics.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="col-3">
+                                                    <img width="60px" src="nizImg/help-image-1.png" alt="Feature Image">
+                                                </div>
+                                                <div class="col-9 text-start">
+                                                    <h4>Custom Reports</h4>
+                                                    <p>Generate customized reports based on employee health data and
+                                                        trends.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="col-3">
+                                                    <img width="60px" src="nizImg/help-image-1.png" alt="Feature Image">
+                                                </div>
+                                                <div class="col-9 text-start">
+                                                    <h4>Integration with HRMS</h4>
+                                                    <p>Seamless integration with existing HR management systems.</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="col-3">
+                                                    <img width="60px" src="nizImg/help-image-1.png" alt="Feature Image">
+                                                </div>
+                                                <div class="col-9 text-start">
+                                                    <h4>Employee Wellness Programs</h4>
+                                                    <p>Plan and implement corporate wellness initiatives effectively.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="col-3">
+                                                    <img width="60px" src="nizImg/help-image-1.png" alt="Feature Image">
+                                                </div>
+                                                <div class="col-9 text-start">
+                                                    <h4>360 Degree Holistic health</h4>
+                                                    <p>With virtual webinars, doctors, nutritionists, allied therapy
+                                                        professionals, Nizcare for coprporates offers a complete
+                                                        employee coverage in the truest sense</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <img width="100%" src="nizImg/corporate-dashboard.png"
+                                            alt="Corporate Dashboard Image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#corporateCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon d-none" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#corporateCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon d-none" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
@@ -618,14 +720,14 @@
                     <h5 class="main-footer-title"> Contact Address</h5>
                     <div class="row">
                         <div class="col-lg-6">
-                            <span class="address-style">100,Jalan Sultan,</span>
-                            <span class="address-style">#09/06, Sultan Plaza</span>
-                            <span class="address-style">Singapore 199001</span>
-                        </div>
-                        <div class="col-lg-6">
                             <span class="address-style">Trichy - Chennai Trunk Road,</span>
                             <span class="address-style">Siruganur, Trichy-621105,</span>
                             <span class="address-style">Tamilnadu,India</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <span class="address-style">100,Jalan Sultan,</span>
+                            <span class="address-style">#09/06, Sultan Plaza</span>
+                            <span class="address-style">Singapore 199001</span>
                         </div>
                     </div>
                 </div>
@@ -668,9 +770,7 @@
     </script> -->
 
     <script>
-        // Initialize AOS
-
-
+        
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 4,
             spaceBetween: 20,
