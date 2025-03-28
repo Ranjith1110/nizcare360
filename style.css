@@ -429,6 +429,31 @@ body {
     font-size: 14px;
 }
 
+@media (max-width: 769px) {
+    .foot-logo div:first-child a img{
+        width: 60%;
+        height: auto;
+    }
+
+    .foot-logo div:nth-child(2) div img{
+        width: 110px;
+        height: auto;
+    }
+}
+
+@media (max-width: 499px) {
+
+    .foot-logo div:first-child a img{
+        width: 80%;
+        height: auto;
+    }
+
+    .foot-logo div:nth-child(2) div img{
+        width: 80px;
+        height: auto;
+    }
+}
+
 .header {
     color: #000;
     background-color: #ffffff;
