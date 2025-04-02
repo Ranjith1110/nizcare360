@@ -91,6 +91,8 @@ body {
     font-size: 30px;
     font-weight: 600;
     color: #fff;
+    text-align: start;
+    margin-bottom: 20px;
 }
 
 .employe-benefits {
@@ -99,8 +101,14 @@ body {
     background-color: #1da69a;
 }
 
+.employe-benefits-ul {
+    width: 100%;
+    height: 100%;
+}
+
 .employe-benefits-ul li {
     color: #fff;
+    text-align: start;
 }
 
 @media (max-width: 500px) {
@@ -154,7 +162,7 @@ body {
 }
 
 .carousel-bg {
-    background-color: #1da69a;
+    background: linear-gradient(45deg, #1da69a, #239FA7);
     padding: 20px 0;
 }
 
@@ -229,8 +237,20 @@ body {
     filter: invert(1);
 }
 
-.swiper {
+.mySwiper {
     width: 80%;
+}
+
+.customSwiper {
+    width: 100%;
+    text-align: center;
+}
+
+.ip-slide img {
+    width: 100px;
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
 }
 
 .swiper-slide {
@@ -239,20 +259,29 @@ body {
 }
 
 .swiper-slide img {
-    width: 250px;
+    width: 230px;
     border-radius: 10px;
+}
+
+.customized-app-list {
+    padding: 0 20px;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1100px;
 }
 
 .customized-app-list li {
     font-size: 24px;
     margin: 20px 0;
     text-align: start;
+    list-style: none;
 }
 
 .hr {
     width: 80%;
     height: 3px;
-    background: linear-gradient(to right, #2ea3b3, transparent);
+    /* background: linear-gradient(to right, #2ea3b3, transparent); */
+    background-color: #239FA7;
     margin: 20px auto 0 auto;
     border-radius: 5px;
 }
@@ -401,15 +430,9 @@ body {
     }
 }
 
-.ip-slide img {
-    width: 120px;
-    /* Adjust the width */
-    height: auto;
-    /* Maintain aspect ratio */
-    max-height: 80px;
-    /* Limit max height */
-    object-fit: contain;
-    /* Ensure proper scaling */
+.mark-card {
+    background-color: #1da69a;
+    border-radius: 10px;
 }
 
 .footer {
@@ -432,6 +455,7 @@ body {
 
 .address-style {
     color: white;
+    display: block;
     font-weight: 500;
     font-size: 14px;
 }
