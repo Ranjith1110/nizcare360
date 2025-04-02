@@ -209,6 +209,18 @@ body {
     left: -50px;
 }
 
+.carousel-control-prev-icon {
+    background-color: #000;
+    position: absolute;
+    left: -50px;
+}
+
+.carousel-control-next-icon {
+    background-color: #000;
+    position: absolute;
+    right: -50px;
+}
+
 .custom-carousel-control-next {
     right: -50px;
 }
