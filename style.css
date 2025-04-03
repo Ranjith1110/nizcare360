@@ -72,6 +72,7 @@ body {
     .hero h2 {
         font-size: 40px;
     }
+
     .section-title h2 {
         font-size: 34px;
     }
@@ -263,6 +264,20 @@ body {
     border-radius: 10px;
 }
 
+.toggle-btn {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.toggle-btn.active {
+    background-color: #2ea3b3;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .customized-app-list {
     padding: 0 20px;
     margin: 0 auto;
@@ -280,7 +295,6 @@ body {
 .hr {
     width: 80%;
     height: 3px;
-    /* background: linear-gradient(to right, #2ea3b3, transparent); */
     background-color: #239FA7;
     margin: 20px auto 0 auto;
     border-radius: 5px;
@@ -305,12 +319,23 @@ body {
 @media (max-width: 768px) {
     .title-dash-app h2 {
         font-size: 2rem;
+        text-align: center;
+    }
+    .hr {
+        width: 100%;
     }
 }
 
 @media (max-width: 500px) {
     .title-dash-app h2 {
         font-size: 1rem;
+    }
+
+    .customized-app-list {
+        padding: 0 20px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1100px;
     }
 
     .customized-app-list li {
@@ -466,12 +491,12 @@ body {
 }
 
 @media (max-width: 769px) {
-    .foot-logo div:first-child a img{
+    .foot-logo div:first-child a img {
         width: 60%;
         height: auto;
     }
 
-    .foot-logo div:nth-child(2) div img{
+    .foot-logo div:nth-child(2) div img {
         width: 110px;
         height: auto;
     }
@@ -479,12 +504,12 @@ body {
 
 @media (max-width: 499px) {
 
-    .foot-logo div:first-child a img{
+    .foot-logo div:first-child a img {
         width: 80%;
         height: auto;
     }
 
-    .foot-logo div:nth-child(2) div img{
+    .foot-logo div:nth-child(2) div img {
         width: 80px;
         height: auto;
     }
