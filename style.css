@@ -102,11 +102,6 @@ body {
     background-color: #1da69a;
 }
 
-.employe-benefits-ul {
-    width: 100%;
-    height: 100%;
-}
-
 .employe-benefits-ul li {
     color: #fff;
     text-align: start;
@@ -321,6 +316,7 @@ body {
         font-size: 2rem;
         text-align: center;
     }
+
     .hr {
         width: 100%;
     }
@@ -345,9 +341,13 @@ body {
 }
 
 .form-container {
-    max-width: 450px;
+    max-width: 550px;
     padding: 30px;
     border-radius: 10px;
+}
+
+.elevate-your-wellbeing {
+    padding: 110px 0;
 }
 
 .help-card-last {
