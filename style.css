@@ -105,6 +105,7 @@ body {
 .employe-benefits-ul li {
     color: #fff;
     text-align: start;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 500px) {
@@ -251,12 +252,17 @@ body {
 
 .swiper-slide {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.swiper-slide img {
-    width: 230px;
+.customSwiper .swiper-slide img {
+    width: 130px;
     border-radius: 10px;
+}
+
+.mySwiper .swiper-slide img {
+    width: 220px
 }
 
 .toggle-btn {
@@ -320,6 +326,14 @@ body {
     .hr {
         width: 100%;
     }
+
+    
+.condition-management-img img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 10px;
+}
 }
 
 @media (max-width: 500px) {
