@@ -332,13 +332,22 @@ body {
         width: 100%;
     }
 
-    
-.condition-management-img img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 10px;
+
+    .condition-management-img img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .elevate-your-wellbeing {
+        padding: 0!important;
+    }
+
+    .satisfied-leading {
+    padding: 0;
 }
+
 }
 
 @media (max-width: 500px) {
@@ -357,10 +366,12 @@ body {
         font-size: 20px;
         margin: 20px 0;
     }
+
 }
 
 .form-container {
     max-width: 620px;
+    margin: 0 auto;
     padding: 30px;
     border-radius: 10px;
 }
@@ -898,7 +909,7 @@ body {
 
 .footer .footer-contact h2,
 .footer .footer-link h2,
-.footer .footer-form h2{
+.footer .footer-form h2 {
     position: relative;
     margin-bottom: 30px;
     font-size: 24px;
@@ -945,7 +956,7 @@ body {
     font-size: 14px;
     color: #ffffff;
     text-decoration: none;
-    
+
 }
 
 .footer .footer-link a::before {
@@ -1016,6 +1027,7 @@ body {
 }
 
 @media (max-width: 768px) {
+
     .footer .copyright p,
     .footer .copyright .col-md-6:last-child p {
         margin: 5px 0;
