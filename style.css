@@ -114,6 +114,10 @@ body {
         display: none;
     }
 
+    .carousel-container {
+        width: 97% !important;
+    }
+
 }
 
 .health-wellness-p {
@@ -341,12 +345,12 @@ body {
     }
 
     .elevate-your-wellbeing {
-        padding: 0!important;
+        padding: 0 !important;
     }
 
     .satisfied-leading {
-    padding: 0;
-}
+        padding: 0;
+    }
 
 }
 
@@ -859,32 +863,6 @@ body {
     }
 }
 
-.testimonial-carousel .owl-item img {
-    width: 120px;
-    height: auto;
-}
-
-.testimonial-carousel .owl-nav {
-    margin-top: 30px;
-    display: flex;
-}
-
-.testimonial-carousel .owl-nav .owl-prev,
-.testimonial-carousel .owl-nav .owl-next {
-    margin-right: 15px;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background-color: #1da69a;
-    border-radius: 4px;
-    font-size: 22px;
-    transition: .5s;
-}
-
-
 
 
 /*******************************/
@@ -892,9 +870,6 @@ body {
 /*******************************/
 .footer {
     position: relative;
-    /* margin-top: 45px;
-    padding-top: 90px; */
-    /* background: rgba(0, 0, 0, 0.9); */
     background: #313955;
     color: #ffffff;
     font-weight: 300;
@@ -1033,4 +1008,22 @@ body {
         margin: 5px 0;
         text-align: center;
     }
+}
+
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #25D366;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+  background-color: #20C259;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
