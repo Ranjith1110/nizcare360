@@ -242,8 +242,8 @@
 
         <!-- Right to Left -->
         <div class="marquee-container reverse" data-aos="fade-in">
-            <img src="nizImg/Group 75 2.png" alt="we-offer">
-            <img src="nizImg/Group 75 2.png" alt="we-offer">
+            <img src="nizImg/we-offer-2.png" alt="we-offer">
+            <img src="nizImg/we-offer-2.png" alt="we-offer">
         </div>
 
     </section>
@@ -721,10 +721,16 @@
             </div>
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    
+
                     <div class="testimonial-item py-2 px-4 shadow rounded-4">
-                        <img class="img-fluid rounded" width="100px" src="nizImg/insurance-img/Paramount-TPA.webp" alt="">
-                        <p class="">"Thank you, Nizcare, for stepping up and organizing a comprehensive health, eye, and dental camp in a remote location where we were struggling to find network partners to meet an urgent need. In just 2 days, Nizcare took on the challenge and delivered an outstanding experience. The feedback from the attendees was overwhelmingly positive, and we were thrilled with the results. We look forward to partnering with Nizcare on more wellness initiatives in the future."</p>
+                        <img class="img-fluid rounded" width="100px" src="nizImg/insurance-img/Paramount-TPA.webp"
+                            alt="">
+                        <p class="">"Thank you, Nizcare, for stepping up and organizing a comprehensive health, eye, and
+                            dental camp in a remote location where we were struggling to find network partners to meet
+                            an urgent need. In just 2 days, Nizcare took on the challenge and delivered an outstanding
+                            experience. The feedback from the attendees was overwhelmingly positive, and we were
+                            thrilled with the results. We look forward to partnering with Nizcare on more wellness
+                            initiatives in the future."</p>
                     </div>
 
                 </div>
@@ -738,7 +744,7 @@
                             of all the businesses we work with."
                         </p>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -774,10 +780,14 @@
                             <p><i class="fa fa-phone-alt"></i>+91 97895 37313</p>
                             <p><i class="fa fa-envelope"></i>support@nizcare.com</p>
                             <div class="footer-social">
-                                <a href="https://www.linkedin.com/company/nizcare/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://www.facebook.com/nizcareglobal" target="_blank"><i class="fab fa-facebook"></i></a>
-                                <a href="https://www.instagram.com/niz_care/" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@nizcare9113" target="_blank"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.linkedin.com/company/nizcare/posts/?feedView=all"
+                                    target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.facebook.com/nizcareglobal" target="_blank"><i
+                                        class="fab fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/niz_care/" target="_blank"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@nizcare9113" target="_blank"><i
+                                        class="fab fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -806,7 +816,7 @@
 
     <a href="https://wa.me/+919789537313" target="_blank">
         <img src="nizImg/whatsapp.png" alt="WhatsApp Icon" class="whatsapp-icon">
-      </a>
+    </a>
 
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -873,50 +883,43 @@
         });
 
 
+        // Menbar Toggle
         (function () {
             "use strict";
 
             const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+            const body = document.body;
 
-            function mobileNavToogle() {
-                document.querySelector('body').classList.toggle('mobile-nav-active');
+            function mobileNavToggle() {
+                body.classList.toggle('mobile-nav-active');
                 mobileNavToggleBtn.classList.toggle('fa-bars');
                 mobileNavToggleBtn.classList.toggle('fa-xmark');
             }
-            mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
-            document.querySelectorAll('#navmenu a').forEach(navmenu => {
-                navmenu.addEventListener('click', () => {
-                    if (document.querySelector('.mobile-nav-active')) {
-                        mobileNavToogle();
+            // Toggle mobile menu open/close
+            mobileNavToggleBtn.addEventListener('click', mobileNavToggle);
+
+            // Handle dropdowns in mobile view
+            document.querySelectorAll('.navmenu .dropdown-toggle').forEach(dropdownToggle => {
+                dropdownToggle.addEventListener('click', function (e) {
+                    if (window.innerWidth <= 1200) {
+                        e.preventDefault();
+                        const parent = this.closest('.dropdown');
+                        parent.classList.toggle('dropdown-open');
                     }
                 });
+            });
 
+            // Close mobile menu when clicking a regular link
+            document.querySelectorAll('#navmenu a:not(.dropdown-toggle)').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1200 && body.classList.contains('mobile-nav-active')) {
+                        mobileNavToggle();
+                    }
+                });
             });
 
         })();
-
-        function startCounting() {
-            const counters = document.querySelectorAll("h5[data-count]");
-            counters.forEach(counter => {
-                let count = 0;
-                let target = parseInt(counter.getAttribute("data-count"));
-                let increment = target / 100; // Adjust speed
-
-                let updateCount = () => {
-                    count += increment;
-                    if (count < target) {
-                        counter.innerText = Math.floor(count);
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-
-                updateCount();
-            });
-        }
-
     </script>
 
 </body>

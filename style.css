@@ -1023,7 +1023,262 @@ body {
 }
 
 .whatsapp-icon:hover {
-  background-color: #20C259;
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #20C259;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Book Lab test */
+.dropdown-menu a:hover {
+    background-color: #239FA7 !important;
+    color: #fff !important;
+}
+
+.dropdown-menu a {
+    display: block;
+}
+
+@media (max-width: 1200px) {
+    .dropdown-menu {
+        display: none;
+        background-color: #eeeeee !important;
+    }
+
+    .dropdown-menu a {
+        display: flex;
+        justify-content: start;
+    }
+
+    .dropdown.dropdown-open .dropdown-menu {
+        display: block;
+    }
+}
+
+.search {
+    margin-top: 90px;
+    padding: 20px 0;
+    background-color: #ffffff;
+}
+
+.search-box {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.search-input {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.search-field {
+    border: none;
+    flex: 1;
+    font-size: 16px;
+    outline: none;
+}
+
+.clear-btn {
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 10px;
+    color: #999;
+}
+
+.clear-btn:hover {
+    color: #000;
+}
+
+.search-icon {
+    color: #666;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cart {
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.cart:hover {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+    .search-box {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .cart {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+.view {
+    text-decoration: none;
+    background-color: #2ea3b3;
+    color: #fff;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.labSwiper {
+    width: 100%;
+}
+
+.labSwiper .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.labSwiper .swiper-slide img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.lab-swiper-button-prev,
+.lab-swiper-button-next {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.lab-swiper-button-prev {
+    left: 0px;
+}
+
+.lab-swiper-button-next {
+    right: 0px;
+}
+
+.lab-swiper-button-prev i,
+.lab-swiper-button-next i {
+    font-size: 18px;
+    color: black;
+}
+
+.swiper-container {
+    position: relative;
+    padding: 0 50px;
+    overflow: visible;
+}
+
+swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 30vh;
+    object-fit: fill;
+    border-radius: 15px;
+}
+
+.test-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    background: #fff;
+    text-align: center;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.test-card:hover {
+    transform: scale(1.05);
+}
+
+.test-card h6 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    flex-grow: 1;
+}
+
+.test-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+    flex-grow: 1;
+}
+
+.test-card .report {
+    font-weight: bold;
+    color: #000;
+}
+
+.test-card h4 {
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+}
+
+.test-card .add-btn {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.test-card .add-btn a {
+    display: block;
+    padding: 8px;
+    color: #fff;
+    border-radius: 15px;
+    background-color: #1da69a;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
 }
