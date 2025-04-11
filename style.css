@@ -10,6 +10,18 @@ body {
     font-family: "Poppins", sans-serif !important;
 }
 
+@font-face {
+    font-family: 'CormorantGaramond-Italic';
+    src: url('/CormorantGaramond-Italic.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CormorantGaramond';
+    src: url('/CormorantGaramond-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+
 .health-wellness,
 .wellness-slider,
 .healthcare-insurance,
@@ -28,7 +40,8 @@ body {
 
 .section-title h2 {
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 700;
+    font-family: 'CormorantGaramond';
 }
 
 .hero {
@@ -121,7 +134,9 @@ body {
 }
 
 .health-wellness-p {
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'CormorantGaramond-Italic';
 }
 
 .health-insurance-p {
