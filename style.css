@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: "Poppins", sans-serif !important;
+    font-family: "Outfit", sans-serif !important;
 }
 
 @font-face {
@@ -41,7 +41,18 @@ body {
 .section-title h2 {
     font-size: 48px;
     font-weight: 700;
-    font-family: 'CormorantGaramond';
+    /* font-family: 'CormorantGaramond'; */
+}
+
+.section-title h3 {
+    font-weight: 700;
+    font-family: 'CormorantGaramond-Italic';
+}
+
+.section-title p {
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'CormorantGaramond-Italic';
 }
 
 .hero {
@@ -119,6 +130,9 @@ body {
     color: #fff;
     text-align: start;
     margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'CormorantGaramond-Italic';
 }
 
 @media (max-width: 500px) {
@@ -133,17 +147,18 @@ body {
 
 }
 
-.health-wellness-p {
+/* .health-wellness-p {
     font-size: 22px;
     font-weight: 500;
     font-family: 'CormorantGaramond-Italic';
 }
 
 .health-insurance-p {
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
     margin-bottom: 0;
-}
+    font-family: 'CormorantGaramond-Italic';
+} */
 
 .healthcare-insurance h3 {
     font-weight: 600;
@@ -169,12 +184,14 @@ body {
     font-size: 26px;
     font-weight: 600;
     color: #023940;
+    /* font-family: 'CormorantGaramond-Italic'; */
 }
 
 .help-card small {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 500;
     color: #023940;
+    font-family: 'CormorantGaramond-Italic';
 }
 
 .carousel-bg {
@@ -305,16 +322,29 @@ body {
 
 .customized-app-list {
     padding: 0 20px;
-    margin: 0 auto;
+    margin: 0 0 0 auto; 
     width: 80%;
     max-width: 1100px;
 }
 
 .customized-app-list li {
-    font-size: 24px;
-    margin: 20px 0;
+    font-size: 26px;
+    font-weight: 500;
+    margin: 20px auto;
     text-align: start;
     list-style: none;
+    font-family: 'CormorantGaramond-Italic';
+}
+
+.customized-dash h5{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.customized-dash p{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'CormorantGaramond-Italic';
 }
 
 .hr {
@@ -399,6 +429,12 @@ body {
     padding: 110px 0;
 }
 
+.elevate-your-wellbeing p {
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'CormorantGaramond-Italic';
+}
+
 .help-card-last {
     position: relative;
     background: #F9F7F1;
@@ -422,9 +458,10 @@ body {
 }
 
 .help-card-last small {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 500;
     color: #023940;
+    font-family: 'CormorantGaramond-Italic';
 }
 
 .mark-class {
@@ -1041,6 +1078,12 @@ body {
     background-color: #20C259;
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-item p {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'CormorantGaramond-Italic';
 }
 
 /* Book Lab test */
