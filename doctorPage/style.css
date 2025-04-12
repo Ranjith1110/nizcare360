@@ -612,7 +612,7 @@ body {
 }
 
 .power-solutions div div div:last-child div p,
-.why-nizcare div div div:last-child div p {
+.why-nizcare div div:last-child div p {
     font-size: 20px;
     font-weight: 500;
 }
@@ -699,4 +699,12 @@ body {
 
 .custom-carousel-control-icon {
     filter: invert(1);
+}
+
+@media (max-width: 500px) {
+
+    .carousel-container {
+        width: 97% !important;
+    }
+
 }

@@ -1340,3 +1340,125 @@ swiper-slide img {
     font-weight: bold;
     text-decoration: none;
 }
+
+digital-revolution,
+.power-solutions,
+.workplace-nizcare,
+.our-product,
+.doctor-user-app,
+.why-nizcare,
+.we-serve,
+.doctor-testimonial,
+.carft-app,
+.doc-app {
+    padding: 60px 0px 60px 0px;
+}
+
+.digital-revolution-p {
+    font-family: 'CormorantGaramond-Italic';
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.digital-revolution-p span {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.power-solutions div div div:last-child div p,
+.why-nizcare div div:last-child div p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.power-solutions div div div:last-child div small,
+.why-nizcare div div div:last-child div small {
+    font-family: 'CormorantGaramond-Italic';
+    font-weight: 500;
+    font-size: 18px;
+}
+
+
+.carousel-bg {
+    background: linear-gradient(360deg, #1da69a, #fff);
+    padding: 20px 0;
+}
+
+.carousel-container {
+    position: relative;
+    width: 80%;
+    max-width: 1100px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.custom-carousel {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-carousel-item {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.custom-carousel-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.custom-carousel-indicators {
+    position: absolute;
+    bottom: -18px;
+}
+
+.custom-carousel-control {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.custom-carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.custom-carousel-control-prev {
+    left: -50px;
+}
+
+.carousel-control-prev-icon {
+    background-color: #000;
+    position: absolute;
+    left: -50px;
+}
+
+.carousel-control-next-icon {
+    background-color: #000;
+    position: absolute;
+    right: -50px;
+}
+
+.custom-carousel-control-next {
+    right: -50px;
+}
+
+.custom-carousel-control-icon {
+    filter: invert(1);
+}
+
+@media (max-width: 500px) {
+
+    .carousel-container {
+        width: 97% !important;
+    }
+
+}
