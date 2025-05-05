@@ -31,8 +31,7 @@ body {
 .wellness-revolution,
 .satisfied-leading,
 .mark-class,
-.patients-looking,
-.nizcare-eco {
+.patients-looking {
     padding: 0px 0px 60px 0px;
 }
 
@@ -941,7 +940,7 @@ body {
 .footer .footer-form h2 {
     position: relative;
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     color: #ffffff;
     text-transform: uppercase;
