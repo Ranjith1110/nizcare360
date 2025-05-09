@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Outfit", sans-serif !important;
+}
+
+@font-face {
+    font-family: 'CormorantGaramond-Italic';
+    src: url('/CormorantGaramond-Italic.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CormorantGaramond';
+    src: url('/CormorantGaramond-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+
+.hero {
+    width: 100%;
+    position: relative;
+    padding: 90px 0 90px 0;
+}
+
+.hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+.hero h2 {
+    margin-bottom: 80px;
+    padding: 0;
+    font-size: 65px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.hero p {
+    margin-bottom: 30px;
+    padding: 0;
+    font-size: 18px !important;
+    font-weight: 700;
+    color: #fff;
+}
+
+@media (max-width: 575px) {
+    .hero h2 {
+        font-size: 40px;
+    }
+
+    .section-title h2 {
+        font-size: 34px;
+    }
+}
+
+.hero p {
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.diabetes,
+.subscription {
+    padding: 0 0 90px 0;
+}
