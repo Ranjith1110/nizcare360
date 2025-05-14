@@ -1,0 +1,116 @@
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+}
+
+/* Small/medium screens: sidebar is hidden initially and slides in */
+@media (max-width: 991.98px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -250px;
+        transition: left 0.3s ease;
+        z-index: 1050;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Large screens: sidebar is static and always shown */
+@media (min-width: 992px) {
+    .sidebar {
+        position: static;
+        height: 100vh;
+        float: left;
+    }
+
+    .main-content {
+        margin-left: 250px;
+    }
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+}
+
+.sidebar a:hover {
+    background-color: #495057;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.border-bottom-nav {
+    border-bottom: 1px solid #dee2e6;
+}
+
+@media (max-width: 769px) {
+    .border-bottom-nav {
+        border-bottom: none !important;
+    }
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+}
+
+.progress-icons {
+    background-color: #aedfd9;
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+
+.progress-icons i {
+    color: #1ba69c;
+    /* font-size: 24px; */
+}
+
+.overflow-visible {
+  overflow: visible !important; /* Allow icon to show outside */
+}
+
+.heart-icon-wrapper {
+  position: absolute;
+  top: -15px;   /* Move above the card */
+  left: -15px;  /* Move to the left of the card */
+  z-index: 10;  /* Make sure it's above the card */
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
