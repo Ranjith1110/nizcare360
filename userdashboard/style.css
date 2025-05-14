@@ -1,0 +1,60 @@
+/* Sidebar overlay */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100%;
+    width: 300px;
+    background-color: #1da39a;
+    color: white;
+    z-index: 1050;
+    /* Above Bootstrap modal (1040) */
+    transition: left 0.3s ease;
+    padding-top: 60px;
+    /* text-align: start; */
+}
+
+.mobile-sidebar.show {
+    left: 0;
+}
+
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1040;
+    display: none;
+}
+
+.sidebar-backdrop.show {
+    display: block;
+}
+
+@media (min-width: 768px) {
+
+    .mobile-sidebar,
+    .sidebar-backdrop,
+    .mobile-header {
+        display: none !important;
+    }
+}
+
+.nav-link {
+    color: white !important;
+    padding: 10px 20px;
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: #1da39a !important;
+}
+
+.menu-btn {
+    font-size: 1.5rem;
+    color: #000;
+    border: none;
+    background: none;
+}
