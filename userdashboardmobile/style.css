@@ -58,3 +58,14 @@
     border: none;
     background: none;
 }
+
+@media (max-width: 767.98px) {
+      .custom-mobile-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .custom-mobile-grid .card-item {
+        flex: 0 0 calc(33.33% - 10px);
+      }
+    }
