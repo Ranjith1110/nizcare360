@@ -155,7 +155,7 @@
 
             <!-- Second Section -->
             <div class="my-5">
-                <h2 class="text-center fw-bold mb-3">DV Insurance Sponsored Health checkup Packages</h2>
+                <h2 class="text-center fw-bold mb-3">Sponsored Health checkup Packages</h2>
                 <!-- Swiper 2 -->
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -163,10 +163,7 @@
                             <img class="rounded-3" src="assets/health-package-banner.png" alt="Banner" />
                         </div>
                         <div class="swiper-slide text-center">
-                            <img class="rounded-3" src="assets/health-package-banner.png" alt="Banner" />
-                        </div>
-                        <div class="swiper-slide text-center">
-                            <img class="rounded-3" src="assets/health-package-banner.png" alt="Banner" />
+                            <img class="rounded-3" src="assets/health-package-2.jpg" alt="Banner" />
                         </div>
                     </div>
                     <!-- Optional Pagination -->
@@ -178,34 +175,22 @@
             <div class="my-5">
                 <div class="row g-2">
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/services/ambulance.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/teleconsultaion.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/services/teleconsultaion.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/buy-medicine.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/services/medicine.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/lab-test.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/services/lab-test.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/h" alt="">
+                        <img width="100%" class="rounded-3" src="assets/services/home-health-care.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/doctor-home-visit.png" alt="">
-                    </div>
-                    <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
-                    </div>
-                    <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
-                    </div>
-                    <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
-                    </div>
-                    <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/services/doctor-home-visit.png" alt="">
                     </div>
                 </div>
             </div>
@@ -215,10 +200,11 @@
                 <h4 class="text-center fw-bold mb-3">Clinic Service</h4>
                 <div class="row g-2">
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/clinic-service/dentistry.png" alt="">
+                        <h6>Dentistry</h6>
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/clinic-service/opthalmologist.png" alt="">
                     </div>
                 </div>
             </div>
@@ -259,6 +245,56 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Exercises Section -->
+            <div class="my-5">
+                <div class="row">
+                    <div class="col-3">
+                        <button class="btn p-0 border-0 w-100" data-bs-toggle="modal" data-bs-target="#videoModal"
+                            data-video="assets/exercises/breathing.mp4">
+                            <img width="100%" src="assets/exercises/breathing.png" alt="">
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn p-0 border-0 w-100" data-bs-toggle="modal" data-bs-target="#videoModal"
+                            data-video="assets/exercises/breathing.mp4">
+                            <img width="100%" src="assets/exercises/meditation.png" alt="">
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn p-0 border-0 w-100" data-bs-toggle="modal" data-bs-target="#videoModal"
+                            data-video="assets/exercises/breathing.mp4">
+                            <img width="100%" src="assets/exercises/yoga.png" alt="">
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn p-0 border-0 w-100" data-bs-toggle="modal" data-bs-target="#videoModal"
+                            data-video="assets/exercises/breathing.mp4">
+                            <img width="100%" src="assets/exercises/music.png" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Modal -->
+            <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content bg-black">
+                        <div class="modal-body p-0 position-relative">
+                            <!-- This close button is only visible when modal is shown -->
+                            <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+
+                            <video id="exerciseVideo" class="w-100 responsive-video" controls>
+                                <source src="" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
             <!-- Sixth Section -->
             <div class="my-5">
@@ -479,6 +515,24 @@
                 icon.classList.remove('rotate');
             });
         });
+
+        const videoModal = document.getElementById('videoModal');
+        const videoPlayer = document.getElementById('exerciseVideo');
+        const videoSource = videoPlayer.querySelector('source');
+
+        videoModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget;
+            const videoUrl = button.getAttribute('data-video');
+            videoSource.src = videoUrl;
+            videoPlayer.load();
+            videoPlayer.play();
+        });
+
+        videoModal.addEventListener('hidden.bs.modal', () => {
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0;
+        });
+
     </script>
 
 </body>
