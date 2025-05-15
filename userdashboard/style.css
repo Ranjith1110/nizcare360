@@ -98,19 +98,21 @@ body {
     /* font-size: 24px; */
 }
 
-.overflow-visible {
-  overflow: visible !important; /* Allow icon to show outside */
+.custom-scroll,
+.sidebar {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-.heart-icon-wrapper {
-  position: absolute;
-  top: -15px;   /* Move above the card */
-  left: -15px;  /* Move to the left of the card */
-  z-index: 10;  /* Make sure it's above the card */
+.custom-scroll::-webkit-scrollbar {
+    display: none;
 }
 
-.icon-circle {
-  width: 40px;
-  height: 40px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon.rotate {
+  transform: rotate(180deg);
 }

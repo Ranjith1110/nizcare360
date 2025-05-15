@@ -16,15 +16,87 @@
 <body>
 
     <!-- Sidebar -->
-    <div id="sidebar" class="sidebar position-fixed">
+    <div id="sidebar" class="sidebar position-fixed overflow-y-auto">
         <div class="p-4">
             <img src="assets/policynation-logo.svg" alt="Logo" width="195" />
         </div>
-        <a href="#">Home</a>
-        <a href="#">Profile</a>
-        <a href="#">Settings</a>
-        <a href="#">Logout</a>
+
+        <!-- Parent wrapper for accordion behavior -->
+        <div id="sidebarAccordion">
+
+            <a href="#">Dashboard</a>
+            <a href="#">Teleconsultation requests</a>
+            <a href="#">My Bookings (sponsored)</a>
+            <a href="#">Paid Lab bookings</a>
+            <a href="#">Dependents Lab bookings</a>
+
+            <!-- Radiology Tests -->
+            <a class="d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                href="#radiologySubmenu" role="button" aria-expanded="false" aria-controls="radiologySubmenu">
+                Radiology Tests
+                <i class="fa-solid fa-angle-down arrow-icon"></i>
+            </a>
+            <div class="collapse ps-3" id="radiologySubmenu" data-bs-parent="#sidebarAccordion">
+                <a href="#">Book Radiology Test</a>
+                <a href="#">View Reports</a>
+            </div>
+
+            <!-- Dependents -->
+            <a class="d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                href="#dependentsSubmenu" role="button" aria-expanded="false" aria-controls="dependentsSubmenu">
+                Dependents
+                <i class="fa-solid fa-angle-down arrow-icon"></i>
+            </a>
+            <div class="collapse ps-3" id="dependentsSubmenu" data-bs-parent="#sidebarAccordion">
+                <a href="#">Add Dependent</a>
+                <a href="#">View Dependents</a>
+            </div>
+
+            <!-- Diabetes Management Plans -->
+            <a class="d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                href="#diabetesSubmenu" role="button" aria-expanded="false" aria-controls="diabetesSubmenu">
+                Diabetes Management Plans
+                <i class="fa-solid fa-angle-down arrow-icon"></i>
+            </a>
+            <div class="collapse ps-3" id="diabetesSubmenu" data-bs-parent="#sidebarAccordion">
+                <a href="#">Plan Details</a>
+                <a href="#">Track Progress</a>
+            </div>
+
+            <!-- Mental Wellness -->
+            <a class="d-flex align-items-center justify-content-between" data-bs-toggle="collapse" href="#mentalSubmenu"
+                role="button" aria-expanded="false" aria-controls="mentalSubmenu">
+                Mental Wellness
+                <i class="fa-solid fa-angle-down arrow-icon"></i>
+            </a>
+            <div class="collapse ps-3" id="mentalSubmenu" data-bs-parent="#sidebarAccordion">
+                <a href="#">Book Session</a>
+                <a href="#">Session History</a>
+            </div>
+
+            <!-- Speciality Consultation -->
+            <a class="d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                href="#specialitySubmenu" role="button" aria-expanded="false" aria-controls="specialitySubmenu">
+                Speciality Consultation
+                <i class="fa-solid fa-angle-down arrow-icon"></i>
+            </a>
+            <div class="collapse ps-3" id="specialitySubmenu" data-bs-parent="#sidebarAccordion">
+                <a href="#">Available Specialists</a>
+                <a href="#">My Consultations</a>
+            </div>
+
+        </div>
+
+        <a href="#">Cart</a>
+        <a href="#">Tele Consultation</a>
+        <a href="#">Surgery Care</a>
+        <a href="#">24x7 Ambulance Service</a>
+        <a href="#">Doctor Home Visit</a>
+        <a href="#">Home Health Care</a>
+        <a href="#">CDMP Subscription</a>
+        <a href="#">Notifications</a>
     </div>
+
 
     <!-- Overlay -->
     <div id="overlay" class="overlay"></div>
@@ -109,19 +181,19 @@
                         <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/teleconsultaion.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/buy-medicine.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/lab-test.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/h" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
-                        <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
+                        <img width="100%" class="rounded-3" src="assets/doctor-home-visit.png" alt="">
                     </div>
                     <div class="col-4 col-lg-3">
                         <img width="100%" class="rounded-3" src="assets/ambulance.png" alt="">
@@ -213,22 +285,26 @@
             <div class="my-5">
                 <h2 class="text-center fw-bold mb-3">My health progress</h2>
 
-                <div class="overflow-auto">
+                <div class="overflow-auto custom-scroll">
                     <div class="d-flex flex-row gap-3">
 
                         <!-- Card 1 -->
-                        <div class="card position-relative overflow-visible" style="min-width: 250px;">
-                            <!-- Heart icon with custom position -->
-                            <div class="heart-icon-wrapper">
-                                <div
-                                    class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center icon-circle">
-                                    <i class="fa-solid fa-heart-pulse"></i>
-                                </div>
-                            </div>
-
+                        <div class="card" style="min-width: 250px;">
                             <div class="card-body">
-                                <div class="d-flex justify-content-end align-items-center">
-                                    <i class="fa-solid fa-arrow-right-long text-secondary"></i>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="progress-icons">
+                                        <i class="fa-solid fa-heart-pulse"></i>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <h5 class="fw-bold">Heart Rate</h5>
+                                    <span class="text-danger">N/A</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>N/A</span>
+                                    <span>N/A</span>
                                 </div>
                             </div>
                         </div>
@@ -237,16 +313,84 @@
                         <!-- Card 2 -->
                         <div class="card" style="min-width: 250px;">
                             <div class="card-body">
-                                <h5 class="card-title">Progress 2</h5>
-                                <p class="card-text">Some more updates.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="progress-icons">
+                                        <i class="fa-solid fa-heart-pulse"></i>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <h5 class="fw-bold">Heart Rate</h5>
+                                    <span class="text-danger">N/A</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>N/A</span>
+                                    <span>N/A</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Card 3 -->
                         <div class="card" style="min-width: 250px;">
                             <div class="card-body">
-                                <h5 class="card-title">Progress 3</h5>
-                                <p class="card-text">Even more updates here.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="progress-icons">
+                                        <i class="fa-solid fa-heart-pulse"></i>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <h5 class="fw-bold">Heart Rate</h5>
+                                    <span class="text-danger">N/A</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>N/A</span>
+                                    <span>N/A</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="card" style="min-width: 250px;">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="progress-icons">
+                                        <i class="fa-solid fa-heart-pulse"></i>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <h5 class="fw-bold">Heart Rate</h5>
+                                    <span class="text-danger">N/A</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>N/A</span>
+                                    <span>N/A</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="card" style="min-width: 250px;">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="progress-icons">
+                                        <i class="fa-solid fa-heart-pulse"></i>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <h5 class="fw-bold">Heart Rate</h5>
+                                    <span class="text-danger">N/A</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>N/A</span>
+                                    <span>N/A</span>
+                                </div>
                             </div>
                         </div>
 
@@ -256,9 +400,45 @@
 
             </div>
 
+            <!-- Eight Section -->
+            <div class="my-5">
+                <h2 class="text-center fw-bold mb-3">My health progress</h2>
+
+                <div class="row g-2">
+                    <div class="col-6 col-lg-3">
+                        <img width="100%" class="rounded-3" src="assets/health-progress/pillreminder.png" alt="">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img width="100%" class="rounded-3" src="assets/health-progress/blood-glucose.png" alt="">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img width="100%" class="rounded-3" src="assets/health-progress/pregnancy-calculator.png"
+                            alt="">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img width="100%" class="rounded-3" src="assets/health-progress/vaccination-reminder.png"
+                            alt="">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img width="100%" class="rounded-3" src="assets/health-progress/water-remainder.png" alt="">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img width="100%" class="rounded-3" src="assets/health-progress/" alt="">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img width="100%" class="rounded-3" src="assets/health-progress/bmi-calculator.png" alt="">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img width="100%" class="rounded-3" src="assets/health-progress/free-second-opinion.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
@@ -285,6 +465,19 @@
                 el: ".swiper-pagination",
                 clickable: true,
             },
+        });
+
+        document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(toggle => {
+            const icon = toggle.querySelector('.arrow-icon');
+            const target = document.querySelector(toggle.getAttribute('href'));
+
+            target.addEventListener('show.bs.collapse', () => {
+                icon.classList.add('rotate');
+            });
+
+            target.addEventListener('hide.bs.collapse', () => {
+                icon.classList.remove('rotate');
+            });
         });
     </script>
 
