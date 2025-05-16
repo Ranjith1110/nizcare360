@@ -110,11 +110,11 @@ body {
 }
 
 .arrow-icon {
-  transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .arrow-icon.rotate {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 /* Make modal body take full height of the viewport */
@@ -149,3 +149,17 @@ body {
     color: #fff;
 }
 
+.tpa-scroll-container {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.tpa-scroll-container::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari */
+}
