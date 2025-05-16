@@ -163,3 +163,9 @@ body {
     display: none;
     /* Chrome, Safari */
 }
+
+@media (max-width: 769px) {
+    .sixth-sec img {
+        width: 350px !important;
+    }
+}
