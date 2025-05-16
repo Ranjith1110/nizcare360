@@ -144,3 +144,8 @@ body {
     color: #000 !important;
 }
 
+#toggleViewBtn {
+    background-color: #1ba69c;
+    color: #fff;
+}
+
