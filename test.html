@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marquee Left to Right & Right to Left</title>
+  <style>
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      background: #f0f0f0;
+      padding: 10px 0;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+    }
+
+    .marquee-track img {
+      width: 150px;
+      height: auto;
+      margin: 0 10px;
+    }
+
+    /* Left to Right */
+    .scroll-left-to-right {
+      animation: leftToRight 30s linear infinite;
+    }
+
+    /* Right to Left */
+    .scroll-right-to-left {
+      animation: rightToLeft 30s linear infinite;
+    }
+
+    @keyframes leftToRight {
+      0% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    @keyframes rightToLeft {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔄 Marquee 1: Left to Right -->
+<div class="marquee-container">
+  <div class="marquee-track-left">
+    <!-- 10 original + 10 duplicate -->
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+
+    <!-- Duplicate for seamless loop -->
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+  </div>
+</div>
+
+<!-- 🔄 Marquee 2: Right to Left -->
+<div class="marquee-container">
+  <div class="marquee-track-right">
+    <!-- 10 original + 10 duplicate -->
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+
+    <!-- Duplicate for seamless loop -->
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+    <img src="nizImg/nizlogo.png" alt="" />
+  </div>
+</div>
+</body>
+</html>
