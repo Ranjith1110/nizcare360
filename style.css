@@ -1466,7 +1466,7 @@ digital-revolution,
 .banner-wrapper {
     width: 100%;
     overflow: hidden;
-    background: #f0f0f0;
+    /* background: #f0f0f0; */
     padding: 10px 0;
 }
 
