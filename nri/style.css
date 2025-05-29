@@ -59,7 +59,8 @@ body {
     color: #fff;
 }
 
-.hero div div div button {
+.hero div div div button,
+.testimonial-btn {
     padding: 10px 30px;
     margin-bottom: 80px;
     font-size: 16px;
@@ -629,10 +630,128 @@ body {
 }
 
 .section-title {
+    text-align: center;
     margin-bottom: 40px;
 }
 
 .section-title h2 {
     font-size: 48px;
     font-weight: 700;
+}
+
+.pricing-section {
+    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+    padding: 4rem 1rem;
+}
+
+.pricing-card {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #ff5722;
+    color: white;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.pricing-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.pricing-plan-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.feature-list {
+    padding: 0;
+    list-style: none;
+}
+
+.feature-list li {
+    padding: 6px 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.feature-list i {
+    color: #28a745;
+    margin-right: 8px;
+}
+
+.choose-btn {
+    border-radius: 30px;
+}
+
+.step-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.step-badge {
+    width: 50px;
+    height: 50px;
+    /* margin: 0 auto 20px; */
+    margin-bottom: 20px;
+    background-color: #6f42c1;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.step-icon {
+    font-size: 2rem;
+    color: #6f42c1;
+}
+
+.flag-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
+.flag-card:hover {
+    background: #f0f8ff;
+    border-color: #0d6efd;
+    color: #0d6efd;
+    transform: translateY(-5px);
 }
