@@ -730,28 +730,37 @@ body {
 
 .step-icon {
     font-size: 2rem;
-    color: #ffaf34; 
+    color: #ffaf34;
 }
 
 .flag-card {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 14px;
-    font-size: 1.2rem;
+    background: #f8f9fa;
+    border-radius: 1.5rem;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    transition: all 0.3s ease;
-    height: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .flag-card:hover {
-    background: #f0f8ff;
-    border-color: #0d6efd;
-    color: #0d6efd;
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.flag-card span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.countries-we-serve .section-title h2 {
+    font-size: 2.5rem;
+}
+
+.countries-we-serve .btn {
+    font-size: 1rem;
+    font-weight: 500;
 }

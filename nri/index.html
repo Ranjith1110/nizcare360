@@ -445,15 +445,48 @@
     </section>
 
 
+    <style>
+        .flag-card {
+            background: #f8f9fa;
+            border-radius: 1.5rem;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .flag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .flag-card span {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .countries-we-serve .section-title h2 {
+            font-size: 2.5rem;
+        }
+
+        .countries-we-serve .btn {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    </style>
+
     <section class="countries-we-serve py-5">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
+            <div class="section-title text-center" data-aos="fade-up">
                 <h2 class="fw-bold mb-2">Countries We Serve</h2>
                 <p class="lead text-muted mb-4">Caring for families across borders, wherever home is.</p>
             </div>
 
-            <!-- Flag Grid -->
-            <div class="row justify-content-center g-3">
+            <div class="row justify-content-center g-4">
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <div class="flag-card">🇸🇦 <span>Saudi Arabia</span></div>
                 </div>
@@ -490,14 +523,14 @@
             </div>
 
             <!-- CTA -->
-            <div class="mt-5">
+            <div class="text-center mt-5">
                 <a href="#" class="btn btn-outline-primary rounded-pill px-4 py-2">
                     💌 Want us to reach your community? <strong>Partner With Us</strong>
                 </a>
             </div>
-
         </div>
     </section>
+
 
 
     <section class="faq-section py-5 bg-light">
