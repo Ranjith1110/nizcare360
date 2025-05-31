@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- intl-tel-input CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css" />
 
 
 </head>
@@ -403,59 +406,6 @@
     </section>
 
 
-    <section class="testimonial py-5">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2 class="fw-bold mb-2">Testimonials</h2>
-            </div>
-
-            <div class="row justify-content-center g-4">
-                <!-- Testimonial Card 1 -->
-                <div class="col-md-6">
-                    <div class="border rounded-4 p-4 shadow-sm h-100 position-relative">
-                        <i class="bi bi-chat-left-quote-fill text-primary fs-1 mb-3"></i>
-                        <p class="fs-5">"I live in Dubai. Nizcare has made it so easy to manage my parents’ health in
-                            Chennai. Appointments, tests, checkups—all from WhatsApp!"</p>
-                        <div class="d-flex align-items-center mt-4">
-                            <img src="https://flagcdn.com/w80/ae.png" alt="UAE Flag" class="me-3 rounded-circle"
-                                width="40">
-                            <div>
-                                <h6 class="mb-0 fw-semibold">Siddharth Iyer</h6>
-                                <small class="text-muted">Dubai 🇦🇪</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial Card 2 -->
-                <div class="col-md-6">
-                    <div class="border rounded-4 p-4 shadow-sm h-100 position-relative">
-                        <i class="bi bi-chat-left-quote-fill text-success fs-1 mb-3"></i>
-                        <p class="fs-5">"Nizcare is a blessing. When my mother was hospitalized in Mumbai, I got
-                            real-time updates, test reports, and doctor feedback while sitting in Canada."</p>
-                        <div class="d-flex align-items-center mt-4">
-                            <img src="https://flagcdn.com/w80/ca.png" alt="Canada Flag" class="me-3 rounded-circle"
-                                width="40">
-                            <div>
-                                <h6 class="mb-0 fw-semibold">Manpreet Kaur</h6>
-                                <small class="text-muted">Toronto 🇨🇦</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Read More Button -->
-            <div class="text-center mt-5">
-                <a href="#" class="btn btn-warning text-white px-4 py-2 testimonial-btn">
-                    Read More Stories
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-
     <section class="countries-we-serve py-5">
         <div class="container">
             <div class="section-title text-center" data-aos="fade-up">
@@ -537,9 +487,44 @@
 
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
                     <div class="flag-img-wrapper">
-                        <img src="https://flagcdn.com/w80/un.png" alt="And More">
+                        <img src="assets/countries/kuwait.png" alt="And More">
                     </div>
-                    <div>... and more</div>
+                    <div>Kuwait</div>
+                </div>
+
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+                    <div class="flag-img-wrapper">
+                        <img src="assets/countries/new-zealand.png" alt="And More">
+                    </div>
+                    <div>New Zealand</div>
+                </div>
+
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+                    <div class="flag-img-wrapper">
+                        <img src="assets/countries/oman.png" alt="And More">
+                    </div>
+                    <div>Oman</div>
+                </div>
+
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+                    <div class="flag-img-wrapper">
+                        <img src="assets/countries/qatar.png" alt="And More">
+                    </div>
+                    <div>Qatar</div>
+                </div>
+
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+                    <div class="flag-img-wrapper">
+                        <img src="assets/countries/south-africa.png" alt="And More">
+                    </div>
+                    <div>South Africa</div>
+                </div>
+
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center">
+                    <div class="flag-img-wrapper">
+                        <img src="assets/countries/switzerland.png" alt="And More">
+                    </div>
+                    <div>Switzerland</div>
                 </div>
             </div>
 
@@ -549,6 +534,105 @@
                     💌 Want us to reach your community? <strong>Partner With Us</strong>
                 </a>
             </div>
+        </div>
+    </section>
+
+
+    <section class="enquiry-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="enquire-form bg-light px-5 pt-4 rounded-4 shadow-sm g-4">
+                        <form action="#">
+                            <div class="mb-4 text-center">
+                                <h2 class="fw-bold">Enquire Now</h2>
+                                <p class="text-muted">Let us know your details and we’ll get back to you.</p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name"
+                                    required>
+                            </div>
+
+                            <div class="mb-3 d-flex flex-column">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Enter phone number"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="city" class="form-label">City of Family Residence</label>
+                                <input type="text" class="form-control" id="city" placeholder="Enter your city"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="pincode" class="form-label">Pincode</label>
+                                <input type="text" class="form-control" id="pincode" placeholder="Enter pincode"
+                                    required>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-warning text-white btn-lg">Submit Enquiry</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="testimonial py-5">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="fw-bold mb-2">Testimonials</h2>
+            </div>
+
+            <div class="row justify-content-center g-4">
+                <!-- Testimonial Card 1 -->
+                <div class="col-md-6">
+                    <div class="border rounded-4 p-4 shadow-sm h-100 position-relative">
+                        <i class="bi bi-chat-left-quote-fill text-primary fs-1 mb-3"></i>
+                        <p class="fs-5">"I live in Dubai. Nizcare has made it so easy to manage my parents’ health in
+                            Chennai. Appointments, tests, checkups—all from WhatsApp!"</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://flagcdn.com/w80/ae.png" alt="UAE Flag" class="me-3 rounded-circle"
+                                width="40">
+                            <div>
+                                <h6 class="mb-0 fw-semibold">Siddharth Iyer</h6>
+                                <small class="text-muted">Dubai 🇦🇪</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Card 2 -->
+                <div class="col-md-6">
+                    <div class="border rounded-4 p-4 shadow-sm h-100 position-relative">
+                        <i class="bi bi-chat-left-quote-fill text-success fs-1 mb-3"></i>
+                        <p class="fs-5">"Nizcare is a blessing. When my mother was hospitalized in Mumbai, I got
+                            real-time updates, test reports, and doctor feedback while sitting in Canada."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://flagcdn.com/w80/ca.png" alt="Canada Flag" class="me-3 rounded-circle"
+                                width="40">
+                            <div>
+                                <h6 class="mb-0 fw-semibold">Manpreet Kaur</h6>
+                                <small class="text-muted">Toronto 🇨🇦</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Read More Button -->
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-warning text-white px-4 py-2 testimonial-btn">
+                    Read More Stories
+                </a>
+            </div>
+
         </div>
     </section>
 
@@ -715,8 +799,36 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- intl-tel-input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
     <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            onlyCountries: [
+                "in", // India
+                "sa", // Saudi Arabia
+                "ae", // UAE
+                "sg", // Singapore
+                "lk", // Sri Lanka
+                "my", // Malaysia
+                "us", // USA
+                "gb", // UK
+                "ca", // Canada
+                "au", // Australia
+                "de", // Germany
+                "kw", // Kuwait
+                "nz", // New Zealand
+                "om", // Oman
+                "qa", // Qatar
+                "za", // South Africa
+                "ch"  // Switzerland
+            ],
+            initialCountry: "in",
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
+
 
         // Menbar Toggle
         (function () {

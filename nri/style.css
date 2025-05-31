@@ -60,7 +60,8 @@ body {
 }
 
 .hero div div div button,
-.testimonial-btn {
+.testimonial-btn,
+.d-grid button{
     padding: 10px 30px;
     margin-bottom: 80px;
     font-size: 16px;
