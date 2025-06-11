@@ -61,7 +61,7 @@ body {
 
 .hero div div div button,
 .testimonial-btn,
-.d-grid button{
+.d-grid button {
     padding: 10px 30px;
     margin-bottom: 80px;
     font-size: 16px;
@@ -652,141 +652,448 @@ body {
     font-weight: 700;
 }
 
-.pricing-section {
-    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
-    padding: 4rem 1rem;
+.solution-section,
+.features-section {
+    padding: 80px 0;
 }
 
-.pricing-card {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.7);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-}
-
-.popular-badge {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    background: #ff5722;
-    color: white;
-    font-size: 0.75rem;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-weight: bold;
-}
-
-.pricing-price {
+.solution-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #212529;
+    color: #000;
 }
 
-.pricing-plan-name {
-    font-size: 1.25rem;
+.solution-subtitle {
+    font-size: 1.4rem;
     font-weight: 600;
+    color: #2e2e60;
+    margin-bottom: 15px;
 }
 
-.feature-list {
-    padding: 0;
-    list-style: none;
-}
-
-.feature-list li {
-    padding: 6px 0;
-    font-size: 0.95rem;
+.solution-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
     color: #333;
 }
 
-.feature-list i {
-    color: #28a745;
-    margin-right: 8px;
-}
-
-
-.step-card {
-    border: 1px solid #e5e5e5;
-    border-radius: 16px;
+.quote-box {
     background: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #1da69a;
+    padding: 20px 25px;
+    margin-top: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.step-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+.quote-text {
+    font-style: italic;
+    color: #555;
+    font-size: 1.05rem;
 }
 
-.step-badge {
-    width: 50px;
-    height: 50px;
-    /* margin: 0 auto 20px; */
-    margin-bottom: 20px;
-    background-color: #ffaf34;
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #1da69a;
     color: #fff;
-    font-weight: 600;
+    font-size: 1.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
 }
 
-.step-icon {
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.features-section {
+    background: linear-gradient(135deg, #edf1ff, #fefefe);
+}
+
+.features-title {
     font-size: 2rem;
-    color: #ffaf34;
-}
-
-.flag-card {
-    background: #f8f9fa;
-    border-radius: 1.5rem;
+    font-weight: 700;
+    color: #000;
     text-align: center;
-    padding: 1.5rem 1rem;
-    font-size: 1.5rem;
-    font-weight: 500;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 40px;
 }
 
-.flag-card:hover {
+.feature-tile {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    height: 100%;
+}
+
+.feature-tile:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 }
 
-.flag-card span {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 1rem;
+.feature-icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.feature-text {
+    font-size: 1.05rem;
+    font-weight: 500;
     color: #333;
 }
 
-.countries-we-serve .section-title h2 {
-    font-size: 2.5rem;
+@media (max-width: 576px) {
+    .feature-text {
+        font-size: 1rem;
+    }
 }
 
-.countries-we-serve .btn {
-    font-size: 1rem;
+.corporate-section {
+    padding: 80px 0;
+}
+
+.badge-top {
+    background-color: #ffaf34;
+    color: white;
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 15px;
     font-weight: 500;
 }
 
-.flag-img-wrapper {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 0.5rem;
-  border: 2px solid #dee2e6; /* optional: subtle border */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.corporate-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
 }
 
-.flag-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.corporate-content {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.benefit-list li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    color: #333;
+}
+
+.cta-btn {
+    background-color: #1da69a;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 30px;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cta-btn:hover {
+    /* background-color: #38348f; */
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .corporate-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .corporate-content,
+    .benefit-list {
+        text-align: center;
+    }
+
+    .cta-btn {
+        display: block;
+        margin: 20px auto 0;
+    }
+}
+
+.testimonial-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #edf1ff, #fefefe);
+}
+
+.testimonial-heading {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 60px;
+}
+
+.testimonial-box {
+    background-color: white;
+    border-left: 6px solid #1da69a;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    transition: 0.3s ease;
+}
+
+.testimonial-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.1);
+}
+
+.quote-icon {
+    font-size: 40px;
+    color: #1da69a;
+    margin-bottom: 20px;
+}
+
+.testimonial-text {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.doctor-name {
+    font-weight: 600;
+    color: #2d2d6e;
+    font-size: 1.1rem;
+}
+
+.doctor-role {
+    font-size: 0.95rem;
+    color: #6b6b6b;
+}
+
+@media (max-width: 768px) {
+    .testimonial-box {
+        padding: 30px;
+    }
+
+    .testimonial-heading {
+        font-size: 1.8rem;
+    }
+}
+
+.solutions-section {
+    padding: 80px 0;
+}
+
+.solutions-heading {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 50px;
+}
+
+.solution-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    transition: 0.3s ease;
+    height: 100%;
+    position: relative;
+}
+
+.solution-card:hover {
+    background: linear-gradient(135deg, #e0e7ff, #fff);
+    transform: translateY(-5px);
+}
+
+.solution-icon {
+    font-size: 40px;
+    color: #5c63f2;
+    margin-bottom: 20px;
+}
+
+.solution-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.solution-desc {
+    color: #555;
+    font-size: 1rem;
+    margin: 10px 0 20px;
+}
+
+.solution-link {
+    color: #1da69a;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 20px;
+}
+
+.solution-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .solution-card {
+        padding: 25px;
+    }
+}
+
+.comparison-section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.table thead {
+    background-color: #f0f4ff;
+}
+
+.table thead th:first-child {
+    text-align: start !important;
+}
+
+.table thead th {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #000;
+}
+
+.table tbody td {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+.table tbody th {
+    text-align: left;
+    color: #333;
+    font-weight: 600;
+}
+
+.table thead tr th,
+.table tbody tr th {
+    padding: 15px;
+}
+
+.highlight-col {
+    background-color: #e4eaff;
+    font-weight: bold;
+}
+
+.check {
+    color: #28a745;
+    font-size: 1.3rem;
+}
+
+.cross {
+    color: #dc3545;
+    font-size: 1.3rem;
+}
+
+.limited {
+    color: #ffc107;
+    font-weight: 500;
+}
+
+.missing {
+    color: #888;
+    font-style: italic;
+}
+
+.final-cta {
+    background: linear-gradient(to right, #879392, #1da69a);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 60px auto;
+    max-width: 1100px;
+}
+
+.final-cta h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.cta-points {
+    list-style: none;
+    font-style: italic;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.cta-points li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    position: relative;
+    padding-left: 1.8rem;
+}
+
+.cta-points li::before {
+    content: '•';
+    color: #ffffff;
+    font-size: 1.4rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.cta-btn {
+    background-color: #ffffff;
+    color: #1da69a;
+    font-weight: 600;
+    padding: 12px 24px;
+    margin: 10px;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #dfe2ff;
+    color: #1da69a;
+}
+
+@media (max-width: 768px) {
+    .final-cta h2 {
+        font-size: 2rem;
+    }
+
+    .cta-points li {
+        font-size: 1.05rem;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+    }
 }
