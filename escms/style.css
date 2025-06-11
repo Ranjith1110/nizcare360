@@ -956,6 +956,7 @@ body {
 
 .comparison-section {
     padding: 80px 0;
+    background: linear-gradient(135deg, #edf1ff, #fefefe);
 }
 
 .section-title {
