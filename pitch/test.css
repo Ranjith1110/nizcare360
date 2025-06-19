@@ -55,6 +55,12 @@ body {
     transform: translateY(40px);
 }
 
+.gain-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 18px 48px rgba(79, 70, 229, 0.25);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
 .gain-card.visible {
     opacity: 1;
     transform: translateY(0);
@@ -95,13 +101,14 @@ body {
     .gain-list {
         flex-direction: column;
         gap: 20px;
+        align-items: center;
     }
 }
 
 .main-title {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #4f46e5;
+    color: #000;
     margin: 40px 0 30px 0;
     text-align: center;
     letter-spacing: 1px;
@@ -125,7 +132,7 @@ body {
 .category-header {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #6366f1;
+    color: #000;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -158,7 +165,7 @@ body {
 }
 
 .package-accordion .accordion-button:not(.collapsed) {
-    background: #6366f1;
+    background: #1da69a;
     color: #fff;
 }
 
@@ -172,12 +179,12 @@ body {
 .package-icon {
     margin-right: 12px;
     font-size: 1.3rem;
-    color: #6366f1;
+    color: #000;
 }
 
 .package-ideal {
     font-size: 0.98rem;
-    color: #6d28d9;
+    color: #000;
     margin-bottom: 4px;
 }
 
@@ -202,172 +209,204 @@ body {
     }
 }
 
-.main-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #4f46e5;
-    margin: 40px 0 30px 0;
-    text-align: center;
-    letter-spacing: 1px;
+.glass-card {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(79, 70, 229, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+    user-select: none;
 }
 
-.category-card {
-    background: #fff;
-    border-radius: 22px;
-    box-shadow: 0 8px 32px rgba(79, 70, 229, 0.10);
-    padding: 36px 28px;
-    margin-bottom: 32px;
-    min-height: 100%;
-    transition: box-shadow 0.25s, transform 0.22s;
+.glass-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 18px 48px rgba(79, 70, 229, 0.25);
+    border-color: rgba(99, 102, 241, 0.5);
 }
 
-.category-card:hover {
-    box-shadow: 0 16px 48px rgba(79, 70, 229, 0.16);
-    transform: translateY(-4px) scale(1.01);
-}
-
-.category-header {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #6366f1;
-    margin-bottom: 10px;
+.icon-circle {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto;
+    border-radius: 50%;
+    /* background: linear-gradient(135deg, #6366f1 40%, #818cf8 100%); */
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.category-desc {
-    color: #64748b;
-    font-size: 1.05rem;
-    margin-bottom: 18px;
-}
-
-.package-accordion .accordion-item {
-    border-radius: 14px;
-    margin-bottom: 14px;
-    border: none;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.07);
-}
-
-.package-accordion .accordion-button {
-    font-weight: 600;
-    color: #374151;
-    background: #e0e7ff;
-    border: none;
-    outline: none;
-    font-size: 1.1rem;
-    padding: 14px 20px;
-    transition: background 0.2s;
-}
-
-.package-accordion .accordion-button:not(.collapsed) {
-    background: #6366f1;
-    color: #fff;
-}
-
-.package-accordion .accordion-body {
-    background: #f1f5f9;
-    color: #4b5563;
-    font-size: 1rem;
-    padding: 18px 22px;
-}
-
-.package-icon {
-    margin-right: 12px;
-    font-size: 1.3rem;
-    color: #6366f1;
-}
-
-.package-ideal {
-    font-size: 0.98rem;
-    color: #6d28d9;
-    margin-bottom: 4px;
-}
-
-@media (max-width: 991px) {
-    .main-title {
-        font-size: 2rem;
-    }
-
-    .category-card {
-        padding: 22px 10px;
-    }
-}
-
-@media (max-width: 767px) {
-    .col-md-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .category-header {
-        font-size: 1.2rem;
-    }
-}
-
-.section-header {
-    background-color: #1da69a;
-    color: #fff;
-    padding: 60px 20px;
-    border-radius: 0 0 40px 40px;
-}
-
-.icon-box {
-    text-align: center;
-    padding: 30px;
-    border-radius: 16px;
-    background-color: #ffffff;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-    transition: 0.3s ease-in-out;
-}
-
-.icon-box:hover {
-    transform: translateY(-5px);
-}
-
-.icon-box i {
-    font-size: 2rem;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
     color: #1da69a;
-    margin-bottom: 15px;
+    font-size: 2.4rem;
+    transition: background 0.3s ease;
 }
 
-.package-card {
-    border-left: 5px solid #1da69a;
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+.glass-card p {
+    color: #000;
+    margin-bottom: 0;
+    letter-spacing: 0.3px;
 }
 
-.btn-brand {
-    background-color: #1da69a;
+@media (max-width: 575px) {
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    p.fs-5 {
+        font-size: 1.1rem;
+    }
+}
+
+.healthpkg-card {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(79, 70, 229, 0.10);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.22s, box-shadow 0.22s;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.healthpkg-card:hover {
+    transform: translateY(-7px) scale(1.025);
+    box-shadow: 0 14px 32px rgba(79, 70, 229, 0.18);
+    border-color: #6366f1;
+}
+
+.healthpkg-icon {
+    min-width: 64px;
+    min-height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
     color: #fff;
-    border-radius: 30px;
-    border: none;
-    padding: 10px 30px;
-    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.14);
+    animation: pkg-bounce 2s infinite alternate cubic-bezier(.6, 1.5, .4, 1);
 }
 
-.inclusion-list {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+@keyframes pkg-bounce {
+    to {
+        transform: scale(1.10) rotate(-4deg);
+    }
 }
 
-.inclusion-list ul {
+.bg-gradient-blue {
+    background: linear-gradient(135deg, #06b6d4 40%, #6366f1 100%);
+}
+
+.bg-gradient-green {
+    background: linear-gradient(135deg, #22c55e 40%, #06d6a0 100%);
+}
+
+.bg-gradient-orange {
+    background: linear-gradient(135deg, #f59e42 40%, #f43f5e 100%);
+}
+
+.bg-gradient-pink {
+    background: linear-gradient(135deg, #f43f5e 40%, #a21caf 100%);
+}
+
+.bg-gradient-purple {
+    background: linear-gradient(135deg, #6366f1 40%, #a21caf 100%);
+}
+
+@media (max-width: 575px) {
+    .healthpkg-icon {
+        min-width: 48px;
+        min-height: 48px;
+        max-width: 48px;
+        max-height: 48px;
+        font-size: 1.3rem;
+    }
+
+    .healthpkg-card {
+        padding: 1.2rem;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+}
+
+section.what-you-gain {
+    padding: 4rem 1rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+section.what-you-gain h2 {
+    font-weight: 800;
+    font-size: 2.8rem;
+    color: #4f46e5;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.benefits-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
     list-style: none;
-    padding-left: 0;
+    padding: 0;
+    margin: 0;
 }
 
-.inclusion-list ul li {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    font-weight: 500;
+.benefit-item {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgb(79 70 229 / 0.12);
+    padding: 1.6rem 2.2rem;
+    flex: 1 1 220px;
+    max-width: 280px;
+    text-align: center;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    user-select: none;
 }
 
-.inclusion-list ul li:last-child {
-    border-bottom: none;
+.benefit-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.benefit-icon {
+    font-size: 3.4rem;
+    color: #6366f1;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.benefit-item:hover .benefit-icon {
+    color: #4338ca;
+}
+
+.benefit-text {
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #374151;
+    user-select: text;
+}
+
+@media (max-width: 575px) {
+    .benefits-list {
+        gap: 1.5rem;
+    }
+
+    .benefit-item {
+        max-width: 100%;
+    }
 }
