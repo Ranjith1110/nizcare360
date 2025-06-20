@@ -1,4 +1,6 @@
 
+
+
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const toggleBtn = document.getElementById("toggleBtn");
@@ -37,38 +39,153 @@ document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(toggle => {
     });
 });
 
-const videoModal = document.getElementById('videoModal');
-const videoPlayer = document.getElementById('exerciseVideo');
-const videoSource = videoPlayer.querySelector('source');
+const chartDataSets = {
+    // In "date"
+    date: {
+        labels: Array.from({ length: 10 }, (_, i) => `2025-07-${String(i + 1).padStart(2, '0')}`),
+        datasets: [
+            {
+                label: 'Walkin',
+                data: [10, 12, 14, 11, 15, 18, 16, 17, 15, 14],
+                borderColor: '#1da69a',
+                backgroundColor: 'rgba(29,166,154,0.2)',
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Treatment',
+                data: [4, 5, 6, 5, 7, 8, 6, 5, 7, 6],
+                borderColor: '#f87171',
+                backgroundColor: 'rgba(248,113,113,0.2)',
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Others',
+                data: [2, 3, 2, 4, 3, 5, 4, 3, 2, 3],
+                borderColor: '#ffc107',
+                backgroundColor: 'rgba(255,193,7,0.2)',
+                fill: true,
+                tension: 0.4
+            }
+        ]
+    },// Updated JavaScript Data Set for month
+    month: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [
+            {
+                label: 'Walkin',
+                data: [100, 120, 130, 110, 140, 160, 180, 175, 185, 190, 195, 200],
+                borderColor: '#1da69a',
+                backgroundColor: 'rgba(29,166,154,0.2)',
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Treatment',
+                data: [50, 60, 70, 65, 80, 90, 95, 85, 88, 92, 97, 100],
+                borderColor: '#f87171',
+                backgroundColor: 'rgba(248,113,113,0.2)',
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Others',
+                data: [20, 25, 30, 28, 35, 40, 45, 42, 43, 45, 47, 50],
+                borderColor: '#ffc107',
+                backgroundColor: 'rgba(255,193,7,0.2)',
+                fill: true,
+                tension: 0.4
+            }
+        ]
+    },// In "year"
+    year: {
+        labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+        datasets: [
+            {
+                label: 'Walkin',
+                data: [800, 1000, 900, 1100, 1300, 1400, 1500],
+                borderColor: '#1da69a',
+                backgroundColor: 'rgba(29,166,154,0.2)',
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Treatment',
+                data: [400, 450, 500, 550, 600, 700, 750],
+                borderColor: '#f87171',
+                backgroundColor: 'rgba(248,113,113,0.2)',
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Others',
+                data: [200, 250, 240, 270, 300, 330, 350],
+                borderColor: '#ffc107',
+                backgroundColor: 'rgba(255,193,7,0.2)',
+                fill: true,
+                tension: 0.4
+            }
+        ]
+    }
+};
 
-videoModal.addEventListener('show.bs.modal', event => {
-    const button = event.relatedTarget;
-    const videoUrl = button.getAttribute('data-video');
-    videoSource.src = videoUrl;
-    videoPlayer.load();
-    videoPlayer.play();
-});
-
-videoModal.addEventListener('hidden.bs.modal', () => {
-    videoPlayer.pause();
-    videoPlayer.currentTime = 0;
-});
-
-
-const viewToggleButton = document.getElementById('toggleViewBtn');
-const extraCards = document.getElementById('extra-cards');
-
-viewToggleButton.addEventListener('click', () => {
-    const isVisible = !extraCards.classList.contains('d-none');
-
-    if (isVisible) {
-        extraCards.classList.add('d-none');
-        viewToggleButton.textContent = 'View All';
-    } else {
-        extraCards.classList.remove('d-none');
-        viewToggleButton.textContent = 'View Less';
+const lineChartCtx = document.getElementById('lineChart').getContext('2d');
+let lineChartInstance = new Chart(lineChartCtx, {
+    type: 'line',
+    data: chartDataSets.date,
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'bottom' },
+            tooltip: { mode: 'index', intersect: false },
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Count'
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: 'Date'
+                }
+            }
+        }
     }
 });
 
+document.querySelectorAll('input[name="options"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+        const selected = radio.id.replace('option', '').toLowerCase();
+        lineChartInstance.data = chartDataSets[selected];
+        lineChartInstance.options.scales.x.title.text =
+            selected === 'date' ? 'Date' : selected === 'month' ? 'Month' : 'Year';
+        lineChartInstance.update();
+    });
+});
 
-
+const doughnutChartCtx = document.getElementById('doughnutChart').getContext('2d');
+const doughnutChartInstance = new Chart(doughnutChartCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Walkin', 'Treatment', 'Others'],
+        datasets: [{
+            label: 'Distribution',
+            data: [50, 35, 15],
+            backgroundColor: ['#1da69a', '#f87171', '#ffc107'],
+            hoverOffset: 20
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'bottom' }
+        }
+    }
+});

@@ -173,3 +173,72 @@ body {
         width: 350px !important;
     }
 }
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+    color: #1da69a;
+    font-weight: 800;
+}
+
+.dashboard-header p {
+    color: #777;
+    font-size: 1.1rem;
+}
+
+.btn-group .btn {
+    background-color: #1da69a;
+    color: #fff;
+    margin: 0 5px;
+}
+
+.btn-group .btn.active {
+    background-color: #ffaf34 !important;
+}
+
+.charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.chart-card {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease-in-out;
+    /* flex: 1 1 0%; */
+}
+
+.chart-card:hover {
+    transform: translateY(-5px);
+}
+
+.chart-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #1da69a;
+    text-align: center;
+}
+
+.chart-wrapper {
+    height: 350px;
+}
+
+@media (min-width: 768px) {
+    .charts-container {
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+
+    .chart-card {
+        /* flex: 1 1 50%; */
+        max-width: none;
+    }
+}
