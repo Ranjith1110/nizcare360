@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Doctor Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        .search-bar {
+            border-radius: 2rem;
+            box-shadow: 0 2px 8px rgba(29, 166, 154, 0.07);
+            border: 1px solid #e0f2f1;
+            padding: 0.5rem 1rem;
+            background: #f8fafd;
+            transition: box-shadow 0.2s;
+        }
+
+        .search-bar:focus-within {
+            box-shadow: 0 4px 16px rgba(29, 166, 154, 0.13);
+            border-color: #1da69a;
+        }
+
+        .empty-state {
+            padding: 3rem 1rem;
+            text-align: center;
+            color: #a0aec0;
+            background: linear-gradient(135deg, #e0f7fa 0%, #f8fafc 100%);
+            border-radius: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 24px rgba(29, 166, 154, 0.09);
+            transition: background 0.3s;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: #1da69a;
+            margin-bottom: 1rem;
+            animation: bounce 1.2s infinite alternate;
+        }
+
+        @keyframes bounce {
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+        .table thead th {
+            background: #dcf3f1;
+            color: #000;
+            font-weight: bold;
+            border: none;
+        }
+
+        .table {
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            color: #1da69a;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb-item.active {
+            color: #1da69a;
+            font-weight: 600;
+        }
+
+        .assigned-search form input:focus {
+            box-shadow: none;
+            border: none;
+            outline: none;
+        }
+
+        /* Dropdown container */
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown toggle button */
+        .custom-dropdown-btn {
+            padding: 0.375rem 1rem;
+            font-size: 0.95rem;
+            border-radius: 999px;
+            border: 1.5px solid #1da69a;
+            background: #fff;
+            color: #1da69a;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .custom-dropdown-btn:focus,
+        .custom-dropdown-btn.active {
+            background: #1da69a;
+            color: #fff;
+            border-color: #1da69a;
+        }
+
+        /* Dropdown menu */
+        .custom-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            min-width: 180px;
+            background: #fff;
+            border: 1.5px solid #e0f2f1;
+            border-radius: 1rem;
+            box-shadow: 0 8px 24px rgba(29, 166, 154, 0.13);
+            z-index: 9999;
+            padding: 0.5rem 0;
+            overflow: auto;
+        }
+
+        .custom-dropdown.open .custom-dropdown-menu {
+            display: block;
+            animation: fadeIn 0.2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Dropdown item */
+        .custom-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1.25rem;
+            color: #333;
+            text-decoration: none;
+            background: none;
+            border: none;
+            width: 100%;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.18s, color 0.18s;
+        }
+
+        .custom-dropdown-item:hover {
+            background: #e0f7fa;
+            color: #1da69a;
+        }
+
+        .custom-dropdown-item i {
+            min-width: 1.1em;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Sidebar will be loaded here -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+
+            <div class="d-flex justify-content-between align-items-center border-bottom-nav py-2">
+                <h1 class="opacity-0 d-none d-lg-block">Welcome to the Dashboard</h1>
+                <div class="d-flex align-items-center gap-4">
+                    <img width="35px" class="d-none d-lg-block" src="https://flagcdn.com/in.svg" alt="">
+                    <div class="dropdown d-none d-lg-block">
+                        <a href="#" class="dropdown-toggle text-decoration-none text-secondary" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user-md fs-5"></i>
+                        </a>
+                        <ul class="dropdown-menu mt-2">
+                            <li><a class="dropdown-item" href="#">Doctor Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <div class="d-flex align-items-center my-4">
+                <a href="#" class="text-decoration-none fs-5 text-black px-2 py-1 rounded-3 mt-1">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <h2 class="section-title mb-0">Tele Consultation Requests</h2>
+            </div>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="https://nizcaredev.com/administrator/login"
+                            class="text-muted">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tele Consultation Requests</li>
+                </ol>
+            </nav>
+            <!-- Card -->
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 assigned-search">
+                        <h5 class="fw-bold text-secondary mb-0">Tele Consultation Requests</h5>
+                        <!-- Search bar -->
+                        <form class="d-flex align-items-center search-bar" style="max-width: 340px;">
+                            <input type="text" class="form-control border-0 bg-transparent"
+                                placeholder="Search employee, status..." aria-label="Search">
+                            <button class="btn btn-link text-success px-2" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Table -->
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>S.R.</th>
+                                    <th>Employee</th>
+                                    <th>Requested On</th>
+                                    <th>Status</th>
+                                    <th>Meeting Time</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Employee"
+                                                width="32" height="32" class="rounded-circle border">
+                                            <span>Rahul Sharma</span>
+                                        </div>
+                                    </td>
+                                    <td>2025-06-23</td>
+                                    <td>
+                                        <span class="badge rounded-pill bg-warning text-dark">Pending</span>
+                                    </td>
+                                    <td>10:30 AM</td>
+                                    <td>
+                                        <div class="custom-dropdown" tabindex="0">
+                                            <button type="button" class="custom-dropdown-btn"
+                                                onclick="toggleDropdown(this)">
+                                                Action <i class="fa fa-caret-down"></i>
+                                            </button>
+                                            <div class="custom-dropdown-menu">
+                                                <button class="custom-dropdown-item" type="button">
+                                                    <i class="fa fa-video text-primary"></i> Join Meeting
+                                                </button>
+                                                <button class="custom-dropdown-item" type="button">
+                                                    <i class="fa fa-info-circle text-info"></i> View Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Employee"
+                                                width="32" height="32" class="rounded-circle border">
+                                            <span>Rahul Sharma</span>
+                                        </div>
+                                    </td>
+                                    <td>2025-06-23</td>
+                                    <td>
+                                        <span class="badge rounded-pill bg-warning text-dark">Pending</span>
+                                    </td>
+                                    <td>10:30 AM</td>
+                                    <td>
+                                        <div class="custom-dropdown" tabindex="0">
+                                            <button type="button" class="custom-dropdown-btn"
+                                                onclick="toggleDropdown(this)">
+                                                Action <i class="fa fa-caret-down"></i>
+                                            </button>
+                                            <div class="custom-dropdown-menu">
+                                                <button class="custom-dropdown-item" type="button">
+                                                    <i class="fa fa-video text-primary"></i> Join Meeting
+                                                </button>
+                                                <button class="custom-dropdown-item" type="button">
+                                                    <i class="fa fa-info-circle text-info"></i> View Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Employee"
+                                                width="32" height="32" class="rounded-circle border">
+                                            <span>Rahul Sharma</span>
+                                        </div>
+                                    </td>
+                                    <td>2025-06-23</td>
+                                    <td>
+                                        <span class="badge rounded-pill bg-warning text-dark">Pending</span>
+                                    </td>
+                                    <td>10:30 AM</td>
+                                    <td>
+                                        <div class="custom-dropdown" tabindex="0">
+                                            <button type="button" class="custom-dropdown-btn"
+                                                onclick="toggleDropdown(this)">
+                                                Action <i class="fa fa-caret-down"></i>
+                                            </button>
+                                            <div class="custom-dropdown-menu">
+                                                <button class="custom-dropdown-item" type="button">
+                                                    <i class="fa fa-video text-primary"></i> Join Meeting
+                                                </button>
+                                                <button class="custom-dropdown-item" type="button">
+                                                    <i class="fa fa-info-circle text-info"></i> View Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Employee"
+                                                width="32" height="32" class="rounded-circle border">
+                                            <span>Rahul Sharma</span>
+                                        </div>
+                                    </td>
+                                    <td>2025-06-23</td>
+                                    <td>
+                                        <span class="badge rounded-pill bg-warning text-dark">Pending</span>
+                                    </td>
+                                    <td>10:30 AM</td>
+                                    <td>
+                                        <div class="custom-dropdown" tabindex="0">
+                                            <button type="button" class="custom-dropdown-btn"
+                                                onclick="toggleDropdown(this)">
+                                                Action <i class="fa fa-caret-down"></i>
+                                            </button>
+                                            <div class="custom-dropdown-menu">
+                                                <button class="custom-dropdown-item" type="button">
+                                                    <i class="fa fa-video text-primary"></i> Join Meeting
+                                                </button>
+                                                <button class="custom-dropdown-item" type="button">
+                                                    <i class="fa fa-info-circle text-info"></i> View Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="text-center mt-5 text-muted small">
+                <span class="fw-bold">Copyright</span> Nizcare © 2025
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(btn) {
+            // Close any other open dropdowns
+            document.querySelectorAll('.custom-dropdown.open').forEach(d => {
+                if (d !== btn.parentElement) d.classList.remove('open');
+            });
+            // Toggle this dropdown
+            btn.parentElement.classList.toggle('open');
+        }
+
+        // Close dropdown if clicked outside
+        document.addEventListener('click', function (e) {
+            document.querySelectorAll('.custom-dropdown.open').forEach(d => {
+                if (!d.contains(e.target)) d.classList.remove('open');
+            });
+        });
+
+        // Optional: close dropdown on ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === "Escape") {
+                document.querySelectorAll('.custom-dropdown.open').forEach(d => d.classList.remove('open'));
+            }
+        });
+    </script>
+
+    <script src="assets/script.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
