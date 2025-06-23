@@ -1,4 +1,13 @@
+// js/load-sidebar.js
 
+fetch('sidebar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error loading sidebar:', error);
+    });
 
 
 const sidebar = document.getElementById("sidebar");
@@ -15,17 +24,6 @@ overlay.addEventListener("click", () => {
     overlay.classList.remove("show");
 });
 
-var swiper = new Swiper(".mySwiper", {
-    loop: true,
-    autoplay: {
-        delay: 3000,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-});
-
 document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(toggle => {
     const icon = toggle.querySelector('.arrow-icon');
     const target = document.querySelector(toggle.getAttribute('href'));
@@ -40,7 +38,6 @@ document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(toggle => {
 });
 
 const chartDataSets = {
-    // In "date"
     date: {
         labels: Array.from({ length: 10 }, (_, i) => `2025-07-${String(i + 1).padStart(2, '0')}`),
         datasets: [
@@ -69,7 +66,7 @@ const chartDataSets = {
                 tension: 0.4
             }
         ]
-    },// Updated JavaScript Data Set for month
+    },
     month: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
@@ -98,7 +95,7 @@ const chartDataSets = {
                 tension: 0.4
             }
         ]
-    },// In "year"
+    },
     year: {
         labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
         datasets: [
@@ -130,8 +127,8 @@ const chartDataSets = {
     }
 };
 
-const lineChartCtx = document.getElementById('lineChart').getContext('2d');
-let lineChartInstance = new Chart(lineChartCtx, {
+const ctx = document.getElementById('lineChart').getContext('2d');
+let lineChartInstance = new Chart(ctx, {
     type: 'line',
     data: chartDataSets.date,
     options: {
