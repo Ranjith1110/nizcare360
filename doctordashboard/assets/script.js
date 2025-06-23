@@ -169,23 +169,23 @@ document.querySelectorAll('input[name="options"]').forEach(radio => {
     });
 });
 
-const doughnutChartCtx = document.getElementById('doughnutChart').getContext('2d');
-const doughnutChartInstance = new Chart(doughnutChartCtx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Walkin', 'Treatment', 'Others'],
-        datasets: [{
-            label: 'Distribution',
-            data: [50, 35, 15],
-            backgroundColor: ['#1da69a', '#f87171', '#ffc107'],
-            hoverOffset: 20
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { position: 'bottom' }
-        }
-    }
-});
+// const doughnutChartCtx = document.getElementById('doughnutChart').getContext('2d');
+// const doughnutChartInstance = new Chart(doughnutChartCtx, {
+//     type: 'doughnut',
+//     data: {
+//         labels: ['Walkin', 'Treatment', 'Others'],
+//         datasets: [{
+//             label: 'Distribution',
+//             data: [50, 35, 15],
+//             backgroundColor: ['#1da69a', '#f87171', '#ffc107'],
+//             hoverOffset: 20
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         maintainAspectRatio: false,
+//         plugins: {
+//             legend: { position: 'bottom' }
+//         }
+//     }
+// });
