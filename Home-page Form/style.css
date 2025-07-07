@@ -1,0 +1,20 @@
+.form-container {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #1da69a;
+    color: #fff;
+}
+
+.btn-form {
+    background-color: #f9a527;
+    border-radius: 15px;
+    border: none;
+    color: #fff;
+}
+
+.btn-form:hover {
+    background-color: #f5b658;
+    transition: all 0.2s ;
+}
