@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nizcare - Exclusive Wellness Benefits for Allen Employees</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header Banner */
+        .header-banner {
+            position: relative;
+            background: linear-gradient(90deg, #1da69a, #16c6b0);
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px 60px;
+            border-radius: 0 0 40px 40px;
+            overflow: hidden;
+        }
+
+        .logo-row {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .header-logo {
+            max-height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.08);
+        }
+
+        .center-logo {
+            margin-right: 100px;
+        }
+
+        /* Header Text */
+        .header-text {
+            margin-top: 80px;
+        }
+
+        .header-text h1 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header-text h3 {
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        /* Mobile View */
+        @media (max-width: 767px) {
+            .header-banner {
+                padding: 60px 20px 40px;
+            }
+
+            .logo-row {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto auto;
+                gap: 10px;
+                justify-items: center;
+                align-items: center;
+            }
+
+            .left-logo {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .right-logo {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .center-logo {
+                grid-column: 1 / span 2;
+                grid-row: 2;
+                justify-self: center;
+                margin-right: 0;
+            }
+
+            .header-logo {
+                max-height: 50px;
+            }
+
+            .header-text {
+                margin-top: 20px;
+            }
+
+            .header-text h1 {
+                font-size: 30px;
+            }
+
+            .header-text h3 {
+                font-size: 20px;
+            }
+
+            .header-text p {
+                font-size: 14px;
+            }
+        }
+
+        /* Section Title */
+        .section-title {
+            color: #000;
+            font-size: 45px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* How It Works start */
+        .how-it-works {
+            margin: 20px auto;
+        }
+
+        .step-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 25px 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+            color: #1da69a;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .step-card:hover .step-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: #ffaf34;
+        }
+
+        .step-card h4 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1da69a;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Benifits start */
+        .benefits {
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            padding: 0px 20px 0px 20px;
+            margin-bottom: 50px;
+        }
+
+        .benefit-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 25px 15px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #1da69a;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: #ffaf34;
+        }
+
+        .benefit-card h4 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1da69a;
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(90deg, #1da69a, #16c6b0);
+            color: #fff;
+            border-radius: 20px;
+            margin-bottom: 50px;
+        }
+
+        .btn-nizcare-st {
+            background-color: #ffaf34;
+            color: #fff;
+            border-radius: 25px;
+            padding: 8px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-nizcare {
+            background-color: #1da69a;
+            color: #fff;
+            border-radius: 25px;
+            padding: 8px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-nizcare-popup {
+            background-color: #1da69a;
+            color: #fff;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 14px;
+        }
+
+        .btn-nizcare-close {
+            background-color: #ffaf34;
+            color: #fff;
+            border-radius: 25px;
+            padding: 8px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-nizcare-st:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-nizcare:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-nizcare-popup:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-nizcare-close:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Modal input fields */
+        .modal-content input,
+        .modal-content select {
+            margin-bottom: 15px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+
+        .modal-content label {
+            font-weight: 500;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+
+        footer {
+            background-color: #1da69a;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 20px 20px 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header-banner">
+        <div class="logo-row">
+            <img src="/logo-white.png" alt="Nizcare Logo" class="header-logo left-logo">
+            <img src="/allen-logo.png" alt="Allen Logo" class="header-logo center-logo">
+            <img src="/md-logo.png" alt="MD Logo" class="header-logo right-logo">
+        </div>
+
+        <div class="header-text">
+            <h1>Welcome to Nizcare!</h1>
+            <h3>Your Health, Your Way</h3>
+            <p>Exclusive Wellness Benefits for Allen Employees</p>
+            <p>Get instant access to top-notch healthcare services, tailored just for you!</p>
+        </div>
+    </div>
+
+
+    <!-- How It Works -->
+    <div class="container how-it-works">
+        <h3 class="section-title">How It Works</h3>
+        <div class="row">
+            <!-- Step 1 -->
+            <div class="col-sm-4">
+                <div class="step-card text-center">
+                    <div class="step-icon"><i class="fa-solid fa-mouse-pointer"></i></div>
+                    <h4>Click, Register, and Get Started</h4>
+                    <p>Enter your details, validate your identity, and unlock exclusive benefits.</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="col-sm-4">
+                <div class="step-card text-center">
+                    <div class="step-icon"><i class="fa-solid fa-hospital-user"></i></div>
+                    <h4>Access Top Healthcare Services</h4>
+                    <p>Enjoy hassle-free consultations, appointments, and health services.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="col-sm-4">
+                <div class="step-card text-center">
+                    <div class="step-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h4>Stay Healthy, Stay Happy</h4>
+                    <p>Get personalized health tips, reminders, and support for your wellness journey.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Benefits -->
+    <div class="container benefits">
+        <h3 class="section-title">Benefits</h3>
+        <div class="row">
+            <!-- Benefit Item -->
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                    <h4>General Physician</h4>
+                    <p>Online consultations with general physicians for routine health concerns.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-stethoscope"></i></div>
+                    <h4>Specialist Consultations</h4>
+                    <p>Consult with specialists online (9:30 AM – 7:00 PM) for expert advice.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h4>EAP Services</h4>
+                    <p>Psychologist & psychiatrist consultations for mental health support.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-syringe"></i></div>
+                    <h4>Preventive Health Checkups</h4>
+                    <p>Book checkup packages at discounted prices and stay proactive.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4>Health Tracking</h4>
+                    <p>Track your health and wellness journey with ease and convenience.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-person-walking-luggage"></i></div>
+                    <h4>Wellness Programs</h4>
+                    <p>Participate in yoga sessions, webinars, and health camps.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <h4>Discounted Services</h4>
+                    <p>Get access to discounted healthcare services for employees.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-lock"></i></div>
+                    <h4>Secure & Confidential</h4>
+                    <p>Your personal health data is protected and fully confidential.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="benefit-card text-center">
+                    <div class="benefit-icon"><i class="fa-solid fa-file-medical"></i></div>
+                    <h4>Easy Access</h4>
+                    <p>View your reports and records anytime through the platform.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CTA Section -->
+    <div class="container cta-section text-center" style="margin-top:50px;">
+        <h3>Get Started Today!</h3>
+        <p>Enter your Allen email ID to unlock your exclusive benefits.</p>
+        <button class="btn btn-nizcare-st btn-lg" id="openFirstPopup">Get Started</button>
+    </div>
+
+    <!-- First Popup: Email + OTP -->
+    <div class="modal fade" id="firstModal" tabindex="-1" role="dialog" aria-labelledby="firstModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius:20px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="firstModalLabel">Verify Your Email</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Email + Send OTP -->
+                    <div class="form-group" style="display: flex; flex-wrap: wrap; align-items: center;">
+                        <input type="email" class="form-control" id="modalEmail" placeholder="Email ID"
+                            style="border-radius:25px; flex: 1; min-width: 180px; margin-right: 10px;">
+                        <button type="button" class="btn btn-nizcare-popup" id="sendEmailOtp">Send OTP</button>
+                    </div>
+
+                    <!-- OTP input -->
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label>OTP</label>
+                        <input type="number" class="form-control" id="modalOtp" placeholder="One Time Password"
+                            style="border-radius:25px;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-nizcare-close" data-dismiss="modal">Close</button>
+                    <button class="btn btn-nizcare" id="firstSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Popup: Employee Details -->
+    <div class="modal fade" id="secondModal" tabindex="-1" role="dialog" aria-labelledby="secondModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius:20px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="secondModalLabel">Complete Your Profile</h4>
+                </div>
+                <div class="modal-body">
+
+                    <!-- First Name & Last Name -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" placeholder="First Name"
+                                    style="border-radius:25px;">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" placeholder="Last Name"
+                                    style="border-radius:25px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gender & Date of Birth -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select class="form-control" style="border-radius:25px;">
+                                    <option value="">Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" class="form-control" style="border-radius:25px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Number + Send OTP + OTP Verification -->
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label>Mobile Number</label>
+                                <input type="number" class="form-control" placeholder="Mobile Number"
+                                    style="border-radius:25px;">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group" style="margin-top: 25px;">
+                                <button type="button" class="btn btn-nizcare-popup btn-block" id="sendPhoneOtp"
+                                    style="border-radius:25px;">Send OTP</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>OTP Verification</label>
+                                <input type="number" class="form-control" placeholder="OTP from Mobile"
+                                    style="border-radius:25px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Employee ID & Email -->
+                    <div class="form-group">
+                        <label>Employee ID</label>
+                        <input type="text" class="form-control" placeholder="Employee ID" style="border-radius:25px;">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Allen Email ID"
+                            style="border-radius:25px;">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-nizcare-close" data-dismiss="modal">Close</button>
+                    <button class="btn btn-nizcare" id="secondSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>Your Health, Our Priority | Nizcare Team</p>
+        <p>&copy; 2025 Nizcare</p>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        // Show first popup when clicking CTA
+        document.getElementById('openFirstPopup').addEventListener('click', function () {
+            $('#firstModal').modal('show');
+        });
+
+        // On first popup submit → hide first, show second
+        document.getElementById('firstSubmit').addEventListener('click', function () {
+            $('#firstModal').modal('hide');
+            setTimeout(function () {
+                $('#secondModal').modal('show');
+            }, 300);
+        });
+    </script>
+</body>
+
+</html>
