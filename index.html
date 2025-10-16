@@ -13,18 +13,20 @@
 </head>
 
 <body>
+    <div id="particles-js"></div>
 
     <header data-aos="fade-in" id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
             <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <img src="nizImg/nizlogo.png" alt="">
+                <img src="nizImg/nizlogo.png" width="140px" alt="">
             </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="" class="">+919789537313<br></a></li>
-                    <li><a href="">Request Demo</a></li>
+                    <li><a href="">NRI</a></li>
+                    <li><a href="">Corporates</a></li>
+                    <li><a href="">Book a Lab Test</a></li>
                     <li><a href="">Sign Up</a></li>
                     <li><a href="doctorPage/clinicpage.html">For Doctors/Clinics</a></li>
                     <div class="dropdown">
@@ -45,28 +47,53 @@
         </div>
     </header>
 
-
     <section id="hero" class="hero d-flex align-items-center justify-content-center">
-        <img src="nizImg/banner.webp" alt="banner" class="hero-bg" data-aos="fade-in">
+        <!-- Responsive hero background -->
+        <picture>
+            <!-- Mobile -->
+            <source srcset="nizImg/responsive-banner.png" media="(max-width: 575px)">
+            <!-- Desktop -->
+            <img src="nizImg/vinith.website banner nizcare(1).png" alt="Hero banner" class="hero-bg" data-aos="fade-in">
+        </picture>
 
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-5">
-                    <h2 class="mt-5">India's Leading Health and Wellness Destination</h2>
+                    <div class="hero-text-wrapper">
+                        <h2>
+                            <span id="firstLine" class="typewriter"></span><br>
+                            <!-- <span id="restLine" style="display:none;">Health and Wellness Destination</span> -->
+                        </h2>
+                    </div>
+                    <button class="hero-btn">Request Demo</button>
                 </div>
 
                 <div class="col-lg-7">
+                    <div class="sector-wrapper">
+                        <div class="sector-circle">
+                            <div class="sector-center">
+                                <div class="sector-center-circle">
+                                    <p class="sector-count mt-4">
+                                        <span class="d-block text-center">28+</span>
+                                        <span class="d-block sector-label">Sectors</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sector-outline circle1"></div>
+                            <div class="sector-outline circle2"></div>
+                            <div class="sector-outline circle3"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
     <section class="health-wellness mt-5">
         <div class="container">
             <div class="section-title">
-                <h2 class="text-center" data-aos="fade-up">Nizcare Revolutionizing Healthcare</h2>
+                <h2 class="text-center" data-aos="fade-up"><span style="color: #1da69a;">Nizcare</span> Revolutionizing
+                    Healthcare</h2>
                 <h3 class="text-center" data-aos="fade-up" data-aos-delay="100">“The Future of Health & Wellness Today”
                 </h3>
                 <p class="text-center health-wellness-p" data-aos="fade-up" data-aos-delay="100">Nizcare is India's
@@ -83,62 +110,108 @@
                         <h2 class="text-center mb-5">Insurance - <span style="color: #1da69a;">Partners</span></h2>
                     </div>
 
-                    <!-- 🔁 Scrolling Left to Right -->
-                    <div class="banner-wrapper">
-                        <div class="image-strip-left">
-                            <!-- 10 original + 10 duplicate images -->
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-                            <img style="width: 100%;" src="nizImg/insurance-img/a-d-naik.jpg" alt="" class="logo-image">
-
-                            <!-- Duplicate for smooth loop -->
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                        </div>
-                    </div>
-
-                    <!-- 🔁 Scrolling Right to Left -->
-                    <div class="banner-wrapper">
-                        <div class="image-strip-right">
-                            <!-- 10 original + 10 duplicate images -->
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-
-                            <!-- Duplicate for smooth loop -->
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                            <img src="nizImg/nizlogo.png" alt="" class="logo-image">
-                        </div>
+                    <div class="swiper customSwiper" data-aos="fade-in">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/a-d-naik.jpg"
+                                    alt="Flexiant_logo"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/add-value-insurance.jpg"
+                                    alt="logo_model_n"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/Akira-Orange-.png"
+                                    alt="RBL_finserv"></div>
+                            <div class="swiper-slide ip-slide"><img
+                                    src="nizImg/insurance-img/alpha_numero.jpg"
+                                    alt="surin_automotive_private_limited_logo"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/altius-tech.jpg"
+                                    alt="tag_logo_blue"></div>
+                            <div class="swiper-slide ip-slide"><img
+                                    src="nizImg/insurance-img//am-ex.png"
+                                    alt="Tyson_Foods_corporate_logo"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/amaze-insurance.png"
+                                    alt="altimetrik"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/aon-india.png"
+                                    alt="asiannet"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/apex-insurance-logo.png"
+                                    alt="bharat"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/auxillium-insurance.jpg"
+                                    alt="elior"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/Beacon.png"
+                                    alt="escorts"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/bluetree-insurance.png"
+                                    alt="Flexiant_logo"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/DIS-insurance.jpg"
+                                    alt="freyr-energy"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/disha-capital.jpg" alt="MAK">
+                            </div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/ethika-logo.jpeg.jpg"
+                                    alt="metro-brands"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/infinite_computer_solutions_logo.jpg"
+                                    alt="planetsmartcity"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/jk-logo.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/Jubilee.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/jubiliant.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/lambach-logo.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/magnum-insurance.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/Manas.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/Marsh.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/MD-india logo.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/micare-logo.jpeg.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/Nhance-Logo-Final.svg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/Notion.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/novo.jpeg.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/pragmatic-insurance.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/policynation-logo-health-new.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/provincial-insurance.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/pureassure-insurance.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/rock-sure-logo.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/RTF-insurance.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/samavesh-insurance.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/sana.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/sargam-insurance.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/securisk.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/smc-Logo.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/sps-consultant.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/square-insurance.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/ssg-insurance.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/sushil-insurance.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/Tofico.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/turstegic-logo.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/unison-insurance.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/valley.png"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/vibhuti-logo.jpeg.jpg"
+                                    alt="quantium"></div>
+                            <div class="swiper-slide ip-slide"><img src="nizImg/insurance-img/vizza-logo.svg"
+                                    alt="quantium"></div>
                     </div>
 
                     <!-- Section Title -->
@@ -194,7 +267,6 @@
         </div>
     </section>
 
-
     <section class="mark-class">
         <div class="section-title">
             <p class="text-center health-insurance-p container" data-aos="fade-up">We offer comprehensive health and
@@ -216,11 +288,11 @@
 
     </section>
 
-
     <section class="mark-class">
         <div class="container">
             <div class="section-title">
-                <h2 class="text-center">India’s Wellness Revolution Begins Here</h2>
+                <h2 class="text-center"><span style="color: #1da69a;">India’s</span> Wellness Revolution Begins Here
+                </h2>
                 <h3 class="text-center" data-aos="fade-up" data-aos-delay="100">“We Serve”</h3>
             </div>
 
@@ -266,7 +338,8 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2 class="text-center">Transform Your Workplace with Nizcare</h2><!-- End Section Title -->
+            <h2 class="text-center">Transform Your Workplace with <span style="color: #1da69a;">Nizcare</span></h2>
+            <!-- End Section Title -->
             <p class="text-center">Our Corporate Wellness Programs deliver a holistic suite of healthcare solutions,
                 promoting employee wellbeing and driving business success</p>
         </div>
@@ -332,15 +405,18 @@
             <div class="row gy-2 mt-0 mt-lg-3" id="customized-app" data-aos="fade-in">
                 <div class="col-lg-6">
                     <ul class="customized-app-list">
-                        <li><span style="color: #1da69a;">></span> Teleconsultation</li>
-                        <li><span style="color: #1da69a;">></span> Pharmacy</li>
-                        <li><span style="color: #1da69a;">></span> Online Lab Tests & Packages</li>
-                        <li><span style="color: #1da69a;">></span> Doctor Home Visit</li>
-                        <li><span style="color: #1da69a;">></span> Home Health Care Services</li>
-                        <li><span style="color: #1da69a;">></span> Ambulance Services</li>
-                        <li><span style="color: #1da69a;">></span> Surgery Assistance</li>
-                        <li><span style="color: #1da69a;">></span> Remote Monitoring</li>
-                        <li><span style="color: #1da69a;">></span> Vitals & Free Health Trackers</li>
+                        <li><i class="fa-solid fa-user-doctor" style="color:#1da69a;"></i> Teleconsultation</li>
+                        <li><i class="fa-solid fa-pills" style="color:#1da69a;"></i> Pharmacy</li>
+                        <li><i class="fa-solid fa-vial-circle-check" style="color:#1da69a;"></i> Online Lab Tests &
+                            Packages</li>
+                        <li><i class="fa-solid fa-user-nurse" style="color:#1da69a;"></i> Doctor Home Visit</li>
+                        <li><i class="fa-solid fa-hospital-user" style="color:#1da69a;"></i> Home Health Care Services
+                        </li>
+                        <li><i class="fa-solid fa-truck-medical" style="color:#1da69a;"></i> Ambulance Services</li>
+                        <li><i class="fa-solid fa-scissors" style="color:#1da69a;"></i> Surgery Assistance</li>
+                        <li><i class="fa-solid fa-heart-pulse" style="color:#1da69a;"></i> Remote Monitoring</li>
+                        <li><i class="fa-solid fa-heart-circle-check" style="color:#1da69a;"></i> Vitals & Free Health
+                            Trackers</li>
                     </ul>
                 </div>
                 <div class="col-lg-6">
@@ -461,7 +537,8 @@
 
         <!-- Section Title -->
         <div class="section-title" data-aos="fade-up">
-            <h2 class="text-center mb-5">Condition Management Programs</h2><!-- End Section Title -->
+            <h2 class="text-center mb-5">Condition Management <span style="color: #1da69a;">Programs</span></h2>
+            <!-- End Section Title -->
         </div>
 
         <!-- Swiper -->
@@ -484,96 +561,109 @@
 
     </section>
 
-
     <section class="healthcare-insurance">
         <div class="container">
 
             <!-- Section Title -->
             <div class="section-title" data-aos="fade-up">
-                <h2 class="text-center">Our Reach & Network</h2>
+                <h2 class="text-center">Our <span style="color: #1da69a;">Reach</span> & Network</h2>
             </div>
+
+            <!-- Bootstrap Icons CDN -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
             <div class="row">
                 <div class="col-lg-7">
                     <div class="row">
+
                         <div class="col-lg-4 col-md-4 p-4" data-aos="fade-in" data-aos-delay="100">
                             <div class="help-card">
                                 <div>
-                                    <img width="70px" src="nizImg/help-image-1.png" alt="">
+                                    <i class="bi bi-people-fill icon-help"></i>
                                 </div>
-                                <h5>1,500,000 </h5>
+                                <h5>1,500,000</h5>
                                 <small>Users</small>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4 p-4" data-aos="fade-in" data-aos-delay="200">
                             <div class="help-card">
                                 <div>
-                                    <img width="70px" src="nizImg/help-image-2.png" alt="">
+                                    <i class="bi bi-geo-alt-fill icon-help"></i>
                                 </div>
-                                <h5>1,00,000+ </h5>
+                                <h5>1,00,000+</h5>
                                 <small>Pincodes</small>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4 p-4" data-aos="fade-in" data-aos-delay="300">
                             <div class="help-card">
                                 <div>
-                                    <img width="70px" src="nizImg/help-image-3.png" alt="">
+                                    <i class="bi bi-hospital-fill icon-help"></i>
                                 </div>
                                 <h5>5,000+</h5>
                                 <small>Diagnostic Centres</small>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4 p-4" data-aos="fade-in" data-aos-delay="400">
                             <div class="help-card">
                                 <div>
-                                    <img width="70px" src="nizImg/help-image-3.png" alt="">
+                                    <i class="bi bi-clipboard2-pulse-fill icon-help"></i>
                                 </div>
                                 <h5>20+</h5>
                                 <small>Specialities</small>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4 p-4" data-aos="fade-in" data-aos-delay="100">
                             <div class="help-card">
                                 <div>
-                                    <img width="70px" src="nizImg/help-image-4.png" alt="">
+                                    <i class="bi bi-building-fill icon-help"></i>
                                 </div>
                                 <h5>200+</h5>
                                 <small>Cities</small>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4 p-4" data-aos="fade-in" data-aos-delay="200">
                             <div class="help-card">
                                 <div>
-                                    <img width="70px" src="nizImg/help-image-5.png" alt="">
+                                    <i class="bi bi-house-heart-fill icon-help"></i>
                                 </div>
                                 <h5>4000+</h5>
                                 <small>Care Centres</small>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4 p-4" data-aos="fade-in" data-aos-delay="300">
                             <div class="help-card">
                                 <div>
-                                    <img width="70px" src="nizImg/help-image-3.png" alt="">
+                                    <i class="bi bi-person-badge-fill icon-help"></i>
                                 </div>
                                 <h5>2000+</h5>
                                 <small>OPD Doctors</small>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-4 p-4" data-aos="fade-in" data-aos-delay="400">
                             <div class="help-card">
                                 <div>
-                                    <img width="70px" src="nizImg/help-image-3.png" alt="">
+                                    <i class="bi bi-house-fill icon-help"></i>
                                 </div>
                                 <h5>5+</h5>
                                 <small>Home Offices</small>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
                 <div class="col-lg-5 text-center" data-aos="fade-in" data-aos-delay="100">
                     <img width="100%" class="rounded-5" src="nizImg/MAP2.png" alt="Healthcare Insurance">
                 </div>
             </div>
+
     </section>
 
 
@@ -583,49 +673,55 @@
 
             <!-- Section Title -->
             <div class="section-title" data-aos="fade-up">
-                <h2 class="text-center">With 10K+ Satisfied Leading Partners, Our Credibility Speaks for Itself</h2>
+                <h2 class="text-center">With 10K+ <span style="color: #1da69a;">Satisfied</span> Leading Partners, Our
+                    Credibility Speaks for Itself</h2>
             </div>
 
             <div class="row mb-5">
+
                 <div class="col-lg-3 col-md-4 p-4">
                     <div class="help-card-last">
                         <div>
-                            <img width="70px" src="nizImg/schedule-image-1.png" alt="">
+                            <i class="bi bi-building icon-help-last"></i>
                         </div>
                         <h5>500+</h5>
                         <small>Corporates</small>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-4 p-4">
                     <div class="help-card-last">
                         <div>
-                            <img width="70px" src="nizImg/schedule-image-2.png" alt="">
+                            <i class="bi bi-shield-check icon-help-last"></i>
                         </div>
                         <h5>20+</h5>
                         <small>Insurers</small>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-4 p-4">
                     <div class="help-card-last">
                         <div>
-                            <img width="70px" src="nizImg/schedule-image-3.png" alt="">
+                            <i class="bi bi-card-checklist icon-help-last"></i>
                         </div>
                         <h5>5+</h5>
                         <small>TPA's</small>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-4 p-4">
                     <div class="help-card-last">
                         <div>
-                            <img width="70px" src="nizImg/schedule-image-4.png" alt="">
+                            <i class="bi bi-heart-pulse icon-help-last"></i>
                         </div>
                         <h5>10,000+</h5>
                         <small>Healthcare Partners</small>
                     </div>
                 </div>
+
             </div>
 
-            <div class="row gy-5">
+            <div class="row gy-5" id="schedule-demo">
                 <div class="col-lg-6">
                     <div class="form-container p-4 rounded shadow-lg">
                         <h3 class="mb-4 fw-bold text-center">SCHEDULE DEMO</h3>
@@ -724,7 +820,7 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="features" class="form-label fw-semibold">Features Expecting</label>
                                 <textarea class="form-control input-field" id="features" rows="3"></textarea>
                             </div>
@@ -732,7 +828,7 @@
                             <div class="mb-3">
                                 <label for="anythingElse" class="form-label fw-semibold">Anything Else</label>
                                 <textarea class="form-control input-field" id="anythingElse" rows="3"></textarea>
-                            </div>
+                            </div> -->
 
                             <div class="text-center">
                                 <button type="submit" class="w-50 py-3 fs-6 btn-form">Submit</button>
@@ -741,57 +837,232 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 elevate-your-wellbeing d-flex flex-column justify-content-center">
-                    <h3 class="text-center fs-1 fw-bold">Elevate Your Wellbeing, Elevate Your Life</h3>
-                    <p class="text-center">Nizcare believes in personalized healthcare. Our diverse range of affordable
-                        wellness
-                        services support individuals and families throughout their unique health journeys, ensuring
-                        comprehensive care
-                        and wellness.</p>
+                <div class="col-lg-6 elevate-your-wellbeing">
+                    <h3 class="text-center fs-1 fw-bold">Elevate Your <span style="color: #1da69a;">Wellbeing</span>,
+                        Elevate Your Life</h3>
+                    <p class="text-center">Nizcare believes in personalized healthcare. Our diverse range of
+                        affordable wellness services
+                        supports individuals and families throughout their unique health journeys, ensuring
+                        comprehensive care and wellness</p>
+                    <img class="elevate-your-wellbeing-img" src="./nizImg/demo-img.jpg" alt="">
                 </div>
             </div>
 
         </div>
     </section>
 
-
-    <div class="container-xxl py-5">
-        <div class="container">
-            <!-- Section Title -->
-            <div class="section-title" data-aos="fade-up">
-                <h2 class="text-center">What Our Clients Say About Us!</h2>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-
-                    <div class="testimonial-item py-2 px-4 shadow rounded-4">
-                        <img class="img-fluid rounded" width="100px" src="nizImg/insurance-img/Paramount-TPA.webp"
-                            alt="">
-                        <p class="">"Thank you, Nizcare, for stepping up and organizing a comprehensive health, eye, and
-                            dental camp in a remote location where we were struggling to find network partners to meet
-                            an urgent need. In just 2 days, Nizcare took on the challenge and delivered an outstanding
-                            experience. The feedback from the attendees was overwhelmingly positive, and we were
-                            thrilled with the results. We look forward to partnering with Nizcare on more wellness
-                            initiatives in the future."</p>
-                    </div>
-
+    <section class="niz-testimonials-section py-5">
+        <div class="container-xxl">
+            <div class="container">
+                <!-- Title -->
+                <div class="section-title mb-5" data-aos="fade-up">
+                    <h2 class="text-center fw-bold">What Our <span style="color: #1da69a;">Clients</span> Say About Us!
+                    </h2>
                 </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
 
-                    <div class="testimonial-item py-2 px-4 shadow rounded-4">
-                        <img class="img-fluid rounded" width="180px" src="nizImg/insurance-img/edify.jpg" alt="">
-                        <p class="">"We have partnered with Nizcare to deliver wellness services such as Annual
-                            Health Check-ups to our corporate clients because of their expertise and exceptional
-                            customer service. The flexibility of Nizcare's programs ensures that they meet the needs
-                            of all the businesses we work with."
-                        </p>
+                <!-- Slider wrapper -->
+                <div class="niz-testimonials-wrapper">
+                    <!-- Swiper -->
+                    <div class="swiper nizSwiper">
+                        <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="nizImg/testimonials/Paramount-TPA.webp"
+                                            alt="Paramount TPA" />
+                                    </div>
+                                    <p class="niz-text">
+                                        "Thank you, Nizcare, for stepping up and organizing a comprehensive health, eye,
+                                        and dental camp in a
+                                        remote location where we were struggling to find network partners to meet an
+                                        urgent need. In just 2
+                                        days, Nizcare took on the challenge and delivered an outstanding experience. The
+                                        feedback from the
+                                        attendees was overwhelmingly positive, and we were thrilled with the results. We
+                                        look forward to
+                                        partnering with Nizcare on more wellness initiatives in the future."
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- Paramount TPA</span>
+                                        <span class="d-block"> MR. Ralston pereira, Senior Manager.</span>
+                                    </h6>
+                                </article>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="nizImg/testimonials/Edify.jpg" alt="Edify" />
+                                    </div>
+                                    <p class="niz-text">
+                                        "We have partnered with Nizcare to deliver wellness services such as Annual
+                                        Health Check-ups to our
+                                        corporate clients because of their expertise and exceptional customer service.
+                                        The flexibility of
+                                        Nizcare's programs ensures that they meet the needs of all the businesses we
+                                        work with."
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- Edify</span>
+                                        <span class="d-block"> MS. Ashwini Kumar, Founder Director.</span>
+                                    </h6>
+                                </article>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="./nizImg/testimonials/Apex.png" alt="Client" />
+                                    </div>
+                                    <p class="niz-text">
+                                        We Appreciate Nizcare's initiative in organizing full body health checkups for
+                                        our Corporate clients.
+                                        Their approach to Preventive Healthcare is commendable, and we look forward to a
+                                        long-term association with them.
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- Apex</span>
+                                        <span class="d-block"> MR.Aditiya, Claims Head.</span>
+                                    </h6>
+                                </article>
+                            </div>
+
+                            <!-- Slide 4 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="./nizImg/testimonials/Ehance.png" alt="Client" />
+                                    </div>
+                                    <p class="niz-text">
+                                        We would like to extend our heartfelt thanks to Nizcare for organizing a
+                                        comprehensive health and dental camp for our Chennai-based corporate client,
+                                        especially for their night shift employees. We truly Appreciate Nizcare's
+                                        commitment to supporting employees wellness in every aspect.
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- Nhance</span>
+                                        <span class="d-block"> MR.Vaidhyanathan G, Head of Corporate Services.</span>
+                                    </h6>
+                                </article>
+                            </div>
+
+                            <!-- Slide 5 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="nizImg/testimonials/novo.png" alt="Client" />
+                                    </div>
+                                    <p class="niz-text">
+                                        Partnering with Nizcare has elevated our wellness initiatives! Having renewed
+                                        Our association for another year,
+                                        We look forward to a long-standing and fruitful partnership!
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- Novo</span>
+                                        <span class="d-block"> Claims Team.</span>
+                                    </h6>
+                                </article>
+                            </div>
+
+                            <!-- Slide 6 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="./nizImg/testimonials/rft.png" alt="Client" />
+                                    </div>
+                                    <p class="niz-text">
+                                        We have greatly Appreciated Nizcare's dedication in organizing health, eye and
+                                        dental checkup camps, as well as informative webinars for our corporate clients.
+                                        These initiatives truly contribute to the overall well-being of employees
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- RTF</span>
+                                        <span class="d-block"> CEO.</span>
+                                    </h6>
+                                </article>
+                            </div>
+
+                            <!-- Slide 7 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="./nizImg/testimonials/Vizza.png" alt="Client" />
+                                    </div>
+                                    <p class="niz-text">
+                                        We wanted a wellness program that not only supporated our clients' employees but
+                                        also aligned with their overall healthcare goals.
+                                        Nizcare exceeded our expectations. We could not be more pleased with the
+                                        results.
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- VIZZA Insurance</span>
+                                        <span class="d-block"> MR. Shirish S Madhavan, Executive president.</span>
+                                    </h6>
+                                </article>
+                            </div>
+
+                            <!-- Slide 8 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="./nizImg/testimonials/infinite.png" alt="Client" />
+                                    </div>
+                                    <p class="niz-text">
+                                        My sincere thanks for the recent webinar on lifestyle modifications conducted
+                                        for our employees. This is just the beginning,
+                                        We look forward to more such enriching sessions in the future.
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- Infinite</span>
+                                        <span class="d-block"> MS. Pooja, Deputy Manager HR.</span>
+                                    </h6>
+                                </article>
+                            </div>
+
+                            <!-- Slide 9 -->
+                            <div class="swiper-slide">
+                                <article class="niz-card">
+                                    <div class="niz-card-top">
+                                        <img class="niz-logo" src="./nizImg/testimonials/qvantel.png" alt="Client" />
+                                    </div>
+                                    <p class="niz-text">
+                                        Appreciate your help in accomodating our request on womens's Helath awareness.
+                                        The doctor provided us with valuable insights.
+                                    </p>
+                                    <h6 class="text-end" style="color: #1da69a;">
+                                        <span class="d-block">- Qvantel</span>
+                                        <span class="d-block"> MS. Sreevallika CH, Sr Executive Administration.</span>
+                                    </h6>
+                                </article>
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- Controls -->
+                    <div class="niz-controls">
+                        <div class="swiper-pagination niz-pagination"></div>
+                        <div class="niz-nav">
+                            <button class="swiper-button-prev niz-prev" aria-label="Previous">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button class="swiper-button-next niz-next" aria-label="Next">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
 
     <div id="contact" class="footer" data-aos="fade-zoom-in" data-aos-easing="ease-in-sine" data-aos-delay="300"
         data-aos-offset="0">
@@ -877,11 +1148,36 @@
         <img src="nizImg/whatsapp.png" alt="WhatsApp Icon" class="whatsapp-icon">
     </a>
 
+
+    <!-- particles.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+
+        // typewriter effect
+        const firstLineText = "India's Leading Health and Wellness Destination";
+        const restLine = document.getElementById("restLine");
+        const firstLine = document.getElementById("firstLine");
+        let i = 0;
+
+        function typeEffect() {
+            if (i < firstLineText.length) {
+                firstLine.textContent += firstLineText.charAt(i);
+                i++;
+                setTimeout(typeEffect, 100); // typing speed
+            } else {
+                // stop cursor blinking
+                firstLine.classList.remove("typewriter");
+                // show rest of text instantly
+                restLine.style.display = "inline";
+            }
+        }
+
+        window.onload = typeEffect;
 
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 5,
@@ -978,6 +1274,179 @@
             });
 
         })();
+
+        const sectors = [
+            { name: 'Cement' },
+            { name: 'Fertilizer' },
+            { name: 'Automobile' },
+            { name: 'Pharma' },
+            { name: 'Hotels' },
+            { name: 'IT' },
+            { name: 'Banks' },
+            { name: 'Airlines' },
+            { name: 'Leather' },
+            { name: 'Cottage' },
+            { name: 'Chemical' },
+            { name: 'Mining' },
+            { name: 'Heavy' },
+            { name: 'Textile' },
+            { name: 'ITES' },
+            { name: 'Food' },
+            { name: 'Port' },
+            { name: 'Petroleum' },
+            { name: 'Telecom' },
+            { name: 'Water Treatment' },
+            { name: 'Dairy' },
+            { name: 'Tourism' },
+            { name: 'Steel' },
+            { name: 'Aerospace' },
+            { name: 'Paper' },
+            { name: 'Real Estate' },
+            { name: 'Sports' },
+            { name: 'Metals' },
+        ];
+
+        // Define 3 rings
+        const circles = [
+            { items: sectors.slice(0, 7), radiusRatio: 0.20, speed: 0.35 },
+            { items: sectors.slice(7, 16), radiusRatio: 0.32, speed: -0.25 },
+            { items: sectors.slice(16, 28), radiusRatio: 0.46, speed: 0.18 },
+        ];
+
+        let rotationAngles = [0, 0, 0];
+        let dragInfo = { isDragging: false, startX: 0, lastRotation: [], circleIndex: null };
+
+        const circleContainer = document.querySelector('.sector-circle');
+
+        // Create elements
+        circles.forEach((circle, circleIndex) => {
+            circle.items.forEach((sector, i) => {
+                const div = document.createElement('div');
+                div.className = 'sector-item';
+                div.textContent = sector.name;
+
+                div.addEventListener('mousedown', e => onDragStart(e, circleIndex));
+                div.addEventListener('mousemove', e => onDragMove(e));
+                div.addEventListener('mouseup', e => onDragEnd(e, sector.route));
+                div.addEventListener('mouseleave', e => onDragEnd(e));
+
+                div.addEventListener('touchstart', e => onDragStart(e, circleIndex));
+                div.addEventListener('touchmove', e => onDragMove(e));
+                div.addEventListener('touchend', e => onDragEnd(e, sector.route));
+
+                circleContainer.appendChild(div);
+                circle.items[i].el = div;
+            });
+        });
+
+        // Animation loop
+        function animate() {
+            const size = circleContainer.offsetWidth;
+
+            circles.forEach((circle, circleIndex) => {
+                if (!dragInfo.isDragging || dragInfo.circleIndex !== circleIndex) {
+                    rotationAngles[circleIndex] = (rotationAngles[circleIndex] + circle.speed) % 360;
+                }
+
+                const radius = size * circle.radiusRatio;
+                circle.items.forEach((sector, i) => {
+                    const angle = (i / circle.items.length) * 2 * Math.PI + (rotationAngles[circleIndex] * Math.PI) / 180;
+                    const x = radius * Math.cos(angle);
+                    const y = radius * Math.sin(angle);
+                    sector.el.style.left = `calc(50% + ${x}px)`;
+                    sector.el.style.top = `calc(50% + ${y}px)`;
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Drag logic
+        function onDragStart(e, circleIndex) {
+            e.preventDefault();
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+            dragInfo = {
+                isDragging: true,
+                startX: clientX,
+                lastRotation: [...rotationAngles],
+                circleIndex,
+            };
+        }
+        function onDragMove(e) {
+            if (!dragInfo.isDragging) return;
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const deltaX = clientX - dragInfo.startX;
+            const speedFactor = 1.5;
+            const newRotations = [...dragInfo.lastRotation];
+            newRotations[dragInfo.circleIndex] = (newRotations[dragInfo.circleIndex] + deltaX * speedFactor) % 360;
+            rotationAngles = newRotations;
+        }
+        function onDragEnd(e, route) {
+            if (!dragInfo.isDragging) return;
+            if (route && Math.abs((e.clientX || 0) - dragInfo.startX) < 4) {
+                window.location.href = route;
+            }
+            dragInfo.isDragging = false;
+        }
+
+        const nizSwiper = new Swiper(".nizSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            loop: true,
+            autoHeight: true, // all slides equal to tallest card
+
+            autoplay: {
+                delay: 4000,       // 4 seconds between slides
+                disableOnInteraction: false, // keep autoplay even after manual navigation
+            },
+
+            // pagination: {
+            //     el: ".niz-pagination",
+            //     // clickable: true,
+            // },
+            navigation: {
+                nextEl: ".niz-next",
+                prevEl: ".niz-prev",
+            },
+
+            breakpoints: {
+                992: { slidesPerView: 2, spaceBetween: 32 },
+                576: { slidesPerView: 1.2, spaceBetween: 24 },
+            },
+        });
+
+
+        // animation
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#1da69a", "#f9a527"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3 },
+                "size": { "value": 4, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#aaa",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 3 }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
     </script>
 
 </body>

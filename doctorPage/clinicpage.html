@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div id="particles-js"></div>
 
     <!-- Bootstrap Modal (Popup) -->
     <div class="modal fade" id="homecareModal" tabindex="-1" aria-labelledby="homecareModalLabel" aria-hidden="true">
@@ -104,12 +105,13 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
             <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <img src="nizImg/logo.png" alt="">
+                <img src="nizImg/nizlogo.png" alt="">
             </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#" class="">+919789537313<br></a></li>
+                    <li><a href="#" class="">NRI<br></a></li>
+                    <li><a href="#">Corporates</a></li>
                     <li><a href="#">Book Lab Test</a></li>
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle">
@@ -173,17 +175,23 @@
 
 
     <section id="hero" class="hero d-flex align-items-center justify-content-center">
-        <img src="nizImg/banner.png" alt="banner" class="hero-bg" data-aos="fade-in">
+        <img src="nizImg/clinic-banner.png" alt="banner" class="hero-bg" data-aos="fade-in">
 
         <div class="container">
             <div class="row">
 
                 <div class="col-lg-6">
-                    <h2 class="my-3">Transform Your Healthcare Practice with Our Innovative Solutions</h2>
-                    <h4 class="">Streamline your operations, improve patient care, and grow your business with our
+                    <div class="hero-text-wrapper">
+                        <h2>
+                            <span id="firstLine" class="typewriter"></span><br>
+                            <!-- <span id="restLine" style="display:none;">Health and Wellness Destination</span> -->
+                        </h2>
+                    </div>
+                    <!-- <h2 class="my-3">Transform Your Healthcare Practice with Our Innovative Solutions</h2> -->
+                    <h4 class="d-flex flex-wrap">Streamline your operations, improve patient care, and grow your business with our
                         cutting-edge
                         technology</h4>
-                    <a href="#">Get Started Today</a>
+                    <a class="hero-btn" href="#">Get Started Today</a>
                 </div>
 
                 <div class="col-lg-6">
@@ -192,29 +200,37 @@
         </div>
     </section>
 
-
+    <!-- change 1 -->
     <section class="digital-revolution">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
+                <!-- Left Content -->
                 <div class="col-lg-6">
-                    <div class="section-title mt-0 mt-lg-5">
-                        <h2 class="text-center mt-0 mt-lg-4">Revolutionizing Healthcare with AI-Powered Solutions</h2>
-                        <p class="text-center digital-revolution-p container" data-aos="fade-up">Nizcare seamlessly
-                            integrates with the healthcare ecosystem, connecting doctors, patients, hospitals, and
-                            clinics through innovative AI-powered solutions. Our technology streamlines processes,
-                            enhances practice efficiency, and drives growth, while boosting patient visits, improving
-                            retention rates, and elevating brand visibility. By leveraging AI to optimize healthcare
-                            operations, we improve patient outcomes and enhance the overall quality of care, making
-                            Nizcare the trusted partner for healthcare professionals.</p>
+                    <div class="section-title text-lg-start text-center">
+                        <h2 class="digital-title">
+                            Revolutionizing Healthcare with <span>AI-Powered Solutions</span>
+                        </h2>
+                        <p class="digital-revolution-p">
+                            Nizcare seamlessly integrates with the healthcare ecosystem, connecting doctors, patients,
+                            hospitals, and clinics through innovative AI-powered solutions. Our technology streamlines
+                            processes, enhances practice efficiency, and drives growth, while boosting patient visits,
+                            improving retention rates, and elevating brand visibility. By leveraging AI to optimize
+                            healthcare operations, we improve patient outcomes and enhance the overall quality of care,
+                            making Nizcare the trusted partner for healthcare professionals.
+                        </p>
+                        <button class="explore-btn">Explore Solutions</button>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center mt-0 mt-lg-5">
-                    <img width="50%" class="mt-0 mt-lg-4" src="nizImg/revolutionizing-img.png" alt="">
+
+                <!-- Right Image -->
+                <div class="col-lg-6 text-center">
+                    <div class="image-card">
+                        <img src="nizImg/new-image/ai 1st image.png" alt="Healthcare AI" class="revolution-img">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <section class="our-product">
         <div class="container">
@@ -226,19 +242,19 @@
 
             <div class="row g-3 text-center">
                 <div class="col-lg-3">
-                    <img width="100%" class="rounded-5" src="nizImg/doc-app-screen.png" alt="">
+                    <img width="100%" class="rounded-5" src="nizImg/product/doc-app.png" alt="">
                     <h4>Doctor App</h4>
                 </div>
                 <div class="col-lg-3">
-                    <img width="100%" class="rounded-5" src="nizImg/our-products2.png" alt="">
+                    <img width="100%" class="rounded-5" src="nizImg/product/22.png" alt="">
                     <h4>E- Smart Clinic Management System</h4>
                 </div>
                 <div class="col-lg-3">
-                    <img width="100%" class="rounded-5" src="nizImg/our-products3.png" alt="">
+                    <img width="100%" class="rounded-5" src="nizImg/product/24.png" alt="">
                     <h4>Clinic App</h4>
                 </div>
                 <div class="col-lg-3">
-                    <img width="100%" class="rounded-5" src="nizImg/our-products4.png" alt="">
+                    <img width="100%" class="rounded-5" src="nizImg/product/23.png" alt="">
                     <h4>Clinic Website</h4>
                 </div>
 
@@ -257,32 +273,32 @@
             <div class="row g-5 text-center d-flex justify-content-center">
                 <div class="col-lg-4">
                     <!-- <div class="bg-body-secondary pt-4 pb-3 rounded-4 shadow"> -->
-                    <img width="80%" class="rounded-4" src="nizImg/we-serve1.png" alt="">
-                    <h4 class="pt-3 m-0">Doctor without Clinic</h4>
+                    <img width="80%" class="rounded-4" src="nizImg/product/doc-w-clinic.png" alt="">
+                    <!-- <h4 class="pt-3 m-0">Doctor without Clinic</h4> -->
                     <!-- </div> -->
                 </div>
                 <div class="col-lg-4">
                     <!-- <div class="bg-body-secondary pt-4 pb-3 rounded-4 shadow"> -->
-                    <img width="80%" class="rounded-4" src="nizImg/we-serve2.png" alt="">
-                    <h4 class="pt-3 m-0">Doctor with Clinic</h4>
+                    <img width="80%" class="rounded-4" src="nizImg/product/doc-with-clinic.png" alt="">
+                    <!-- <h4 class="pt-3 m-0">Doctor with Clinic</h4> -->
                     <!-- </div> -->
                 </div>
                 <div class="col-lg-4">
                     <!-- <div class="bg-body-secondary pt-4 pb-3 rounded-4 shadow"> -->
-                    <img width="80%" class="rounded-4" src="nizImg/we-serve3.png" alt="">
-                    <h4 class="pt-3 m-0">Multiple Doctor Single Clinic</h4>
+                    <img width="80%" class="rounded-4" src="nizImg/product/5.png" alt="">
+                    <!-- <h4 class="pt-3 m-0">Multiple Doctor Single Clinic</h4> -->
                     <!-- </div> -->
                 </div>
                 <div class="col-lg-4">
                     <!-- <div class="bg-body-secondary pt-4 pb-3 rounded-4 shadow"> -->
-                    <img width="80%" class="rounded-4" src="nizImg/we-serve4.png" alt="">
-                    <h4 class="pt-3 m-0">Multiple Doctors Chain of Clinics</h4>
+                    <img width="80%" class="rounded-4" src="nizImg/product/multiple.png" alt="">
+                    <!-- <h4 class="pt-3 m-0">Multiple Doctors Chain of Clinics</h4> -->
                     <!-- </div> -->
                 </div>
                 <div class="col-lg-4">
                     <!-- <div class="bg-body-secondary pt-4 pb-3 rounded-4 shadow"> -->
-                    <img width="80%" class="rounded-4" src="nizImg/we-serve5.png" alt="">
-                    <h4 class="pt-3 m-0">Multi-Speciality Hospital</h4>
+                    <img width="80%" class="rounded-4" src="nizImg/product/special.png" alt="">
+                    <!-- <h4 class="pt-3 m-0">Multi-Speciality Hospital</h4> -->
                     <!-- </div> -->
                 </div>
             </div>
@@ -326,109 +342,86 @@
 
     </section>
 
-
+    <!-- change 2 -->
     <section class="power-solutions">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
+
+                <!-- Left Image -->
                 <div class="col-lg-6 text-center">
-                    <img width="80%" class="mt-0 mt-lg-5" src="nizImg/doc-app-screen.png" alt="">
-                </div>
-                <div class="col-lg-6 py-0 py-lg-5 px-5 mt-0 mt-lg-5">
-                    <div class="section-title mt-0 mt-lg-5">
-                        <h2 class="text-start fw-bold digital-revolution-p" data-aos="fade-up">AI-Powered Analytics
-                            Transforming Patient Care with Data-Driven Insights</h2>
+                    <div class="image-card">
+                        <img src="nizImg/new-image/AI image.png" alt="AI-powered healthcare" class="solution-img">
                     </div>
-
-                    <div class="mb-4">
-                        <!-- <p class="mb-2"></p> -->
-                        <small class=""><span style="color: #229ea6;"></span> Nizcare AI-powered health analytics tools
-                            empower doctors with actionable insights and data, enabling them to enhance patient outcomes
-                            and optimize their practices. This specialized niche is experiencing high demand due to the
-                            rapid adoption of AI in healthcare and the increasing need for data-driven decision-making.
-                        </small>
-                    </div>
-
                 </div>
+
+                <!-- Right Content -->
+                <div class="col-lg-6">
+                    <div class="section-title text-lg-start text-center">
+                        <h2 class="solution-title">
+                            AI-Powered Analytics <br>
+                            <span>Transforming Patient Care with Data-Driven Insights</span>
+                        </h2>
+                        <p class="solution-text">
+                            Nizcare AI-powered health analytics tools empower doctors with actionable insights and data,
+                            enabling them to enhance patient outcomes and optimize their practices. This specialized
+                            niche is experiencing high demand due to the rapid adoption of AI in healthcare and the
+                            increasing need for data-driven decision-making.
+                        </p>
+                        <button class="explore-btn">Learn More</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-
+    <!-- change 3 -->
     <section class="why-nizcare">
         <div class="container">
             <!-- Section Title -->
-            <div class="section-title" data-aos="fade-up">
-                <h2 class="text-center mb-5">Streamlining Medical Practices with AI-Powered Solutions</h2>
+            <div class="section-title text-center mb-5">
+                <h2>Streamlining Medical Practices with AI-Powered Solutions</h2>
             </div>
 
-            <div class="row">
-                <div class="col-lg-6 text-center mt-0 mt-lg-5">
-                    <img width="75%" class="mt-0 mt-lg-5" src="nizImg/doctor3.png" alt="">
+            <div class="row align-items-center">
+
+                <!-- Left Image (Styled Card) -->
+                <div class="col-lg-6 text-center">
+                    <div class="image-card">
+                        <img src="nizImg/new-image/why nizcare 2.png" alt="Doctor with AI tools" class="why-img">
+                    </div>
                 </div>
-                <div class="col-lg-6 p-5">
-                    <div class="section-title">
-                        <p class="text-start digital-revolution-p" data-aos="fade-up"><span class="d-block">Why
-                                Nizcare?</span>
+
+                <!-- Right Content (Card Style) -->
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h3 class="sub-title">Why Nizcare?</h3>
+                        <ul class="why-list">
+                            <li><span class="icon">✔</span> <strong>Save Time:</strong> Reduce administrative burdens
+                                and paperwork.</li>
+                            <li><span class="icon">✔</span> <strong>Increase Efficiency:</strong> Focus on providing
+                                exceptional care and attention.</li>
+                            <li><span class="icon">✔</span> <strong>Improve Patient Care:</strong> Enhance patient
+                                experience and outcomes.</li>
+                            <li><span class="icon">✔</span> <strong>Reduce Costs:</strong> Minimize expenses and
+                                resource utilization.</li>
+                            <li><span class="icon">✔</span> <strong>Effortless Operations:</strong> AI-powered solutions
+                                tailored to your unique needs.</li>
+                            <li><span class="icon">✔</span> <strong>Expert Support:</strong> Dedicated assistance to
+                                keep your practice running smoothly.</li>
+                        </ul>
+
+                        <h3 class="sub-title mt-4">Partner with Nizcare</h3>
+                        <p class="why-desc">
+                            By partnering with us, you can trust that your practice is in good hands. Our AI-powered
+                            system and expert team work together to create a seamless, efficient, and personalized
+                            medical management experience — so you can focus on your patients, while we handle the
+                            systems.
                         </p>
+                        <button class="explore-btn">Get Started</button>
                     </div>
-
-                    <div class="mb-3">
-                        <!-- <p class="mb-2"></p> -->
-                        <small class="ms-5"><span style="color: #229ea6;">></span> Save Time : Reduce administrative
-                            burdens and
-                            paperwork.</small>
-                    </div>
-
-                    <div class="mb-3">
-                        <!-- <p class="mb-2"></p> -->
-                        <small class="ms-5"><span style="color: #229ea6;">></span> Increase Efficiency : Focus on
-                            providing exceptional care
-                            and attention.</small>
-                    </div>
-
-                    <div class="mb-3">
-                        <!-- <p class="mb-2"></p> -->
-                        <small class="ms-5"><span style="color: #229ea6;">></span> Improve Patient Care : Focus on
-                            providing exceptional care
-                            and attention.</small>
-                    </div>
-
-                    <div class="mb-3">
-                        <!-- <p class="mb-2"></p> -->
-                        <small class="ms-5"><span style="color: #229ea6;">></span> Reduce Costs : Minimize expenses and
-                            resource
-                            utilization.</small>
-                    </div>
-
-                    <div class="mb-3">
-                        <!-- <p class="mb-2"></p> -->
-                        <small class="ms-5"><span style="color: #229ea6;">></span> Effortless Operations : Customized
-                            solutions tailored to
-                            your unique needs, powered by AI-driven insights.
-                        </small>
-                    </div>
-
-                    <div>
-                        <!-- <p class="mb-2"></p> -->
-                        <small class="ms-5"><span style="color: #229ea6;">></span> Expert Support : Customized solutions
-                            tailored to
-                            your unique needs, powered by AI-driven insights.
-                        </small>
-                    </div>
-
-                    <div class="section-title mt-4 mb-0 mb-lg-3">
-                        <p class="text-start digital-revolution-p" data-aos="fade-up"><span class="d-block">Partner with
-                                Nizcare</span>
-                        </p>
-                    </div>
-
-                    <div>
-                        <small>By partnering with us, you can trust that your practice is in good hands. Our AI-powered
-                            system and expert team will work together to create a seamless, efficient, and personalized
-                            medical management experience. Focus on your patients, while we handle the systems.</small>
-                    </div>
-
                 </div>
+
             </div>
         </div>
     </section>
@@ -445,91 +438,76 @@
 
             <div class="row g-4 mt-4 text-center">
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/pediatic.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Pediatrics.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/general.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/General Physician.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/gynocology.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Gynecology.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/diabetology1.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Diabetology.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/detist.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Dentistry.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/demotology.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Dermatology.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/urology1.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Urology.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/psyco1.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Psychiatry.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/opthomology1.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Ophthalmology.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/cardiology1.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Cardiology.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/pysco.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Psychiatry.png" alt="">
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img width="90%" class="rounded-4" src="nizImg/others.png" alt="">
+                    <img width="90%" class="rounded-4" src="nizImg/doc-clinic-page/Other Fields.png" alt="">
                 </div>
             </div>
 
         </div>
     </section>
 
-
+    <!-- change 4 -->
     <section class="doc-app">
         <div class="container">
+            <div class="row align-items-center">
 
-            <div class="row g-2">
-                <div class="col-lg-6 p-5">
-                    <div class="section-title mb-0 mb-lg-5">
-                        <p class="text-start digital-revolution-p" data-aos="fade-up"><span class="d-block">Get Nizcare
-                                For Doctors App</span>
-                        </p>
+                <!-- Left Content Card -->
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h3 class="sub-title">Get Nizcare For Doctors App</h3>
+
+                        <ul class="app-features">
+                            <li><span class="icon">✔</span> Effectively Handle OPD and Create E-Prescriptions</li>
+                            <li><span class="icon">✔</span> Conduct Video/Audio Consultations</li>
+                            <li><span class="icon">✔</span> Utilize Dynamic Appointment Scheduling and Follow-Ups</li>
+                            <li><span class="icon">✔</span> Provide Home Health Care Services</li>
+                            <li><span class="icon">✔</span> Access a Clinic-Exclusive App for Your Patients</li>
+                            <li><span class="icon">✔</span> Track Patient Vitals</li>
+                        </ul>
+
+                        <button class="explore-btn">Download the App</button>
                     </div>
-
-                    <div class="mb-4">
-                        <p class="p-0"><span style="color: #229ea6;">></span> Effectively Handle OPD and Create
-                            E-Prescriptions</p>
-                    </div>
-
-                    <div class="mb-4">
-                        <p class="p-0"><span style="color: #229ea6;">></span> Conduct Video/Audio Consultations</p>
-                    </div>
-
-                    <div class="mb-4">
-                        <p class="p-0"><span style="color: #229ea6;">></span> Utilize Dynamic Appointment Scheduling and
-                            Follow-Ups</p>
-                    </div>
-
-                    <div class="mb-4">
-                        <p class="p-0"><span style="color: #229ea6;">></span> Provide Home Health Care Services</p>
-                    </div>
-
-                    <div class="mb-4">
-                        <p class="p-0"><span style="color: #229ea6;">></span> Access a Clinic-Exclusive App for Your
-                            Patients</p>
-                    </div>
-
-                    <div>
-                        <p class="p-0"><span style="color: #229ea6;">></span> Track Patient Vitals/small</p>
-                    </div>
-
-                    <div></div>
                 </div>
 
-                <div class="col-lg-6 text-center">
-                    <img width="40%" src="nizImg/doc-app.jpg" alt="">
+                <!-- Right Image Card -->
+                <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                    <div class="image-card">
+                        <img src="nizImg/doc-app.jpg" alt="Nizcare Doctor App" class="doc-app-img">
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -630,6 +608,8 @@
         <img src="nizImg/whatsapp.png" alt="WhatsApp Icon" class="whatsapp-icon">
     </a>
 
+     <!-- particles.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -685,7 +665,59 @@
 
         })();
 
+        // Typewriter Effect
+        
+        // typewriter effect
+        const firstLineText = "Transform Your Healthcare Practice with Our Innovative Solutions";
+        const restLine = document.getElementById("restLine");
+        const firstLine = document.getElementById("firstLine");
+        let i = 0;
 
+        function typeEffect() {
+            if (i < firstLineText.length) {
+                firstLine.textContent += firstLineText.charAt(i);
+                i++;
+                setTimeout(typeEffect, 100); // typing speed
+            } else {
+                // stop cursor blinking
+                firstLine.classList.remove("typewriter");
+                // show rest of text instantly
+                restLine.style.display = "inline";
+            }
+        }
+
+        window.onload = typeEffect;
+
+
+        // animation
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#1da69a", "#f9a527"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3 },
+                "size": { "value": 4, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#aaa",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 3 }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
     </script>
 
 </body>

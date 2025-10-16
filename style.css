@@ -10,6 +10,25 @@ body {
     font-family: "Outfit", sans-serif !important;
 }
 
+/* Particles full background */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Make sure all sections appear above */
+header,
+section,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
 @font-face {
     font-family: 'CormorantGaramond-Italic';
     src: url('/CormorantGaramond-Italic.ttf') format('truetype');
@@ -42,7 +61,6 @@ body {
 .section-title h2 {
     font-size: 48px;
     font-weight: 700;
-    /* font-family: 'CormorantGaramond'; */
 }
 
 .section-title h3 {
@@ -56,10 +74,12 @@ body {
     font-family: 'CormorantGaramond-Italic';
 }
 
+/* Hero Section */
 .hero {
     width: 100%;
     position: relative;
     padding: 190px 0 100px 0;
+    height: 100vh;
 }
 
 .hero .hero-bg {
@@ -77,12 +97,64 @@ body {
     z-index: 3;
 }
 
+.hero-text-wrapper {
+    min-height: 120px;
+}
+
+.typewriter {
+    display: inline;
+    position: relative;
+}
+
+.typewriter::after {
+    content: "|";
+    /* cursor */
+    position: absolute;
+    right: -8px;
+    animation: blink 0.7s infinite;
+    color: #fff;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 .hero h2 {
-    margin-bottom: 80px;
+    /* margin-bottom: 80px; */
     padding: 0;
-    font-size: 65px;
+    font-size: 55px;
     font-weight: 800;
     color: #fff;
+    margin-top: 90px;
+}
+
+.hero-btn {
+    background-color: #f9a527;
+    border-radius: 15px;
+    border: none;
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 30px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-btn:hover {
+    background-color: #f5b658;
+    transition: all 0.2s;
 }
 
 .hero p {
@@ -95,11 +167,156 @@ body {
 
 @media (max-width: 575px) {
     .hero h2 {
-        font-size: 40px;
+        font-size: 35px;
     }
 
     .section-title h2 {
         font-size: 34px;
+    }
+}
+
+
+.sector-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+}
+
+.sector-circle {
+    position: relative;
+    width: 80vw;
+    max-width: 550px;
+    margin-left: 250px;
+    aspect-ratio: 1 / 1;
+    user-select: none;
+}
+
+.sector-item {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: clamp(10px, 1.5vw, 14px);
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.3s;
+    white-space: nowrap;
+}
+
+.sector-item:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.sector-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.sector-center-circle {
+    width: clamp(80px, 18vw, 100px);
+    height: clamp(80px, 18vw, 100px);
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #0d9488;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sector-count span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0d9488;
+}
+
+.sector-outline {
+    position: absolute;
+    border: 2px solid #0d9488;
+    border-radius: 50%;
+    opacity: 0.3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle1 {
+    width: 40%;
+    height: 40%;
+}
+
+.circle2 {
+    width: 65%;
+    height: 65%;
+}
+
+.circle3 {
+    width: 95%;
+    height: 95%;
+}
+
+/* Breakpoints */
+@media (max-width: 768px) {
+    .sector-center-circle {
+        width: clamp(40px, 18vw, 100px);
+        height: clamp(40px, 18vw, 100px);
+    }
+
+    .sector-count span {
+        font-size: 14px;
+        font-weight: bold;
+        color: #0d9488;
+    }
+
+    .sector-circle {
+        max-width: 400px;
+    }
+
+    .sector-circle {
+        margin-left: 0;
+    }
+
+    .sector-item {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        font-size: clamp(10px, 1.5vw, 14px);
+        font-weight: 500;
+        /* color: #333; */
+        cursor: pointer;
+        transition: transform 0.3s;
+        white-space: nowrap;
+    }
+
+    .hero-btn {
+        font-size: 16px;
+        padding: 8px 20px;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 575px) {
+    .sector-item {
+        color: #fff;
+        font-size: 11px;
+    }
+
+    .sector-center-circle {
+        width: clamp(60px, 18vw, 20px);
+        height: clamp(60px, 18vw, 20px);
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sector-circle {
+        max-width: 280px;
     }
 }
 
@@ -108,6 +325,8 @@ body {
     font-weight: 400;
     margin-bottom: 40px;
 }
+
+/* Hero Section End */
 
 .employe-card {
     padding: 15px;
@@ -167,7 +386,7 @@ body {
 
 .help-card {
     position: relative;
-    background: #F9F7F1;
+    background: #1da69a;
     padding: 45px 30px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -184,15 +403,35 @@ body {
 .help-card h5 {
     font-size: 26px;
     font-weight: 600;
-    color: #023940;
+    color: #fff;
     /* font-family: 'CormorantGaramond-Italic'; */
 }
 
 .help-card small {
     font-size: 20px;
     font-weight: 500;
-    color: #023940;
+    color: #fff;
     font-family: 'CormorantGaramond-Italic';
+}
+
+.icon-help {
+    font-size: 2rem;
+    color: #ffff;
+    background-color: #f9a527;
+    /* Change theme color if needed */
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+
+.icon-help-last {
+    font-size: 2rem;
+    color: #ffff;
+    background-color: #f9a527;
+    /* Change theme color if needed */
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 50%;
 }
 
 .carousel-bg {
@@ -394,6 +633,15 @@ body {
         padding: 0 !important;
     }
 
+    .elevate-your-wellbeing-img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        padding: 0 15px;
+        border-radius: 25px !important;
+        margin-top: 20px;
+    }
+
     .satisfied-leading {
         padding: 0;
     }
@@ -437,11 +685,7 @@ body {
 
 .btn-form:hover {
     background-color: #f5b658;
-    transition: all 0.2s ;
-}
-
-.elevate-your-wellbeing {
-    padding: 110px 0;
+    transition: all 0.2s;
 }
 
 .elevate-your-wellbeing p {
@@ -450,9 +694,18 @@ body {
     font-family: 'CormorantGaramond-Italic';
 }
 
+.elevate-your-wellbeing-img {
+    width: 100%;
+    height: 350px;
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
 .help-card-last {
     position: relative;
-    background: #F9F7F1;
+    background: #1da69a;
     padding: 45px 30px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -469,13 +722,13 @@ body {
 .help-card-last h5 {
     font-size: 24px;
     font-weight: 600;
-    color: #023940;
+    color: #fff;
 }
 
 .help-card-last small {
     font-size: 20px;
     font-weight: 500;
-    color: #023940;
+    color: #fff;
     font-family: 'CormorantGaramond-Italic';
 }
 
@@ -483,7 +736,6 @@ body {
     overflow: hidden;
     position: relative;
     width: 100%;
-    background: #fff;
 }
 
 .marquee-wrapper {
@@ -1519,5 +1771,134 @@ digital-revolution,
 
     100% {
         transform: translateX(-50%);
+    }
+}
+
+/* testimonials */
+/* .niz-testimonials-section {
+    background:
+        radial-gradient(1200px 400px at 10% -10%, rgba(0, 123, 255, .06), transparent 60%),
+        radial-gradient(1200px 400px at 90% 110%, rgba(0, 86, 179, .06), transparent 60%),
+        #f8fafc;
+} */
+
+.niz-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 16px;
+    background: #fff;
+    padding: 24px;
+    border: 1px solid rgba(2, 6, 23, 0.06);
+    box-shadow: 0 8px 28px rgba(2, 6, 23, 0.06);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.niz-card::after {
+    content: "“";
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    font-size: 72px;
+    color: #1da69a;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+.niz-logo {
+    height: 48px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.niz-text {
+    margin: 0;
+    font-style: italic;
+    line-height: 1.7;
+    color: #0f172a;
+    flex-grow: 1;
+}
+
+.nizSwiper .swiper-slide {
+    display: flex;
+    height: auto;
+}
+
+.nizSwiper .swiper-slide>.niz-card {
+    width: 100%;
+    height: 320px;
+}
+
+.niz-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.niz-pagination {
+    position: static !important;
+}
+
+.niz-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #1da69a;
+    opacity: .35;
+    margin: 0 5px !important;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+.niz-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    transform: scale(1.1);
+    background: #1da69a;
+}
+
+.niz-nav {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.niz-nav .swiper-button-prev,
+.niz-nav .swiper-button-next {
+    margin-top: 10px;
+    position: static;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #1da69a;
+    background: #fff;
+    color: #1da69a;
+    box-shadow: 0 6px 18px rgba(32, 212, 185, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.niz-nav .swiper-button-prev::after,
+.niz-nav .swiper-button-next::after {
+    display: none;
+}
+
+.niz-nav .swiper-button-prev:hover,
+.niz-nav .swiper-button-next:hover {
+    background: #1da69a;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .nizSwiper .swiper-slide>.niz-card {
+        width: 100%;
+        height: 450px;
     }
 }
