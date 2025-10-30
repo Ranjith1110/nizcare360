@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nizcare | 360</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+        /* ===== BLOG SECTION ===== */
+        .blog-section {
+            padding: 120px 0 80px;
+            /* background: linear-gradient(135deg, #ffffff, #f5f7fb); */
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .blog-header h1 {
+            font-weight: 700;
+            color: #0c2340;
+            font-size: 2.8rem;
+        }
+
+        .blog-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 10px auto 0;
+        }
+
+        /* Blog Card */
+        .blog-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            background: #fff;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-card img {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+            transition: all 0.4s ease;
+        }
+
+        .blog-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .blog-card-body {
+            padding: 25px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: #1da69a;
+            color: white;
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .blog-card h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1da69a;
+            margin-top: 10px;
+        }
+
+        .blog-card p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #1da69a;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+            color: #f9a527;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            /* background: #ffffffb3; */
+            backdrop-filter: blur(0px);
+            border-radius: 20px;
+            /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); */
+            padding: 30px;
+        }
+
+        .sidebar h4 {
+            font-weight: 600;
+            /* color: #1da69a; */
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            display: block;
+            width: 100%;
+            /* background: #e9f3f; */
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 8px;
+            color: #0c2340;
+            text-align: left;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .category-btn:hover{
+            background-color: #f9a527;
+            color: #fff;
+        }
+        
+        .category-btn.active {
+            background: #1da69a;
+            color: white;
+        }
+
+        .search-box input {
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #40a79f;
+            /* box-shadow: 0 0 6px rgba(0, 119, 182, 0.2); */
+        }
+        
+        .sidebar .widget h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #f9a527;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .tag {
+            display: inline-block;
+            margin: 4px;
+            background: #1da69a;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            background: #f9a527;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <header data-aos="fade-in" id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <img src="nizImg/nizlogo.png" width="140px" alt="">
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="">NRI</a></li>
+                    <li><a href="">Corporates</a></li>
+                    <li><a href="">Book a Lab Test</a></li>
+                    <li><a href="">Sign Up</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="doctorPage/clinicpage.html">For Doctors/Clinics</a></li>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Clinic</a></li>
+                            <li><a class="dropdown-item" href="#">Lab</a></li>
+                            <li><a class="dropdown-item" href="#">Insurance</a></li>
+                            <li><a class="dropdown-item" href="#">Corporate</a></li>
+                            <li><a class="dropdown-item" href="#">Employee</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none fa-solid fa-bars"></i>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== BLOG SECTION ===== -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-header">
+                <h1>Health & <span style="color: #1da69a;">Wellness Insights</span></h1>
+                <p>Discover stories, expert advice, and practical tips to improve your health, focus, and well-being.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Blog Grid -->
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <img src="./nizImg/healthcare-claims.webp" alt="">
+                                <div class="blog-card-body">
+                                    <span class="category-tag">Corporate</span>
+                                    <h5>Why Employee Wellness is More Than a Buzzword</h5>
+                                    <p>Discover how investing in wellness boosts morale, engagement, and productivity.
+                                    </p>
+                                    <a href="./blog-details.html" class="read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <img src="./nizImg/corporate-banner4.png" alt="">
+                                <div class="blog-card-body">
+                                    <span class="category-tag">Mental Health</span>
+                                    <h5>How to Manage Stress at Work</h5>
+                                    <p>Learn effective strategies to stay calm and productive under pressure.</p>
+                                    <a href="./blogs/blog2.html" class="read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <img src="./nizImg/corporate-banner5.png" alt="">
+                                <div class="blog-card-body">
+                                    <span class="category-tag">Nutrition</span>
+                                    <h5>Healthy Eating for Busy Professionals</h5>
+                                    <p>Quick, easy, and nutritious ways to maintain a healthy diet.</p>
+                                    <a href="./blogs/blog3.html" class="read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <img src="./nizImg/corporate-banner1.png" alt="">
+                                <div class="blog-card-body">
+                                    <span class="category-tag">Productivity</span>
+                                    <h5>Boosting Focus with Mindful Breaks</h5>
+                                    <p>Discover how short mindful breaks can recharge your mind and improve performance.
+                                    </p>
+                                    <a href="./blogs/blog4.html" class="read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search blog posts..." />
+                        </div>
+
+                        <div class="categories widget mb-4">
+                            <h4>Categories</h4>
+                            <button class="category-btn active">All</button>
+                            <button class="category-btn">Mental Health</button>
+                            <button class="category-btn">Nutrition</button>
+                            <button class="category-btn">Productivity</button>
+                            <button class="category-btn">Corporate</button>
+                        </div>
+
+                        <div class="tags widget">
+                            <h4>Popular Tags</h4><br>
+                            <span class="tag">#Wellness</span>
+                            <span class="tag">#Health</span>
+                            <span class="tag">#Stress</span>
+                            <span class="tag">#Workplace</span>
+                            <span class="tag">#Corporate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="contact" class="footer" data-aos="fade-zoom-in" data-aos-easing="ease-in-sine" data-aos-delay="300"
+        data-aos-offset="0">
+        <div class="container">
+            <img width="250px" class="mb-4" src="nizImg/logo_white.png" alt="">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="footer-link">
+                        <h2>Contact Address</h2>
+                        <p><i class="fa fa-map-marker-alt"></i> Trichy - Chennai Trunk Road, Siruganur,
+                            Trichy-621105,
+                            Tamilnadu, India</p>
+                        <p><i class="fa fa-map-marker-alt"></i> 100,Jalan Sultan, #09/06, Sultan Plaza Singapore
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="footer-link">
+                        <h2>Useful Link</h2>
+                        <a href="#about">About Us</a>
+                        <a href="#service">Our Client</a>
+                        <a href="">Request Demo</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="footer-link">
+                        <h2>Become our partner</h2>
+                        <input type="text" class="form-control mb-2 w-75" placeholder="Company name">
+                        <input type="number" class="form-control mb-2 w-75" placeholder="Number">
+                        <input type="number" class="form-control mb-2 w-75" placeholder="Pincode">
+                        <select name="" id="" class="form-select mb-2 w-75">
+                            <option value="">Category</option>
+                            <option value="">category1</option>
+                            <option value="">category2</option>
+                            <option value="">category3</option>
+                            <option value="">category4</option>
+                        </select>
+                        <button class="btn btn-warning text-white w-75">Submit</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="footer-form">
+                        <div class="footer-contact">
+                            <h2>Get In Touch</h2>
+                            <p><i class="fa fa-phone-alt"></i>+91 97895 37313</p>
+                            <p><i class="fa fa-envelope"></i>support@nizcare.com</p>
+                            <div class="footer-social">
+                                <a href="https://www.linkedin.com/company/nizcare/posts/?feedView=all"
+                                    target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.facebook.com/nizcareglobal" target="_blank"><i
+                                        class="fab fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/niz_care/" target="_blank"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@nizcare9113" target="_blank"><i
+                                        class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-menu">
+            <div class="f-menu">
+                <a href="">Terms & Conditions</a>
+                <a href="">Privacy policy</a>
+                <a href="">Help & FAQs</a>
+            </div>
+        </div>
+        <div class="container copyright">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <p>By using our site, you agree to the Nizcare Terms and Conditions. Nizcare does not provide
+                        medical advice, diagnosis or treatment. The information provided on this site is designed to
+                        support, not replace, the relationship that exists between a patient/site visitor and
+                        his/her
+                        existing physician.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/919150036313?text=Hi%2C%20I%20would%20love%20to%20know%20about%20Nizcare" target="_blank"
+        rel="noopener noreferrer">
+        <img src="nizImg/whatsapp.png" alt="WhatsApp Icon" class="whatsapp-icon">
+    </a>
+
+
+    <!-- particles.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Menbar Toggle
+        (function () {
+            "use strict";
+
+            const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+            const body = document.body;
+
+            function mobileNavToggle() {
+                body.classList.toggle('mobile-nav-active');
+                mobileNavToggleBtn.classList.toggle('fa-bars');
+                mobileNavToggleBtn.classList.toggle('fa-xmark');
+            }
+
+            // Toggle mobile menu open/close
+            mobileNavToggleBtn.addEventListener('click', mobileNavToggle);
+
+            // Handle dropdowns in mobile view
+            document.querySelectorAll('.navmenu .dropdown-toggle').forEach(dropdownToggle => {
+                dropdownToggle.addEventListener('click', function (e) {
+                    if (window.innerWidth <= 1200) {
+                        e.preventDefault();
+                        const parent = this.closest('.dropdown');
+                        parent.classList.toggle('dropdown-open');
+                    }
+                });
+            });
+
+            // Close mobile menu when clicking a regular link
+            document.querySelectorAll('#navmenu a:not(.dropdown-toggle)').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1200 && body.classList.contains('mobile-nav-active')) {
+                        mobileNavToggle();
+                    }
+                });
+            });
+
+        })();
+
+
+        // animation
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#1da69a", "#f9a527"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3 },
+                "size": { "value": 4, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#aaa",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 3 }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+
+</html>

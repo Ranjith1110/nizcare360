@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nizcare | 360</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+        /* ===========================
+   GLOBAL STYLES
+=========================== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #111;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ===========================
+   HERO SECTION
+=========================== */
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(120deg, rgba(29, 166, 154, 0.85), rgba(249, 165, 39, 0.85)),
+                url("./assets/hero-bg.jpg") center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 120px 20px 100px;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .hero-banner .category-tag {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .hero-banner h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-banner .summary {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .hero-banner .read-time {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        /* ===========================
+   MAIN CONTENT
+=========================== */
+        .main-content-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            padding: 0 20px;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 50px;
+        }
+
+        .main-article h2 {
+            margin-top: 2rem;
+            font-size: 1.8rem;
+            border-left: 4px solid #1da69a;
+            padding-left: 10px;
+        }
+
+        .main-article h3 {
+            margin-top: 1.5rem;
+            color: #1da69a;
+        }
+
+        .article-image {
+            margin: 30px 0;
+            border-radius: 14px;
+        }
+
+        blockquote {
+            border-left: 4px solid #f9a527;
+            padding-left: 16px;
+            font-style: italic;
+            color: #555;
+            background: #fff8e7;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        /* ===========================
+   TABLE OF CONTENTS
+=========================== */
+        .table-of-contents-container {
+            background: #f3f8f8;
+            border-left: 4px solid #1da69a;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .table-of-contents-container h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        #toc-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #toc-list li {
+            margin-bottom: 8px;
+        }
+
+        #toc-list a {
+            color: #1da69a;
+            text-decoration: none;
+        }
+
+        #toc-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===========================
+   SIDEBAR
+=========================== */
+        .sidebar .widget {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar .widget h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #f9a527;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .search-widget {
+            position: relative;
+        }
+
+        .search-widget input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+        }
+
+        .search-widget input:focus {
+            border-color: #1da69a;
+        }
+
+        .search-widget i {
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            color: #999;
+        }
+
+        .widget.recent-posts ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .widget.recent-posts li {
+            margin-bottom: 10px;
+        }
+
+        .widget.recent-posts a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .widget.recent-posts a:hover {
+            color: #1da69a;
+        }
+
+        .category-list span {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .category-list a {
+            background: #1da69a;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .category-list a:hover {
+            background: #f9a527;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: #1da69a;
+            color: #fff;
+            border-radius: 50%;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #f9a527;
+            transform: translateY(-2px);
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: linear-gradient(90deg, #1da69a, #f9a527);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* ===========================
+   AUTHOR BIO
+=========================== */
+        .author-bio-section {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .author-details h4 {
+            margin-bottom: 8px;
+        }
+
+        .author-details .designation {
+            color: #1da69a;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .author-socials a {
+            margin-right: 10px;
+            color: #1da69a;
+            font-size: 1.2rem;
+        }
+
+        .author-socials a:hover {
+            color: #f9a527;
+        }
+
+        /* ===========================
+   RELATED ARTICLES
+=========================== */
+        .related-articles-section {
+            text-align: center;
+            margin: 80px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .related-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .article-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .card-content h4 {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .card-content .read-more {
+            color: #1da69a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .card-content .read-more:hover {
+            color: #f9a527;
+        }
+
+        /* ===========================
+   COMMENTS SECTION
+=========================== */
+        .comments-section {
+            max-width: 900px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .comment-box textarea {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+
+        .comment-box button {
+            background: linear-gradient(90deg, #1da69a, #f9a527);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .comment-box button:hover {
+            opacity: 0.9;
+        }
+
+        .existing-comments p {
+            margin-top: 10px;
+            color: #777;
+        }
+
+        /* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+        @media (max-width: 992px) {
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-banner h1 {
+                font-size: 2.2rem;
+            }
+
+            .main-content-container {
+                margin: 40px auto;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <header data-aos="fade-in" id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <img src="nizImg/nizlogo.png" width="140px" alt="">
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="">NRI</a></li>
+                    <li><a href="">Corporates</a></li>
+                    <li><a href="">Book a Lab Test</a></li>
+                    <li><a href="">Sign Up</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="doctorPage/clinicpage.html">For Doctors/Clinics</a></li>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Clinic</a></li>
+                            <li><a class="dropdown-item" href="#">Lab</a></li>
+                            <li><a class="dropdown-item" href="#">Insurance</a></li>
+                            <li><a class="dropdown-item" href="#">Corporate</a></li>
+                            <li><a class="dropdown-item" href="#">Employee</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none fa-solid fa-bars"></i>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="hero-content">
+            <span class="category-tag">Wellness | Corporate</span>
+            <h1>The Ultimate Guide to Boosting <span style="color: #1da69a;">Employee Wellness</span></h1>
+            <p class="summary">Discover actionable strategies to improve physical, mental, and emotional health in the
+                workplace. Learn how a healthier team leads to a more productive company.</p>
+            <span class="read-time">7 min read</span>
+        </div>
+    </section>
+
+    <main class="main-content-container">
+        <div class="article-grid">
+            <article class="main-article">
+                <div class="table-of-contents-container">
+                    <h3>Table of Contents</h3>
+                    <ul id="toc-list"></ul>
+                </div>
+
+                <h2>Why Employee Wellness is More Than a Buzzword</h2>
+                <p>In today’s fast-paced corporate world, the well-being of employees is no longer a peripheral concern.
+                    It is a core pillar of a successful and sustainable business. A healthy workforce is a productive
+                    workforce, and a happy team is a loyal team. We dive deep into the tangible benefits of investing in
+                    your employees' wellness.</p>
+                <img src="./nizImg/corporate-seventh-banner.png" alt="Placeholder image of a healthy workplace" class="article-image">
+
+                <h2>The Three Pillars of Wellness</h2>
+                <p>Employee wellness can be broken down into three key areas: physical, mental, and emotional health.
+                    Each is interconnected and essential for a holistic well-being strategy. Let's explore each one in
+                    detail.</p>
+
+                <h3>1. Physical Wellness: Beyond the Gym Membership</h3>
+                <p>Physical wellness involves more than just a gym subsidy. It includes promoting healthy eating habits,
+                    encouraging regular physical activity, and ensuring a safe work environment. Simple initiatives like
+                    offering healthy snacks, organizing walking challenges, and providing ergonomic office furniture can
+                    make a big difference.</p>
+
+                <blockquote>"A company's greatest asset is its people, and their health is the ultimate investment." -
+                    Wellness expert</blockquote>
+
+                <h3>2. Mental Wellness: Breaking the Stigma</h3>
+                <p>Mental health is a critical component of overall wellness. Work-related stress, burnout, and anxiety
+                    are common issues that can significantly impact productivity and morale. Companies should offer
+                    resources such as access to mental health professionals, stress management workshops, and flexible
+                    work arrangements to support their team.</p>
+
+                <h3>3. Emotional Wellness: Fostering a Supportive Culture</h3>
+                <p>Emotional wellness is about creating a positive and inclusive work environment where employees feel
+                    valued and supported. This includes open communication, team-building activities, and recognizing
+                    achievements. Fostering a culture of psychological safety allows employees to be their authentic
+                    selves without fear of judgment.</p>
+
+                <section class="mid-content-cta">
+                    <h3>Want a Free Health Checkup?</h3>
+                    <a href="#" class="btn-cta">Book Now</a>
+                </section>
+
+                <h2>Implementing a Wellness Program: A Step-by-Step Guide</h2>
+                <p>Creating a successful wellness program requires thoughtful planning and continuous engagement. Start
+                    by assessing your team's needs, setting clear goals, and launching pilot programs. Remember, it's
+                    not a one-size-fits-all solution; it should be adaptable and tailored to your company's unique
+                    culture.</p>
+
+            </article>
+
+            <aside class="sidebar">
+                <div class="widget search-widget">
+                    <input type="text" placeholder="Search blog...">
+                    <!-- <i class="fas fa-search"></i> -->
+                </div>
+                <div class="widget recent-posts">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        <li><a href="#">5 Ways to Prevent Burnout</a></li>
+                        <li><a href="#">The Importance of Sleep for Productivity</a></li>
+                        <li><a href="#">Nutrition Tips for Office Workers</a></li>
+                    </ul>
+                </div>
+                <div class="widget categories">
+                    <h3>Categories</h3>
+                    <div class="category-list">
+                        <span><a href="#">Health</a></span>
+                        <span><a href="#">Wellness</a></span>
+                        <span><a href="#">Insurance</a></span>
+                        <span><a href="#">Corporate</a></span>
+                    </div>
+                </div>
+                <div class="widget social-share-widget">
+                    <h3>Share This Article</h3>
+                    <div class="social-icons">
+                        <a href="#" class="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="share-facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="copy-link"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="widget cta-widget">
+                    <h3>Book a Free Consultation</h3>
+                    <p>Access your health data on the go!</p>
+                    <a href="#" class="btn-cta">Get Consultation</a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <section class="author-bio-section">
+        <div class="author-info">
+            <div class="author-details">
+                <h4>Jane Doe</h4>
+                <p class="designation">Wellness Coordinator, Nizcare</p>
+                <p>Jane is a passionate advocate for workplace wellness. With over a decade of experience, she helps
+                    companies build thriving, healthy cultures.</p>
+                <div class="author-socials">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="related-articles-section">
+        <h2>Related Articles</h2>
+        <div class="related-articles-grid">
+            <div class="article-card">
+                <img src="./nizImg/banner.webp" alt="Related article image 1">
+                <div class="card-content">
+                    <span class="category-tag">Mental Health</span>
+                    <h4>How to Manage Stress at Work</h4>
+                    <span class="read-time">5 min read</span>
+                    <div><a href="./blog2.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a></div>
+                </div>
+            </div>
+            <div class="article-card">
+                <img src="./nizImg/corporate-banner1.png" alt="Related article image 2">
+                <div class="card-content">
+                    <span class="category-tag">Nutrition</span>
+                    <h4>Healthy Eating for Busy Professionals</h4>
+                    <span class="read-time">8 min read</span>
+                    <div><a href="./blog3.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a></div>
+                </div>
+            </div>
+            <div class="article-card">
+                <img src="./nizImg/corporate-banner4.png" alt="Related article image 3">
+                <div class="card-content">
+                    <span class="category-tag">Productivity</span>
+                    <h4>Boosting Focus with Mindful Breaks</h4>
+                    <span class="read-time">6 min read</span>
+                    <div><a href="./blog4.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comments-section">
+        <h2>Comments</h2>
+        <div class="comment-box">
+            <textarea placeholder="Leave a comment..."></textarea>
+            <button>Post Comment</button>
+        </div>
+        <div class="existing-comments">
+            <p>No comments yet. Be the first to share your thoughts!</p>
+        </div>
+    </section>
+
+    <div id="contact" class="footer" data-aos="fade-zoom-in" data-aos-easing="ease-in-sine" data-aos-delay="300"
+        data-aos-offset="0">
+        <div class="container">
+            <img width="250px" class="mb-4" src="nizImg/logo_white.png" alt="">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="footer-link">
+                        <h2>Contact Address</h2>
+                        <p><i class="fa fa-map-marker-alt"></i> Trichy - Chennai Trunk Road, Siruganur,
+                            Trichy-621105,
+                            Tamilnadu, India</p>
+                        <p><i class="fa fa-map-marker-alt"></i> 100,Jalan Sultan, #09/06, Sultan Plaza Singapore
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="footer-link">
+                        <h2>Useful Link</h2>
+                        <a href="#about">About Us</a>
+                        <a href="#service">Our Client</a>
+                        <a href="">Request Demo</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="footer-link">
+                        <h2>Become our partner</h2>
+                        <input type="text" class="form-control mb-2 w-75" placeholder="Company name">
+                        <input type="number" class="form-control mb-2 w-75" placeholder="Number">
+                        <input type="number" class="form-control mb-2 w-75" placeholder="Pincode">
+                        <select name="" id="" class="form-select mb-2 w-75">
+                            <option value="">Category</option>
+                            <option value="">category1</option>
+                            <option value="">category2</option>
+                            <option value="">category3</option>
+                            <option value="">category4</option>
+                        </select>
+                        <button class="btn btn-warning text-white w-75">Submit</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="footer-form">
+                        <div class="footer-contact">
+                            <h2>Get In Touch</h2>
+                            <p><i class="fa fa-phone-alt"></i>+91 97895 37313</p>
+                            <p><i class="fa fa-envelope"></i>support@nizcare.com</p>
+                            <div class="footer-social">
+                                <a href="https://www.linkedin.com/company/nizcare/posts/?feedView=all"
+                                    target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.facebook.com/nizcareglobal" target="_blank"><i
+                                        class="fab fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/niz_care/" target="_blank"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@nizcare9113" target="_blank"><i
+                                        class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-menu">
+            <div class="f-menu">
+                <a href="">Terms & Conditions</a>
+                <a href="">Privacy policy</a>
+                <a href="">Help & FAQs</a>
+            </div>
+        </div>
+        <div class="container copyright">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <p>By using our site, you agree to the Nizcare Terms and Conditions. Nizcare does not provide
+                        medical advice, diagnosis or treatment. The information provided on this site is designed to
+                        support, not replace, the relationship that exists between a patient/site visitor and
+                        his/her
+                        existing physician.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/919150036313?text=Hi%2C%20I%20would%20love%20to%20know%20about%20Nizcare" target="_blank"
+        rel="noopener noreferrer">
+        <img src="nizImg/whatsapp.png" alt="WhatsApp Icon" class="whatsapp-icon">
+    </a>
+
+
+    <!-- particles.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Menbar Toggle
+        (function () {
+            "use strict";
+
+            const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+            const body = document.body;
+
+            function mobileNavToggle() {
+                body.classList.toggle('mobile-nav-active');
+                mobileNavToggleBtn.classList.toggle('fa-bars');
+                mobileNavToggleBtn.classList.toggle('fa-xmark');
+            }
+
+            // Toggle mobile menu open/close
+            mobileNavToggleBtn.addEventListener('click', mobileNavToggle);
+
+            // Handle dropdowns in mobile view
+            document.querySelectorAll('.navmenu .dropdown-toggle').forEach(dropdownToggle => {
+                dropdownToggle.addEventListener('click', function (e) {
+                    if (window.innerWidth <= 1200) {
+                        e.preventDefault();
+                        const parent = this.closest('.dropdown');
+                        parent.classList.toggle('dropdown-open');
+                    }
+                });
+            });
+
+            // Close mobile menu when clicking a regular link
+            document.querySelectorAll('#navmenu a:not(.dropdown-toggle)').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1200 && body.classList.contains('mobile-nav-active')) {
+                        mobileNavToggle();
+                    }
+                });
+            });
+
+        })();
+
+
+        // animation
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#1da69a", "#f9a527"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3 },
+                "size": { "value": 4, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#aaa",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 3 }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+
+</html>

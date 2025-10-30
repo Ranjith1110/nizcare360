@@ -722,6 +722,7 @@ footer {
 .custom-carousel-item img {
     max-width: 100%;
     height: auto;
+    color: #f9a527;
 }
 
 .custom-carousel-indicators {
