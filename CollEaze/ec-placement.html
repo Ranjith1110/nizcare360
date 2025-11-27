@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E&C Placements Analysis</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Google Fonts for a professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Define custom CSS variables for brand colors */
+        :root {
+            --brand-primary: #44C7D9;
+            /* Teal/Light Blue */
+            --brand-secondary: #1D2E59;
+            /* Navy/Dark Blue */
+            --brand-max-height: 250px;
+            /* Max height for the visual bars */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f9;
+            /* Off-white background */
+        }
+
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            /* Ensures header corners match card corners */
+            border: none;
+        }
+
+        .card-header-custom {
+            background-color: var(--brand-secondary);
+            color: #fff;
+            padding: 1.5rem;
+            border-bottom: 4px solid var(--brand-primary);
+        }
+
+        .section-title {
+            color: var(--brand-secondary);
+            font-weight: 600;
+            border-left: 5px solid var(--brand-primary);
+            padding-left: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Custom Bar Chart Styles --- */
+        #chart-container {
+            display: flex;
+            align-items: flex-end;
+            /* Bars start from the bottom */
+            justify-content: space-around;
+            height: var(--brand-max-height);
+            border-left: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+            padding: 0 10px;
+            position: relative;
+        }
+
+        .chart-bar {
+            width: 15%;
+            /* Adjust width for spacing */
+            margin: 0 1%;
+            background-color: var(--brand-primary);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s ease-out, background-color 0.3s;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-bar:hover {
+            opacity: 0.9;
+            box-shadow: 0 -6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bar Label (The placement count on top) */
+        .bar-label {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--brand-secondary);
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        /* Year Label (The year below the bar) */
+        .year-label {
+            position: absolute;
+            bottom: -30px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .chart-bar {
+                width: 25%;
+                margin: 0 0.5%;
+            }
+
+            .year-label {
+                font-size: 0.65rem;
+                transform: rotate(-45deg) translate(-10px, -5px);
+                /* Tilt labels for space */
+                white-space: nowrap;
+                bottom: -40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <div class="card shadow-lg">
+
+            <!-- Card Header -->
+            <div class="card-header-custom text-center">
+                <h2 class="mb-0 fw-bold">E&C Placements <small class="text-white-50">(Past 6 Years)</small></h2>
+            </div>
+
+            <div class="card-body p-4 p-md-5">
+
+                <h3 class="section-title">Placement Trend Visualization</h3>
+
+                <div class="d-flex justify-content-center mb-5">
+                    <div id="chart-container" class="w-100 position-relative">
+                    </div>
+                </div>
+
+                <h3 class="section-title mt-5">Raw Placement Data</h3>
+                <p class="text-muted">Detailed year-by-year placement counts and trend analysis.</p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover align-middle rounded-3 overflow-hidden"
+                        id="placement-table">
+                        <thead style="background-color: var(--brand-secondary); color: #fff;">
+                            <tr>
+                                <th scope="col">Year</th>
+                                <th scope="col">Placements</th>
+                                <th scope="col" class="d-none d-md-table-cell">Trend vs. Previous Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data rows will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center mt-4 pt-3">
+                    <button class="btn btn-outline-dark"
+                        style="--bs-btn-border-color: var(--brand-secondary); --bs-btn-color: var(--brand-secondary);"
+                        id="toggle-data-btn">
+                        Toggle Data Summary
+                    </button>
+                    <p class="mt-3 p-3 rounded" style="background-color: rgba(68, 199, 217, 0.1);" id="data-breakdown"
+                        style="display:none;">
+                        <span class="fw-bold" style="color: var(--brand-secondary);">Analysis Summary:</span> The
+                        placement figures peaked dramatically in the 2016-17 period at 80 placements, representing the
+                        highest performance over the last six years.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript (Bundle includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const placementData = [
+            { year: '2014-15', count: 39, color: 'var(--brand-primary)' },
+            { year: '2015-16', count: 30, color: 'var(--brand-primary)' },
+            { year: '2016-17', count: 80, color: 'var(--brand-secondary)' },
+            { year: '2017-18', count: 56, color: 'var(--brand-primary)' },
+            { year: '2018-19', count: 44, color: 'var(--brand-primary)' },
+            { year: '2019-20', count: 26, color: 'var(--brand-primary)' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartContainer = document.getElementById('chart-container');
+            const tableBody = document.querySelector('#placement-table tbody');
+            const toggleBtn = document.getElementById('toggle-data-btn');
+            const breakdown = document.getElementById('data-breakdown');
+            const maxValue = 80;
+
+            const generateChart = () => {
+                chartContainer.innerHTML = '';
+                placementData.forEach(data => {
+                    const heightPercent = (data.count / maxValue) * 100;
+
+                    const barDiv = document.createElement('div');
+                    barDiv.className = 'chart-bar';
+                    barDiv.style.height = `${heightPercent}%`;
+                    barDiv.style.backgroundColor = data.color;
+
+                    barDiv.innerHTML = `
+                        <span class="bar-label">${data.count}</span>
+                        <span class="year-label">${data.year}</span>
+                    `;
+
+                    chartContainer.appendChild(barDiv);
+                });
+            };
+
+            const populateTable = () => {
+                tableBody.innerHTML = '';
+
+                placementData.forEach((data, index) => {
+                    const row = tableBody.insertRow();
+                    let trendHtml = '— N/A';
+                    if (index > 0) {
+                        const prevCount = placementData[index - 1].count;
+                        if (data.count > prevCount) {
+                            trendHtml = `<span class="badge bg-success">▲ +${data.count - prevCount}</span>`;
+                        } else if (data.count < prevCount) {
+                            trendHtml = `<span class="badge bg-danger">▼ ${data.count - prevCount}</span>`;
+                        } else {
+                            trendHtml = `<span class="badge bg-secondary">— Steady</span>`;
+                        }
+                    }
+
+                    row.insertCell(0).textContent = data.year;
+                    row.insertCell(1).innerHTML = `<span class="fw-bold">${data.count}</span>`;
+                    const trendCell = row.insertCell(2);
+                    trendCell.className = 'd-none d-md-table-cell';
+                    trendCell.innerHTML = trendHtml;
+                });
+            };
+
+            breakdown.style.display = 'none';
+            toggleBtn.addEventListener('click', () => {
+                if (breakdown.style.display === 'none' || breakdown.style.display === '') {
+                    breakdown.style.display = 'block';
+                    breakdown.classList.add('animate__fadeIn');
+                } else {
+                    breakdown.style.display = 'none';
+                }
+            });
+
+            generateChart();
+            populateTable();
+        });
+    </script>
+
+</body>
+
+</html>

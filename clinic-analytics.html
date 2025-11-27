@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clinic Analytics Dashboard - Enhanced</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --teal: #1da69a;
+            --orange: #f9a527;
+            --primary-text: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --bg-light: #ffffff;
+            --card-bg: #f5f7f8;
+            --panel-border: #e0e4e8;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-light);
+            color: var(--primary-text);
+            padding: 20px;
+        }
+
+        .dashboard {
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+
+        /* --- Header & KPIs --- */
+        .header-row {
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .kpi-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .kpi {
+            background: var(--bg-light);
+            border: 1px solid var(--panel-border);
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            flex-grow: 1;
+            min-width: 180px;
+            transition: transform 0.2s;
+        }
+
+        .kpi:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .kpi .icon {
+            font-size: 20px;
+            color: var(--teal);
+            margin-right: 10px;
+        }
+
+        .kpi .value {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-text);
+            margin-top: 5px;
+        }
+
+        .kpi .label {
+            font-size: 13px;
+            color: var(--secondary-text);
+            font-weight: 400;
+        }
+
+        /* --- Panel/Card Styles --- */
+        .panel-custom {
+            background: var(--bg-light);
+            border: 1px solid var(--panel-border);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            min-height: 150px;
+        }
+
+        .panel-title {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 15px;
+            color: var(--teal);
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 8px;
+        }
+
+        /* --- Filters (Sidebar) --- */
+        .side-col .panel-title {
+            color: var(--primary-text);
+        }
+
+        .filter-select {
+            width: 100%;
+            margin-bottom: 15px;
+            background: var(--card-bg);
+            color: var(--primary-text);
+            border: 1px solid var(--panel-border);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237f8c8d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 1em;
+            cursor: pointer;
+        }
+
+        /* --- Legend & Data Indicators --- */
+        .legend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 13px;
+            padding-left: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-text);
+        }
+
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            display: inline-block;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .doughnut-summary {
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            background: var(--card-bg);
+        }
+
+        .doughnut-summary .percentage {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .doughnut-summary .description {
+            font-size: 14px;
+            color: var(--secondary-text);
+            margin-top: -5px;
+        }
+
+        /* --- Table Styling --- */
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .details-table th,
+        .details-table td {
+            padding: 10px 10px;
+            border-bottom: 1px solid var(--panel-border);
+            color: var(--primary-text);
+            text-align: left;
+        }
+
+        .details-table th {
+            background: var(--card-bg);
+            color: var(--secondary-text);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .details-table tbody tr:hover {
+            background-color: #f1f5f7;
+        }
+
+        /* Status badges */
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .status-badge.completed {
+            background-color: #e8f9e8;
+            color: #2ecc71;
+        }
+
+        .status-badge.pending {
+            background-color: #fff8e6;
+            color: var(--orange);
+        }
+
+        .status-badge.cancelled {
+            background-color: #fde8e8;
+            color: #c0392b;
+        }
+
+        /* --- Chart Area & Responsiveness --- */
+        canvas {
+            display: block;
+            width: 100% !important;
+        }
+
+        .content-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-col {
+            flex: 1 1 auto;
+        }
+
+        .side-col {
+            width: 280px;
+        }
+
+        @media (max-width: 991px) {
+            .content-row {
+                flex-direction: column;
+            }
+
+            .side-col {
+                width: 100%;
+            }
+
+            .kpi-container {
+                justify-content: space-around;
+            }
+
+            .kpi {
+                min-width: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard container-fluid">
+
+        <div class="text-center">
+            <div class="brand"><i class="fa-solid fa-house-chimney-medical"></i> Clinic Analytics</div>
+        </div>
+        <div class="header-row row">
+            <div class="col-md-12">
+                <div class="kpi-container">
+                    <div class="kpi">
+                        <div class="label"><i class="fa-solid fa-wallet icon"></i> Clinic Revenue</div>
+                        <div class="value">₹532,961</div>
+                    </div>
+                    <div class="kpi">
+                        <div class="label"><i class="fa-solid fa-calendar-check icon"></i> Appointments</div>
+                        <div class="value">200</div>
+                    </div>
+                    <div class="kpi">
+                        <div class="label"><i class="fa-solid fa-user-doctor icon"></i> Focused Doctor</div>
+                        <div class="value">Dr. Verma</div>
+                    </div>
+                    <div class="kpi">
+                        <div class="label"><i class="fa-solid fa-money-bill-transfer icon"></i> Dr. Revenue</div>
+                        <div class="value">₹66,150</div>
+                    </div>
+                    <div class="kpi" style="flex: 0 1 200px; padding: 10px 15px;">
+                        <div class="label"><i class="fa-solid fa-calendar icon"></i> Date Range</div>
+                        <select class="filter-select"
+                            style="margin-top: 8px; border: 2px solid #1da69a;">
+                            <option>Last 30 days</option>
+                            <option>Last 90 days</option>
+                            <option>Year to Date</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-row">
+            <div class="main-col">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-briefcase-medical"></i> Appointment by
+                                Speciality</div>
+                            <div class="row">
+                                <div class="col-xs-6" style="height: 200px;">
+                                    <canvas id="specialityPie"></canvas>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="legend-list">
+                                        <div class="legend-item"><span class="legend-color"
+                                                style="background:#3498db"></span>Orthopedic (22%)</div>
+                                        <div class="legend-item"><span class="legend-color"
+                                                style="background:#e74c3c"></span>General Physician (21%)</div>
+                                        <div class="legend-item"><span class="legend-color"
+                                                style="background:var(--orange)"></span>Cardiologist (20.5%)</div>
+                                        <div class="legend-item"><span class="legend-color"
+                                                style="background:#f1c40f"></span>Gastroenterologist (19%)</div>
+                                        <div class="legend-item"><span class="legend-color"
+                                                style="background:#2ecc71"></span>ENT Specialist (17.5%)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-user-group"></i> Patient Type and Status
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-5" style="height: 200px;">
+                                    <canvas id="patientDoughnut"></canvas>
+                                    <div class="doughnut-summary">
+                                    </div>
+                                </div>
+                                <div class="col-xs-3" style="height: 200px;">
+                                    <canvas id="statusPie"></canvas>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="legend-list" style="margin-top: 20px;">
+                                        <div class="legend-item"><span class="legend-color"
+                                                style="background:var(--teal)"></span>Completed (59%)</div>
+                                        <div class="legend-item"><span class="legend-color"
+                                                style="background:var(--orange)"></span>Pending (25%)</div>
+                                        <div class="legend-item"><span class="legend-color"
+                                                style="background:#c0392b"></span>Cancelled (16%)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-chart-bar"></i> Patient Age Distribution
+                            </div>
+                            <div style="height: 180px;"><canvas id="ageBar"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-heart-pulse"></i> Service Preference</div>
+                            <div style="height: 180px;"><canvas id="servicesPie"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-venus-mars"></i> Gender Breakdown</div>
+                            <div style="height: 180px;"><canvas id="genderDoughnut"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-head-side-mask"></i> Top Health Problems
+                            </div>
+                            <div style="height: 180px;"><canvas id="healthBar"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-pills"></i> Popular Medicines</div>
+                            <div style="height: 180px;"><canvas id="medicineBar"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-vials"></i> Most Requested Lab Tests</div>
+                            <div style="height: 180px;"><canvas id="labBar"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="panel-custom">
+                            <div class="panel-title"><i class="fa-solid fa-arrow-trend-up"></i> Revenue Trend (Last 7
+                                Months)</div>
+                            <div style="height: 200px;">
+                                <canvas id="revenueLine"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="panel-custom" style="padding:15px;">
+                            <div class="panel-title"><i class="fa-solid fa-list-ul"></i> Latest Appointment Details
+                            </div>
+                            <div style="max-height: 250px; overflow-y: auto;">
+                                <table class="details-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Status</th>
+                                            <th>Type</th>
+                                            <th>Speciality</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><span class="status-badge pending">Pending</span></td>
+                                            <td>Online Booking</td>
+                                            <td>General Physician</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><span class="status-badge completed">Completed</span></td>
+                                            <td>Walk-in</td>
+                                            <td>ENT Specialist</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><span class="status-badge completed">Completed</span></td>
+                                            <td>Walk-in</td>
+                                            <td>General Physician</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><span class="status-badge completed">Completed</span></td>
+                                            <td>Walk-in</td>
+                                            <td>Gastroenterologist</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td><span class="status-badge pending">Pending</span></td>
+                                            <td>Online Booking</td>
+                                            <td>Cardiologist</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td><span class="status-badge completed">Completed</span></td>
+                                            <td>Walk-in</td>
+                                            <td>Gastroenterologist</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td><span class="status-badge pending">Pending</span></td>
+                                            <td>Online Booking</td>
+                                            <td>ENT Specialist</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td><span class="status-badge completed">Completed</span></td>
+                                            <td>Walk-in</td>
+                                            <td>General Physician</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-col">
+                <div class="panel-custom">
+                    <div class="panel-title"><i class="fa-solid fa-filter"></i> Detailed Filters</div>
+                    <select class="filter-select">
+                        <option>Filter by Service</option>
+                        <option>Online Consultation</option>
+                        <option>Clinic Visit</option>
+                        <option>Home Healthcare</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Filter by Patient Type</option>
+                        <option>New Patient</option>
+                        <option>Existing Patient</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Filter by Speciality</option>
+                        <option>General Physician</option>
+                        <option>Cardiologist</option>
+                        <option>Orthopedic</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Filter by Appointment Type</option>
+                        <option>Walk-in</option>
+                        <option>Online Booking</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Filter by Lab Test</option>
+                        <option>Blood Test (CBC)</option>
+                        <option>ECG</option>
+                        <option>Lipid Profile</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Filter by City</option>
+                        <option>Chennai</option>
+                        <option>Bengaluru</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Filter by State</option>
+                        <option>Tamil Nadu</option>
+                        <option>Karnataka</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+    <script>
+        // --- CHART GLOBAL CONFIGURATION ---
+        Chart.defaults.global.defaultFontColor = '#2c3e50';
+        Chart.defaults.global.defaultFontFamily = "'Poppins', sans-serif";
+        Chart.defaults.global.tooltips.backgroundColor = 'rgba(44, 62, 80, 0.9)';
+        Chart.defaults.global.tooltips.titleFontColor = '#ffffff';
+        Chart.defaults.global.tooltips.bodyFontColor = '#ffffff';
+        Chart.defaults.global.tooltips.borderColor = 'rgba(29, 166, 154, 0.6)';
+        Chart.defaults.global.tooltips.borderWidth = 1;
+        Chart.defaults.global.tooltips.cornerRadius = 4;
+        Chart.defaults.global.responsive = true;
+        Chart.defaults.global.maintainAspectRatio = false;
+
+        const TEAL = '#1da69a';
+        const TEAL_LIGHT = '#4de0d2';
+        const ORANGE = '#f9a527';
+        const ORANGE_LIGHT = '#ffc56b';
+        const ACCENTS = [TEAL, ORANGE, '#3498db', '#e74c3c', '#f1c40f', '#2ecc71', '#9b59b6', '#34495e'];
+
+        // --- CHART GENERATION FUNCTIONS ---
+
+        // 1. PIE: Speciality
+        var ctxSpeciality = document.getElementById('specialityPie').getContext('2d');
+        new Chart(ctxSpeciality, {
+            type: 'pie',
+            data: {
+                labels: ['Orthopedic', 'General Physician', 'Cardiologist', 'Gastroenterologist', 'ENT Specialist'],
+                datasets: [{
+                    data: [22, 21, 20.5, 19, 17.5],
+                    backgroundColor: ['#3498db', '#e74c3c', ORANGE, '#f1c40f', '#2ecc71'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: { legend: { display: false } }
+        });
+
+
+        // 2. DOUGHNUT: Patient Type
+        var ctxPatient = document.getElementById('patientDoughnut').getContext('2d');
+        new Chart(ctxPatient, {
+            type: 'doughnut',
+            data: {
+                labels: ['New Patient', 'Existing Patient'],
+                datasets: [{
+                    data: [51, 49],
+                    backgroundColor: [TEAL, ORANGE],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: { legend: { display: false }, cutoutPercentage: 70 }
+        });
+
+
+        // 3. PIE: Appointment Status
+        var ctxStatus = document.getElementById('statusPie').getContext('2d');
+        new Chart(ctxStatus, {
+            type: 'pie',
+            data: {
+                labels: ['Completed', 'Pending', 'Cancelled'],
+                datasets: [{
+                    data: [59, 25, 16],
+                    backgroundColor: [TEAL, ORANGE, '#c0392b'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: { legend: { display: false } }
+        });
+
+
+        // 4. BAR: Age distribution (sample)
+        var ctxAge = document.getElementById('ageBar').getContext('2d');
+        new Chart(ctxAge, {
+            type: 'bar',
+            data: {
+                labels: ['18-20', '21-25', '26-30', '31-35', '36-40', '41+'],
+                datasets: [{
+                    label: 'Patients',
+                    data: [15, 28, 20, 18, 10, 9],
+                    backgroundColor: ORANGE_LIGHT,
+                    borderColor: ORANGE,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    yAxes: [{ gridLines: { color: 'rgba(0, 0, 0, 0.05)' }, ticks: { beginAtZero: true, fontColor: '#7f8c8d' } }],
+                    xAxes: [{ gridLines: { display: false }, ticks: { fontColor: '#7f8c8d' } }]
+                }
+            }
+        });
+
+
+        // 5. PIE: Services
+        var ctxServices = document.getElementById('servicesPie').getContext('2d');
+        new Chart(ctxServices, {
+            type: 'doughnut',
+            data: {
+                labels: ['Second Opinion', 'Online Consultation', 'Home Healthcare', 'Doctor Home', 'Clinic Visit'],
+                datasets: [{
+                    data: [26, 20.5, 19, 18.5, 16],
+                    backgroundColor: ['#3498db', '#2ecc71', ORANGE, '#e74c3c', '#f1c40f'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: { legend: { position: 'right' }, cutoutPercentage: 50 }
+        });
+
+
+        // 6. DOUGHNUT: Gender
+        var ctxGender = document.getElementById('genderDoughnut').getContext('2d');
+        new Chart(ctxGender, {
+            type: 'doughnut',
+            data: {
+                labels: ['Female', 'Male', 'Other'],
+                datasets: [{
+                    data: [51, 46, 3],
+                    backgroundColor: ['#e74c3c', '#3498db', '#9b59b6'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: { legend: { position: 'bottom' }, cutoutPercentage: 70 }
+        });
+
+
+        // 7. BAR: Health Problem - Horizontal bars
+        var ctxHealth = document.getElementById('healthBar').getContext('2d');
+        new Chart(ctxHealth, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['Cold', 'Fever', 'Headache', 'Back Pain', 'Stomach', 'Allergy', 'Diabetes', 'Hypertension'],
+                datasets: [{
+                    data: [26, 22, 18, 17, 16, 14, 12, 11],
+                    backgroundColor: ORANGE_LIGHT,
+                    borderColor: ORANGE,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    xAxes: [{ gridLines: { color: 'rgba(0, 0, 0, 0.05)' }, ticks: { beginAtZero: true, fontColor: '#7f8c8d' } }],
+                    yAxes: [{ gridLines: { display: false }, ticks: { fontColor: '#7f8c8d' } }]
+                }
+            }
+        });
+
+
+        // 8. BAR: Medicine - Horizontal bars
+        var ctxMedicine = document.getElementById('medicineBar').getContext('2d');
+        new Chart(ctxMedicine, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['Med A (Pain)', 'Med B (Antibiotic)', 'Med C (Allergy)', 'Med D (Digestion)', 'Med E (Fever)'],
+                datasets: [{
+                    data: [28, 24, 19, 18, 15],
+                    backgroundColor: TEAL_LIGHT,
+                    borderColor: TEAL,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    xAxes: [{ gridLines: { color: 'rgba(0, 0, 0, 0.05)' }, ticks: { beginAtZero: true, fontColor: '#7f8c8d' } }],
+                    yAxes: [{ gridLines: { display: false }, ticks: { fontColor: '#7f8c8d' } }]
+                }
+            }
+        });
+
+
+        // 9. BAR: Lab Test - Horizontal bars
+        var ctxLab = document.getElementById('labBar').getContext('2d');
+        new Chart(ctxLab, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['CBC', 'Lipid Profile', 'Blood Sugar', 'ECG', 'X-Ray'],
+                datasets: [{
+                    data: [36, 18, 14, 12, 11],
+                    backgroundColor: ORANGE_LIGHT,
+                    borderColor: ORANGE,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    xAxes: [{ gridLines: { color: 'rgba(0, 0, 0, 0.05)' }, ticks: { beginAtZero: true, fontColor: '#7f8c8d' } }],
+                    yAxes: [{ gridLines: { display: false }, ticks: { fontColor: '#7f8c8d' } }]
+                }
+            }
+        });
+
+
+        // 10. LINE: Revenue trend
+        var ctxRevenue = document.getElementById('revenueLine').getContext('2d');
+        new Chart(ctxRevenue, {
+            type: 'line',
+            data: {
+                labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Clinic Revenue (₹)',
+                    data: [532961, 516697, 389651, 370767, 296641, 66610, 24533], // Reversed to show trend chronologically
+                    borderColor: TEAL,
+                    backgroundColor: 'rgba(29,166,154,0.1)',
+                    fill: true,
+                    lineTension: 0.4,
+                    pointBackgroundColor: TEAL,
+                    pointBorderColor: 'white',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false,
+                            callback: function (value) { return '₹' + value.toLocaleString(); },
+                            fontColor: '#7f8c8d'
+                        },
+                        gridLines: { color: 'rgba(0, 0, 0, 0.05)' }
+                    }],
+                    xAxes: [{
+                        ticks: { fontColor: '#7f8c8d' },
+                        gridLines: { display: false }
+                    }]
+                }
+            }
+        });
+
+        $('.filter-select').on('change', function () {
+            console.log('Filter changed:', $(this).val());
+        });
+    </script>
+</body>
+
+</html>
