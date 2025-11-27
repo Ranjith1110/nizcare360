@@ -4,518 +4,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Schedule - Schedulino Style</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>CollEaze Team Schedule</title>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.10/index.global.min.js'></script>
+
+    <!-- Google Fonts Poppins for Dashboard Consistency -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --brand-primary: #44C7D9;
-            --brand-secondary: #1D2E59;
-            --bg-light: #f4f7f9;
-            --border-color: #e0e0e0;
-            --shift-pink-bg: #fad2e1;
-            --shift-pink-border: #e48da8;
-            --shift-green-bg: #d1e7dd;
-            --shift-green-border: #a3cfbb;
-            --shift-yellow-bg: #fff3cd;
-            --shift-yellow-border: #ffe69c;
-            --shift-purple-bg: #e2d9f3;
-            --shift-purple-border: #cff4fc;
-            --shift-blue-bg: #cff4fc;
-            --shift-blue-border: #9eeaf9;
+            --primary: #3b82f6;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --border: #e5e7eb;
+            --bg-pink: #be185d;
+            --text-pink: #ffffff;
+            --border-pink: #831843;
+            --bg-purple: #7e22ce;
+            --text-purple: #ffffff;
+            --border-purple: #581c87;
+            --bg-green: #15803d;
+            --text-green: #ffffff;
+            --border-green: #14532d;
+            --bg-yellow: #b45309;
+            --text-yellow: #ffffff;
+            --border-yellow: #78350f;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-light);
-            color: #333;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
         }
 
-        .navbar-custom {
-            background-color: var(--brand-secondary);
-            padding: 0.8rem 1rem;
-        }
-
-        .navbar-brand {
-            color: white;
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        .nav-link {
-            color: rgba(255, 255, 255, 0.7) !important;
-            transition: 0.3s;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--brand-primary) !important;
-        }
-
-        .sub-header {
-            background-color: white;
-            border-bottom: 1px solid var(--border-color);
-            padding: 0;
-        }
-
-        .tab-btn {
-            background: none;
-            border: none;
-            padding: 15px 30px;
-            font-weight: 600;
-            color: #666;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab-btn.active {
-            color: var(--brand-secondary);
-            border-bottom: 3px solid var(--brand-secondary);
-        }
-
-        .toolbar {
-            padding: 1rem;
-            background-color: white;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 1rem;
-        }
-
-        .schedule-container {
-            padding: 0 1rem 2rem 1rem;
-            overflow-x: auto;
-        }
-
-        .schedule-table {
-            width: 100%;
+        .app-header {
             background: white;
-            border-collapse: separate;
-            border-spacing: 0;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
         }
 
-        .schedule-table th,
-        .schedule-table td {
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            padding: 10px;
-            vertical-align: top;
-        }
-
-        .schedule-table thead th {
-            background-color: #f8f9fa;
-            text-align: center;
-            min-width: 160px;
+        .tabs {
+            display: flex;
+            gap: 20px;
             font-weight: 600;
-            color: var(--brand-secondary);
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-left: 10px;
         }
 
-        .date-sub {
-            display: block;
-            font-size: 0.75rem;
-            color: #888;
-            font-weight: 400;
+        .tab.active {
+            color: #1e293b;
+            border-bottom: 3px solid #1e293b;
+            padding-bottom: 10px;
         }
 
-        .col-employee {
-            min-width: 250px;
-            position: sticky;
-            left: 0;
-            background-color: white;
-            z-index: 2;
-            border-right: 2px solid #eee !important;
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .employee-card {
+        .btn {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #f9fafb;
+        }
+
+        #calendar {
+            background: white;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .fc-scrollgrid {
+            border: none !important;
+        }
+
+        .fc-col-header-cell {
+            background-color: #f8fafc;
+            padding: 10px 0;
+        }
+
+        .fc-datagrid-cell-main {
+            padding-left: 15px;
+        }
+
+        .resource-card {
             display: flex;
             align-items: center;
+            padding: 10px 0;
         }
 
         .avatar {
-            width: 40px;
-            height: 40px;
-            background-color: var(--brand-secondary);
-            color: white;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
+            background: #1e293b;
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            margin-right: 12px;
-            font-size: 0.9rem;
-        }
-
-        .emp-name {
+            font-size: 12px;
             font-weight: 600;
-            font-size: 0.95rem;
+            margin-right: 12px;
+        }
+
+        .res-info h4 {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .res-info p {
+            margin: 2px 0 0 0;
+            font-size: 11px;
+            color: var(--text-gray);
+        }
+
+        .header-cell-custom {
+            text-align: center;
+        }
+
+        .header-date {
             display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
         }
 
-        .emp-stats {
-            font-size: 0.75rem;
-            color: #888;
+        .header-stats {
+            display: block;
+            font-size: 11px;
+            color: #9ca3af;
+            font-weight: 400;
+            margin-top: 2px;
         }
 
-        .shift-block {
-            padding: 6px 10px;
+        .fc-timeline-event {
+            border: none !important;
             border-radius: 4px;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
-            border-left: 4px solid;
+            margin-top: 5px !important;
+            padding: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .event-content {
+            display: flex;
+            flex-direction: column;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.4;
             position: relative;
-            cursor: pointer;
-            transition: transform 0.2s;
+            padding: 2px;
         }
 
-        .shift-block:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .shift-time {
+        .event-time {
             font-weight: 700;
             display: block;
+            margin-bottom: 2px;
+            opacity: 0.9;
         }
 
-        .shift-loc {
-            display: block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .shift-icon {
+        .event-icon {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            opacity: 0.6;
+            top: 0;
+            right: 0;
+            font-size: 12px;
+            opacity: 0.8;
         }
 
-        .shift-pink {
-            background-color: var(--shift-pink-bg);
-            border-color: var(--brand-accent-1, #e91e63);
-            color: #880e4f;
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 700;
         }
 
-        .shift-green {
-            background-color: var(--shift-green-bg);
-            border-color: #198754;
-            color: #0f5132;
+        .evt-pink {
+            background-color: var(--bg-pink) !important;
+            border-left: 3px solid var(--border-pink) !important;
+            color: var(--text-pink) !important;
         }
 
-        .shift-yellow {
-            background-color: var(--shift-yellow-bg);
-            border-color: #ffc107;
-            color: #856404;
+        .evt-purple {
+            background-color: var(--bg-purple) !important;
+            border-left: 3px solid var(--border-purple) !important;
+            color: var(--text-purple) !important;
         }
 
-        .shift-purple {
-            background-color: var(--shift-purple-bg);
-            border-color: #6f42c1;
-            color: #482c7d;
+        .evt-green {
+            background-color: var(--bg-green) !important;
+            border-left: 3px solid var(--border-green) !important;
+            color: var(--text-green) !important;
         }
 
-        .shift-blue {
-            background-color: var(--shift-blue-bg);
-            border-color: var(--brand-primary);
-            color: #055160;
-        }
-
-        .shift-gray {
-            background-color: #f8f9fa;
-            border-color: #ced4da;
-            color: #6c757d;
-            border-style: dashed;
-        }
-
-        .status-all-day {
-            color: #dc3545;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: block;
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        .status-ok {
-            color: var(--brand-primary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: block;
-            margin-top: 15px;
-            text-align: center;
+        .evt-yellow {
+            background-color: var(--bg-yellow) !important;
+            border-left: 3px solid var(--border-yellow) !important;
+            color: var(--text-yellow) !important;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="sub-header d-flex justify-content-between align-items-center px-4">
-        <div class="tabs">
-            <button class="tab-btn">My Schedule</button>
-            <button class="tab-btn active">Team Schedule</button>
-        </div>
-        <div class="py-2">
-            <button class="btn btn-sm btn-outline-secondary">Requests <span class="badge bg-danger">2</span></button>
-        </div>
-    </div>
-
-    <div class="toolbar d-flex flex-wrap justify-content-between align-items-center gap-3">
-        <div class="d-flex gap-2">
-            <select class="form-select form-select-sm" style="width: 120px;">
-                <option>Location: All</option>
-                <option>HQ</option>
-                <option>Branch A</option>
-            </select>
-            <select class="form-select form-select-sm" style="width: 120px;">
-                <option>Role: All</option>
-                <option>Manager</option>
-                <option>Staff</option>
-            </select>
-            <div class="btn-group btn-group-sm">
-                <button class="btn btn-outline-secondary active"><i class="fas fa-th"></i> Grid</button>
-                <button class="btn btn-outline-secondary"><i class="fas fa-list"></i> List</button>
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <div style="background: white; padding: 20px 20px 0 20px; border-radius: 8px 8px 0 0;">
+            <div class="tabs">
+                <div class="tab">My Schedule</div>
+                <div class="tab active">Team Schedule</div>
             </div>
         </div>
 
-        <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-sm btn-light border"><i class="fas fa-chevron-left"></i></button>
-            <span class="fw-bold text-muted small">Nov 11 - Nov 17, 2025</span>
-            <button class="btn btn-sm btn-light border"><i class="fas fa-chevron-right"></i></button>
-            <button class="btn btn-sm btn-outline-primary">Today</button>
+        <div class="controls-row">
+            <div style="width: 100px;"></div>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <button class="btn" id="prevBtn">&lt;</button>
+                <span id="currentDateRange"
+                    style="font-weight:600; font-size:14px; min-width: 160px; text-align: center;">Nov 11 - Nov 17,
+                    2025</span>
+                <button class="btn" id="nextBtn">&gt;</button>
+            </div>
+            <div style="width: 100px;"></div>
         </div>
 
-        <div>
-            <button class="btn btn-sm text-white fw-bold shadow-sm" style="background-color: var(--brand-primary);">
-                <i class="fas fa-check me-1"></i> Publish 4 Shifts
-            </button>
-            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-bell"></i> Notify</button>
-        </div>
+        <div id='calendar'></div>
     </div>
 
-    <div class="schedule-container">
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <th class="col-employee text-start ps-4">Employee</th>
-                    <th>
-                        Mon 11 Nov
-                        <span class="date-sub">24h 0m / 4 Shifts</span>
-                    </th>
-                    <th>
-                        Tue 12 Nov
-                        <span class="date-sub">28h 0m / 4 Shifts</span>
-                    </th>
-                    <th>
-                        Wed 13 Nov
-                        <span class="date-sub">31h 30m / 5 Shifts</span>
-                    </th>
-                    <th>
-                        Thu 14 Nov
-                        <span class="date-sub">14h 0m / 2 Shifts</span>
-                    </th>
-                    <th>
-                        Fri 15 Nov
-                        <span class="date-sub">16h 0m / 3 Shifts</span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="col-employee">
-                        <div class="employee-card">
-                            <div class="avatar" style="background-color: #343a40;">BS</div>
-                            <div>
-                                <span class="emp-name">Betty Smith</span>
-                                <span class="emp-stats">17h 30m / 4 Shifts</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-pink">
-                            <span class="shift-time">16:00 - 21:00</span>
-                            <span class="shift-loc">Hotel Plaza</span>
-                            <i class="fas fa-redo shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="status-all-day"><i class="fas fa-thumbs-down me-1"></i> All Day</div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-pink">
-                            <span class="shift-time">16:00 - 21:00</span>
-                            <span class="shift-loc">Hotel Plaza</span>
-                            <i class="fas fa-redo shift-icon"></i>
-                        </div>
-                    </td>
-                    <td></td>
-                    <td>
-                        <div class="shift-block shift-pink">
-                            <span class="shift-time">16:00 - 21:00</span>
-                            <span class="shift-loc">Hotel Plaza</span>
-                            <i class="fas fa-question shift-icon"></i>
-                        </div>
-                    </td>
-                </tr>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
 
-                <tr>
-                    <td class="col-employee">
-                        <div class="employee-card">
-                            <div class="avatar" style="background-color: var(--brand-secondary);">BP</div>
-                            <div>
-                                <span class="emp-name">Brenda Patterson</span>
-                                <span class="emp-stats">32h 30m / 4 Shifts</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-purple">
-                            <span class="shift-time">07:00 - 14:00</span>
-                            <span class="shift-loc">Morning Shift</span>
-                            <i class="fas fa-check shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-green">
-                            <span class="shift-time">10:00 - 21:00</span>
-                            <span class="shift-loc">South Fork Inn</span>
-                            <i class="fas fa-ban shift-icon text-danger"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-green">
-                            <span class="shift-time">10:00 - 21:00</span>
-                            <span class="shift-loc">South Fork Inn</span>
-                            <i class="fas fa-check shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="status-ok"><i class="fas fa-thumbs-up me-1"></i> 08:00 - 15:00</div>
-                    </td>
-                    <td></td>
-                </tr>
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+                initialView: 'resourceTimelineWeek',
+                initialDate: '2025-11-11',
+                headerToolbar: false,
+                slotDuration: '24:00:00',
+                slotLabelFormat: { weekday: 'short', day: 'numeric', month: 'short' },
+                resourceAreaWidth: '250px',
+                height: 'auto',
+                contentHeight: 'auto',
+                resourceAreaHeaderContent: 'Employee',
 
-                <tr>
-                    <td class="col-employee">
-                        <div class="employee-card">
-                            <div class="avatar" style="background-color: #6c757d;">HC</div>
-                            <div>
-                                <span class="emp-name">Howard Carter</span>
-                                <span class="emp-stats">29h 0m / 5 Shifts</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="status-ok"><i class="fas fa-thumbs-up me-1"></i> All Day</div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-yellow">
-                            <span class="shift-time">16:00 - 21:00</span>
-                            <span class="shift-loc">Evening Shift</span>
-                            <i class="fas fa-redo shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-yellow">
-                            <span class="shift-time">16:00 - 21:00</span>
-                            <span class="shift-loc">Evening Shift</span>
-                            <i class="fas fa-redo shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-yellow">
-                            <span class="shift-time">16:00 - 21:00</span>
-                            <span class="shift-loc">Evening Shift</span>
-                            <i class="fas fa-redo shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-purple">
-                            <span class="shift-time">07:00 - 14:00</span>
-                            <span class="shift-loc">Morning Shift</span>
-                            <i class="fas fa-check shift-icon"></i>
-                        </div>
-                    </td>
-                </tr>
+                // Header (Days)
+                slotLabelContent: function (arg) {
+                    const date = arg.date;
+                    const stats = {
+                        11: "24h 0m / 4 Shifts",
+                        12: "28h 0m / 4 Shifts",
+                        13: "31h 30m / 5 Shifts",
+                        14: "14h 0m / 2 Shifts",
+                        15: "16h 0m / 3 Shifts"
+                    };
+                    const dayStats = stats[date.getDate()] || "0h 0m / 0 Shifts";
 
-                <tr>
-                    <td class="col-employee">
-                        <div class="employee-card">
-                            <div class="avatar" style="background-color: #495057;">JE</div>
-                            <div>
-                                <span class="emp-name">Jason Evans</span>
-                                <span class="emp-stats">20h 30m / 4 Shifts</span>
-                            </div>
+                    return {
+                        html: `
+                        <div class="header-cell-custom">
+                            <span class="header-date">${new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }).format(date)}</span>
+                            <span class="header-stats">${dayStats}</span>
                         </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-yellow" style="background-color: #fff8e1;">
-                            <span class="shift-time">09:00 - 16:30</span>
-                            <span class="shift-loc">Hemlock Hall</span>
-                            <i class="fas fa-check shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="status-ok"><i class="fas fa-thumbs-up me-1"></i> 08:00 - 15:00</div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-pink"
-                            style="background-color: #f3e5f5; border-color: #d81b60; color: #d81b60;">
-                            <span class="shift-time">16:00 - 21:00</span>
-                            <span class="shift-loc">Hampton Inn</span>
-                            <i class="fas fa-check shift-icon"></i>
-                        </div>
-                    </td>
-                    <td></td>
-                    <td>
-                        <div class="shift-block shift-pink">
-                            <span class="shift-time">16:00 - 21:00</span>
-                            <span class="shift-loc">Hotel Plaza</span>
-                            <i class="fas fa-check shift-icon"></i>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-employee">
-                        <div class="employee-card">
-                            <div class="avatar" style="background-color: #343a40;">JH</div>
-                            <div>
-                                <span class="emp-name">Jenny Higgins</span>
-                                <span class="emp-stats">31h 30m / 4 Shifts</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td></td>
-                    <td>
-                        <div class="shift-block shift-green">
-                            <span class="shift-time">10:00 - 21:00</span>
-                            <span class="shift-loc">South Fork Inn</span>
-                            <i class="fas fa-comment shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-green">
-                            <span class="shift-time">10:00 - 21:00</span>
-                            <span class="shift-loc">South Fork Inn</span>
-                            <i class="fas fa-comment shift-icon"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="shift-block shift-green">
-                            <span class="shift-time">10:00 - 21:00</span>
-                            <span class="shift-loc">South Fork Inn</span>
-                            <i class="fas fa-comment shift-icon"></i>
-                        </div>
-                    </td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                    `};
+                },
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                // Resources (Rows)
+                resources: [
+                    { id: 'a', title: 'Betty Smith', hours: '17h 30m / 4 Shifts', avatar: 'BS' },
+                    { id: 'b', title: 'Brenda Patterson', hours: '32h 30m / 4 Shifts', avatar: 'BP' },
+                    { id: 'c', title: 'Howard Carter', hours: '29h 0m / 5 Shifts', avatar: 'HC' },
+                    { id: 'd', title: 'Jason Evans', hours: '20h 30m / 4 Shifts', avatar: 'JE' },
+                    { id: 'e', title: 'Jenny Higgins', hours: '31h 30m / 4 Shifts', avatar: 'JH' }
+                ],
+
+                resourceLabelContent: function (arg) {
+                    const res = arg.resource.extendedProps;
+                    return {
+                        html: `
+                        <div class="resource-card">
+                            <div class="avatar">${res.avatar}</div>
+                            <div class="res-info">
+                                <h4>${arg.resource.title}</h4>
+                                <p>${res.hours}</p>
+                            </div>
+                        </div>
+                    `};
+                },
+
+                // Events
+                events: [
+                    // Betty
+                    { resourceId: 'a', start: '2025-11-11', title: 'Hotel Plaza', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-pink'] },
+                    { resourceId: 'a', start: '2025-11-12', display: 'background', title: 'All Day', extendedProps: { status: 'down' } },
+                    { resourceId: 'a', start: '2025-11-13', title: 'Hotel Plaza', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-pink'] },
+                    { resourceId: 'a', start: '2025-11-15', title: 'Hotel Plaza', extendedProps: { timeStr: '16:00 - 21:00', icon: '?' }, classNames: ['evt-pink'] },
+
+                    // Brenda
+                    { resourceId: 'b', start: '2025-11-11', title: 'Morning Shift', extendedProps: { timeStr: '07:00 - 14:00', icon: '✓' }, classNames: ['evt-purple'] },
+                    { resourceId: 'b', start: '2025-11-12', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '🚫' }, classNames: ['evt-green'] },
+                    { resourceId: 'b', start: '2025-11-13', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '✓' }, classNames: ['evt-green'] },
+                    { resourceId: 'b', start: '2025-11-14', display: 'background', title: '08:00 - 15:00', extendedProps: { status: 'up' } },
+
+                    // Howard
+                    { resourceId: 'c', start: '2025-11-11', display: 'background', title: 'All Day', extendedProps: { status: 'up' } },
+                    { resourceId: 'c', start: '2025-11-12', title: 'Evening Shift', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-yellow'] },
+                    { resourceId: 'c', start: '2025-11-13', title: 'Evening Shift', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-yellow'] },
+                    { resourceId: 'c', start: '2025-11-14', title: 'Evening Shift', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-yellow'] },
+                    { resourceId: 'c', start: '2025-11-15', title: 'Morning Shift', extendedProps: { timeStr: '07:00 - 14:00', icon: '✓' }, classNames: ['evt-purple'] },
+
+                    // Jason
+                    { resourceId: 'd', start: '2025-11-11', title: 'Hemlock Hall', extendedProps: { timeStr: '09:00 - 16:30', icon: '✓' }, classNames: ['evt-yellow'] },
+                    { resourceId: 'd', start: '2025-11-12', display: 'background', title: '08:00 - 15:00', extendedProps: { status: 'up' } },
+                    { resourceId: 'd', start: '2025-11-13', title: 'Hampton Inn', extendedProps: { timeStr: '16:00 - 21:00', icon: '✓' }, classNames: ['evt-pink'] },
+                    { resourceId: 'd', start: '2025-11-15', title: 'Hotel Plaza', extendedProps: { timeStr: '16:00 - 21:00', icon: '✓' }, classNames: ['evt-pink'] },
+
+                    // Jenny
+                    { resourceId: 'e', start: '2025-11-12', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '💬' }, classNames: ['evt-green'] },
+                    { resourceId: 'e', start: '2025-11-13', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '💬' }, classNames: ['evt-green'] },
+                    { resourceId: 'e', start: '2025-11-14', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '💬' }, classNames: ['evt-green'] },
+                ],
+
+                eventContent: function (arg) {
+                    if (arg.event.display === 'background') {
+                        let iconHtml = '';
+                        let color = '#1e3a8a';
+                        let icon = '👍';
+
+                        if (arg.event.extendedProps.status === 'down') {
+                            color = '#b91c1c';
+                            icon = '👎';
+                        }
+
+                        return {
+                            html: `
+                            <div class="status-indicator" style="color:${color}; justify-content:center; height:100%;">
+                                <span style="margin-right:5px;">${icon}</span> ${arg.event.title}
+                            </div>
+                        `};
+                    }
+
+                    return {
+                        html: `
+                        <div class="event-content">
+                            <span class="event-time">${arg.event.extendedProps.timeStr}</span>
+                            <span class="event-loc">${arg.event.title}</span>
+                            <span class="event-icon">${arg.event.extendedProps.icon || ''}</span>
+                        </div>
+                    `};
+                }
+            });
+
+            calendar.render();
+
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                calendar.prev();
+            });
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                calendar.next();
+            });
+        });
+    </script>
 </body>
 
 </html>
