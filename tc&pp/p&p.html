@@ -1,0 +1,515 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+    body {
+        background-color: #f4f6f8;
+        color: #333;
+        line-height: 1.7;
+        font-family: "Outfit", sans-serif;
+    }
+
+    .page-container {
+        max-width: 1200px;
+        margin: 100px auto 40px auto !important;
+        background: #ffffff;
+        padding: 10px 50px 10px 50px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        border-top: 5px solid #1da69a;
+    }
+
+    h1.doc-title {
+        font-weight: 700;
+        color: #1da69a;
+        margin-bottom: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 2rem;
+    }
+
+    .doc-subtitle {
+        text-align: center;
+        color: #1da69a;
+        margin-bottom: 40px;
+        font-size: 0.9rem;
+    }
+
+    .section-header {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1da69a;
+        margin-top: 35px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .clause-item {
+        display: flex;
+        margin-bottom: 15px;
+    }
+
+    .clause-number {
+        font-weight: 600;
+        min-width: 35px;
+        color: #555;
+    }
+
+    .clause-content {
+        flex: 1;
+        text-align: justify;
+    }
+
+    /* Sub-lists */
+    .sub-list {
+        list-style-type: lower-roman;
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+
+    .sub-list li {
+        margin-bottom: 10px;
+        padding-left: 5px;
+    }
+
+    /* Highlight Boxes (Address/Contact) */
+    .info-box {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-left: 4px solid #6c757d;
+        font-size: 0.95rem;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+    }
+
+    a {
+        color: #0d6efd;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .footer-note {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #888;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+
+    /* Print Button Styles */
+    .btn-print {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .page-container {
+            padding: 25px;
+            margin: 20px auto;
+        }
+
+        h1.doc-title {
+            font-size: 1.5rem;
+        }
+    }
+
+    /* Print specific styles */
+    @media print {
+        body {
+            background-color: white;
+        }
+
+        .page-container {
+            box-shadow: none;
+            margin: 0;
+            padding: 0;
+            border: none;
+            max-width: 100%;
+        }
+
+        .btn-print {
+            display: none;
+        }
+
+        a {
+            text-decoration: underline;
+            color: #000;
+        }
+    }
+</style>
+
+
+<body>
+
+    <div class="container">
+        <div class="page-container">
+
+            <h1 class="doc-title">Privacy Policy</h1>
+            <!-- <div class="doc-subtitle">Last Updated: November 2023</div> -->
+
+            <div class="section-block">
+                <div class="section-header">1. GENERAL</div>
+
+                <!-- General Clauses 1-5 -->
+                <div class="clause-item">
+                    <div class="clause-number">1.</div>
+                    <div class="clause-content">
+                        This document is an electronic record in terms of Information Technology Act, 2000 and rules
+                        there under as applicable and the amended provisions pertaining to electronic records in various
+                        statutes as amended by the Information Technology Act, 2000. This electronic record is generated
+                        by a computer system and does not require any physical or digital signature.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">2.</div>
+                    <div class="clause-content">
+                        This document is published in accordance with the provisions of Rule 3 (1) of the Information
+                        Technology (Intermediaries guidelines) Rules, 2011 that require publishing the rules and
+                        regulations, privacy policy and terms of use for access or usage of the domain name <a
+                            href="http://www.nizcare.com">www.nizcare.com</a> (“Website”) and the corresponding
+                        application Nizcare (“Application”).
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">3.</div>
+                    <div class="clause-content">
+                        The Website and the Application are owned and operated by <strong>NIZCARE PRIVATE
+                            LIMITED</strong> (“Company”), a private company limited by shares, incorporated under the
+                        provisions of the Companies Act, 2013, and having a branch office located at:
+                        <div class="info-box">
+                            Regus KRM Plaza, South Towers, 8th Floor, <br>
+                            No.2, Harrington Road, Chetpet, Chennai – 600 031
+                        </div>
+                        where such expression shall, unless repugnant to the context thereof, be deemed to include its
+                        respective representatives, administrators, employees, directors, officers, agents and their
+                        successors and assigns.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">4.</div>
+                    <div class="clause-content">
+                        By accessing the Application, whether through a mobile device, mobile application or computer,
+                        the User agrees to be bound by this Privacy Policy (“Policy”), whether or not the User creates
+                        an account to avail of the Service (defined below). If the User wishes to avail of the Service,
+                        the User does hereby unequivocally accept and agree to the contents of this Policy.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">5.</div>
+                    <div class="clause-content">
+                        The features / services of this Application, Website, and Service are only meant to be available
+                        and used within the sovereign territory of India. Users (defined below) located outside India
+                        are not permitted to use / view / access the same.
+                    </div>
+                </div>
+
+                <h5 class="mt-4 mb-3 fw-bold text-secondary">Definitions</h5>
+
+                <div class="clause-item">
+                    <div class="clause-number">6.</div>
+                    <div class="clause-content">
+                        For the purpose of this Policy, wherever the context so requires:
+                        <ol class="sub-list">
+                            <li>The term <strong>“the User” & “User”</strong> shall mean any legal person or entity
+                                accessing or using the services (defined below) provided on the Application, who is
+                                competent to enter into binding contracts, as per the provisions of the Indian Contract
+                                Act, 1872. For the purposes of these Terms, the collective gender neutral pronouns ‘it’,
+                                ‘its’ and ‘itself’ shall be used to reference the User;</li>
+                            <li>The terms <strong>“Party” & “Parties”</strong> shall respectively be used to refer to
+                                the User and the Company individually and collectively, as the context so requires.</li>
+                            <li>The term <strong>“Hospital”</strong> shall mean any hospital frequented by the User for
+                                its medical needs, specifically any hospital that the User visits pursuant to booking an
+                                appointment on the Application, or any hospital in which a Physician (defined below)
+                                practices. The term ‘Hospital’ shall also include the private clinic of a Physician, or
+                                a private clinic in which a Physician consults / practices.</li>
+                            <li>The term <strong>“Physician”</strong> shall mean and include each and every medical
+                                practitioner, including without limitation doctors, physicians, surgeons, dentists,
+                                imaging technicians, phlebotomists, nurse practitioners, and lab technicians who are
+                                registered on the Application, whether or not they directly provide Service(s) to the
+                                User.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">7.</div>
+                    <div class="clause-content">
+                        The Application has been designed by the Company to assist the User by providing it with a
+                        multitude of options and services to taking care of its medical needs, including without
+                        limitation:
+                        <ul class="list-unstyled ms-3 mt-2 text-muted" style="font-size: 0.95em;">
+                            <li class="mb-2">• Facilitating the answering of the User’s medical queries by Physicians;
+                            </li>
+                            <li class="mb-2">• Enabling the User to book a virtual appointment to avail of private text,
+                                audio, and/or video consultation services from Physicians ("e-Appointment");</li>
+                            <li class="mb-2">• Enabling the User to have its queries posted and answered on a public
+                                forum ("Forum");</li>
+                            <li class="mb-2">• Enabling the User to access blog posts/videos posted by Physicians;</li>
+                            <li class="mb-2">• Enabling booking of offline appointments ("Appointment") and home visits
+                                ("Home Consult");</li>
+                            <li class="mb-2">• Enabling booking of home collection for lab samples and measuring
+                                'Vitals';</li>
+                            <li class="mb-2">• Providing wellness services like yoga and ayurveda ("Wellness");</li>
+                            <li class="mb-2">• Enabling search for Physicians by specialty/geography.</li>
+                        </ul>
+                        (collectively, the “Service”).
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">8.</div>
+                    <div class="clause-content">
+                        The use of the Application by the User is solely governed by this Policy as well as the Terms of
+                        Use of the Application (“Terms”, available at <a
+                            href="https://www.nizcare.com/terms-conditions">https://www.nizcare.com/terms-conditions</a>),
+                        and any modifications or amendments made thereto by the Company.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collection of Info -->
+            <div class="section-block">
+                <div class="section-header">2. COLLECTION OF PERSONAL AND OTHER INFORMATION</div>
+
+                <div class="clause-item">
+                    <div class="clause-number">1.</div>
+                    <div class="clause-content">
+                        The User expressly agrees and acknowledges that the Company collects and stores the User’s
+                        Vitals and other personal information relating to the User... including but not limited to the
+                        User’s user name, passwords, email address, name, address, age, date of birth, gender,
+                        nationality, browsing history, queries, symptoms, Vitals, readings, test results, etc...
+                        ("Information"). The User hereby expressly authorises the Company to anonymously share the
+                        User’s Information with Physicians, Hospitals, and third parties as it sees fit.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">2.</div>
+                    <div class="clause-content">
+                        The User is further aware that its Information may be used by the Company to provide services
+                        and features targeted at the User, that are most likely to meet the User’s needs, and also to
+                        customize and improve the Application.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">3.</div>
+                    <div class="clause-content">
+                        The User is aware that the Company may automatically track certain information about the User
+                        based upon the User’s IP address and the User’s behaviour on the Application, and the User
+                        expressly consents to the same.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">4.</div>
+                    <div class="clause-content">
+                        If the User chooses to avail of the Services provided through the Application, the User
+                        expressly consents to allowing the Company to collect and disseminate the User’s Information as
+                        it sees fit.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">5.</div>
+                    <div class="clause-content">
+                        If the User chooses to post his/her information / queries / messages / reviews / feedback
+                        anywhere on the Application... the User is aware that any and all such Information provided will
+                        be collected and stored by the Company indefinitely.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">6.</div>
+                    <div class="clause-content">
+                        The User is aware that any and all Information pertaining to the User collected by the
+                        Company... may be collected and complied by the Company into a file/folder specifically created
+                        for / allotted to the User.
+                    </div>
+                </div>
+
+                <div class="clause-item">
+                    <div class="clause-number">7.</div>
+                    <div class="clause-content">
+                        The User is aware that the Information provided to the Company may be used to send the User
+                        offers and promotions.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cookies -->
+            <div class="section-block">
+                <div class="section-header">3. COOKIES</div>
+                <div class="clause-item">
+                    <div class="clause-number">1.</div>
+                    <div class="clause-content">
+                        The User is aware that a ‘Cookie’ is a small piece of information stored by a web server on a
+                        web browser... The User is aware that the Application may place both permanent and temporary
+                        cookies on the User’s mobile device / computer hard drive and web browser, and does hereby
+                        expressly consent to the same.
+                    </div>
+                </div>
+                <div class="clause-item">
+                    <div class="clause-number">2.</div>
+                    <div class="clause-content">
+                        The User is further aware that the Application uses data collection devices such as cookies to
+                        help analyse web page flow, measure promotional effectiveness, and promote trust and safety.
+                    </div>
+                </div>
+                <div class="clause-item">
+                    <div class="clause-number">3.</div>
+                    <div class="clause-content">
+                        Additionally, the User is aware that it might encounter ‘cookies’ or other similar devices on
+                        certain pages of the Application that are placed by third parties or affiliates of the Company.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divulging Info -->
+            <div class="section-block">
+                <div class="section-header">4. DIVULGING/SHARING OF PERSONAL INFORMATION</div>
+                <div class="clause-item">
+                    <div class="clause-number">1.</div>
+                    <div class="clause-content">
+                        Due to the nature of the Service, the User is expressly aware that its Information will
+                        necessarily be communicated to Physicians / Hospitals in order to provide the User with the
+                        Service.
+                    </div>
+                </div>
+                <div class="clause-item">
+                    <div class="clause-number">2.</div>
+                    <div class="clause-content">
+                        The User hereby expressly authorises the Company to share / divulge any and all Information
+                        pertaining to the User with any third parties, at the sole discretion of the Company.
+                    </div>
+                </div>
+                <div class="clause-item">
+                    <div class="clause-number">3.</div>
+                    <div class="clause-content">
+                        The User is aware that the Company may share the User’s Information with other corporate
+                        entities and affiliates to help detect and prevent identity theft, fraud and other potentially
+                        illegal acts.
+                    </div>
+                </div>
+                <div class="clause-item">
+                    <div class="clause-number">4.</div>
+                    <div class="clause-content">
+                        The Company may also disclose the User’s Information to law enforcement offices, third party
+                        rights owners, or other third parties if it believes that such disclosure is reasonably
+                        necessary to enforce the Terms or Policy.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Security -->
+            <div class="section-block">
+                <div class="section-header">5. ACCOUNT SECURITY</div>
+                <div class="clause-item">
+                    <div class="clause-content">
+                        The User is responsible for maintaining the confidentiality of its username and password... The
+                        User agrees to immediately notify the Company of any disclosure or unauthorized use of the
+                        User’s username or password. The User shall also be completely and solely responsible for any
+                        and all charges that are registered for / subscribed to using the User’s account.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Party -->
+            <div class="section-block">
+                <div class="section-header">6. THIRD PARTY ADVERTISEMENTS / PROMOTIONS</div>
+                <div class="clause-item">
+                    <div class="clause-content">
+                        The User is aware that the Company may use third-party advertising companies to serve ads to the
+                        Users through the Application... The Company is not responsible for the privacy practices or the
+                        content of any of the aforementioned linked applications / websites.
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Consent -->
+            <div class="section-block">
+                <div class="section-header">7. USER’S CONSENT</div>
+                <div class="clause-item">
+                    <div class="clause-content">
+                        By using the Application / Service and/or by providing Information to the Company... the User
+                        expressly consents to the collection and use of the Information disclosed by the User on the
+                        Application in accordance with this Policy.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grievance Officer -->
+            <div class="section-block">
+                <div class="section-header">8. GRIEVANCE OFFICER</div>
+                <div class="clause-item">
+                    <div class="clause-content">
+                        In accordance with Information Technology Act 2000 and rules made there under, the name and
+                        contact details of the Grievance Officer of the Company are provided below:
+
+                        <div class="info-box">
+                            <strong>Name:</strong> Mohamed Meeran M.F.<br>
+                            <strong>Email:</strong> <a href="mailto:grievance@nizcare.com">grievance@nizcare.com</a><br>
+                            <strong>Contact:</strong> 044-49042809<br>
+                            <strong>Hours:</strong> 10:00AM to 6:00PM, Monday to Friday
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dispute Resolution -->
+            <div class="section-block">
+                <div class="section-header">9. DISPUTE RESOLUTION AND JURISDICTION</div>
+                <div class="clause-item">
+                    <div class="clause-number">1.</div>
+                    <div class="clause-content">
+                        It is expressly agreed to by the Parties hereto that the formation, interpretation and
+                        performance of the Policy and any disputes arising herefrom will be resolved through a two-step
+                        Alternate Dispute Resolution (“ADR”) mechanism.
+                    </div>
+                </div>
+                <div class="clause-item">
+                    <div class="clause-number">2.</div>
+                    <div class="clause-content">
+                        <strong>Mediation:</strong> In case of any dispute between the Parties, the Parties will attempt
+                        to resolve the same amicably amongst themselves... within thirty (30) days.
+                    </div>
+                </div>
+                <div class="clause-item">
+                    <div class="clause-number">3.</div>
+                    <div class="clause-content">
+                        <strong>Arbitration:</strong> In the event that the Parties are unable to amicably resolve a
+                        dispute by mediation, said dispute will be referred to arbitration... The arbitration shall be
+                        conducted in English, and the seat of Arbitration shall be Chennai, Tamil Nadu, India.
+                    </div>
+                </div>
+                <div class="clause-item">
+                    <div class="clause-number">4.</div>
+                    <div class="clause-content">
+                        The Parties expressly agree that the Terms, Policy and any other agreements... are governed by
+                        the laws, rules and regulations of India, and that the courts at Chennai, Tamil Nadu, India,
+                        shall have exclusive jurisdiction.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
