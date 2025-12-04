@@ -1,0 +1,64 @@
+<!-- change 1 -->
+<section class="digital-revolution">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Content -->
+            <div class="col-lg-6">
+                <div class="section-title text-lg-start text-center">
+                    <h2 class="digital-title">
+                        Revolutionizing Healthcare with <span>AI-Powered Solutions</span>
+                    </h2>
+                    <p class="digital-revolution-p">
+                        Nizcare seamlessly integrates with the healthcare ecosystem, connecting doctors, patients,
+                        hospitals, and clinics through innovative AI-powered solutions. Our technology streamlines
+                        processes, enhances practice efficiency, and drives growth, while boosting patient visits,
+                        improving retention rates, and elevating brand visibility. By leveraging AI to optimize
+                        healthcare operations, we improve patient outcomes and enhance the overall quality of care,
+                        making Nizcare the trusted partner for healthcare professionals.
+                    </p>
+                    <button class="explore-btn">Explore Solutions</button>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="col-lg-6 text-center">
+                <div class="image-card">
+                    <img src="nizImg/new-image/revolutionizing.png" alt="Healthcare AI" class="revolution-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- change 2 -->
+<section class="power-solutions">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <!-- Left Image -->
+            <div class="col-lg-6 text-center">
+                <div class="image-card">
+                    <img src="nizImg/new-image/AI image.png" alt="AI-powered healthcare" class="solution-img">
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="col-lg-6">
+                <div class="section-title text-lg-start text-center">
+                    <h2 class="digital-title">
+                        AI-Powered Analytics <br>
+                        <span>Transforming Patient Care with Data-Driven Insights</span>
+                    </h2>
+                    <p class="solution-text">
+                        Nizcare AI-powered health analytics tools empower doctors with actionable insights and data,
+                        enabling them to enhance patient outcomes and optimize their practices. This specialized
+                        niche is experiencing high demand due to the rapid adoption of AI in healthcare and the
+                        increasing need for data-driven decision-making.
+                    </p>
+                    <button class="explore-btn">Learn More</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
