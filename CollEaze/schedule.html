@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollEaze Team Schedule</title>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.10/index.global.min.js'></script>
+
+    <!-- Google Fonts Poppins for Dashboard Consistency -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --border: #e5e7eb;
+            --bg-pink: #be185d;
+            --text-pink: #ffffff;
+            --border-pink: #831843;
+            --bg-purple: #7e22ce;
+            --text-purple: #ffffff;
+            --border-purple: #581c87;
+            --bg-green: #15803d;
+            --text-green: #ffffff;
+            --border-green: #14532d;
+            --bg-yellow: #b45309;
+            --text-yellow: #ffffff;
+            --border-yellow: #78350f;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .app-header {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 20px;
+            font-weight: 600;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-left: 10px;
+        }
+
+        .tab.active {
+            color: #1e293b;
+            border-bottom: 3px solid #1e293b;
+            padding-bottom: 10px;
+        }
+
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #f9fafb;
+        }
+
+        #calendar {
+            background: white;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .fc-scrollgrid {
+            border: none !important;
+        }
+
+        .fc-col-header-cell {
+            background-color: #f8fafc;
+            padding: 10px 0;
+        }
+
+        .fc-datagrid-cell-main {
+            padding-left: 15px;
+        }
+
+        .resource-card {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #1e293b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+
+        .res-info h4 {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .res-info p {
+            margin: 2px 0 0 0;
+            font-size: 11px;
+            color: var(--text-gray);
+        }
+
+        .header-cell-custom {
+            text-align: center;
+        }
+
+        .header-date {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .header-stats {
+            display: block;
+            font-size: 11px;
+            color: #9ca3af;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .fc-timeline-event {
+            border: none !important;
+            border-radius: 4px;
+            margin-top: 5px !important;
+            padding: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .event-content {
+            display: flex;
+            flex-direction: column;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.4;
+            position: relative;
+            padding: 2px;
+        }
+
+        .event-time {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
+            opacity: 0.9;
+        }
+
+        .event-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .evt-pink {
+            background-color: var(--bg-pink) !important;
+            border-left: 3px solid var(--border-pink) !important;
+            color: var(--text-pink) !important;
+        }
+
+        .evt-purple {
+            background-color: var(--bg-purple) !important;
+            border-left: 3px solid var(--border-purple) !important;
+            color: var(--text-purple) !important;
+        }
+
+        .evt-green {
+            background-color: var(--bg-green) !important;
+            border-left: 3px solid var(--border-green) !important;
+            color: var(--text-green) !important;
+        }
+
+        .evt-yellow {
+            background-color: var(--bg-yellow) !important;
+            border-left: 3px solid var(--border-yellow) !important;
+            color: var(--text-yellow) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <div style="background: white; padding: 20px 20px 0 20px; border-radius: 8px 8px 0 0;">
+            <div class="tabs">
+                <div class="tab">My Schedule</div>
+                <div class="tab active">Team Schedule</div>
+            </div>
+        </div>
+
+        <div class="controls-row">
+            <div style="width: 100px;"></div>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <button class="btn" id="prevBtn">&lt;</button>
+                <span id="currentDateRange"
+                    style="font-weight:600; font-size:14px; min-width: 160px; text-align: center;">Nov 11 - Nov 17,
+                    2025</span>
+                <button class="btn" id="nextBtn">&gt;</button>
+            </div>
+            <div style="width: 100px;"></div>
+        </div>
+
+        <div id='calendar'></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+                initialView: 'resourceTimelineWeek',
+                initialDate: '2025-11-11',
+                headerToolbar: false,
+                slotDuration: '24:00:00',
+                slotLabelFormat: { weekday: 'short', day: 'numeric', month: 'short' },
+                resourceAreaWidth: '250px',
+                height: 'auto',
+                contentHeight: 'auto',
+                resourceAreaHeaderContent: 'Employee',
+
+                // Header (Days)
+                slotLabelContent: function (arg) {
+                    const date = arg.date;
+                    const stats = {
+                        11: "24h 0m / 4 Shifts",
+                        12: "28h 0m / 4 Shifts",
+                        13: "31h 30m / 5 Shifts",
+                        14: "14h 0m / 2 Shifts",
+                        15: "16h 0m / 3 Shifts"
+                    };
+                    const dayStats = stats[date.getDate()] || "0h 0m / 0 Shifts";
+
+                    return {
+                        html: `
+                        <div class="header-cell-custom">
+                            <span class="header-date">${new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }).format(date)}</span>
+                            <span class="header-stats">${dayStats}</span>
+                        </div>
+                    `};
+                },
+
+                // Resources (Rows)
+                resources: [
+                    { id: 'a', title: 'Betty Smith', hours: '17h 30m / 4 Shifts', avatar: 'BS' },
+                    { id: 'b', title: 'Brenda Patterson', hours: '32h 30m / 4 Shifts', avatar: 'BP' },
+                    { id: 'c', title: 'Howard Carter', hours: '29h 0m / 5 Shifts', avatar: 'HC' },
+                    { id: 'd', title: 'Jason Evans', hours: '20h 30m / 4 Shifts', avatar: 'JE' },
+                    { id: 'e', title: 'Jenny Higgins', hours: '31h 30m / 4 Shifts', avatar: 'JH' }
+                ],
+
+                resourceLabelContent: function (arg) {
+                    const res = arg.resource.extendedProps;
+                    return {
+                        html: `
+                        <div class="resource-card">
+                            <div class="avatar">${res.avatar}</div>
+                            <div class="res-info">
+                                <h4>${arg.resource.title}</h4>
+                                <p>${res.hours}</p>
+                            </div>
+                        </div>
+                    `};
+                },
+
+                // Events
+                events: [
+                    // Betty
+                    { resourceId: 'a', start: '2025-11-11', title: 'Hotel Plaza', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-pink'] },
+                    { resourceId: 'a', start: '2025-11-12', display: 'background', title: 'All Day', extendedProps: { status: 'down' } },
+                    { resourceId: 'a', start: '2025-11-13', title: 'Hotel Plaza', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-pink'] },
+                    { resourceId: 'a', start: '2025-11-15', title: 'Hotel Plaza', extendedProps: { timeStr: '16:00 - 21:00', icon: '?' }, classNames: ['evt-pink'] },
+
+                    // Brenda
+                    { resourceId: 'b', start: '2025-11-11', title: 'Morning Shift', extendedProps: { timeStr: '07:00 - 14:00', icon: '✓' }, classNames: ['evt-purple'] },
+                    { resourceId: 'b', start: '2025-11-12', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '🚫' }, classNames: ['evt-green'] },
+                    { resourceId: 'b', start: '2025-11-13', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '✓' }, classNames: ['evt-green'] },
+                    { resourceId: 'b', start: '2025-11-14', display: 'background', title: '08:00 - 15:00', extendedProps: { status: 'up' } },
+
+                    // Howard
+                    { resourceId: 'c', start: '2025-11-11', display: 'background', title: 'All Day', extendedProps: { status: 'up' } },
+                    { resourceId: 'c', start: '2025-11-12', title: 'Evening Shift', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-yellow'] },
+                    { resourceId: 'c', start: '2025-11-13', title: 'Evening Shift', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-yellow'] },
+                    { resourceId: 'c', start: '2025-11-14', title: 'Evening Shift', extendedProps: { timeStr: '16:00 - 21:00', icon: '↻' }, classNames: ['evt-yellow'] },
+                    { resourceId: 'c', start: '2025-11-15', title: 'Morning Shift', extendedProps: { timeStr: '07:00 - 14:00', icon: '✓' }, classNames: ['evt-purple'] },
+
+                    // Jason
+                    { resourceId: 'd', start: '2025-11-11', title: 'Hemlock Hall', extendedProps: { timeStr: '09:00 - 16:30', icon: '✓' }, classNames: ['evt-yellow'] },
+                    { resourceId: 'd', start: '2025-11-12', display: 'background', title: '08:00 - 15:00', extendedProps: { status: 'up' } },
+                    { resourceId: 'd', start: '2025-11-13', title: 'Hampton Inn', extendedProps: { timeStr: '16:00 - 21:00', icon: '✓' }, classNames: ['evt-pink'] },
+                    { resourceId: 'd', start: '2025-11-15', title: 'Hotel Plaza', extendedProps: { timeStr: '16:00 - 21:00', icon: '✓' }, classNames: ['evt-pink'] },
+
+                    // Jenny
+                    { resourceId: 'e', start: '2025-11-12', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '💬' }, classNames: ['evt-green'] },
+                    { resourceId: 'e', start: '2025-11-13', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '💬' }, classNames: ['evt-green'] },
+                    { resourceId: 'e', start: '2025-11-14', title: 'South Fork Inn', extendedProps: { timeStr: '10:00 - 21:00', icon: '💬' }, classNames: ['evt-green'] },
+                ],
+
+                eventContent: function (arg) {
+                    if (arg.event.display === 'background') {
+                        let iconHtml = '';
+                        let color = '#1e3a8a';
+                        let icon = '👍';
+
+                        if (arg.event.extendedProps.status === 'down') {
+                            color = '#b91c1c';
+                            icon = '👎';
+                        }
+
+                        return {
+                            html: `
+                            <div class="status-indicator" style="color:${color}; justify-content:center; height:100%;">
+                                <span style="margin-right:5px;">${icon}</span> ${arg.event.title}
+                            </div>
+                        `};
+                    }
+
+                    return {
+                        html: `
+                        <div class="event-content">
+                            <span class="event-time">${arg.event.extendedProps.timeStr}</span>
+                            <span class="event-loc">${arg.event.title}</span>
+                            <span class="event-icon">${arg.event.extendedProps.icon || ''}</span>
+                        </div>
+                    `};
+                }
+            });
+
+            calendar.render();
+
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                calendar.prev();
+            });
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                calendar.next();
+            });
+        });
+    </script>
+</body>
+
+</html>
