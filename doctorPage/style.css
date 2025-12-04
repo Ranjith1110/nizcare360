@@ -1465,6 +1465,13 @@ footer {
 
 /* doctor app */
 
+.doc-app-section {
+    background: linear-gradient(180deg, #fbfffe 0%, #ffffff 100%);
+}
+
+/* =======================
+   CONTENT CARD
+======================= */
 .app-card {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
     border-color: rgba(15, 118, 110, 0.06);
@@ -1476,6 +1483,7 @@ footer {
     box-shadow: 0 22px 50px rgba(12, 148, 136, 0.07);
 }
 
+/* hover fill (gradient) */
 .app-fill {
     position: absolute;
     left: 0;
@@ -1483,27 +1491,31 @@ footer {
     bottom: 0;
     height: 0;
     z-index: 1;
-    background: linear-gradient(180deg, rgba(20, 184, 166, 0.95), rgba(6, 78, 70, 0.95));
+    background: linear-gradient(180deg, #14b8a6, #0f766e);
     transition: height .55s cubic-bezier(.2, .9, .2, 1);
-    pointer-events: none;
 }
 
 .app-card:hover .app-fill {
     height: 100%;
 }
 
+/* content stays above fill */
 .app-content {
     position: relative;
     z-index: 2;
 }
 
-.app-title .highlight {
+/* title highlight */
+.highlight {
     background: linear-gradient(90deg, #14b8a6, #0f766e);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
+/* =======================
+   FEATURE LIST
+======================= */
 .app-features li {
     color: #1f2937;
     margin-bottom: .625rem;
@@ -1512,20 +1524,24 @@ footer {
     transition: color .3s ease;
 }
 
-.app-features .check {
+.check {
+    width: 26px;
     display: inline-block;
-    width: 28px;
     color: #0f766e;
     font-weight: 700;
     margin-right: .5rem;
 }
 
+/* turn white on hover */
 .app-card:hover .app-title,
 .app-card:hover .app-features li,
 .app-card:hover .check {
     color: #fff !important;
 }
 
+/* =======================
+   BUTTONS
+======================= */
 .app-card .btn {
     z-index: 3;
     position: relative;
@@ -1534,44 +1550,84 @@ footer {
 
 .app-card .btn-outline-light {
     color: #fff;
-    border-color: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
+/* =======================
+   PHONE (3D FLIP)
+======================= */
 .phone-wrap {
     width: 100%;
     max-width: 360px;
     height: 560px;
-    display: grid;
-    place-items: center;
-    margin: 0 auto;
-    border-radius: 18px;
+    perspective: 1200px;
+    -webkit-perspective: 1200px;
+    border-radius: 20px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.phone-img {
-    width: 80%;
-    height: 80%;
-    object-fit: contain;
-    object-position: center;
-    display: block;
+.phone-inner {
+    width: 80%;         /* match image size */
+    height: 80%;        /* match image size */
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .8s cubic-bezier(.2,.9,.2,1);
+}
+
+/* FRONT + BACK FACES */
+.phone-face {
+    position: absolute;
+    width: 100%;        /* same as phone-inner (80% of parent) */
+    height: 100%;       /* same as phone-inner (80% of parent) */
+    inset: 0;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    backface-visibility: hidden;
+}
+
+/* front */
+.phone-front .phone-img {
+    width: 88%;
+    height: 88%;
+    object-fit: contain;    /* keep clean */
     transition: transform .7s ease;
 }
 
-.phone-wrap:hover .phone-img {
-    transform: scale(1.04);
+/* zoom on hover */
+.phone-wrap:hover .phone-front .phone-img {
+    transform: scale(1.05);
 }
 
-.doc-app-section .text-muted {
-    color: #6b7280;
+/* back */
+.phone-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(180deg, #0f766e, #14b8a6);
+    border-radius: 20px;
+    padding: 1rem;
+    color: #fff;
 }
 
+/* flip on hover */
+@media (hover:hover) and (pointer:fine) {
+    .phone-wrap:hover .phone-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+/* mobile / tap flip */
+.phone-wrap:focus-within .phone-inner,
+.phone-wrap:active .phone-inner {
+    transform: rotateY(180deg);
+}
+
+/* responsive */
 @media (max-width: 991.98px) {
     .phone-wrap {
         max-width: 320px;
         height: 480px;
-    }
-
-    .app-title {
-        font-size: 1.35rem;
     }
 }
