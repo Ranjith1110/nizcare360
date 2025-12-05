@@ -591,7 +591,6 @@ footer {
     margin: 0 0 0 auto;
     width: 80%;
     max-width: 1100px;
-    margin-top: 80px;
 }
 
 .customized-app-list li {
@@ -628,11 +627,11 @@ footer {
 }
 
 .swiper-corporate-prev {
-    left: 100px;
+    left: 130px;
 }
 
 .swiper-corporate-next {
-    right: 100px;
+    right: 130px;
 }
 
 .customized-dash h5 {
@@ -717,7 +716,6 @@ footer {
         margin: 0 auto;
         width: 100%;
         max-width: 1100px;
-        margin-top: 0px;
     }
 
     .customized-app-list li {
