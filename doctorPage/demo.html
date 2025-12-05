@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Test Swiper Images</title>
+
+  <!-- Bootstrap (optional visual parity) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <style>
+    body { background: #f7fdfb; padding: 24px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .test-wrap { max-width: 720px; margin: 0 auto; }
+
+    /* Simple swiper card */
+    .phone-face {
+      width: 360px;
+      height: 560px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(2, 112, 99, 0.06);
+      background: #f8fffb;
+      display: block;
+    }
+
+    .phone-face img {
+      display: block;        /* ensure not inline */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;     /* important */
+      object-position: center;
+    }
+
+    .sw-nav {
+      display:flex; gap:8px; justify-content:flex-end; margin-top:12px;
+    }
+
+    /* Make sure swiper slides are visible */
+    .swiper { visibility: visible !important; }
+    .swiper-slide { display:flex; justify-content:center; align-items:center; }
+  </style>
+</head>
+<body>
+  <div class="test-wrap">
+
+    <h3>Image-path sanity test — replace paths if needed</h3>
+    <p class="text-muted">If images do not appear here, the path is wrong or the server blocks access.</p>
+
+    <!-- Swiper -->
+    <div class="swiper phone-swiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="phone-face">
+            <img src="nizImg/banner.webp" alt="slide1" onerror="console.error('slide1 failed:', this.src)">
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="phone-face">
+            <img src="nizImg/doc-app-2.jpg" alt="slide2" onerror="console.error('slide2 failed:', this.src)">
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="phone-face">
+            <img src="nizImg/doc-app-3.jpg" alt="slide3" onerror="console.error('slide3 failed:', this.src)">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation (outside slides) -->
+      <div class="sw-nav">
+        <button id="prevBtn" class="btn btn-outline-secondary">Prev</button>
+        <button id="nextBtn" class="btn btn-outline-secondary">Next</button>
+      </div>
+
+    </div>
+
+    <pre id="debug" style="margin-top:12px;background:#fff;padding:12px;border:1px solid #eee"></pre>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <script>
+    // init Swiper
+    const phoneSwiper = new Swiper('.phone-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      navigation: {
+        nextEl: '#nextBtn',
+        prevEl: '#prevBtn'
+      },
+      autoplay: { delay: 3500, disableOnInteraction: false },
+    });
+
+    // debug: print image load status and computed styles after load
+    function debugImages() {
+      const out = [];
+      document.querySelectorAll('.phone-face img').forEach((img, i) => {
+        const loaded = img.complete && img.naturalWidth !== 0;
+        const cs = window.getComputedStyle(img);
+        out.push({
+          index: i+1,
+          src: img.src,
+          loaded,
+          naturalWidth: img.naturalWidth,
+          naturalHeight: img.naturalHeight,
+          display: cs.display,
+          width: cs.width,
+          height: cs.height,
+          objectFit: cs.objectFit || 'n/a'
+        });
+      });
+      document.getElementById('debug').textContent = JSON.stringify(out, null, 2);
+      console.log('Image debug:', out);
+    }
+
+    // wait for load
+    window.addEventListener('load', () => {
+      setTimeout(debugImages, 300);
+    });
+  </script>
+</body>
+</html>
