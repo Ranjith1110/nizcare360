@@ -1252,7 +1252,7 @@ footer {
 
 /* why nizcare */
 .hover-card {
-    background: #fff;
+    background: #1da69a;
     border-color: rgba(16, 185, 129, 0.18);
     transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
 }
@@ -1270,7 +1270,7 @@ footer {
     bottom: 0;
     height: 0;
     z-index: 1;
-    background: #1da69a;
+    background: white;
     transition: height .55s cubic-bezier(.2, .9, .2, 1);
     pointer-events: none;
 }
@@ -1287,12 +1287,12 @@ footer {
 .hover-card .sub-title,
 .hover-card .why-desc,
 .hover-card .why-list li {
-    color: #333;
+    color: white;
     transition: color .35s ease;
 }
 
 .hover-card .icon {
-    color: #0f766e;
+    color: white;
     font-weight: 700;
     display: inline-block;
     width: 20px;
@@ -1302,9 +1302,12 @@ footer {
 .hover-card:hover .sub-title,
 .hover-card:hover .why-desc,
 .hover-card:hover .why-list li,
-.hover-card:hover .icon,
 .hover-card:hover strong {
-    color: #fff !important;
+    color: #000 !important;
+}
+
+.hover-card:hover .icon {
+    color: #1da69a !important;
 }
 
 .sub-title {
@@ -1464,7 +1467,8 @@ footer {
 
 /* doctor app */
 .app-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+    background: #1da69a;
+    color: white;
     border-color: rgba(15, 118, 110, 0.06);
     transition: transform .4s cubic-bezier(.2, .9, .2, 1), box-shadow .35s ease;
 }
@@ -1481,7 +1485,7 @@ footer {
     bottom: 0;
     height: 0;
     z-index: 1;
-    background: #1da69a;
+    background: white;
     transition: height .55s cubic-bezier(.2, .9, .2, 1);
 }
 
@@ -1495,7 +1499,7 @@ footer {
 }
 
 .app-features li {
-    color: #1f2937;
+    color: white;
     margin-bottom: .625rem;
     line-height: 1.45;
     font-size: 1rem;
@@ -1505,15 +1509,18 @@ footer {
 .check {
     width: 26px;
     display: inline-block;
-    color: #0f766e;
+    color: white;
     font-weight: 700;
     margin-right: .5rem;
 }
 
 .app-card:hover .app-title,
-.app-card:hover .app-features li,
+.app-card:hover .app-features li {
+    color: #000 !important;
+}
+
 .app-card:hover .check {
-    color: #fff !important;
+    color: #1da69a !important;
 }
 
 .app-card .btn {
@@ -1529,7 +1536,7 @@ footer {
 
 .swiper-nizcare-app {
     width: 100%;
-    max-width: 360px;
+    max-width: 450px;
     margin: 0 auto;
     position: relative;
     border-radius: 12px;
@@ -1553,7 +1560,7 @@ footer {
 .swiper-image {
     width: 100%;
     height: auto;
-    max-height: 520px;
+    max-height: 600px;
     object-fit: contain;
     display: block;
     border-radius: 10px;
@@ -1586,11 +1593,11 @@ footer {
 }
 
 .swiper-nizcare-prev {
-    left: 2px;
+    left: 25px;
 }
 
 .swiper-nizcare-next {
-    right: 2px;
+    right: 25px;
 }
 
 .swiper-button:active {
