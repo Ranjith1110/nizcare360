@@ -54,10 +54,6 @@ footer {
     padding: 0px 0px 60px 0px;
 }
 
-.b2b-b2c {
-    padding: 0px 0px 90px 0px !important;
-}
-
 .content-section {
     display: none;
     margin-top: 40px;
@@ -354,44 +350,77 @@ footer {
 
 /* Hero Section End */
 
-.employe-card {
-    padding: 15px;
-}
 
-.employe-card h4 {
-    font-size: 30px;
-    font-weight: 600;
-    color: #fff;
-    text-align: start;
-    margin-bottom: 20px;
-}
-
+/* Employee Benefits */
 .employe-benefits {
     display: flex;
     align-items: center;
     background-color: #1da69a;
+    border-color: rgba(16, 185, 129, 0.18);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    padding: 20px;
 }
 
+.hover-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(15, 118, 110, 0.95);
+    box-shadow: 0 12px 30px rgba(12, 148, 136, 0.12);
+}
+
+.hover-fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    z-index: 1;
+    background: white;
+    transition: height .55s cubic-bezier(.2, .9, .2, 1);
+    pointer-events: none;
+}
+
+.hover-card:hover .hover-fill {
+    height: 100%;
+}
+
+.card-content {
+    z-index: 2;
+    position: relative;
+}
+
+.employe-card h4,
 .employe-benefits-ul li {
-    color: #fff;
-    text-align: start;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 500;
-    font-family: 'CormorantGaramond-Italic';
+    color: white;
+    transition: color .35s ease;
+}
+
+.employe-card h4 {
+    font-size: 32px;
+}
+
+.benefits-img {
+    z-index: 2;
+    position: relative;
+    transition: filter .35s ease;
+}
+
+.hover-card:hover h4,
+.hover-card:hover .employe-benefits-ul li {
+    color: #000 !important;
+}
+
+.hover-card:hover .benefits-img {
+    filter: brightness(0.9);
 }
 
 @media (max-width: 500px) {
-
-    .employe-benefits img {
+    .benefits-img {
         display: none;
     }
-
-    .carousel-container {
-        width: 97% !important;
-    }
-
 }
+
+/* Employee Benefits end*/
+
 
 /* .health-wellness-p {
     font-size: 22px;
@@ -647,7 +676,8 @@ footer {
 
 .feature-icon {
     font-size: 20px;
-    color: #1da69a; /* emerald green */
+    color: #1da69a;
+    /* emerald green */
     transition: 0.3s ease;
 }
 
@@ -1084,9 +1114,18 @@ footer {
 .header {
     color: #000;
     background-color: #ffffff;
+    margin: 10px 25px 25px 25px;
+    border-radius: 15px;
+    border: 2px solid #1da69a;
     padding: 15px 0;
     transition: all 0.5s;
     z-index: 997;
+    transition: transform 0.4s ease-in-out;
+}
+
+.header-hide {
+    transform: translateY(-120%);
+    transition: transform 0.4s ease-in-out;
 }
 
 .header .logo {
@@ -1401,7 +1440,9 @@ footer {
 /*******************************/
 .footer {
     position: relative;
-    background: #313955;
+    background: #1da69a;
+    margin: 15px 15px 20px 15px;
+    border-radius: 25px;
     color: #ffffff;
     font-weight: 300;
 }
@@ -1538,6 +1579,11 @@ footer {
     .footer .copyright .col-md-6:last-child p {
         margin: 5px 0;
         text-align: center;
+    }
+
+    .footer {
+        margin: 0px;
+        border-radius: 25px 25px 0 0;
     }
 }
 
@@ -2000,7 +2046,8 @@ digital-revolution,
     flex-direction: column;
     justify-content: flex-start;
     border-radius: 16px;
-    background: #fff;
+    background: #1da69a;
+    color: #fff;
     padding: 24px;
     border: 1px solid rgba(2, 6, 23, 0.06);
     box-shadow: 0 8px 28px rgba(2, 6, 23, 0.06);
@@ -2015,7 +2062,7 @@ digital-revolution,
     right: 16px;
     top: 8px;
     font-size: 72px;
-    color: #1da69a;
+    color: #fff;
     font-weight: 700;
     pointer-events: none;
 }
@@ -2033,7 +2080,7 @@ digital-revolution,
     margin: 0;
     font-style: italic;
     line-height: 1.7;
-    color: #0f172a;
+    color: #fff;
     flex-grow: 1;
 }
 
@@ -2062,7 +2109,7 @@ digital-revolution,
 .niz-pagination .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
-    background: #1da69a;
+    background: #fff;
     opacity: .35;
     margin: 0 5px !important;
     transition: transform .2s ease, opacity .2s ease;
@@ -2071,7 +2118,7 @@ digital-revolution,
 .niz-pagination .swiper-pagination-bullet-active {
     opacity: 1;
     transform: scale(1.1);
-    background: #1da69a;
+    background: #fff;
 }
 
 .niz-nav {
@@ -2084,9 +2131,9 @@ digital-revolution,
 .niz-nav .swiper-button-next {
     margin-top: 10px;
     position: static;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
     border: 1px solid #1da69a;
     background: #fff;
     color: #1da69a;

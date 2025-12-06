@@ -227,6 +227,7 @@ footer {
     color: #000;
     background-color: #ffffff;
     padding: 15px 0;
+    margin: 25px;
     transition: all 0.5s;
     z-index: 997;
 }
@@ -532,7 +533,9 @@ footer {
 /*******************************/
 .footer {
     position: relative;
-    background: #313955;
+    background: #1da69a;
+    margin: 15px 15px 20px 15px;
+    border-radius: 25px;
     color: #ffffff;
     font-weight: 300;
 }
@@ -633,6 +636,13 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, .1);
 }
 
+@media (max-width: 768px) {
+
+    .footer {
+        margin: 0px;
+        border-radius: 25px 25px 0 0;
+    }
+}
 
 .whatsapp-icon {
     position: fixed;
