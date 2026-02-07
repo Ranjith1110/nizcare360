@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPD Analytics Dashboard</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        /* General Page Styling */
+        body {
+            background-color: #f4f6f9;
+            font-family: "Poppins", sans-serif;
+            color: #333;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        /* Helpers for Flexbox (since BS3 is float-based) */
+        .d-flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+
+        .text-muted {
+            color: #777;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        /* Card Styling */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            margin-bottom: 20px;
+            height: 100%;
+        }
+
+        /* Header Section */
+        .breadcrumb {
+            background: transparent;
+            padding-left: 0;
+            margin-bottom: 5px;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .page-header-custom h2 {
+            margin-top: 0;
+            font-weight: 700;
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .header-controls .form-control {
+            border-radius: 8px;
+            background-color: #f0f2f5;
+            border: none;
+            box-shadow: none;
+        }
+
+        .header-controls .btn {
+            border-radius: 8px;
+            margin-left: 10px;
+            font-weight: 600;
+            border: 1px solid #ddd;
+        }
+
+        .btn-primary-custom {
+            background-color: #2563eb;
+            color: white;
+            border: none !important;
+        }
+
+        /* KPI Cards */
+        .kpi-title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .kpi-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #111;
+        }
+
+        .trend-badge {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .trend-down {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .icon-blue {
+            background-color: #e0f2fe;
+            color: #0284c7;
+        }
+
+        .icon-purple {
+            background-color: #f3e8ff;
+            color: #9333ea;
+        }
+
+        .icon-orange {
+            background-color: #ffedd5;
+            color: #ea580c;
+        }
+
+        /* Charts */
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Category Donut */
+        .donut-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            text-align: center;
+        }
+
+        .donut-inner h3 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .donut-inner span {
+            font-size: 10px;
+            color: #888;
+            letter-spacing: 1px;
+        }
+
+        .legend-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        /* Rejection Analysis */
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background-color: #f0f2f5;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar-custom {
+            background-color: #f87171;
+            /* Reddish */
+            border-radius: 10px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .rejection-badge {
+            background-color: #fee2e2;
+            color: #dc2626;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* AI Insights */
+        .ai-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            height: 100%;
+            border: 1px solid #e5e7eb;
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .ai-icon {
+            background-color: #2563eb;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .recommendation-box {
+            background-color: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .rec-tag {
+            font-size: 10px;
+            font-weight: 700;
+            color: #0284c7;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Utility specific for ChartJS container */
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+
+        .doughnut-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li>Home</li>
+                    <li>Dashboards</li>
+                    <li class="active">OPD Analytics</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row align-center mb-20">
+            <div class="col-md-6 page-header-custom">
+                <h2>OPD Claim Analytics</h2>
+                <p class="text-muted">Real-time insights on outpatient department claims.</p>
+            </div>
+            <div class="col-md-6 text-right header-controls">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon" style="background:transparent; border:none;"><i
+                                    class="fa fa-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Search claims, IDs..."
+                                style="width: 200px;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i> Oct 2023</button>
+                        <button type="button" class="btn btn-default"><i class="fa fa-filter"></i> Filter</button>
+                        <button type="button" class="btn btn-primary-custom"><i class="fa fa-download"></i> Export
+                            Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="d-flex justify-between">
+                        <div>
+                            <div class="kpi-title">Total Reimbursement</div>
+                            <div class="kpi-value">$124,500</div>
+                            <span class="trend-badge trend-up"><i class="fa fa-arrow-up"></i> 12.5%</span>
+                            <span class="text-muted" style="font-size:12px"> vs last month</span>
+                        </div>
+                        <div class="icon-box icon-blue">
+                            <i class="fa fa-money-bill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="d-flex justify-between">
+                        <div>
+                            <div class="kpi-title">Claims Processed</div>
+                            <div class="kpi-value">1,204</div>
+                            <span class="trend-badge trend-up"><i class="fa fa-arrow-up"></i> 3.2%</span>
+                            <span class="text-muted" style="font-size:12px"> vs last month</span>
+                        </div>
+                        <div class="icon-box icon-purple">
+                            <i class="fa fa-list-check"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="d-flex justify-between">
+                        <div>
+                            <div class="kpi-title">Avg Cost Per Claim</div>
+                            <div class="kpi-value">$103.40</div>
+                            <span class="trend-badge trend-down"><i class="fa fa-arrow-trend-up"></i> 1.8%</span>
+                            <span class="text-muted" style="font-size:12px"> vs last month</span>
+                        </div>
+                        <div class="icon-box icon-orange">
+                            <i class="fa fa-chart-simple"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="chart-header">
+                        <span class="chart-title">Reimbursement Utilization</span>
+                        <i class="fa fa-ellipsis-h text-muted"></i>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="reimbursementChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="chart-header">
+                        <span class="chart-title">Category Usage</span>
+                    </div>
+                    <div class="doughnut-container">
+                        <canvas id="categoryChart"></canvas>
+                        <div class="donut-inner">
+                            <h3>1.2k</h3>
+                            <span>CLAIMS</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <div class="legend-item">
+                            <span><span class="legend-dot" style="background:#2563eb;"></span>Pharmacy</span>
+                            <strong>40%</strong>
+                        </div>
+                        <div class="legend-item">
+                            <span><span class="legend-dot" style="background:#60a5fa;"></span>Consultation</span>
+                            <strong>30%</strong>
+                        </div>
+                        <div class="legend-item">
+                            <span><span class="legend-dot" style="background:#bfdbfe;"></span>Dental</span>
+                            <strong>15%</strong>
+                        </div>
+                        <div class="legend-item">
+                            <span><span class="legend-dot" style="background:#e5e7eb;"></span>Others</span>
+                            <strong>15%</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="d-flex justify-between mb-20">
+                        <span class="chart-title">Rejection Analysis</span>
+                        <span class="rejection-badge">12% Rejection Rate</span>
+                    </div>
+
+                    <div class="progress-label">
+                        <span>Documentation Missing</span>
+                        <span>45%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-custom" style="width: 45%; background-color: #f87171;">
+                        </div>
+                    </div>
+
+                    <div class="progress-label">
+                        <span>Policy Limit Exceeded</span>
+                        <span>30%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-custom"
+                            style="width: 30%; background-color: #fca5a5; opacity: 0.7;"></div>
+                    </div>
+
+                    <div class="progress-label">
+                        <span>Duplicate Claim</span>
+                        <span>15%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-custom"
+                            style="width: 15%; background-color: #fca5a5; opacity: 0.5;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card" style="border: none; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+                    <div class="ai-header">
+                        <div class="ai-icon"><i class="fa fa-wand-magic-sparkles"></i></div>
+                        <span class="chart-title">AI Insights</span>
+                        <div style="margin-left: auto; background: #e0f2fe; padding: 5px; border-radius: 50%;">
+                            <i class="fa fa-gear text-primary" style="opacity: 0.5;"></i>
+                        </div>
+                    </div>
+                    <p style="color: #4b5563; font-size: 14px; line-height: 1.6;">
+                        Analysis of recent claims indicates a <strong>15% surge in Vision-related claims</strong> among
+                        IT staff. This correlates with extended screen time logs.
+                    </p>
+                    <div class="recommendation-box">
+                        <span class="rec-tag"><i class="fa fa-lightbulb"></i> RECOMMENDATION</span>
+                        <p style="margin: 0; font-size: 13px; color: #333;">
+                            Initiate a preventive "Eye Wellness Camp" for the IT department to reduce long-term claims.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // --- Bar Chart Configuration ---
+        const ctxBar = document.getElementById('reimbursementChart').getContext('2d');
+
+        // Custom gradient logic or simple color array to match the image
+        const barColors = [
+            '#dbeafe', '#dbeafe', '#bfdbfe', '#60a5fa', '#3b82f6', // Light blues
+            '#1d4ed8', // Darkest blue (June)
+            '#60a5fa', '#93c5fd', '#bfdbfe', '#dbeafe', '#eff6ff', '#eff6ff'
+        ];
+
+        const reimbursementChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Utilization',
+                    data: [30, 40, 25, 50, 35, 85, 45, 38, 28, 48, 60, 20], // Mock data to match visual shape
+                    backgroundColor: barColors,
+                    borderRadius: 4,
+                    barThickness: 25
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { display: false, beginAtZero: true },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#9ca3af', font: { size: 11 } },
+                        border: { display: false }
+                    }
+                }
+            }
+        });
+
+        // --- Donut Chart Configuration ---
+        const ctxDoughnut = document.getElementById('categoryChart').getContext('2d');
+
+        const categoryChart = new Chart(ctxDoughnut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Pharmacy', 'Consultation', 'Dental', 'Others'],
+                datasets: [{
+                    data: [40, 30, 15, 15],
+                    backgroundColor: ['#2563eb', '#60a5fa', '#bfdbfe', '#e5e7eb'],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%', // Makes the ring thin
+                plugins: {
+                    legend: { display: false }, // Custom HTML legend used instead
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
