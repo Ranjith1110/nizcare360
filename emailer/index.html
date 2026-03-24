@@ -10,162 +10,120 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif !important;
+            margin: 0;
+            padding: 0;
+            background: #f3f4f6;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .section {
+            padding: 20px 40px 30px 40px;
+        }
+
+        .title {
+            color: #1da69a;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .text {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #1da69a, #158f84);
+            color: #ffffff !important;
+            padding: 14px 40px;
+            text-decoration: none;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .footer-dark {
+            background: #111827;
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+        }
+    </style>
 </head>
-<style>
-    /* Global Reset */
-    body {
-        font-family: 'Poppins', Helvetica, Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f3f4f6;
-        -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
-    }
 
-    table {
-        border-spacing: 0;
-        border-collapse: collapse;
-    }
+<body>
 
-    img {
-        border: 0;
-        line-height: 100%;
-        outline: none;
-        text-decoration: none;
-    }
+    <table role="presentation" class="container" align="center" cellpadding="0" cellspacing="0">
 
-    .container {
-        width: 100%;
-        max-width: 600px;
-        margin: 40px auto;
-        background-color: #ffffff;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        border: 1px solid #f3f4f6;
-    }
-
-    .btn-gradient {
-        background: #ffaf39;
-        background: linear-gradient(135deg, #ffaf39 0%, #f39c12 100%);
-        color: #ffffff !important;
-        padding: 15px 45px;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: bold;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: inline-block;
-    }
-</style>
-</head>
-
-<body style="background-color: #f3f4f6; padding: 40px 0;">
-
-    <table role="presentation" class="container" align="center" cellpadding="0" cellspacing="0" width="600">
         <tr>
             <td style="padding: 30px 0; text-align: center;">
-                <img src="https://github.com/Srimathhari/emailcode/blob/main/metal%20manufacturing%20(2).jpg.jpeg?raw=true"
+                <img src="https://raw.githubusercontent.com/Srimathhari/image/refs/heads/main/metal%20manufacturing%20(2).jpg.jpeg"
                     alt="Nizcare Logo" width="90%" style="display: block; margin: 0 auto; border-radius: 20px;">
             </td>
         </tr>
 
         <tr>
-            <td style="padding: 0 40px 30px 40px;">
+            <td class="section">
                 <p style="color: #1f2937; font-size: 20px; font-weight: 600; margin-bottom: 20px;">
-                    <strong>Hi Name,</strong> 
+                    <strong>{{ Hi Name }},</strong>
                 </p>
-                <div
-                    style="background-color: #f9fafb; border-left: 4px solid #1da69a; padding: 20px; border-radius: 0 16px 16px 0;">
-                    <p style="color: #4b5563; font-size: 14px; line-height: 1.6; margin: 0; font-style: italic;">
-                        "As per the Occupational Safety, Health & Working Conditions (OSHWC) Code, periodic health
-                        check-ups and proper maintenance of employee health records are mandatory, especially for
-                        employees above 40 years."
-                    </p>
-                </div>
-                <div style="text-align: center; padding-top: 30px;">
-                    <a href="https://www.nizcare.com/" class="btn-gradient">Demo Booking</a>
-                </div>
+
+                <p class="text"
+                    style="background:#f9fafb;padding:20px;border-left:4px solid #1da69a;border-radius:10px;">
+                    As per OSHWC guidelines, periodic health check-ups and proper maintenance of employee health records
+                    are mandatory — especially for employees above 40 years of age.
+                </p>
+        <tr>
+            <td align="center" style="padding:0 0 10px 0;">
+                <img src="https://raw.githubusercontent.com/Srimathhari/emailcode/main/v1.gif" alt="Animated GIF"
+                    width="600" style="display:block; width:100%; max-width:600px; height:auto; border-radius:12px;">
             </td>
         </tr>
 
         <tr>
-            <td style="background-color: #1da69a; padding: 35px 40px; text-align: center;">
-                <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; line-height: 1.5; margin: 0;">
-                    End-to-end occupational and preventive healthcare solutions for metal manufacturing units
-                </h3>
+            <td
+                style="background:#1da69a;color:#ffffff;text-align:center;padding:30px 40px;font-size:17px;font-weight:600;">
+                End-to-End Occupational & Preventive Healthcare Solutions
             </td>
         </tr>
 
+        <!-- Content 1 -->
         <tr>
-            <td style="padding: 60px 40px 30px 40px;">
-                <table width="100%" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td width="50%" align="center" style="position: relative;">
-                            <img src="https://github.com/Srimathhari/emailcode/blob/main/p1.png?raw=true"
-                                alt="Compliance" width="220" style="position: relative; z-index: 2;">
-                        </td>
-                        <td width="50%" style="padding-left: 30px;">
-                            <h4 style="color: #1da69a; font-size: 18px; font-weight: 700; margin: 0 0 15px 0;">
-                                <span
-                                    style="display: inline-block; width: 8px; height: 8px; background: #ffaf39; border-radius: 50%; margin-right: 8px;"></span>
-                                Mandatory Compliance
-                            </h4>
-                            <p style="color: #6b7280; font-size: 12px; line-height: 2; margin: 0;">
-                                ✓ Periodic health check-ups (40+ yrs)<br>
-                                ✓ Pre-employment & fitness tests<br>
-                                ✓ OSHWC compliance support
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td style="padding: 30px 40px;">
-                <table width="100%" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td width="50%" style="padding-right: 30px; text-align: right;">
-                            <h4 style="color: #1da69a; font-size: 18px; font-weight: 700; margin: 0 0 15px 0;">
-                                Specialized Screening
-                                <span
-                                    style="display: inline-block; width: 8px; height: 8px; background: #ffaf39; border-radius: 50%; margin-left: 8px;"></span>
-                            </h4>
-                            <p style="color: #6b7280; font-size: 12px; line-height: 2; margin: 0;">
-                                Lung function & audiometry ✓<br>
-                                Heat stress & ergonomic monitoring ✓<br>
-                                Professional consultations ✓
-                            </p>
-                        </td>
-                        <td width="50%" align="center">
-                            <img src="https://github.com/Srimathhari/emailcode/blob/main/p2.png?raw=true"
-                                alt="Screening" width="220">
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td style="padding: 30px 40px 60px 40px;">
-                <table width="100%" cellpadding="0" cellspacing="0">
+            <td class="section">
+                <table width="100%">
                     <tr>
                         <td width="50%" align="center">
-                            <img src="https://github.com/Srimathhari/emailcode/blob/main/p3.png?raw=true" alt="Stack"
+                            <img src="https://raw.githubusercontent.com/Srimathhari/emailcode/refs/heads/main/c1.jpeg"
                                 width="220">
                         </td>
-                        <td width="50%" style="padding-left: 30px;">
-                            <h4 style="color: #1da69a; font-size: 18px; font-weight: 700; margin: 0 0 15px 0;">
-                                <span
-                                    style="display: inline-block; width: 8px; height: 8px; background: #ffaf39; border-radius: 50%; margin-right: 8px;"></span>
-                                Digital Health Stack
-                            </h4>
-                            <p style="color: #6b7280; font-size: 12px; line-height: 2; margin: 0;">
-                                ✓ Real-time health dashboard<br>
-                                ✓ App-based digital records<br>
-                                ✓ Audit-ready documentation
+                        <td width="50%" style="padding-left:20px;">
+                            <div class="title">Compliance & Medical Support</div>
+                            <p class="text">
+                                ✓ Periodic & mandatory health check-ups (40+ years)<br>
+                                ✓ OSHWC compliance support<br>
+                                ✓ Occupational doctor consultations (on-site & virtual)<br>
+                                ✓ Emergency ambulance support
                             </p>
                         </td>
                     </tr>
@@ -173,41 +131,90 @@
             </td>
         </tr>
 
+        <!-- Content 2 -->
         <tr>
-            <td style="padding: 0 40px 40px 40px;">
-                <table width="100%" style="background-color: #111827; border-radius: 24px;" cellpadding="0"
-                    cellspacing="0">
+            <td class="section" style="background:#f9fafb;">
+                <table width="100%">
                     <tr>
-                        <td style="padding: 30px; color: #ffffff;">
-                            <p style="font-size: 12px; opacity: 0.9; margin: 0 0 10px 0;">• Complimentary eye/dental
-                                services & webinars</p>
-                            <p style="font-size: 12px; opacity: 0.9; margin: 0 0 10px 0;">• Free 24/7 GP
-                                teleconsultations</p>
-                            <p style="font-size: 12px; opacity: 0.9; margin: 0 0 20px 0;">• Emergency ambulance support
+                        <td width="50%" style="padding-right:20px;text-align:right;">
+                            <div class="title">Advanced Screening & Risk Monitoring</div>
+                            <p class="text">
+                                ✓ Lung function, audiometry & exposure-based screening<br>
+                                ✓ Heat stress & ergonomic risk monitoring<br>
+                                ✓ Preventive care programs & health awareness sessions
                             </p>
-                            <div style="border-top: 1px solid #374151; padding-top: 20px;">
-                                <p style="font-size: 14px; font-weight: 300; line-height: 1.6; margin: 0;">
-                                    Transition to a <span style="color: #ffaf39; font-weight: 700;">structured,
-                                        compliance-ready system</span>. Healthy workers power strong production.
-                                </p>
-                            </div>
                         </td>
-                    </tr>
-                </table>
-
-                <table width="100%" style="margin-top: 40px; border-top: 1px solid #f3f4f6; padding-top: 30px;">
-                    <tr>
-                        <td>
-                            <p
-                                style="color: #00000; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0;"><strong>Yours in Wellness,</strong>
-                                </p>
-                            <p style="color: #1da69a; font-size: 20px; font-weight: 700; margin: 5px 0 0 0;">Nizcare</p>
+                        <td width="50%" align="center">
+                            <img src="https://raw.githubusercontent.com/Srimathhari/image/refs/heads/main/p3.png"
+                                width="220">
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
 
+        <!-- Content 3 -->
+        <tr>
+            <td class="section">
+                <table width="100%">
+                    <tr>
+                        <td width="50%" align="center">
+                            <img src="https://github.com/Srimathhari/emailcode/blob/a1513a58f2e294b552348fab7d3194494b48503d/Pi7_Gif%20(1).gif?raw=true"
+                                width="220">
+                        </td>
+                        <td width="50%" style="padding-left:20px;">
+                            <div class="title">Digital Health & Reporting</div>
+                            <p class="text">
+                                ✓ Digitally maintained employee health records via App<br>
+                                ✓ Health Risk Assessment (HRA) & Corporate scorecard<br>
+                                ✓ Real-time compliance & management dashboard<br>
+                                ✓ Secure, audit-ready documentation
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Complimentary Section -->
+        <tr>
+            <td style="padding:20px 40px 10px 40px;"> <!-- 50px ➝ 10px -->
+
+                <table width="100%" cellpadding="0" cellspacing="0"
+                    style="background:linear-gradient(135deg,#1da69a,#158f84);border-radius:20px;">
+                    <tr>
+                        <td style="padding:35px 25px;text-align:center;color:#ffffff;">
+
+                            <p style="margin:0 0 10px 0;font-size:18px;font-weight:700;letter-spacing:0.5px;">
+                                🎁 Complimentary Services
+                            </p>
+
+                            <p style="margin:0 0 20px 0;font-size:13px;line-height:1.8;opacity:0.95;">
+                                ✔ Eye & Dental Camps<br>
+                                ✔ Free 24/7 GP Teleconsultations<br>
+                                ✔ Curated Webinars at No Additional Cost
+                            </p>
+
+                            <a href="tel:+919789537313"
+                                style="background:#ffffff;color:#158f84;text-decoration:none;padding:12px 32px;border-radius:30px;font-size:13px;font-weight:700;display:inline-block;">
+                                Call Now
+                            </a>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+
+        <!-- Signature -->
+        <tr>
+            <td style="padding:5px 20px 10px 20px;"> <!-- Top padding reduce -->
+                <p style="margin:0 0 3px 0;"><strong>Yours in Wellness,</strong></p>
+                <p style="margin:0;color:#1da69a;font-size:18px;font-weight:700;">Nizcare</p>
+            </td>
+        </tr>
+        </tr>
         <tr>
             <td style="padding:0 20px 20px 20px;">
                 <table align="center" role="presentation" cellpadding="0" cellspacing="0" border="0"
@@ -245,7 +252,7 @@
 
         <tr>
             <td align="center"
-                style="background-color:#1ea69a; padding:20px; border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
+                style="background-color:#1ac8b9; padding:20px; border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
                 <img width="120" style="background-color:#ffffff; padding:5px; border-radius:8px; display:block;"
                     src="https://raw.githubusercontent.com/Nizcare45/Email_template/refs/heads/main/images/nizcare_logo.png"
                     alt="Nizcare">
@@ -268,6 +275,7 @@
                 </p>
             </td>
         </tr>
+
     </table>
 
 </body>
