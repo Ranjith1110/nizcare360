@@ -8,22 +8,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         body {
             font-family: "Inter", sans-serif;
             background-color: #f0f2f5;
         }
 
-        /* Dashboard Wrapper & Thick Borders */
         .dashboard-wrapper {
             max-width: 1600px;
             margin: 0 auto;
             border: 5px solid #d0d4da;
-            /* Thick border matching design */
         }
 
-        /* Reusable Border Classes */
         .thick-border-bottom {
             border-bottom: 5px solid #d0d4da;
         }
@@ -32,7 +29,6 @@
             border-right: 5px solid #d0d4da;
         }
 
-        /* Header Elements */
         .brand-logo {
             background-color: #1da69a;
             width: 110px;
@@ -48,7 +44,6 @@
             height: 70px;
         }
 
-        /* Sidebar Stats */
         .sidebar {
             background-color: #fafbfc;
         }
@@ -75,10 +70,8 @@
             color: #222;
         }
 
-        /* Charts Section */
         .charts-row {
             min-height: 500px;
-            /* Gives the horizontal bars room to breathe */
         }
 
         .chart-title {
@@ -87,7 +80,6 @@
             color: #333;
         }
 
-        /* Micro-interactions */
         .interactive-card {
             transition: all 0.2s ease-in-out;
         }
@@ -96,16 +88,6 @@
             background-color: #fdfdfd !important;
         }
 
-        .interactive-element {
-            transition: transform 0.2s ease;
-            cursor: pointer;
-        }
-
-        .interactive-element:hover {
-            transform: scale(1.1);
-        }
-
-        /* Organ Breakdown Section */
         .organ-row {
             min-height: 250px;
         }
@@ -114,10 +96,29 @@
             letter-spacing: 1px;
         }
 
+        .organ-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+        }
+
+        .organ-item:hover {
+            transform: scale(1.1);
+            background-color: rgba(29, 166, 154, 0.05);
+        }
+
+        .organ-item.active-organ {
+            transform: scale(1.15);
+            background-color: rgba(29, 166, 154, 0.1);
+            border-color: #1da69a;
+            box-shadow: 0 4px 15px rgba(29, 166, 154, 0.2);
+        }
+
         .organ-icon {
             display: inline-block;
             filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.15));
-            /* Adds the 3D-ish realistic depth to the emojis/icons */
             font-size: 3.5rem !important;
             margin-bottom: 10px;
         }
@@ -127,7 +128,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Canvas Reset */
         .chart-container {
             width: 100%;
         }
@@ -174,17 +174,17 @@
                 <div
                     class="stat-box thick-border-bottom p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
                     <div class="stat-label">OVER ALL TEST GROUP<br>COUNT</div>
-                    <div class="stat-value mt-2">4780</div>
+                    <div class="stat-value mt-2" id="stat-overall">4780</div>
                 </div>
                 <div
                     class="stat-box thick-border-bottom p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
                     <div class="stat-label">NO OF FEMALES IN TEST<br>GROUP</div>
-                    <div class="stat-value mt-2">2755</div>
+                    <div class="stat-value mt-2" id="stat-female">2755</div>
                 </div>
                 <div
                     class="stat-box thick-border-bottom p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
                     <div class="stat-label">NO OF MALES IN TEST<br>GROUP</div>
-                    <div class="stat-value mt-2">2025</div>
+                    <div class="stat-value mt-2" id="stat-male">2025</div>
                 </div>
                 <div
                     class="stat-box thick-border-bottom p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
@@ -194,7 +194,7 @@
                 <div
                     class="stat-box p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
                     <div class="stat-label">DIAGNOSED ISSUE'S<br>FROM TESTS</div>
-                    <div class="stat-value mt-2">13</div>
+                    <div class="stat-value mt-2" id="stat-issues">13</div>
                 </div>
             </div>
 
@@ -230,23 +230,32 @@
                         </h5>
                         <div class="d-flex justify-content-around align-items-center">
 
-                            <div class="organ-item text-center interactive-element" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" title="Organ Wise Risk Analysis">
+                            <div class="organ-item text-center active-organ" id="organ-default" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="View All Data">
+                                <span class="organ-icon fs-1">📊</span>
+                                <div class="organ-label fw-bold mt-2 text-dark">OVERALL</div>
+                            </div>
+
+                            <div class="organ-item text-center" id="organ-heart" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Heart Risk Analysis">
                                 <span class="organ-icon fs-1">🫀</span>
                                 <div class="organ-label fw-bold mt-2 text-dark">HEART</div>
                             </div>
 
-                            <div class="organ-item text-center interactive-element">
+                            <div class="organ-item text-center" id="organ-anemia" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Anemia Risk Analysis">
                                 <span class="organ-icon fs-1">🩸</span>
                                 <div class="organ-label fw-bold mt-2 text-dark">ANEMIA</div>
                             </div>
 
-                            <div class="organ-item text-center interactive-element">
+                            <div class="organ-item text-center" id="organ-kidney" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Kidney Risk Analysis">
                                 <span class="organ-icon fs-1">🫘</span>
                                 <div class="organ-label fw-bold mt-2 text-dark">KIDNEY</div>
                             </div>
 
-                            <div class="organ-item text-center interactive-element">
+                            <div class="organ-item text-center" id="organ-thyroid" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Thyroid Risk Analysis">
                                 <span class="organ-icon fs-1">🦋</span>
                                 <div class="organ-label fw-bold mt-2 text-dark">THYROID</div>
                             </div>
@@ -265,28 +274,24 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
-            // Initialize Bootstrap Tooltips
             const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl);
             });
 
-            // Register DataLabels Plugin Globally
             Chart.register(ChartDataLabels);
 
-            // Global Chart Configuration
             Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
             Chart.defaults.color = '#333';
 
-            const themeTeal = '#1da69a'; // User requested primary color for charts
+            const themeTeal = '#1da69a';
 
-            // Shared options for all horizontal bar charts
             const commonOptions = {
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
                 layout: {
-                    padding: { right: 40 } // Space for datalabels outside the bar
+                    padding: { right: 40 }
                 },
                 plugins: {
                     legend: { display: false },
@@ -305,7 +310,7 @@
                         grid: { display: false },
                         border: { display: false },
                         ticks: {
-                            callback: function (value) { return value === 1000 ? '1K' : value === 500 ? '500' : value === 0 ? '0K' : value === 0 ? '0' : ''; },
+                            callback: function (value) { return value >= 1000 ? (value / 1000).toFixed(1).replace('.0', '') + 'K' : value; },
                             font: { size: 10 }
                         }
                     },
@@ -317,8 +322,7 @@
                 }
             };
 
-            // 1. ANTICIPATED ISSUES VILLAGE WISE
-            new Chart(document.getElementById('villageChart').getContext('2d'), {
+            let villageChart = new Chart(document.getElementById('villageChart').getContext('2d'), {
                 type: 'bar',
                 data: {
                     labels: ['CHITTAT...', 'NETHAK...', 'ANUPALLE', 'KUPPAM...', 'C.RAMAP...', 'SORAKAY...'],
@@ -332,14 +336,12 @@
                     ...commonOptions,
                     scales: {
                         ...commonOptions.scales,
-                        x: { ...commonOptions.scales.x, max: 1200 },
                         y: { ...commonOptions.scales.y, title: { display: true, text: "Location's", font: { size: 10 } } }
                     }
                 }
             });
 
-            // 2. TEST WISE WOMEN RISK ANALYSIS
-            new Chart(document.getElementById('womenRiskChart').getContext('2d'), {
+            let womenRiskChart = new Chart(document.getElementById('womenRiskChart').getContext('2d'), {
                 type: 'bar',
                 data: {
                     labels: ['ANEMIA', 'STROKE /H...', 'HYPERLIPI...', 'AKI ACUTE...', 'HYPERGLY...', 'INFECTION', 'FANCONI ...', 'SUBCLINIC...', 'HYPERTHY...', 'GOUT ,RE...', 'HYPOGLYC...', 'ENTERIC F...'],
@@ -349,17 +351,10 @@
                         barPercentage: 0.8
                     }]
                 },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        ...commonOptions.scales,
-                        x: { ...commonOptions.scales.x, max: 800 }
-                    }
-                }
+                options: commonOptions
             });
 
-            // 3. TEST WISE MEN RISK ANALYSIS
-            new Chart(document.getElementById('menRiskChart').getContext('2d'), {
+            let menRiskChart = new Chart(document.getElementById('menRiskChart').getContext('2d'), {
                 type: 'bar',
                 data: {
                     labels: ['AKI ACUTE KID...', 'HYPERLIPIDEMIA', 'STROKE /HEART...', 'HYPERGLYCEMIC', 'GOUT ,RENAL S...', 'INFECTION', 'SUBCLINICAL-H...', 'ANEMIA', 'FANCONI SYND...', 'HYPERTHYROID...', 'HYPOGLYCEMIC', 'ENTERIC FEVER'],
@@ -369,13 +364,66 @@
                         barPercentage: 0.8
                     }]
                 },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        ...commonOptions.scales,
-                        x: { ...commonOptions.scales.x, max: 1100 }
-                    }
+                options: commonOptions
+            });
+
+            const dummyData = {
+                'organ-default': {
+                    village: [1030, 966, 809, 717, 186, 49],
+                    women: [711, 705, 679, 532, 446, 443, 363, 323, 70, 63, 19, 6],
+                    men: [987, 532, 322, 318, 217, 201, 136, 131, 43, 40, 23, 4],
+                    overall: 4780, female: 2755, male: 2025, issues: 13
+                },
+                'organ-heart': {
+                    village: [420, 310, 250, 180, 90, 20],
+                    women: [50, 680, 520, 80, 200, 120, 40, 30, 10, 8, 5, 2],
+                    men: [120, 480, 310, 190, 80, 90, 40, 30, 15, 12, 8, 1],
+                    overall: 1270, female: 650, male: 620, issues: 4
+                },
+                'organ-anemia': {
+                    village: [600, 450, 320, 210, 110, 30],
+                    women: [690, 40, 60, 30, 80, 150, 20, 10, 5, 5, 2, 1],
+                    men: [110, 20, 40, 25, 60, 110, 15, 8, 4, 3, 1, 0],
+                    overall: 1720, female: 1093, male: 627, issues: 3
+                },
+                'organ-kidney': {
+                    village: [280, 210, 170, 130, 60, 15],
+                    women: [90, 110, 180, 510, 220, 140, 350, 50, 30, 60, 10, 4],
+                    men: [950, 160, 200, 180, 200, 130, 40, 60, 40, 10, 8, 2],
+                    overall: 865, female: 420, male: 445, issues: 5
+                },
+                'organ-thyroid': {
+                    village: [150, 120, 90, 70, 40, 10],
+                    women: [120, 80, 150, 60, 110, 90, 30, 310, 68, 15, 8, 2],
+                    men: [40, 60, 80, 50, 70, 60, 20, 120, 38, 10, 5, 1],
+                    overall: 480, female: 320, male: 160, issues: 2
                 }
+            };
+
+            const organItems = document.querySelectorAll('.organ-item');
+
+            organItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    organItems.forEach(el => el.classList.remove('active-organ'));
+                    this.classList.add('active-organ');
+
+                    const dataKey = this.id;
+                    const data = dummyData[dataKey];
+
+                    villageChart.data.datasets[0].data = data.village;
+                    villageChart.update();
+
+                    womenRiskChart.data.datasets[0].data = data.women;
+                    womenRiskChart.update();
+
+                    menRiskChart.data.datasets[0].data = data.men;
+                    menRiskChart.update();
+
+                    document.getElementById('stat-overall').innerText = data.overall;
+                    document.getElementById('stat-female').innerText = data.female;
+                    document.getElementById('stat-male').innerText = data.male;
+                    document.getElementById('stat-issues').innerText = data.issues;
+                });
             });
         });
     </script>
