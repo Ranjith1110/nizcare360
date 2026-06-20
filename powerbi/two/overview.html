@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Health Audit Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+            color: #333;
+            background-color: #f4f7fa !important;
+        }
+
+        /* Theme Colors */
+        :root {
+            --primary-teal: #1da69a;
+            --primary-dark: #1a237e;
+            --accent-orange: #f26d21;
+            --accent-purple: #800080;
+            --accent-pink: #e84393;
+            --bg-light-blue: #eef2fb;
+        }
+
+        .bg-primary-dark {
+            background-color: var(--primary-dark) !important;
+        }
+
+        .bg-light-accent {
+            background-color: var(--bg-light-blue) !important;
+        }
+
+        /* Dashboard Structural Containers */
+        .dashboard-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .dashboard-container {
+            border: 2px solid #e0e6ed;
+        }
+
+        /* Header & Logos */
+        .brand-logo {
+            background: var(--primary-teal) !important;
+            width: 120px;
+            height: 45px;
+            border-radius: 12px;
+        }
+
+        .report-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            letter-spacing: 0.5px;
+        }
+
+        .qr-text {
+            font-size: 0.85rem;
+            line-height: 1.2;
+        }
+
+        /* Stats & Filters Cards */
+        .stat-card {
+            border-top: 4px solid var(--primary-dark);
+            transition: all 0.3s ease;
+        }
+
+        .filter-box {
+            border-top: 4px solid var(--primary-teal);
+            transition: all 0.3s ease;
+        }
+
+        .stat-label,
+        .filter-label {
+            font-size: 0.8rem;
+            text-transform: capitalize;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        /* Interactive Enhancements */
+        .interactive-element:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1) !important;
+        }
+
+        .interactive-card {
+            transition: background-color 0.2s ease;
+        }
+
+        .interactive-card:hover {
+            background-color: #fafbfc;
+        }
+
+        /* Charts Area */
+        .section-title {
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        .chart-container {
+            width: 100%;
+            position: relative;
+        }
+
+        /* Data Table Styling */
+        .table-container {
+            height: 600px;
+        }
+
+        /* Fixed height to enable scrolling */
+        .table th {
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .table td {
+            font-size: 0.85rem;
+            color: #555;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(29, 166, 154, 0.05);
+        }
+
+        /* Custom Scrollbar for Data Table */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-teal);
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <div class="dashboard-wrapper container-fluid p-4">
+        <div class="dashboard-container bg-white shadow-sm rounded-3 overflow-hidden">
+
+            <div class="row align-items-center px-4 py-3 border-bottom">
+                <div class="col-md-3">
+                    <div class="brand-logo d-flex align-items-center justify-content-center text-white fw-bold rounded">
+                        <span class="fs-4">Nizcare</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h2 class="fw-bold report-title m-0">Employee Health Audit Report</h2>
+                </div>
+                <div class="col-md-3 d-flex justify-content-end align-items-center">
+                    <div class="text-end me-3 qr-text text-muted fw-semibold">
+                        Scan the QR to<br>Download Our App
+                    </div>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                        class="qr-code border p-1 rounded">
+                </div>
+            </div>
+
+            <div class="row g-3 px-4 py-3 bg-light-accent border-bottom align-items-center">
+                <div class="col-lg-6 d-flex gap-3">
+                    <div class="stat-card flex-fill bg-white shadow-sm rounded text-center p-3 interactive-element">
+                        <div class="stat-label text-muted fw-bold">Registered Users</div>
+                        <div class="stat-value text-dark mt-2">2649</div>
+                    </div>
+                    <div class="stat-card flex-fill bg-white shadow-sm rounded text-center p-3 interactive-element">
+                        <div class="stat-label text-muted fw-bold">Mental Health Questionnaire<br>Answered</div>
+                        <div class="stat-value text-dark mt-2">2130</div>
+                    </div>
+                    <div class="stat-card flex-fill bg-white shadow-sm rounded text-center p-3 interactive-element">
+                        <div class="stat-label text-muted fw-bold">Women Health Questionnaire<br>Answered</div>
+                        <div class="stat-value text-dark mt-2">1439</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 d-flex gap-3">
+                    <div class="filter-box flex-fill bg-white shadow-sm rounded p-3">
+                        <label class="filter-label text-muted fw-bold mb-1">Gender</label>
+                        <select class="form-select border-0 bg-light custom-select">
+                            <option>All</option>
+                        </select>
+                    </div>
+                    <div class="filter-box flex-fill bg-white shadow-sm rounded p-3">
+                        <label class="filter-label text-muted fw-bold mb-1">Age Category</label>
+                        <select class="form-select border-0 bg-light custom-select">
+                            <option>All</option>
+                        </select>
+                    </div>
+                    <div class="filter-box flex-fill bg-white shadow-sm rounded p-3">
+                        <label class="filter-label text-muted fw-bold mb-1">College Name</label>
+                        <select class="form-select border-0 bg-light custom-select">
+                            <option>All</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-0">
+                <div class="col-lg-5 border-end charts-column bg-white">
+
+                    <div class="chart-section p-4 border-bottom interactive-card">
+                        <h5 class="section-title text-dark fw-bold mb-4">Women Health Status</h5>
+                        <div class="chart-container d-flex justify-content-center align-items-center"
+                            style="height: 250px;">
+                            <canvas id="healthStatusChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-section p-4 interactive-card">
+                        <h5 class="section-title text-dark fw-bold mb-4">Top Problems in Women's Health</h5>
+                        <div class="chart-container d-flex justify-content-center align-items-center"
+                            style="height: 280px;">
+                            <canvas id="topProblemsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 bg-white p-4">
+                    <div class="table-container shadow-sm border rounded-3 overflow-hidden h-100 d-flex flex-column">
+                        <div class="table-main-header text-center py-2 fw-bold text-white fs-5"
+                            style="background-color: #1da69a;">
+                            Users at High Risk
+                        </div>
+
+                        <div class="table-responsive flex-grow-1 custom-scrollbar">
+                            <table class="table table-hover table-striped mb-0 align-middle">
+                                <thead class="bg-light sticky-top shadow-sm">
+                                    <tr>
+                                        <th class="py-3 px-4 text-muted">Phone Number</th>
+                                        <th class="py-3 px-3 text-muted">Score</th>
+                                        <th class="py-3 px-3 text-muted">Status</th>
+                                        <th class="py-3 px-4 text-muted">College Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="highRiskTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Register the DataLabels plugin globally
+            Chart.register(ChartDataLabels);
+
+            // Global Chart Settings
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.plugins.tooltip.padding = 10;
+            Chart.defaults.plugins.datalabels.color = '#555';
+            Chart.defaults.plugins.datalabels.font.size = 11;
+
+            const colorTeal = '#1da69a'; // User requested color
+            const colorDarkBlue = '#1a237e';
+            const colorOrange = '#f26d21';
+            const colorPurple = '#800080';
+            const colorPink = '#e84393';
+
+            // 1. Women Health Status (Pie Chart)
+            const ctxPie = document.getElementById('healthStatusChart').getContext('2d');
+            new Chart(ctxPie, {
+                type: 'pie',
+                data: {
+                    labels: ['Normal', 'Abnormal'],
+                    datasets: [{
+                        data: [633, 396],
+                        backgroundColor: [colorTeal, colorDarkBlue],
+                        borderWidth: 1,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: 40 },
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, boxWidth: 8, padding: 20, font: { size: 12 } }
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'end',
+                            offset: 10,
+                            formatter: (value, context) => {
+                                const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
+                                const percentage = ((value / total) * 100).toFixed(2) + '%';
+                                return `${value} (${percentage})`;
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 2. Top Problems in Women's Health (Doughnut Chart)
+            const ctxDoughnut = document.getElementById('topProblemsChart').getContext('2d');
+            new Chart(ctxDoughnut, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'Mood Swings',
+                        'Active / Sedentary Life',
+                        'Sleep Disturbances',
+                        'Acne',
+                        'Are Your Periods Usually I...'
+                    ],
+                    datasets: [{
+                        data: [735, 625, 549, 455, 431],
+                        backgroundColor: [colorTeal, colorDarkBlue, colorOrange, colorPurple, colorPink],
+                        borderWidth: 2,
+                        borderColor: '#ffffff',
+                        cutout: '60%'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: 40 },
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, boxWidth: 8, padding: 15, font: { size: 11 } }
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'end',
+                            offset: 10,
+                            formatter: (value) => value
+                        }
+                    }
+                }
+            });
+
+            // 3. Populate Dummy Data Table
+            const tableData = [
+                { phone: '7893687389', score: 11, status: 'Abnormal', college: 'Sri Sai Vignan Bharthi College' },
+                { phone: '9078038379', score: 11, status: 'Abnormal', college: 'Sri Sai Vignan Bharthi College' },
+                { phone: '9392777034', score: 10, status: 'Abnormal', college: 'Meha Women\'s Degree College' },
+                { phone: '8367076955', score: 10, status: 'Abnormal', college: 'Shantiniketan Women\'s Degree College' },
+                { phone: '9849196673', score: 10, status: 'Abnormal', college: 'Shantiniketan Women\'s Degree College' },
+                { phone: '9000626213', score: 10, status: 'Abnormal', college: 'Sivam Training' },
+                { phone: '7680854320', score: 10, status: 'Abnormal', college: 'Sri Sai Vignan Bharthi College' },
+                { phone: '8142394536', score: 10, status: 'Abnormal', college: 'Sri Sai Vignan Bharthi College' },
+                { phone: '8341503824', score: 9, status: 'Abnormal', college: 'Aadhya Degree College for Women' },
+                { phone: '8790953782', score: 9, status: 'Abnormal', college: 'Dewan Bahadur Padma Rao Mudaliar College' },
+                { phone: '9676045370', score: 9, status: 'Abnormal', college: 'Jagruthi Degree and PG College' },
+                { phone: '6377677777', score: 9, status: 'Abnormal', college: 'Priyadarshini College of Engineering and Technology' },
+                { phone: '8978944345', score: 9, status: 'Abnormal', college: 'Shantiniketan Women\'s Degree College' },
+                { phone: '9393652671', score: 9, status: 'Abnormal', college: 'Shantiniketan Women\'s Degree College' },
+                { phone: '7207240538', score: 9, status: 'Abnormal', college: 'Sri Sai Vignan Bharthi College' },
+                { phone: '7780132131', score: 9, status: 'Abnormal', college: 'Sri Sai Vignan Bharthi College' },
+                { phone: '8297756940', score: 9, status: 'Abnormal', college: 'Sri Sai Vignan Bharthi College' },
+                { phone: '9989717423', score: 9, status: 'Abnormal', college: 'Sri Sai Vignan Bharthi College' },
+                { phone: '7993564419', score: 9, status: 'Abnormal', college: 'Sri Sarada Degree College for Women' },
+                { phone: '8186860105', score: 8, status: 'Abnormal', college: 'Aadhya Degree College for Women' }
+            ];
+
+            const tbody = document.getElementById('highRiskTableBody');
+            tableData.forEach(row => {
+                const tr = document.createElement('tr');
+                // Applying the requested teal color subtly to the Status text for visual hierarchy
+                tr.innerHTML = `
+            <td class="px-4">${row.phone}</td>
+            <td class="px-3 fw-bold">${row.score}</td>
+            <td class="px-3" style="color: ${colorTeal}; font-weight: 600;">${row.status}</td>
+            <td class="px-4">${row.college}</td>
+        `;
+                tbody.appendChild(tr);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

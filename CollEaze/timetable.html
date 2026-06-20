@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Timetable Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            /* Modern Indigo */
+            --primary-light: #e0e7ff;
+            --primary-hover: #3730a3;
+
+            --secondary-color: #8b5cf6;
+            /* Purple for Labs */
+            --secondary-light: #ede9fe;
+
+            --danger-color: #dc2626;
+            /* Red for specific staff classes */
+            --danger-light: #fee2e2;
+
+            --bg-color: #f3f4f6;
+            /* Soft gray background */
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        /* --- Header & Toggle Switch --- */
+        .page-title {
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.5px;
+        }
+
+        .toggle-container {
+            background: var(--card-bg);
+            padding: 6px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: inline-flex;
+            margin-bottom: 30px;
+        }
+
+        .toggle-btn {
+            border-radius: 40px;
+            border: none;
+            font-weight: 600;
+            padding: 12px 35px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-muted);
+            background: transparent;
+            font-size: 0.95rem;
+        }
+
+        .toggle-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .toggle-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        /* --- Card & Table Layout --- */
+        .timetable-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            padding: 30px;
+            animation: fadeIn 0.4s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .card-header-title {
+            font-weight: 700;
+            color: var(--primary-hover);
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header-title::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* Table Resets & Styling */
+        .table {
+            margin-bottom: 0;
+            border-collapse: separate;
+            border-spacing: 8px 12px;
+            /* Creates gaps between cells */
+        }
+
+        .table th {
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .table td {
+            border: none;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        /* --- Custom Pills for Cells --- */
+        .day-pill {
+            background: #f8f9fa;
+            color: var(--text-main);
+            font-weight: 700;
+            padding: 15px 10px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 55px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f3f4f6;
+        }
+
+        .subject-pill {
+            background: var(--primary-light);
+            color: var(--primary-hover);
+            padding: 15px 10px;
+            border-radius: 14px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            cursor: default;
+            height: 100%;
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(79, 70, 229, 0.05);
+            border: 1px solid rgba(79, 70, 229, 0.1);
+        }
+
+        /* Hover Effects */
+        .subject-pill:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Lab Subject Styling (Colspan elements) */
+        .lab-pill {
+            background: var(--secondary-light);
+            color: #5b21b6;
+            border-color: rgba(139, 92, 246, 0.1);
+        }
+
+        .lab-pill:hover {
+            background: var(--secondary-color);
+            color: white;
+            box-shadow: 0 8px 15px rgba(139, 92, 246, 0.2);
+        }
+
+        /* Staff Specific Red Class */
+        .danger-pill {
+            background: var(--danger-light);
+            color: #991b1b;
+            border-color: rgba(220, 38, 38, 0.1);
+        }
+
+        .danger-pill:hover {
+            background: var(--danger-color);
+            color: white;
+            box-shadow: 0 8px 15px rgba(220, 38, 38, 0.2);
+        }
+
+        /* Empty Cell Styling */
+        .empty-cell {
+            background: repeating-linear-gradient(45deg,
+                    #f9fafb,
+                    #f9fafb 10px,
+                    #f3f4f6 10px,
+                    #f3f4f6 20px);
+            border-radius: 14px;
+            height: 100%;
+            min-height: 55px;
+            opacity: 0.6;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Scrollbar for responsiveness */
+        ::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c7c7cc;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1aa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid px-md-5">
+
+        <div class="text-center mb-4">
+            <h2 class="page-title">University Timetable</h2>
+            <p class="text-muted">Interactive and dynamically switching schedule</p>
+        </div>
+
+        <div class="text-center">
+            <div class="toggle-container">
+                <button type="button" class="toggle-btn active" id="btnStudent" onclick="switchView('student')">Student
+                    Wise</button>
+                <button type="button" class="toggle-btn" id="btnStaff" onclick="switchView('staff')">Staff Wise</button>
+            </div>
+        </div>
+
+        <div id="studentView" class="timetable-card table-responsive">
+            <div class="card-header-title">III YEAR A SECTION - VII SEM</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 12%;">Day</th>
+                        <th style="width: 11%;">Period 1</th>
+                        <th style="width: 11%;">Period 2</th>
+                        <th style="width: 11%;">Period 3</th>
+                        <th style="width: 11%;">Period 4</th>
+                        <th style="width: 11%;">Period 5</th>
+                        <th style="width: 11%;">Period 6</th>
+                        <th style="width: 11%;">Period 7</th>
+                        <th style="width: 11%;">Period 8</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="day-pill">MON</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CD</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CCS</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DW</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CN</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CD</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CC</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-pill">TUE</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CCS</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DW</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DW</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CD</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CN</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CCS</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-pill">WED</div>
+                        </td>
+                        <td colspan="2">
+                            <div class="subject-pill lab-pill">CD--B2 / CC--B1</div>
+                        </td>
+                        <td colspan="2">
+                            <div class="subject-pill lab-pill">CD--B1 / CC--B2</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CN</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DW</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CCS</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-pill">THU</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CCS</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CD</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CN</div>
+                        </td>
+                        <td colspan="2">
+                            <div class="subject-pill lab-pill">DW--B1 / CN--B2</div>
+                        </td>
+                        <td colspan="2">
+                            <div class="subject-pill lab-pill">DW--B2 / CN--B1</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-pill">FRI</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DW</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CD</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CN</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CCS</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">CC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="staffView" class="timetable-card table-responsive d-none">
+            <div class="card-header-title">Staff Schedule: RANJITH</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 12%;">Day</th>
+                        <th style="width: 11%;">Period 1</th>
+                        <th style="width: 11%;">Period 2</th>
+                        <th style="width: 11%;">Period 3</th>
+                        <th style="width: 11%;">Period 4</th>
+                        <th style="width: 11%;">Period 5</th>
+                        <th style="width: 11%;">Period 6</th>
+                        <th style="width: 11%;">Period 7</th>
+                        <th style="width: 11%;">Period 8</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="day-pill">MON</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill danger-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill danger-pill">DC</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-pill">TUE</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">FDS</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill danger-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-pill">WED</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill danger-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">FDS</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-pill">THU</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill danger-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill danger-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">FDS</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="day-pill">FRI</div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                        <td>
+                            <div class="empty-cell"></div>
+                        </td>
+                        <td>
+                            <div class="subject-pill">DC</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function switchView(view) {
+            const studentView = document.getElementById('studentView');
+            const staffView = document.getElementById('staffView');
+            const btnStudent = document.getElementById('btnStudent');
+            const btnStaff = document.getElementById('btnStaff');
+
+            // Reset animations by cloning and replacing the node
+            const resetAnimation = (element) => {
+                element.style.animation = 'none';
+                element.offsetHeight; /* trigger reflow */
+                element.style.animation = null;
+            };
+
+            if (view === 'student') {
+                studentView.classList.remove('d-none');
+                staffView.classList.add('d-none');
+
+                btnStudent.classList.add('active');
+                btnStaff.classList.remove('active');
+
+                resetAnimation(studentView);
+            } else {
+                staffView.classList.remove('d-none');
+                studentView.classList.add('d-none');
+
+                btnStaff.classList.add('active');
+                btnStudent.classList.remove('active');
+
+                resetAnimation(staffView);
+            }
+        }
+    </script>
+</body>
+
+</html>

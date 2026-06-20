@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Analytics Report: Overview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #e9ecf1;
+            /* Slightly darker behind the main wrapper for contrast */
+        }
+
+        /* Theme Configuration utilizing requested #1da69a */
+        :root {
+            --theme-primary: #1da69a;
+            --theme-dark: #1a237e;
+            /* Used for logo and contrast */
+            --theme-orange: #f26d21;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 1px solid #dce1e8;
+        }
+
+        .bg-light-soft {
+            background-color: #f8faff;
+        }
+
+        /* Header Styling */
+        .brand-logo {
+            background-color: var(--theme-primary);
+            width: 120px;
+        }
+
+        .title-badge {
+            background-color: var(--theme-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .section-header {
+            background-color: var(--theme-primary);
+            font-size: 1.05rem;
+        }
+
+        /* Micro-interactions */
+        .interactive-card {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* KPI Customization */
+        .kpi-title {
+            font-size: 0.85rem;
+            line-height: 1.2;
+        }
+
+        /* Gauge Chart Layout */
+        .gauge-container {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .gauge-value {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.1rem;
+        }
+
+        .gauge-min {
+            position: absolute;
+            bottom: -5px;
+            left: 5px;
+        }
+
+        .gauge-max {
+            position: absolute;
+            bottom: -5px;
+            right: 5px;
+        }
+
+        /* Chart Canvas Reset */
+        .chart-wrapper {
+            min-height: 160px;
+        }
+    </style>
+</head>
+
+<body class="bg-light-gray p-3">
+
+    <div class="dashboard-wrapper container-fluid p-3 bg-white shadow-sm rounded">
+
+        <div class="row align-items-center mb-4 pb-2 border-bottom">
+            <div class="col-md-8 d-flex align-items-center gap-3">
+                <div class="brand-logo text-white d-flex align-items-center justify-content-center rounded p-2">
+                    <span class="ms-2 fs-5 fw-bold">Nizcare</span>
+                </div>
+                <div class="title-badge text-white fw-bold px-4 py-2 rounded-pill shadow-sm fs-5">
+                    Health Analytics Report: Overview
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end align-items-center gap-4">
+                <div class="search-action-bar border rounded px-3 py-1 text-muted small bg-light">
+                    (No available actions)
+                </div>
+                <div class="d-flex align-items-center text-end">
+                    <div class="qr-text text-dark fw-bold small me-2 lh-sm">
+                        Scan to<br>Download<br>the App
+                    </div>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                        class="qr-image border p-1 rounded">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-lg-2 col-md-4">
+                <div
+                    class="kpi-card text-center p-3 border rounded h-100 d-flex flex-column justify-content-center interactive-card">
+                    <div class="kpi-title text-muted fw-bold mb-2">Total Registered<br>Employees</div>
+                    <div class="kpi-value text-dark fw-bold display-6 m-0">2098</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div
+                    class="kpi-card text-center p-3 border rounded h-100 d-flex flex-column align-items-center interactive-card">
+                    <div class="kpi-title text-muted fw-bold mb-2">Camp Attendance</div>
+                    <div class="gauge-container position-relative w-100 mt-auto">
+                        <canvas id="gaugeAttendance"></canvas>
+                        <div class="gauge-value fw-bold text-muted">609</div>
+                        <div class="gauge-min small text-muted">0</div>
+                        <div class="gauge-max small text-muted">2098</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div
+                    class="kpi-card text-center p-3 border rounded h-100 d-flex flex-column justify-content-center interactive-card">
+                    <div class="kpi-title text-muted fw-bold mb-2">Questions Asked</div>
+                    <div class="kpi-value text-dark fw-bold display-6 m-0 mt-auto">27</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div
+                    class="kpi-card text-center p-3 border rounded h-100 d-flex flex-column align-items-center interactive-card">
+                    <div class="kpi-title text-muted fw-bold mb-2">Questionnaires<br>Answered</div>
+                    <div class="gauge-container position-relative w-100 mt-auto">
+                        <canvas id="gaugeQuestionnaire"></canvas>
+                        <div class="gauge-value fw-bold text-muted">845</div>
+                        <div class="gauge-min small text-muted">0</div>
+                        <div class="gauge-max small text-muted">609</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div
+                    class="kpi-card text-center p-3 border rounded h-100 d-flex flex-column justify-content-center interactive-card">
+                    <div class="kpi-title text-muted fw-bold mb-2">Test Count</div>
+                    <div class="kpi-value text-dark fw-bold display-6 m-0 mt-auto">28</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div
+                    class="kpi-card text-center p-3 border rounded h-100 d-flex flex-column align-items-center interactive-card">
+                    <div class="kpi-title text-muted fw-bold mb-2">Employees Tested</div>
+                    <div class="gauge-container position-relative w-100 mt-auto">
+                        <canvas id="gaugeTested"></canvas>
+                        <div class="gauge-value fw-bold text-muted">535</div>
+                        <div class="gauge-min small text-muted">0</div>
+                        <div class="gauge-max small text-muted">609</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-lg-4 d-flex flex-column">
+                <div class="section-header text-white fw-bold text-center py-2 rounded-top mb-0 shadow-sm">
+                    Camp Flow
+                </div>
+                <div
+                    class="camp-flow-content border rounded-bottom p-4 flex-grow-1 bg-light-soft shadow-sm interactive-card">
+
+                    <h6 class="fw-bold text-dark text-uppercase mb-2">PHASE 1: Questionnaire</h6>
+                    <div class="fw-bold text-dark mb-1 small">Objective:</div>
+                    <ol class="small text-dark mb-2 ps-3">
+                        <li>To gather essential <strong>health-related information</strong> from participants through a
+                            <strong>structured questionnaire</strong>.
+                        </li>
+                        <li>This phase aims to assess individual health risks, identify pre-existing conditions, and
+                            collect baseline data such as:
+                            <ul class="ps-3 mt-1" style="list-style-type: disc;">
+                                <li>Age, gender, and lifestyle factors.</li>
+                                <li>Current health concerns or symptoms.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h6 class="fw-bold text-dark text-uppercase mt-4 mb-2">PHASE 2: Testing and Lab Reports</h6>
+                    <div class="fw-bold text-dark mb-1 small">Objective:</div>
+                    <ul class="small text-dark ps-3" style="list-style-type: disc;">
+                        <li class="mb-1">Conduct <strong>medical tests</strong> and gather <strong>lab reports</strong>
+                            to assess the physical health status of participants.</li>
+                        <li class="mb-1">Provide <strong>accurate health assessments</strong> for each participant.</li>
+                        <li class="mb-1">Identify any <strong>underlying health issues</strong> that may not have been
+                            detected during the questionnaire.</li>
+                        <li class="mb-1">Generate <strong>lab reports</strong> that offer detailed insights into
+                            participants' health metrics.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-8 d-flex flex-column">
+                <div class="section-header text-white fw-bold text-center py-2 rounded-top mb-0 shadow-sm">
+                    Demographics of Camp Attendees
+                </div>
+                <div class="border rounded-bottom p-3 flex-grow-1 bg-light-soft shadow-sm">
+
+                    <div class="row g-3 mb-3 h-50">
+                        <div class="col-md-6">
+                            <div
+                                class="chart-card bg-white border rounded p-3 h-100 interactive-card d-flex flex-column">
+                                <h6 class="text-muted fw-bold small">Gender-wise Analysis</h6>
+                                <div class="chart-wrapper flex-grow-1 position-relative mt-2">
+                                    <canvas id="genderChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div
+                                class="chart-card bg-white border rounded p-3 h-100 interactive-card d-flex flex-column">
+                                <h6 class="text-muted fw-bold small">Age-wise Analysis</h6>
+                                <div class="chart-wrapper flex-grow-1 position-relative mt-2">
+                                    <canvas id="ageChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 h-50">
+                        <div class="col-md-6">
+                            <div
+                                class="chart-card bg-white border rounded p-3 h-100 interactive-card d-flex flex-column">
+                                <h6 class="text-muted fw-bold small">Admin Staff</h6>
+                                <div class="chart-wrapper flex-grow-1 position-relative mt-2">
+                                    <canvas id="adminStaffChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div
+                                class="chart-card bg-white border rounded p-3 h-100 interactive-card d-flex flex-column">
+                                <h6 class="text-muted fw-bold small">Worker Staff</h6>
+                                <div class="chart-wrapper flex-grow-1 position-relative mt-2">
+                                    <canvas id="workerStaffChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Register the DataLabels plugin for values above bars
+            Chart.register(ChartDataLabels);
+
+            // Global Chart Configuration
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.color = '#555';
+            Chart.defaults.plugins.tooltip.enabled = true;
+
+            // Theme Colors
+            const colorTeal = '#1da69a'; // User requested primary color
+            const colorDarkBlue = '#1a237e'; // For the doughnut segments
+            const colorOrange = '#f26d21'; // For the small doughnut segment
+            const colorGray = '#e0e0e0'; // For gauge background
+
+            // Helper function to create half-doughnut Gauge Charts
+            function createGauge(ctxId, value, max) {
+                const ctx = document.getElementById(ctxId).getContext('2d');
+                const percentage = (value / max) * 100;
+
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{
+                            data: [value, max - value],
+                            backgroundColor: [colorTeal, colorGray],
+                            borderWidth: 0,
+                            cutout: '75%',
+                            circumference: 180,
+                            rotation: 270
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { enabled: false },
+                            datalabels: { display: false } // Disable labels on gauges, using custom HTML instead
+                        },
+                        layout: { padding: 0 }
+                    }
+                });
+            }
+
+            // Initialize the Gauge Charts
+            createGauge('gaugeAttendance', 609, 2098);
+            createGauge('gaugeQuestionnaire', 845, 1000); // Scaled max to look like reference arc
+            createGauge('gaugeTested', 535, 609);
+
+            // 1. Gender-wise Analysis (Doughnut Chart)
+            const ctxGender = document.getElementById('genderChart').getContext('2d');
+            new Chart(ctxGender, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Male', 'Other', 'Female'],
+                    datasets: [{
+                        data: [424, 74, 37],
+                        backgroundColor: [colorTeal, colorDarkBlue, colorOrange],
+                        borderWidth: 1,
+                        borderColor: '#ffffff',
+                        cutout: '60%'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, boxWidth: 8, font: { size: 10, weight: 'bold' } }
+                        },
+                        datalabels: {
+                            anchor: 'end', align: 'end', offset: 2,
+                            font: { size: 10 }, color: '#555',
+                            formatter: (value) => value
+                        }
+                    },
+                    layout: { padding: 15 }
+                }
+            });
+
+            // 2. Age-wise Analysis (Vertical Bar)
+            const ctxAge = document.getElementById('ageChart').getContext('2d');
+            new Chart(ctxAge, {
+                type: 'bar',
+                data: {
+                    labels: ['<18', '18-30', '31-40', '41-50', '50'],
+                    datasets: [{
+                        data: [148, 245, 85, 49, 8],
+                        backgroundColor: colorDarkBlue,
+                        barPercentage: 0.7
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: { anchor: 'end', align: 'top', color: '#555', font: { size: 9 } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true, max: 300,
+                            ticks: { stepSize: 100, font: { size: 9 } },
+                            title: { display: true, text: 'Count of UserId', font: { size: 9 } },
+                            grid: { color: '#f0f0f0' }, border: { display: false }
+                        },
+                        x: {
+                            title: { display: true, text: 'Age_Group', font: { size: 9 } },
+                            grid: { display: false }, border: { display: false },
+                            ticks: { font: { size: 9 } }
+                        }
+                    }
+                }
+            });
+
+            // 3. Admin Staff Analysis (Vertical Bar)
+            const ctxAdmin = document.getElementById('adminStaffChart').getContext('2d');
+            new Chart(ctxAdmin, {
+                type: 'bar',
+                data: {
+                    labels: ['Administr...', 'Architectu...', 'Commercial', 'Hse', 'Mason', 'Planning', 'Plant & M...', 'Projects', 'Quality M...', 'Reinforce...', 'Safety', 'Survey'],
+                    datasets: [{
+                        data: [2, 1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 2],
+                        backgroundColor: colorTeal,
+                        barPercentage: 0.8
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: { anchor: 'end', align: 'top', color: '#555', font: { size: 9 } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true, max: 4,
+                            ticks: { stepSize: 2, font: { size: 9 } },
+                            title: { display: true, text: 'Staff Count', font: { size: 9 } },
+                            grid: { color: '#f0f0f0', borderDash: [5, 5] }, border: { display: false }
+                        },
+                        x: {
+                            title: { display: true, text: 'Designation', font: { size: 9 } },
+                            grid: { display: false }, border: { display: false },
+                            ticks: { maxRotation: 45, minRotation: 45, font: { size: 8 } }
+                        }
+                    }
+                }
+            });
+
+            // 4. Worker Staff Analysis (Vertical Bar)
+            const ctxWorker = document.getElementById('workerStaffChart').getContext('2d');
+            new Chart(ctxWorker, {
+                type: 'bar',
+                data: {
+                    labels: ['Carpenter', 'Constructi...', 'Execution', 'Finishes', 'Fitter', 'Formwork', 'Khalasi', 'Mason', 'Mazdoor/...'],
+                    datasets: [{
+                        data: [44, 3, 6, 1, 22, 3, 1, 1, 40],
+                        backgroundColor: colorTeal,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: { anchor: 'end', align: 'top', color: '#555', font: { size: 9 } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true, max: 60,
+                            ticks: { stepSize: 50, font: { size: 9 } },
+                            title: { display: true, text: 'Staff Count', font: { size: 9 } },
+                            grid: { color: '#f0f0f0', borderDash: [5, 5] }, border: { display: false }
+                        },
+                        x: {
+                            title: { display: true, text: 'Designation', font: { size: 9 } },
+                            grid: { display: false }, border: { display: false },
+                            ticks: { maxRotation: 45, minRotation: 45, font: { size: 8 } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

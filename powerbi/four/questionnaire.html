@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Analytics Report: Overview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Theme Configuration */
+        :root {
+            --theme-primary: #1da69a;
+            /* Requested Teal Accent replacing standard blue */
+            --theme-dark-navy: #151b4b;
+            /* Navy for logos and contrast */
+            --theme-bg-gray: #e6ebf1;
+            /* Light gray-blue dashboard background */
+            --card-border-color: #ced6e0;
+            --thick-border-width: 4px;
+        }
+
+        .bg-dashboard {
+            background-color: var(--theme-bg-gray);
+            min-height: 100vh;
+            padding-bottom: 20px;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* Theme Cards with Thick Borders */
+        .theme-card {
+            border: var(--thick-border-width) solid var(--card-border-color);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Header Elements */
+        .brand-logo {
+            background-color: var(--theme-primary);
+            width: 100px;
+        }
+
+        .report-badge {
+            background-color: var(--theme-primary);
+            /* Dark badge as seen in reference */
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-image {
+            width: 75px;
+            height: 75px;
+        }
+
+        /* Micro-interactions */
+        .interactive-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(29, 166, 154, 0.15);
+            border-color: var(--theme-primary);
+        }
+
+        .interactive-element {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .interactive-element:hover {
+            background-color: #f1f8f7 !important;
+            border-color: var(--theme-primary) !important;
+            color: var(--theme-primary) !important;
+            transform: scale(1.02);
+        }
+
+        /* Sidebar Specifics */
+        .sidebar-col {
+            height: calc(100vh - 110px);
+        }
+
+        .questions-list {
+            overflow-y: auto;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f4f4f4;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--theme-primary);
+        }
+
+        /* Chart Containers */
+        .chart-container {
+            width: 100%;
+            min-height: 250px;
+        }
+
+        .mini-chart {
+            min-height: 120px;
+        }
+
+        .top-charts-row .chart-container {
+            min-height: 280px;
+        }
+    </style>
+</head>
+
+<body class="bg-dashboard">
+
+    <div class="container-fluid p-2 dashboard-wrapper">
+
+        <div class="row g-2 align-items-center mb-2 px-2">
+            <div class="col-md-3">
+                <div
+                    class="brand-logo text-white d-flex flex-column align-items-center justify-content-center p-2 rounded shadow-sm">
+                    <span class="fw-bold">Nizcare</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-center">
+                <div class="report-badge text-white fw-bold px-5 py-3 shadow-sm text-center w-100 fs-4">
+                    Health Analytics Report: Overview
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex justify-content-end align-items-center">
+                <div class="qr-text text-dark fw-bold small me-2 lh-sm text-end">
+                    Scan to<br>Download<br>the App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-image border p-1 bg-white rounded shadow-sm">
+            </div>
+        </div>
+
+        <div class="row g-2 px-2">
+
+            <div class="col-lg-2 d-flex flex-column gap-2 sidebar-col">
+
+                <div class="theme-card p-3 text-center interactive-card bg-white">
+                    <div class="stat-label text-dark fw-bold small text-start mb-2">User Count</div>
+                    <div class="stat-number text-dark display-4 fw-normal">609</div>
+                </div>
+
+                <div class="theme-card p-3 text-center interactive-card bg-white">
+                    <div class="stat-label text-dark fw-bold small text-start mb-2">Questionnaires Answered</div>
+                    <div class="stat-number text-dark display-4 fw-normal">845</div>
+                </div>
+
+                <div class="theme-card p-0 flex-grow-1 d-flex flex-column bg-white overflow-hidden">
+                    <div class="p-2 border-bottom d-flex justify-content-between align-items-center bg-light">
+                        <span class="small fw-bold text-dark">Question</span>
+                        <i class="fas fa-sort-amount-down text-muted cursor-pointer" style="font-size: 0.8rem;"></i>
+                    </div>
+                    <div class="questions-list custom-scrollbar p-2 flex-grow-1">
+                        <div
+                            class="question-card p-3 mb-2 border rounded interactive-element bg-white text-dark small text-center shadow-sm">
+                            Any high Cholestrol issues?
+                        </div>
+                        <div
+                            class="question-card p-3 mb-2 border rounded interactive-element bg-white text-dark small text-center shadow-sm">
+                            Any knee pains/bone pains?
+                        </div>
+                        <div
+                            class="question-card p-3 mb-2 border rounded interactive-element bg-white text-dark small text-center shadow-sm">
+                            Any pale skin issues?
+                        </div>
+                        <div
+                            class="question-card p-3 mb-2 border rounded interactive-element bg-white text-dark small text-center shadow-sm">
+                            Any surgeries before?
+                        </div>
+                        <div
+                            class="question-card p-3 mb-2 border rounded interactive-element bg-white text-dark small text-center shadow-sm">
+                            Are you allergic to any food or ...
+                        </div>
+                        <div
+                            class="question-card p-3 border rounded interactive-element bg-white text-dark small text-center shadow-sm">
+                            Are you taking any prescribed m...
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-10 d-flex flex-column gap-2">
+
+                <div class="row g-2 top-charts-row">
+                    <div class="col-md-4">
+                        <div class="theme-card p-3 h-100 bg-white interactive-card d-flex flex-column">
+                            <h6 class="fw-bold text-dark chart-title">Gender-wise Analysis</h6>
+                            <div class="chart-container flex-grow-1 position-relative">
+                                <canvas id="genderChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 d-flex flex-column gap-2">
+                        <div class="theme-card p-2 flex-grow-1 bg-white interactive-card d-flex flex-column">
+                            <h6 class="fw-bold text-dark chart-title small mb-0">Female</h6>
+                            <div class="chart-container flex-grow-1 position-relative mini-chart">
+                                <canvas id="femaleChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="theme-card p-2 flex-grow-1 bg-white interactive-card d-flex flex-column">
+                            <h6 class="fw-bold text-dark chart-title small mb-0">Male</h6>
+                            <div class="chart-container flex-grow-1 position-relative mini-chart">
+                                <canvas id="maleChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="theme-card p-3 h-100 bg-white interactive-card d-flex flex-column">
+                            <h6 class="fw-bold text-dark chart-title">Age-wise Analysis</h6>
+                            <div class="chart-container flex-grow-1 position-relative">
+                                <canvas id="ageChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-2 flex-grow-1">
+                    <div class="col-md-5">
+                        <div class="theme-card p-3 h-100 bg-white interactive-card d-flex flex-column">
+                            <h6 class="fw-bold text-dark chart-title">Top Risk Departments</h6>
+                            <div class="chart-container flex-grow-1 position-relative">
+                                <canvas id="departmentChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="theme-card p-3 h-100 bg-white interactive-card d-flex flex-column">
+                            <h6 class="fw-bold text-dark chart-title">Top Health Issue Questions</h6>
+                            <div class="chart-container flex-grow-1 position-relative">
+                                <canvas id="healthIssueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Register the DataLabels Plugin Globally
+            Chart.register(ChartDataLabels);
+
+            // Global Chart Settings
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.color = '#555';
+            Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(21, 27, 75, 0.9)';
+            Chart.defaults.plugins.tooltip.padding = 10;
+
+            // Theme Color Palette
+            const clrTeal = '#1da69a'; // Primary Requested Color (Used for 'No', 'Male', 'Female')
+            const clrNavy = '#1a237e'; // Secondary (Used for 'Yes', 'Male' in stacked)
+            const clrOrange = '#e67e22'; // Tertiary
+            const clrPink = '#e84393';
+            const clrPurple = '#8e44ad';
+
+            // 1. Gender-wise Analysis (Doughnut)
+            new Chart(document.getElementById('genderChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Male', 'Other', 'Female'],
+                    datasets: [{
+                        data: [720, 60, 36],
+                        backgroundColor: [clrTeal, clrOrange, clrNavy],
+                        borderWidth: 1, borderColor: '#fff',
+                        cutout: '65%'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: 20 },
+                    plugins: {
+                        legend: { position: 'right', labels: { usePointStyle: true, boxWidth: 8, font: { size: 11, weight: 'bold' } } },
+                        datalabels: { anchor: 'end', align: 'end', offset: 5, color: '#555', font: { size: 11, weight: 'bold' }, formatter: (value) => value }
+                    }
+                }
+            });
+
+            // 2. Female Mini Pie
+            new Chart(document.getElementById('femaleChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['No', 'Yes'],
+                    datasets: [{
+                        data: [37, 9],
+                        backgroundColor: [clrTeal, clrNavy],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, layout: { padding: 10 },
+                    plugins: {
+                        legend: { position: 'right', labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } } },
+                        datalabels: { anchor: 'end', align: 'end', offset: 5, color: '#555', font: { size: 10 }, formatter: (value) => value }
+                    }
+                }
+            });
+
+            // 3. Male Mini Pie
+            new Chart(document.getElementById('maleChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['No', 'Yes'],
+                    datasets: [{
+                        data: [746, 128],
+                        backgroundColor: [clrTeal, clrNavy],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, layout: { padding: 10 },
+                    plugins: {
+                        legend: { position: 'right', labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } } },
+                        datalabels: { anchor: 'end', align: 'end', offset: 5, color: '#555', font: { size: 10 }, formatter: (value) => value }
+                    }
+                }
+            });
+
+            // 4. Age-wise Analysis (Grouped Bar)
+            new Chart(document.getElementById('ageChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['<18', '18-30', '31-40', '41-50', '50+'],
+                    datasets: [
+                        { label: 'No', data: [202, 328, 160, 94, 40], backgroundColor: clrTeal, barPercentage: 0.8, categoryPercentage: 0.8 },
+                        { label: 'Yes', data: [51, 39, 25, 23, 8], backgroundColor: clrNavy, barPercentage: 0.8, categoryPercentage: 0.8 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', align: 'start', labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } } },
+                        datalabels: { anchor: 'end', align: 'top', offset: 2, color: '#555', font: { size: 10 } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 400, grid: { borderDash: [4, 4] }, border: { display: false }, title: { display: true, text: 'User Count', font: { size: 10 } } },
+                        x: { grid: { display: false }, border: { display: false }, title: { display: true, text: 'Age Group', font: { size: 10 } } }
+                    }
+                }
+            });
+
+            // 5. Top Risk Departments (Stacked Bar)
+            new Chart(document.getElementById('departmentChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['EXECUTION', 'CARPENTER', 'FORMWORK', 'PLANNING', 'ADMINISTRATI...', 'FITTER HELPER'],
+                    datasets: [
+                        { label: 'Female', data: [2, 0, 0, 2, 0, 0], backgroundColor: clrTeal, barPercentage: 0.7 },
+                        { label: 'Male', data: [5, 4, 4, 2, 2, 2], backgroundColor: clrNavy, barPercentage: 0.7 },
+                        { label: 'Other', data: [0, 1, 0, 0, 0, 0], backgroundColor: clrOrange, barPercentage: 0.7 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', align: 'start', labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } } },
+                        datalabels: {
+                            color: '#fff', font: { size: 10, weight: 'bold' },
+                            formatter: (value) => value > 0 ? value : '' // Only show label if > 0
+                        }
+                    },
+                    scales: {
+                        x: { stacked: true, grid: { display: false }, ticks: { maxRotation: 45, minRotation: 45, font: { size: 9 } }, title: { display: true, text: 'Department', font: { size: 10 } } },
+                        y: { stacked: true, beginAtZero: true, max: 8, grid: { borderDash: [4, 4] }, border: { display: false }, title: { display: true, text: 'User Count', font: { size: 10 } } }
+                    }
+                }
+            });
+
+            // 6. Top Health Issue Questions (Pie Chart)
+            new Chart(document.getElementById('healthIssueChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: [
+                        'Do you have spectacl...',
+                        'Do you have blurry Vi...',
+                        'Do you have high BP/...',
+                        'Any knee pains/bone...',
+                        'Any surgeries before?'
+                    ],
+                    datasets: [{
+                        data: [41, 40, 37, 24, 23],
+                        backgroundColor: [clrNavy, clrTeal, clrOrange, clrPink, clrPurple],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, layout: { padding: 30 },
+                    plugins: {
+                        legend: { position: 'right', title: { display: true, text: 'Questions', font: { weight: 'bold' } }, labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 }, padding: 15 } },
+                        datalabels: {
+                            anchor: 'end', align: 'end', offset: 10, color: '#555', font: { size: 10 },
+                            formatter: (value, ctx) => {
+                                let total = ctx.chart._metasets[0].total;
+                                let percentage = ((value / total) * 100).toFixed(2);
+                                return `${value} (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Analytics: Mental Health</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Theme Variables */
+        :root {
+            --theme-teal: #1da69a;
+            /* Requested Custom Color */
+            --theme-dark-navy: #111a4a;
+            --theme-bg-gray: #e6ecf2;
+            --border-color: #d1d9e2;
+        }
+
+        .bg-dashboard-gray {
+            background-color: var(--theme-bg-gray);
+            min-height: 100vh;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1700px;
+            margin: 0 auto;
+        }
+
+        /* Header Styling */
+        .header-card {
+            border: 1px solid var(--border-color);
+        }
+
+        .brand-logo {
+            background-color: var(--theme-teal);
+            width: 100px;
+            border-radius: 8px;
+        }
+
+        .report-title {
+            letter-spacing: 0.5px;
+        }
+
+        .qr-image {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Questions Sidebar */
+        .questions-list {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .question-card {
+            font-size: 0.95rem;
+            color: #444;
+            cursor: pointer;
+            border-color: #ccc !important;
+            transition: all 0.2s ease;
+        }
+
+        .active-card {
+            background-color: var(--theme-dark-navy);
+            color: #ffffff;
+            border-color: var(--theme-dark-navy) !important;
+            font-weight: 600;
+        }
+
+        /* Micro-Interactions */
+        .interactive-element:hover:not(.active-card) {
+            background-color: #f8f9fa;
+            border-color: var(--theme-teal) !important;
+        }
+
+        .interactive-card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .interactive-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06) !important;
+            transform: translateY(-2px);
+            border-color: var(--theme-teal) !important;
+        }
+
+        /* Stats & Filters */
+        .stat-card,
+        .filter-card,
+        .chart-card {
+            border-color: var(--border-color) !important;
+            border-radius: 2px;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+        }
+
+        .filter-label {
+            font-size: 0.9rem;
+        }
+
+        /* Charts */
+        .chart-title {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .chart-container {
+            min-height: 250px;
+        }
+
+        /* Custom Scrollbar for Questions */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--theme-teal);
+        }
+    </style>
+</head>
+
+<body class="bg-dashboard-gray">
+
+    <div class="container-fluid p-3 dashboard-wrapper">
+
+        <div
+            class="header-card bg-white shadow-sm mb-3 p-3 d-flex align-items-center justify-content-between interactive-card">
+            <div class="brand-logo text-white d-flex align-items-center justify-content-center p-2">
+                <span class="fw-bold fs-4">Nizcare</span>
+            </div>
+
+            <h2 class="fw-bold m-0 text-dark report-title text-center flex-grow-1">Health Analytics: Mental Health</h2>
+
+            <div class="d-flex align-items-center text-end">
+                <div class="qr-text text-dark fw-bold small me-3 lh-sm">
+                    Scan the QR to<br>Download Our App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-image border p-1 bg-white">
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-lg-3 col-md-4 d-flex flex-column h-100">
+                <div class="questions-header fw-bold text-dark mb-2 ps-1">Questions</div>
+                <div class="questions-list d-flex flex-column gap-2 custom-scrollbar pe-2">
+
+                    <div class="question-card bg-white p-4 border interactive-element">
+                        Any Failures is past which makes you feel low for yourself and family?
+                    </div>
+
+                    <div class="question-card active-card p-4 border interactive-element">
+                        Do you feel sad about Life or Harming yourself?
+                    </div>
+
+                    <div class="question-card bg-white p-4 border interactive-element">
+                        Do you have trouble in concentrating on things like Reading, Watching TV,...
+                    </div>
+
+                    <div class="question-card bg-white p-4 border interactive-element">
+                        Do you Sleep more or less?
+                    </div>
+
+                    <div class="question-card bg-white p-4 border interactive-element">
+                        Do you starve or Overeat sometime?
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-8 d-flex flex-column gap-3">
+
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6">
+                        <div
+                            class="stat-card bg-white p-3 text-center border interactive-card h-100 d-flex flex-column justify-content-center">
+                            <div class="stat-number text-dark">2130</div>
+                            <div class="stat-label text-muted">Registered Users</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div
+                            class="stat-card bg-white p-3 text-center border interactive-card h-100 d-flex flex-column justify-content-center">
+                            <div class="stat-number text-dark">2130</div>
+                            <div class="stat-label text-muted">Questionnaires Answered</div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4">
+                        <div class="filter-card bg-white p-3 border interactive-card h-100">
+                            <label class="filter-label text-dark fw-bold mb-2">Gender</label>
+                            <select class="form-select form-select-sm text-muted">
+                                <option>All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <div class="filter-card bg-white p-3 border interactive-card h-100">
+                            <label class="filter-label text-dark fw-bold mb-2">Stream</label>
+                            <select class="form-select form-select-sm text-muted">
+                                <option>All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <div class="filter-card bg-white p-3 border interactive-card h-100">
+                            <label class="filter-label text-dark fw-bold mb-2">College Name</label>
+                            <select class="form-select form-select-sm text-muted">
+                                <option>All</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 flex-grow-1">
+
+                    <div class="col-xl-6">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100">
+                            <h6 class="chart-title text-dark">Age wise Analysis</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="ageChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100">
+                            <h6 class="chart-title text-dark">BMI Classification</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="bmiChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100">
+                            <h6 class="chart-title text-dark">Answers</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="answersChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100">
+                            <h6 class="chart-title text-dark">Mental Health Status</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="statusChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Register the DataLabels Plugin Globally
+            Chart.register(ChartDataLabels);
+
+            // Global Chart Settings
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.color = '#777';
+            Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(17, 26, 74, 0.9)'; // Navy background for tooltips
+
+            // Theme Colors
+            const clrTeal = '#1da69a'; // Requested Primary Color
+            const clrNavy = '#111a4a'; // Dark Navy for Answers/Active states
+            const clrOrange = '#e67e22'; // BMI Obese
+            const clrPurple = '#8e44ad'; // BMI Overweight
+
+            // Common Grid Options for Bar Charts
+            const commonScales = {
+                y: {
+                    beginAtZero: true,
+                    grid: { borderDash: [4, 4], color: '#e0e0e0' },
+                    border: { display: false },
+                    title: { display: true, text: 'User Count', font: { size: 10 } }
+                },
+                x: {
+                    grid: { display: false },
+                    border: { display: false },
+                    title: { display: true, text: 'Age Category', font: { size: 10 } }
+                }
+            };
+
+            // 1. AGE WISE ANALYSIS (Vertical Bar)
+            new Chart(document.getElementById('ageChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['0 to 5', '11 to 15', '16 to 20', '21 to 25', '26 to 30', '6 to 10', 'Over 30'],
+                    datasets: [{
+                        data: [83, 16, 1634, 359, 11, 7, 20],
+                        backgroundColor: clrTeal,
+                        barPercentage: 0.7
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: { anchor: 'end', align: 'top', color: '#666', font: { size: 10 } }
+                    },
+                    scales: {
+                        ...commonScales,
+                        y: { ...commonScales.y, max: 2000, ticks: { stepSize: 500 } }
+                    }
+                }
+            });
+
+            // 2. BMI CLASSIFICATION (Pie Chart)
+            new Chart(document.getElementById('bmiChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['Healthy (18.5-24.9)', 'Underweight (<18.5)', 'Obese (>30)', 'Overweight (25-29.9)'],
+                    datasets: [{
+                        data: [706, 476, 138, 118],
+                        backgroundColor: [clrTeal, clrNavy, clrOrange, clrPurple],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: 10 },
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            title: { display: true, text: 'BMI Category', font: { weight: 'bold', size: 11 } },
+                            labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } }
+                        },
+                        datalabels: {
+                            anchor: 'end', align: 'end', offset: 5, color: '#666', font: { size: 11 },
+                            formatter: (value) => value
+                        }
+                    }
+                }
+            });
+
+            // 3. ANSWERS (Vertical Bar)
+            new Chart(document.getElementById('answersChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Not at all', 'Several days', 'Nearly every day', 'More than half\nthe days'],
+                    datasets: [{
+                        data: [1240, 477, 251, 195],
+                        backgroundColor: clrNavy,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: { anchor: 'end', align: 'top', color: '#666', font: { size: 10 } }
+                    },
+                    scales: {
+                        ...commonScales,
+                        x: { ...commonScales.x, title: { display: true, text: 'Answer', font: { size: 10 } } },
+                        y: { ...commonScales.y, max: 1500, ticks: { stepSize: 500 } }
+                    }
+                }
+            });
+
+            // 4. MENTAL HEALTH STATUS (Centered Funnel / Floating Bar Chart)
+            // To achieve the perfect centered funnel look, we use a floating bar chart centered around 0.
+            const funnelTrueValues = [618, 603, 414, 187, 44];
+            const funnelData = funnelTrueValues.map(v => [-v / 2, v / 2]); // Centers the bar
+
+            new Chart(document.getElementById('statusChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Mild', 'Minimal or none', 'Moderate', 'Moderately severe', 'Severe'],
+                    datasets: [{
+                        data: funnelData,
+                        backgroundColor: clrTeal,
+                        borderWidth: 1,
+                        borderColor: '#ffffff',
+                        barPercentage: 0.95,
+                        categoryPercentage: 0.95
+                    }]
+                },
+                options: {
+                    indexAxis: 'y', // Horizontal
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: { label: (ctx) => `Value: ${funnelTrueValues[ctx.dataIndex]}` }
+                        },
+                        datalabels: {
+                            color: '#fff',
+                            font: { size: 11 },
+                            formatter: (value, ctx) => funnelTrueValues[ctx.dataIndex]
+                        }
+                    },
+                    scales: {
+                        x: { display: false, min: -350, max: 350 }, // Hide X axis, set min/max to force absolute centering
+                        y: {
+                            grid: { display: false },
+                            border: { display: false },
+                            ticks: { color: '#555', font: { size: 11 } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

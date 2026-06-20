@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Health Audit Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+            color: #333;
+        }
+
+        /* Dashboard Container & Borders */
+        .dashboard-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+            border: 3px solid #dcdcdc;
+            /* Thick outer border matching design */
+            border-radius: 4px;
+        }
+
+        .header-row {
+            border-bottom: 3px solid #dcdcdc;
+        }
+
+        /* Custom Grid Borders */
+        .border-end-custom {
+            border-right: 3px solid #dcdcdc;
+        }
+
+        .border-top-custom {
+            border-top: 3px solid #dcdcdc;
+        }
+
+        .stats-sidebar {
+            border-right: 3px solid #dcdcdc;
+        }
+
+        /* Header Styling */
+        .brand-logo {
+            background-color: #1da69a;
+            width: 120px;
+            height: 40px;
+            border-radius: 12px;
+        }
+
+        .report-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            letter-spacing: 0.5px;
+        }
+
+        .qr-text {
+            font-size: 0.9rem;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        /* Sidebar Stats Styling */
+        .stat-box {
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 3px solid #dcdcdc;
+            transition: background-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 125px;
+        }
+
+        .stat-box:hover {
+            background-color: #f8faff;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #222;
+        }
+
+        /* Chart Box Styling */
+        .chart-box {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.2s ease;
+        }
+
+        .chart-box:hover {
+            background-color: #fcfcfc;
+        }
+
+        .chart-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            flex-grow: 1;
+            min-height: 250px;
+        }
+
+        /* Specific Height Adjustments */
+        .top-charts-row {
+            min-height: 350px;
+        }
+
+        .bottom-charts-row {
+            min-height: 400px;
+        }
+    </style>
+</head>
+
+<body class="bg-light p-4">
+
+    <div class="container-fluid dashboard-wrapper bg-white shadow-sm">
+
+        <div class="row align-items-center header-row py-3 px-4">
+            <div class="col-md-3">
+                <div class="brand-logo d-flex align-items-center justify-content-center text-white fw-bold rounded">
+                    <span class="fs-4">Nizcare</span>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <h2 class="fw-bold m-0 report-title">Employee Health Audit Report</h2>
+            </div>
+            <div class="col-md-3 d-flex justify-content-end align-items-center">
+                <div class="text-end me-3 text-muted qr-text">
+                    Scan the QR to<br>Download Our App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-image">
+            </div>
+        </div>
+
+        <div class="row g-0 dashboard-grid">
+
+            <div class="col-lg-2 stats-sidebar">
+                <div class="stat-box">
+                    <div class="stat-label">LOCATION'S</div>
+                    <select class="form-select form-select-sm mt-2 custom-select">
+                        <option>All</option>
+                    </select>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">OVER ALL TEST GROUP COUNT</div>
+                    <div class="stat-value">4780</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">NO OF FEMALES IN TEST GROUP</div>
+                    <div class="stat-value">2755</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">NO OF MALES IN TEST GROUP</div>
+                    <div class="stat-value">2025</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">NO OF VILLAGES</div>
+                    <div class="stat-value">6</div>
+                </div>
+                <div class="stat-box border-bottom-0">
+                    <div class="stat-label">DIAGNOSED ISSUE'S FROM TESTS</div>
+                    <div class="stat-value">13</div>
+                </div>
+            </div>
+
+            <div class="col-lg-10 charts-area">
+
+                <div class="row g-0 top-charts-row">
+                    <div class="col-md-4 chart-box border-end-custom">
+                        <div class="chart-title">AGE WISE ANALYSIS</div>
+                        <div class="chart-container">
+                            <canvas id="ageWiseChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4 chart-box border-end-custom">
+                        <div class="chart-title">GENDER WISE ANALYSIS</div>
+                        <div class="chart-container">
+                            <canvas id="genderWiseChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4 chart-box">
+                        <div class="chart-title">TOP RISK VILLAGES</div>
+                        <div class="chart-container">
+                            <canvas id="topRiskChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-0 bottom-charts-row border-top-custom">
+                    <div class="col-md-4 chart-box border-end-custom">
+                        <div class="chart-title">OVER ALL LOCATION'S WISE ANALYSIS BAESD ON GENDER</div>
+                        <div class="chart-container">
+                            <canvas id="locationGenderChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-8 chart-box">
+                        <div class="chart-title">TEST WISE RISK ANALYSIS</div>
+                        <div class="chart-container">
+                            <canvas id="testWiseChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Register the datalabels plugin globally
+        Chart.register(ChartDataLabels);
+
+        // Global Chart Configuration
+        Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+        Chart.defaults.plugins.tooltip.enabled = true;
+        Chart.defaults.plugins.datalabels.color = '#000';
+        Chart.defaults.plugins.datalabels.font.weight = 'bold';
+        Chart.defaults.plugins.datalabels.font.size = 11;
+
+        // Colors matching the design
+        const primaryBlue = '#2196f3';
+        const darkBlue = '#1a237e';
+
+        // 1. AGE WISE ANALYSIS (Vertical Bar)
+        new Chart(document.getElementById('ageWiseChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['12 Below', '12-17', '18-39', '40-59', '60 Abo...'],
+                datasets: [{
+                    data: [73, 639, 1279, 1609, 1180],
+                    backgroundColor: primaryBlue,
+                    barPercentage: 0.7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: { anchor: 'end', align: 'top', offset: 2 }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true, max: 2000,
+                        title: { display: true, text: 'USERS', font: { size: 10, weight: 'bold' } },
+                        grid: { color: '#eee' }, border: { display: false }
+                    },
+                    x: { grid: { display: false }, border: { display: false } }
+                }
+            }
+        });
+
+        // 2. GENDER WISE ANALYSIS (Doughnut)
+        new Chart(document.getElementById('genderWiseChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Female', 'Male'],
+                datasets: [{
+                    data: [2755, 2025],
+                    backgroundColor: [primaryBlue, darkBlue],
+                    borderWidth: 0,
+                    cutout: '70%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: { padding: 20 },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { usePointStyle: true, boxWidth: 8, padding: 20 }
+                    },
+                    datalabels: {
+                        anchor: 'center', align: 'end', offset: 25,
+                        formatter: (value) => value
+                    }
+                }
+            }
+        });
+
+        // 3. TOP RISK VILLAGES (Horizontal Bar)
+        new Chart(document.getElementById('topRiskChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['CHITTATHURU...', 'NETHAKUPPAM', 'ANUPALLE', 'KUPPAMBADU...', 'C.RAMAPURAM', 'SORAKAYALAP...'],
+                datasets: [{
+                    data: [1030, 966, 809, 717, 186, 49],
+                    backgroundColor: primaryBlue,
+                    barPercentage: 0.8
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: { anchor: 'end', align: 'right', offset: 4 }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true, max: 1200,
+                        ticks: { callback: (val) => val === 1000 ? '1K' : val === 0 ? '0K' : '' },
+                        grid: { color: '#eee' }, border: { display: false }
+                    },
+                    y: {
+                        title: { display: true, text: "Location's", font: { size: 10, weight: 'bold' } },
+                        grid: { display: false }, border: { display: false }
+                    }
+                }
+            }
+        });
+
+        // 4. OVERALL LOCATION'S WISE ANALYSIS (Doughnut with Percentages)
+        new Chart(document.getElementById('locationGenderChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Female', 'Male'],
+                datasets: [{
+                    data: [2229, 1512],
+                    backgroundColor: [primaryBlue, darkBlue],
+                    borderWidth: 0,
+                    cutout: '70%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: { padding: 40 },
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { usePointStyle: true, boxWidth: 8 }
+                    },
+                    datalabels: {
+                        anchor: 'center', align: 'end', offset: 25,
+                        textAlign: 'center',
+                        formatter: (value, context) => {
+                            let sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                            let percentage = ((value * 100) / sum).toFixed(2) + '%';
+                            return value + '\n(' + percentage + ')';
+                        }
+                    }
+                }
+            }
+        });
+
+        // 5. TEST WISE RISK ANALYSIS (Vertical Bar)
+        new Chart(document.getElementById('testWiseChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['AKI ACUTE KI...', 'HYPERLIPIDEMIA', 'STROKE /HEART...', 'ANEMIA', 'HYPERGLYCEMIC', 'INFECTION', 'SUBLINICAL-HY...', 'FANCONI SYNDR...', 'GOUT ,RENAL ST...', 'HYPERTHYROIDIS...', 'HYPOGLYCEMIC', 'ENTERIC FEVER'],
+                datasets: [{
+                    data: [1519, 1211, 1027, 842, 764, 644, 459, 406, 280, 110, 42, 10],
+                    backgroundColor: primaryBlue,
+                    barPercentage: 0.8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: { anchor: 'end', align: 'top', offset: 2 }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true, max: 2000,
+                        grid: { color: '#eee' }, border: { display: false }
+                    },
+                    x: {
+                        ticks: { maxRotation: 45, minRotation: 45, font: { size: 9 } },
+                        grid: { display: false }, border: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

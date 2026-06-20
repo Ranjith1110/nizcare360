@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Health Audit Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #e9ecef;
+        }
+
+        :root {
+            --theme-teal: #1da69a;
+            /* Requested Primary Accent */
+            --theme-dark: #1a237e;
+            /* Logo dark blue */
+            --bg-border: rgba(29, 166, 154, 0.6);
+            /* Soft teal for the thick borders */
+            --border-width: 6px;
+            --border-radius: 10px;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1700px;
+            margin: 0 auto;
+        }
+
+        /* Thick Border Card Theme matching the reference image style */
+        .theme-card {
+            background-color: #ffffff;
+            border: var(--border-width) solid var(--bg-border);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header & Footer Styling */
+        .header-banner {
+            background-color: rgba(29, 166, 154, 0.15);
+            /* Light teal tint */
+        }
+
+        .brand-logo {
+            background-color: var(--theme-teal);
+            width: 100px;
+        }
+
+        .report-title {
+            letter-spacing: 0.5px;
+            font-size: 1.8rem;
+        }
+
+        .qr-image {
+            width: 70px;
+            height: 70px;
+        }
+
+        .footer-banner {
+            background-color: rgba(29, 166, 154, 0.3);
+            /* Slightly darker teal tint */
+            border: 3px solid var(--bg-border);
+            font-size: 1.05rem;
+        }
+
+        /* Micro-interactions */
+        .interactive-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(29, 166, 154, 0.2);
+            border-color: var(--theme-teal);
+        }
+
+        /* Custom Table Layout */
+        .table-container {
+            height: 350px;
+            overflow-y: auto;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+            padding: 8px 12px;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(29, 166, 154, 0.08);
+        }
+
+        .table tbody td {
+            color: #9c27b0;
+            /* Purple text matching the design */
+        }
+
+        /* Floating Filter on Bar Chart */
+        .floating-filter {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #dcedc8;
+            /* Light green box from design */
+            border: 1px solid #c5e1a5;
+            z-index: 10;
+            min-width: 120px;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--theme-teal);
+        }
+
+        /* Chart Containers */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            min-height: 220px;
+        }
+
+        #riskAnalysisChart {
+            min-height: 300px;
+        }
+    </style>
+</head>
+
+<body class="bg-dashboard">
+
+    <div class="container-fluid p-3 dashboard-wrapper">
+
+        <div class="theme-card header-banner d-flex align-items-center justify-content-between p-2 mb-3">
+            <div class="brand-logo text-white d-flex align-items-center justify-content-center rounded p-2">
+                <span class="fs-5 fw-bold">Nizcare</span>
+            </div>
+
+            <h3 class="fw-bold m-0 text-dark report-title text-center flex-grow-1">Employee Health Audit Report</h3>
+
+            <div class="d-flex align-items-center text-end pe-2">
+                <div class="qr-text text-dark fw-semibold small me-3 lh-sm">
+                    Scan the QR to<br>Download Our App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-image border p-1 bg-white rounded">
+            </div>
+        </div>
+
+        <div class="row g-3 mb-3">
+
+            <div class="col-lg-4">
+                <div class="theme-card p-3 h-100 position-relative interactive-card d-flex flex-column">
+                    <h6 class="fw-bold text-dark text-uppercase mb-0">Nizcare SCORE (Lab Results + LifeStyle) As of</h6>
+                    <div class="score-display text-end fw-bold fs-4">82/100</div>
+                    <div class="chart-container flex-grow-1 mt-2">
+                        <canvas id="nizcareScoreChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="theme-card p-3 h-100 position-relative interactive-card d-flex flex-column">
+                    <h6 class="fw-bold text-dark text-uppercase mb-0 text-center w-100 pe-5">MENTAL HEALTH</h6>
+                    <div class="score-display position-absolute top-0 end-0 p-3 text-end">
+                        <div class="small fw-bold lh-sm text-dark">Employees<br>Attended For<br>Mental Screening</div>
+                        <div class="fw-bold fs-4 text-dark mt-1">92/100</div>
+                    </div>
+                    <div class="chart-container flex-grow-1 mt-4">
+                        <canvas id="mentalHealthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="theme-card p-3 h-100 position-relative interactive-card d-flex flex-column">
+                    <h6 class="fw-bold text-dark text-uppercase mb-0 text-center w-100 pe-5">WOMENS HEALTH</h6>
+                    <div class="score-display position-absolute top-0 end-0 p-3 text-end">
+                        <div class="small fw-bold lh-sm text-dark">Employees<br>Attended For<br>Womens Screening</div>
+                        <div class="fw-bold fs-4 text-dark mt-1">49/100</div>
+                    </div>
+                    <div class="chart-container flex-grow-1 mt-4">
+                        <canvas id="womensHealthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row g-3 mb-3">
+
+            <div class="col-lg-4 d-flex flex-column gap-3">
+
+                <div class="row g-2">
+                    <div class="col-6">
+                        <div class="theme-card p-2 text-center interactive-card bg-white">
+                            <label class="fw-bold text-dark small mb-1">Department</label>
+                            <select class="form-select form-select-sm border-secondary-subtle">
+                                <option>All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="theme-card p-2 text-center interactive-card bg-white">
+                            <label class="fw-bold text-dark small mb-1">Age Group</label>
+                            <select class="form-select form-select-sm border-secondary-subtle">
+                                <option>All</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-card p-0 flex-grow-1 overflow-hidden interactive-card bg-white">
+                    <div class="table-container custom-scrollbar">
+                        <table class="table table-bordered table-hover mb-0">
+                            <thead class="bg-light sticky-top">
+                                <tr class="text-center align-middle">
+                                    <th class="fw-bold text-dark">Unique Id</th>
+                                    <th class="fw-bold text-dark">RiskType <i class="fas fa-caret-up ms-1"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody class="fw-bold" style="color: #9c27b0;">
+                                <tr>
+                                    <td>347b9bd8</td>
+                                    <td>Dental</td>
+                                </tr>
+                                <tr>
+                                    <td>5e8e454a</td>
+                                    <td>Dental</td>
+                                </tr>
+                                <tr>
+                                    <td>87f9fe00</td>
+                                    <td>Dental</td>
+                                </tr>
+                                <tr>
+                                    <td>8e5f91bb</td>
+                                    <td>Dental</td>
+                                </tr>
+                                <tr>
+                                    <td>b6d97551</td>
+                                    <td>Dental</td>
+                                </tr>
+                                <tr>
+                                    <td>cf38d8b3</td>
+                                    <td>Dental</td>
+                                </tr>
+                                <tr>
+                                    <td>d2a1b9c4</td>
+                                    <td>Dental</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-8">
+                <div class="theme-card p-3 h-100 position-relative interactive-card bg-white d-flex flex-column">
+
+                    <h5 class="fw-bold text-dark text-center text-uppercase mb-4">RISK ANALYSIS</h5>
+
+                    <div class="floating-filter p-2 rounded shadow-sm">
+                        <label class="fw-bold text-dark small mb-1 d-block text-center">Gender</label>
+                        <select class="form-select form-select-sm border-0 bg-transparent">
+                            <option>All</option>
+                        </select>
+                    </div>
+
+                    <div class="chart-container flex-grow-1 w-100">
+                        <canvas id="riskAnalysisChart"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-banner text-center p-2 rounded fw-bold text-dark shadow-sm">
+            The Nizcare Score is a comprehensive evaluation that incorporates biometric analysis, mental health evaluation,
+            lab tests, and lifestyle analysis.
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Register DataLabels Plugin Globally
+            Chart.register(ChartDataLabels);
+
+            // Global Chart Settings
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.color = '#333';
+            Chart.defaults.font.weight = 'bold';
+
+            // Exact Colors from Design
+            const clrGreen = '#81c784';
+            const clrYellow = '#fbc02d';
+            const clrRed = '#ef5350';
+            const clrOrange = '#ff9800';
+
+            // Common Pie Chart Options
+            const commonPieOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: { padding: 15 },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        title: { display: true, text: 'Risk Type', font: { weight: 'bold' }, padding: 0 },
+                        labels: { usePointStyle: true, boxWidth: 8, font: { size: 11, weight: 'bold' } }
+                    },
+                    datalabels: {
+                        anchor: 'end', align: 'end', offset: 5, color: '#000',
+                        font: { size: 14, weight: 'bold' },
+                        formatter: (value) => value
+                    }
+                }
+            };
+
+            // 1. YIRA SCORE (Pie Chart)
+            new Chart(document.getElementById('nizcareScoreChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['High Risk', 'Moderately ...', 'Healthy', 'Other'],
+                    datasets: [{
+                        data: [30, 48, 2, 2],
+                        backgroundColor: [clrGreen, clrYellow, clrRed, clrOrange],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: commonPieOptions
+            });
+
+            // 2. MENTAL HEALTH (Pie Chart)
+            new Chart(document.getElementById('mentalHealthChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['Very Low', 'Low', 'Medium', 'High'],
+                    datasets: [{
+                        data: [33, 31, 21, 5],
+                        backgroundColor: [clrGreen, clrYellow, clrOrange, clrRed],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: commonPieOptions
+            });
+
+            // 3. WOMENS HEALTH (Pie Chart)
+            new Chart(document.getElementById('womensHealthChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['Need More Attention', 'Healthy Women', 'Further Evaluation'],
+                    datasets: [{
+                        data: [20, 24, 5],
+                        backgroundColor: [clrGreen, clrRed, clrYellow],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    ...commonPieOptions,
+                    plugins: {
+                        ...commonPieOptions.plugins,
+                        legend: { ...commonPieOptions.plugins.legend, title: { display: false } }
+                    }
+                }
+            });
+
+            // 4. RISK ANALYSIS (Bar Chart)
+            new Chart(document.getElementById('riskAnalysisChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['LifeStyle', 'Sedentary', 'Micorcytic Ane...', 'Sleep Issue', 'Metabolic Synd...', 'Dyslipidemia', 'Migraines', 'Dental', 'Pre Diabetic', 'Diabetic', 'Inflammatory ...', 'Sleep Apnea', 'Vitamin D'],
+                    datasets: [{
+                        data: [44, 35, 13, 11, 8, 7, 7, 6, 6, 3, 3, 2, 2],
+                        backgroundColor: clrRed, // Using coral red from the design
+                        barPercentage: 0.8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 30 } },
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: {
+                            anchor: 'end', align: 'top', offset: 2,
+                            color: '#fff', backgroundColor: '#000', // Black box behind numbers
+                            borderRadius: 4, font: { weight: 'bold', size: 12 },
+                            padding: { top: 3, bottom: 3, left: 6, right: 6 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true, max: 50,
+                            ticks: { stepSize: 20, font: { weight: 'bold', size: 14 } },
+                            title: { display: true, text: 'Total Users', font: { weight: 'bold', size: 14 }, color: '#000' },
+                            grid: { borderDash: [5, 5], color: '#666' },
+                            border: { display: false }
+                        },
+                        x: {
+                            grid: { borderDash: [5, 5], color: '#666' },
+                            border: { display: true, color: '#000', width: 2 }, // Solid black baseline
+                            ticks: { maxRotation: 45, minRotation: 45, font: { size: 10, weight: 'bold' }, color: '#000' }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

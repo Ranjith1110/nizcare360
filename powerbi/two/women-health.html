@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Analytics: Women Health</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Theme Variables */
+        :root {
+            --theme-teal: #1da69a;
+            /* Requested Primary Accent */
+            --theme-dark-navy: #151b4b;
+            /* Replaces the dark default for high contrast elements */
+            --theme-bg-gray: #e6ebf1;
+            /* Light gray-blue dashboard background matching reference */
+            --border-color: #d1d9e2;
+        }
+
+        .bg-dashboard {
+            background-color: var(--theme-bg-gray);
+            min-height: 100vh;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1750px;
+            margin: 0 auto;
+        }
+
+        /* Header Styling */
+        .header-card {
+            border-top: 4px solid var(--theme-teal);
+            border-radius: 4px;
+        }
+
+        .brand-logo {
+            background-color: var(--theme-teal);
+            width: 100px;
+        }
+
+        .report-title {
+            letter-spacing: 0.5px;
+        }
+
+        .qr-image {
+            width: 75px;
+            height: 75px;
+        }
+
+        /* Questions Sidebar */
+        .sidebar-col {
+            max-height: calc(100vh - 120px);
+        }
+
+        .questions-list {
+            overflow-y: auto;
+        }
+
+        .question-card {
+            min-height: 70px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-color: #e2e8f0 !important;
+            transition: all 0.2s ease;
+        }
+
+        .active-card {
+            background-color: #1a1a1a;
+            /* Solid black as seen in the reference */
+            border-color: #1a1a1a !important;
+        }
+
+        .placeholder-text {
+            filter: blur(2px);
+            /* Mimicking the blurred out questions from the screenshot */
+        }
+
+        .active-card .placeholder-text {
+            filter: none;
+        }
+
+        /* Micro-Interactions */
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        .action-icons i:hover {
+            color: var(--theme-teal);
+        }
+
+        .interactive-element:hover:not(.active-card) {
+            background-color: #f8fafc;
+            border-color: var(--theme-teal) !important;
+            transform: translateX(2px);
+        }
+
+        .interactive-card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .interactive-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Stats & Filters */
+        .stat-card,
+        .filter-card,
+        .chart-card {
+            border-color: var(--border-color) !important;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+        }
+
+        .filter-label {
+            font-size: 0.85rem;
+        }
+
+        /* Charts */
+        .chart-title {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .chart-container {
+            min-height: 250px;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--theme-teal);
+        }
+    </style>
+</head>
+
+<body class="bg-dashboard">
+
+    <div class="container-fluid p-3 dashboard-wrapper">
+
+        <div
+            class="header-card bg-white shadow-sm mb-3 p-3 d-flex align-items-center justify-content-between interactive-card">
+            <div class="brand-logo text-white d-flex flex-column align-items-center justify-content-center p-2 rounded">
+                <span class="fw-bold fs-5">Nizcare</span>
+            </div>
+
+            <h3 class="fw-bold m-0 text-dark report-title text-center flex-grow-1">Health Analytics: Women Health</h3>
+
+            <div class="d-flex align-items-center text-end">
+                <div class="qr-text text-dark fw-bold small me-3 lh-sm">
+                    Scan the QR to<br>Download Our App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-image border p-1 bg-white">
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-lg-3 d-flex flex-column h-100 sidebar-col">
+                <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+                    <div class="fw-bold text-dark fs-6">Questions</div>
+                    <div class="text-muted action-icons">
+                        <i class="fas fa-sort-amount-down cursor-pointer mx-1"></i>
+                        <i class="fas fa-eraser cursor-pointer mx-1"></i>
+                        <i class="fas fa-ellipsis-h cursor-pointer ms-1"></i>
+                    </div>
+                </div>
+                <div class="questions-list d-flex flex-column gap-2 custom-scrollbar pe-2 flex-grow-1">
+                    <div
+                        class="question-card active-card p-3 border rounded shadow-sm interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-white opacity-75">Do you experience frequent mood
+                            swings?</span>
+                    </div>
+                    <div
+                        class="question-card bg-white p-3 border rounded interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-muted opacity-50">Do you lead an active or sedentary
+                            life?</span>
+                    </div>
+                    <div
+                        class="question-card bg-white p-3 border rounded interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-muted opacity-50">Have you noticed any sleep
+                            disturbances?</span>
+                    </div>
+                    <div
+                        class="question-card bg-white p-3 border rounded interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-muted opacity-50">Are you experiencing severe acne
+                            issues?</span>
+                    </div>
+                    <div
+                        class="question-card bg-white p-3 border rounded interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-muted opacity-50">Are your periods usually irregular?</span>
+                    </div>
+                    <div
+                        class="question-card bg-white p-3 border rounded interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-muted opacity-50">Do you have a history of PCOS/PCOD?</span>
+                    </div>
+                    <div
+                        class="question-card bg-white p-3 border rounded interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-muted opacity-50">Do you experience pelvic pain?</span>
+                    </div>
+                    <div
+                        class="question-card bg-white p-3 border rounded interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-muted opacity-50">Have you experienced unexplained weight
+                            gain?</span>
+                    </div>
+                    <div
+                        class="question-card bg-white p-3 border rounded interactive-element d-flex align-items-center">
+                        <span class="placeholder-text text-muted opacity-50">Any history of severe menstrual
+                            cramps?</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9 d-flex flex-column gap-3">
+
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div
+                            class="stat-card bg-white p-3 text-center border interactive-card h-100 d-flex flex-column justify-content-center shadow-sm">
+                            <div class="stat-number text-dark">1439</div>
+                            <div class="stat-label text-muted">Registered Users</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div
+                            class="stat-card bg-white p-3 text-center border interactive-card h-100 d-flex flex-column justify-content-center shadow-sm">
+                            <div class="stat-number text-dark">1439</div>
+                            <div class="stat-label text-muted">Questionnaires Answered</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="filter-card bg-white p-3 border interactive-card h-100 shadow-sm">
+                            <label class="filter-label text-dark mb-1 small">Gender</label>
+                            <select class="form-select form-select-sm text-muted border-secondary-subtle">
+                                <option>All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="filter-card bg-white p-3 border interactive-card h-100 shadow-sm">
+                            <label class="filter-label text-dark mb-1 small">Stream</label>
+                            <select class="form-select form-select-sm text-muted border-secondary-subtle">
+                                <option>All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="filter-card bg-white p-3 border interactive-card h-100 shadow-sm">
+                            <label class="filter-label text-dark mb-1 small">College Name</label>
+                            <select class="form-select form-select-sm text-muted border-secondary-subtle">
+                                <option>All</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-xl-7">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100 shadow-sm">
+                            <h6 class="chart-title text-dark">Age wise Analysis</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="ageChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-5">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100 shadow-sm">
+                            <h6 class="chart-title text-dark">BMI Classification</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="bmiChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 flex-grow-1">
+                    <div class="col-xl-5">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100 shadow-sm">
+                            <h6 class="chart-title text-dark">Answers</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="answersChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100 shadow-sm">
+                            <h6 class="chart-title text-dark">Health Status</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="statusChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <div class="chart-card bg-white p-3 border interactive-card d-flex flex-column h-100 shadow-sm">
+                            <h6 class="chart-title text-dark">Top Problems</h6>
+                            <div class="chart-container flex-grow-1 position-relative w-100">
+                                <canvas id="problemsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Register the DataLabels Plugin Globally
+            Chart.register(ChartDataLabels);
+
+            // Global Chart Settings
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.color = '#777';
+            Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(21, 27, 75, 0.9)'; // Navy background for tooltips
+
+            // Color Palette
+            const clrTeal = '#1da69a'; // User requested primary accent
+            const clrNavy = '#1a237e'; // Secondary Dark Navy
+            const clrOrange = '#e67e22'; // Tertiary
+            const clrPurple = '#8e44ad';
+            const clrPink = '#e84393';
+
+            // Grid Options for Bar Charts
+            const commonScales = {
+                y: {
+                    beginAtZero: true,
+                    grid: { borderDash: [4, 4], color: '#e0e0e0' },
+                    border: { display: false },
+                    title: { display: true, text: 'User Count', font: { size: 10, weight: 'bold' } }
+                },
+                x: {
+                    grid: { display: false },
+                    border: { display: true, color: '#ccc' }, // X-axis solid line
+                    title: { display: true, text: 'Age Category', font: { size: 10, weight: 'bold' } }
+                }
+            };
+
+            // 1. AGE WISE ANALYSIS (Vertical Bar)
+            new Chart(document.getElementById('ageChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['0 to 5', '11 to 15', '16 to 20', '21 to 25', '26 to 30', '6 to 10', 'Over 30'],
+                    datasets: [{
+                        data: [58, 12, 1156, 193, 5, 6, 9],
+                        backgroundColor: clrTeal,
+                        barPercentage: 0.7
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: { anchor: 'end', align: 'top', color: '#666', font: { size: 10 } }
+                    },
+                    scales: {
+                        ...commonScales,
+                        y: { ...commonScales.y, max: 1200, ticks: { stepSize: 500 } }
+                    }
+                }
+            });
+
+            // 2. BMI CLASSIFICATION (Pie Chart)
+            new Chart(document.getElementById('bmiChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['Healthy (18.5-24.9)', 'Underweight (<18.5)', 'Obese (>30)', 'Overweight (25-29.9)'],
+                    datasets: [{
+                        data: [706, 476, 138, 118],
+                        backgroundColor: [clrTeal, clrNavy, clrOrange, clrPurple],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: 20 },
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            title: { display: true, text: 'BMI Category', font: { weight: 'bold', size: 11 } },
+                            labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } }
+                        },
+                        datalabels: {
+                            anchor: 'end', align: 'end', offset: 5, color: '#666', font: { size: 11 },
+                            formatter: (value) => value
+                        }
+                    }
+                }
+            });
+
+            // 3. ANSWERS (Vertical Bar)
+            new Chart(document.getElementById('answersChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['No', 'Yes', 'Not Defined'],
+                    datasets: [{
+                        data: [832, 455, 205],
+                        backgroundColor: clrTeal,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: { anchor: 'end', align: 'top', color: '#666', font: { size: 10 } }
+                    },
+                    scales: {
+                        ...commonScales,
+                        x: { ...commonScales.x, title: { display: true, text: 'Answer', font: { size: 10, weight: 'bold' } } },
+                        y: { ...commonScales.y, max: 1000, ticks: { stepSize: 500 } }
+                    }
+                }
+            });
+
+            // 4. HEALTH STATUS (Pie Chart)
+            new Chart(document.getElementById('statusChart').getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['Normal', 'Abnormal'],
+                    datasets: [{
+                        data: [633, 396],
+                        backgroundColor: [clrTeal, clrNavy],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: 10 },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { usePointStyle: true, boxWidth: 8, font: { size: 11 }, padding: 20 }
+                        },
+                        datalabels: {
+                            color: '#fff', font: { size: 11, weight: 'bold' },
+                            formatter: (value) => value
+                        }
+                    }
+                }
+            });
+
+            // 5. TOP PROBLEMS (Doughnut Chart)
+            new Chart(document.getElementById('problemsChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Mood Swings', 'Active / Sedentary Life', 'Sleep Disturbances', 'Acne', 'Are Your Periods Usually Irreg...'],
+                    datasets: [{
+                        data: [735, 625, 549, 455, 431],
+                        backgroundColor: [clrTeal, clrNavy, clrOrange, clrPurple, clrPink],
+                        borderWidth: 1, borderColor: '#fff',
+                        cutout: '60%'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: 20 },
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 }, padding: 15 }
+                        },
+                        datalabels: {
+                            anchor: 'end', align: 'end', offset: 5, color: '#666', font: { size: 10 },
+                            formatter: (value) => value
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Health Audit Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f0f2f5;
+            /* Soft background to make the teal pop */
+        }
+
+        /* Theme Configuration */
+        :root {
+            --theme-color: #1da69a;
+            /* Requested Teal Color */
+            --theme-border-width: 4px;
+            --theme-radius: 10px;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Universal Card Styling for matching the thick border look */
+        .theme-card {
+            background-color: #ffffff;
+            border: var(--theme-border-width) solid var(--theme-color);
+            border-radius: var(--theme-radius);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header Adjustments */
+        .header-banner {
+            background-color: rgba(29, 166, 154, 0.15);
+            /* Light teal tint */
+        }
+
+        .brand-logo {
+            background-color: var(--theme-color);
+            width: 120px;
+        }
+
+        /* Micro-Interactions */
+        .interactive-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(29, 166, 154, 0.2);
+        }
+
+        /* Tree View Styling */
+        .tree-view-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .tree-list li {
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+        }
+
+        .tree-list .active-node {
+            background-color: rgba(29, 166, 154, 0.08);
+            border-radius: 4px;
+            padding-left: 5px;
+        }
+
+        .tree-list i {
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* Table Styling */
+        .table-header {
+            background-color: var(--theme-color);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(29, 166, 154, 0.05);
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--theme-color);
+        }
+
+        /* Custom Legend for Bar Chart */
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+        }
+    </style>
+</head>
+
+<body class="bg-light-gray p-3">
+
+    <div class="container-fluid dashboard-wrapper">
+
+        <div class="theme-card header-banner d-flex align-items-center justify-content-between p-3 mb-3">
+            <div class="brand-logo text-white d-flex align-items-center justify-content-center rounded p-2">
+                <span class="fs-4 fw-bold">Nizcare</span>
+            </div>
+            <h2 class="fw-bold m-0 text-dark report-title text-center flex-grow-1">Employee Health Audit Report</h2>
+            <div class="d-flex align-items-center text-end">
+                <div class="me-3 qr-text text-dark fw-semibold lh-sm">
+                    Scan the QR to<br>Download Our App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-code bg-white p-1 rounded">
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-lg-3 d-flex flex-column gap-3">
+                <div class="theme-card p-3 interactive-card">
+                    <label class="fw-bold text-center d-block mb-2 text-dark">Department</label>
+                    <select class="form-select form-select-sm border-0 bg-light">
+                        <option>All</option>
+                    </select>
+                </div>
+
+                <div class="theme-card p-3 interactive-card">
+                    <label class="fw-bold text-center d-block mb-2 text-dark">Age Group</label>
+                    <select class="form-select form-select-sm border-0 bg-light">
+                        <option>All</option>
+                    </select>
+                </div>
+
+                <div class="theme-card p-3 flex-grow-1 d-flex flex-column">
+                    <h6 class="fw-bold text-center text-dark mb-3 text-uppercase lh-sm">Groups - Test Names<br>Hierarchy
+                    </h6>
+                    <div class="tree-view-container custom-scrollbar flex-grow-1">
+                        <ul class="list-unstyled tree-list">
+                            <li><i class="far fa-plus-square text-muted"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2"> Vital Signs</li>
+                            <li><i class="far fa-plus-square text-muted"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2"> Peripheral Smear</li>
+                            <li class="active-node"><i class="far fa-minus-square text-dark"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2" checked> <span class="fw-bold">Lipid
+                                    Profile</span></li>
+                            <li><i class="far fa-plus-square text-muted"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2"> Glycosylated Hemogl..</li>
+                            <li><i class="far fa-plus-square text-muted"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2"> Differential Count</li>
+                            <li><i class="far fa-plus-square text-muted"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2"> Creatinine - Serum</li>
+                            <li><i class="far fa-plus-square text-muted"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2"> Complete Blood Pict...</li>
+                            <li><i class="far fa-plus-square text-muted"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2"> Blood Urea Nitrogen</li>
+                            <li><i class="far fa-plus-square text-muted"></i> <input type="checkbox"
+                                    class="form-check-input ms-1 me-2"> Aspartate Aminotran...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9 d-flex flex-column gap-3">
+
+                <div class="row g-3 h-50">
+
+                    <div class="col-md-4 d-flex flex-column gap-3">
+                        <div class="theme-card p-3 flex-grow-1 interactive-card d-flex flex-column">
+                            <h6 class="fw-bold text-center text-uppercase text-dark mb-3">Total Users By Gender</h6>
+                            <div class="chart-container flex-grow-1 position-relative">
+                                <canvas id="genderChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 h-25">
+                            <div
+                                class="theme-card p-2 flex-fill text-center d-flex flex-column justify-content-center interactive-card">
+                                <div class="fw-bold small text-uppercase">Tests Count</div>
+                                <div class="fs-2 fw-bold text-dark">7</div>
+                            </div>
+                            <div
+                                class="theme-card p-2 flex-fill text-center d-flex flex-column justify-content-center interactive-card">
+                                <div class="fw-bold small text-uppercase">Sample Size</div>
+                                <div class="fs-2 fw-bold text-dark">663</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="theme-card p-3 h-100 interactive-card d-flex flex-column">
+                            <h6 class="fw-bold text-center text-uppercase text-dark mb-3">BMI Classification</h6>
+                            <div class="chart-container flex-grow-1 position-relative">
+                                <canvas id="bmiChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 d-flex flex-column gap-3">
+                        <div class="theme-card p-3 interactive-card">
+                            <label class="fw-bold text-center d-block mb-2 text-dark text-uppercase">Unique ID</label>
+                            <select class="form-select form-select-sm border-0 bg-light">
+                                <option>All</option>
+                            </select>
+                        </div>
+                        <div class="theme-card h-100 d-flex flex-column overflow-hidden">
+                            <div class="table-header text-center py-2 text-white fw-bold fs-6">
+                                Abnormal Users
+                            </div>
+                            <div class="table-responsive flex-grow-1 custom-scrollbar px-2 pb-2">
+                                <table class="table table-sm table-bordered table-hover mt-2 mb-0">
+                                    <thead class="bg-light sticky-top">
+                                        <tr class="align-middle text-center small text-dark">
+                                            <th>Unique ID</th>
+                                            <th>Test Name</th>
+                                            <th>Risk Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="abnormalTableBody" class="small text-dark">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-card p-3 flex-grow-1 interactive-card d-flex flex-column" style="min-height: 350px;">
+                    <div class="d-flex justify-content-between align-items-center mb-4 px-3">
+                        <h6 class="fw-bold text-dark text-uppercase m-0 mx-auto" style="transform: translateX(40px);">
+                            Test Wise Risk Analysis</h6>
+                        <div class="custom-legend d-flex align-items-center small fw-bold">
+                            <span class="me-3">Risk Type</span>
+                            <span class="legend-dot bg-danger rounded-circle d-inline-block me-1"></span><span
+                                class="me-3">Abnormal</span>
+                            <span class="legend-dot rounded-circle d-inline-block me-1"
+                                style="background-color: #1da69a;"></span><span>Normal</span>
+                        </div>
+                    </div>
+                    <div class="chart-container flex-grow-1 position-relative">
+                        <canvas id="riskAnalysisChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Register Datalabels plugin globally
+            Chart.register(ChartDataLabels);
+
+            // Global Chart Settings
+            Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+            Chart.defaults.font.weight = '600';
+            Chart.defaults.color = '#333';
+
+            // Theme Colors
+            const colorTeal = '#1da69a'; // User requested healthy/normal color
+            const colorPink = '#ff6b9e';
+            const colorBlue = '#3b82f6';
+            const colorRed = '#ef4444';
+            const colorYellow = '#fcd34d';
+            const colorDarkRed = '#b91c1c';
+
+            // 1. TOTAL USERS BY GENDER (Doughnut Chart with Center Text)
+            const ctxGender = document.getElementById('genderChart').getContext('2d');
+
+            // Custom plugin for center text "95"
+            const centerTextPlugin = {
+                id: 'centerText',
+                beforeDraw: function (chart) {
+                    if (chart.config.type === 'doughnut') {
+                        const width = chart.width, height = chart.height, ctx = chart.ctx;
+                        ctx.restore();
+                        const fontSize = (height / 80).toFixed(2);
+                        ctx.font = "bold " + fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+                        ctx.fillStyle = "#000";
+                        const text = "95", textX = Math.round((width - ctx.measureText(text).width) / 2), textY = height / 2;
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }
+            };
+
+            new Chart(ctxGender, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Female', 'Male'],
+                    datasets: [{
+                        data: [43, 52],
+                        backgroundColor: [colorPink, colorBlue],
+                        borderWidth: 0,
+                        cutout: '65%'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: 30 },
+                    plugins: {
+                        legend: { position: 'right', labels: { usePointStyle: true, boxWidth: 8, font: { size: 11 } } },
+                        datalabels: {
+                            anchor: 'end', align: 'end', offset: 10,
+                            formatter: (value, context) => {
+                                let percentage = ((value / 95) * 100).toFixed(0) + '%';
+                                return `${value}\n(${percentage})`;
+                            },
+                            textAlign: 'center', font: { weight: 'bold', size: 12 }
+                        }
+                    }
+                },
+                plugins: [centerTextPlugin]
+            });
+
+            // 2. BMI CLASSIFICATION (Pie Chart)
+            const ctxBmi = document.getElementById('bmiChart').getContext('2d');
+            new Chart(ctxBmi, {
+                type: 'pie',
+                data: {
+                    labels: ['Healthy (18.5-24.9)', 'Underweight (<18.5)', 'Overweight (25.0-29.9)', 'Obese (>30.0)'],
+                    datasets: [{
+                        data: [40, 5, 39, 11],
+                        backgroundColor: [colorTeal, colorRed, colorYellow, colorDarkRed],
+                        borderWidth: 1, borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: 25 },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 10, padding: 15, font: { size: 10 } } },
+                        datalabels: { anchor: 'end', align: 'end', offset: 5, font: { weight: 'bold', size: 12 } }
+                    }
+                }
+            });
+
+            // 3. TEST WISE RISK ANALYSIS (Grouped Bar Chart)
+            const ctxRisk = document.getElementById('riskAnalysisChart').getContext('2d');
+            new Chart(ctxRisk, {
+                type: 'bar',
+                data: {
+                    labels: ['CHOL/HDL RATIO', 'Cholesterol-HDL Direct', 'Cholesterol-Total', 'HDL/LDL RATIO', 'LDL Cholesterol', 'Triglycerides', 'VLDL Cholesterol'],
+                    datasets: [
+                        {
+                            label: 'Abnormal',
+                            data: [1, 46, 1, 1, 14, 15, 14],
+                            backgroundColor: colorRed,
+                            barPercentage: 0.8,
+                            categoryPercentage: 0.7
+                        },
+                        {
+                            label: 'Normal',
+                            data: [94, 49, 94, 94, 81, 79, 80],
+                            backgroundColor: colorTeal,
+                            barPercentage: 0.8,
+                            categoryPercentage: 0.7
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: { top: 20 } },
+                    plugins: {
+                        legend: { display: false }, // Hidden, using custom HTML legend
+                        datalabels: {
+                            anchor: 'end', align: 'top', offset: 4,
+                            color: '#fff', backgroundColor: '#222', // Black box behind numbers like reference
+                            borderRadius: 4, font: { weight: 'bold', size: 11 },
+                            padding: { top: 3, bottom: 3, left: 6, right: 6 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true, max: 120,
+                            ticks: { stepSize: 50, font: { weight: 'bold' } },
+                            grid: { borderDash: [5, 5], color: '#ccc' },
+                            border: { display: false },
+                            title: { display: true, text: 'Total Users', font: { weight: 'bold' } }
+                        },
+                        x: {
+                            grid: { display: false }, border: { display: true, color: '#999', width: 2 },
+                            title: { display: true, text: 'Test Name', font: { weight: 'bold' } },
+                            ticks: { font: { size: 10, weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+
+            // 4. Populate Abnormal Users Table
+            const abnormalData = [
+                { id: '57feda25', test: 'CHOL/HDL RATIO', risk: 'Abnormal' },
+                { id: '09055ff6', test: 'Cholesterol-HDL Direct', risk: 'Abnormal' },
+                { id: '09a1c05f', test: 'Cholesterol-HDL Direct', risk: 'Abnormal' },
+                { id: '21ffc5a3', test: 'Cholesterol-HDL Direct', risk: 'Abnormal' },
+                { id: '32825478', test: 'Cholesterol-HDL Direct', risk: 'Abnormal' },
+                { id: '347b9bd8', test: 'Cholesterol-HDL Direct', risk: 'Abnormal' },
+                { id: '398b18fd', test: 'Cholesterol-HDL Direct', risk: 'Abnormal' },
+                { id: '41a7fded', test: 'Cholesterol-HDL Direct', risk: 'Abnormal' },
+                { id: '430c18d8', test: 'Cholesterol-HDL Direct', risk: 'Abnormal' }
+            ];
+
+            const tbody = document.getElementById('abnormalTableBody');
+            abnormalData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+            <td class="text-center">${row.id}</td>
+            <td>${row.test}</td>
+            <td class="text-center text-danger fw-bold">${row.risk}</td>
+        `;
+                tbody.appendChild(tr);
+            });
+        });
+    </script>
+</body>
+
+</html>

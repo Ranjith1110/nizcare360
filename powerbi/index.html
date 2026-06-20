@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumulative Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --theme-teal: #1da69a;
+            --theme-navy: #1f2787;
+            --nizcare-green: #2ecc71;
+            --nizcare-green-hover: #27ae60;
+            --bg-color: #e9eef5;
+            --border-color: #d2dbe6;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: var(--bg-color);
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #sidebar-wrapper {
+            width: 280px;
+            background-color: #ffffff;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: margin 0.3s ease-out;
+            z-index: 1000;
+        }
+
+        .sidebar-heading {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background-color: #ffffff;
+            height: 65px;
+        }
+
+        .sidebar-heading img {
+            max-height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: #333333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #f4f6f9;
+        }
+
+        .nav-btn:hover,
+        .nav-btn:focus,
+        .nav-btn[aria-expanded="true"] {
+            background-color: rgba(29, 166, 154, 0.08);
+            color: var(--theme-teal);
+            outline: none;
+        }
+
+        .nav-btn i.arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .nav-btn[aria-expanded="true"] i.arrow {
+            transform: rotate(180deg);
+        }
+
+        .sub-menu {
+            background-color: #fcfcfd;
+        }
+
+        .sub-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem 0.75rem 3.5rem;
+            color: #555555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sub-menu a:hover,
+        .sub-menu a.active {
+            color: var(--theme-teal);
+            background-color: rgba(29, 166, 154, 0.05);
+            border-left-color: var(--theme-teal);
+            font-weight: 600;
+        }
+
+        .nizcare-btn {
+            background-color: var(--theme-teal);
+            color: #ffffff !important;
+            margin: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+            padding: 0.85rem;
+            border: none;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
+        }
+
+        .nizcare-btn:hover {
+            background-color: var(--nizcare-green-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
+        }
+
+        #page-content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--bg-color);
+        }
+
+        .topbar {
+            height: 65px;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            z-index: 999;
+        }
+
+        #menu-toggle {
+            color: var(--theme-navy);
+            border: 1px solid var(--border-color);
+            background-color: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        #menu-toggle:hover {
+            background-color: #f4f6f9;
+            color: var(--theme-teal);
+        }
+
+        #content-iframe {
+            width: 100%;
+            height: calc(100vh - 65px);
+            border: none;
+            background-color: var(--bg-color);
+        }
+
+        .sidebar-scroll {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading">
+                <img src="/nizlogo.png" alt="Company Logo">
+            </div>
+
+            <div class="sidebar-scroll">
+                <div class="accordion" id="sidebarAccordion">
+
+                    <button class="nav-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true">
+                        <span><i class="fas fa-chart-pie me-2 text-muted"></i> Report One</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div id="collapseOne" class="collapse show sub-menu" data-bs-parent="#sidebarAccordion">
+                        <a href="/powerbi/one/overview.html" target="contentFrame" class="active">Overview</a>
+                        <a href="/powerbi/one/organ.html" target="contentFrame">Organ</a>
+                        <a href="/powerbi/one/refrange.html" target="contentFrame">Reference Ranges</a>
+                    </div>
+
+                    <button class="nav-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                        aria-expanded="false">
+                        <span><i class="fas fa-users me-2 text-muted"></i> Report Two</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div id="collapseTwo" class="collapse sub-menu" data-bs-parent="#sidebarAccordion">
+                        <a href="/powerbi/two/overview.html" target="contentFrame">Overview</a>
+                        <a href="/powerbi/two/college-wise-risk.html" target="contentFrame">College Wise Risk</a>
+                        <a href="/powerbi/two/mental-health.html" target="contentFrame">Mental Health</a>
+                        <a href="/powerbi/two/women-health.html" target="contentFrame">Women Health</a>
+                    </div>
+
+                    <button class="nav-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                        aria-expanded="false">
+                        <span><i class="fas fa-heartbeat me-2 text-muted"></i> Report Three</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div id="collapseThree" class="collapse sub-menu" data-bs-parent="#sidebarAccordion">
+                        <a href="/powerbi/three/overview.html" target="contentFrame">Overview</a>
+                        <a href="/powerbi/three/nizcare-assessment.html" target="contentFrame">Nizcare Assessment</a>
+                        <a href="/powerbi/three/summary.html" target="contentFrame">Nizcare Summary</a>
+                    </div>
+
+                    <button class="nav-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                        aria-expanded="false">
+                        <span><i class="fas fa-brain me-2 text-muted"></i> Report Four</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div id="collapseFour" class="collapse sub-menu" data-bs-parent="#sidebarAccordion">
+                        <a href="/powerbi/four/overview.html" target="contentFrame">Overview</a>
+                        <a href="/powerbi/four/lab-reports.html" target="contentFrame">Lab Reports</a>
+                        <a href="/powerbi/four/questionnaire.html" target="contentFrame">Questionnaire</a>
+                        <a href="/powerbi/four/users-at-risk.html" target="contentFrame">Users at Risk</a>
+                    </div>
+
+                    <button class="nav-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+                        aria-expanded="false">
+                        <span><i class="fas fa-file-medical-alt me-2 text-muted"></i> Report Five</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div id="collapseFive" class="collapse sub-menu" data-bs-parent="#sidebarAccordion">
+                        <a href="/powerbi/five/overview.html" target="contentFrame">Overview</a>
+                        <a href="/powerbi/five/employee-claim.html" target="contentFrame">Employee Claim</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="nizcare-assessment.html" target="contentFrame" class="nizcare-btn">
+                <i class="fas fa-leaf me-2"></i> Nizcare Assessment
+            </a>
+        </div>
+
+        <div id="page-content-wrapper">
+            <div class="topbar">
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn" id="menu-toggle"><i class="fas fa-bars"></i></button>
+                    <h5 class="m-0 fw-bold" style="color: var(--theme-navy);">Cumulative Dashboard</h5>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle border" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fas fa-user-circle me-1 text-muted"></i> Administrator
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm me-2 text-muted"></i>
+                                Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-sm me-2 text-muted"></i>
+                                Settings</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt fa-sm me-2"></i>
+                                Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <iframe name="contentFrame" id="content-iframe" src="/powerbi/one/overview.html"></iframe>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function (e) {
+            e.preventDefault();
+            const sidebar = document.getElementById("sidebar-wrapper");
+            if (sidebar.style.marginLeft === "-280px") {
+                sidebar.style.marginLeft = "0";
+            } else {
+                sidebar.style.marginLeft = "-280px";
+            }
+        });
+
+        const links = document.querySelectorAll('.sub-menu a');
+        links.forEach(link => {
+            link.addEventListener('click', function () {
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

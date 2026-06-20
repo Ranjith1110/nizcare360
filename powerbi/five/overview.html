@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Data Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+            color: #333;
+        }
+
+        :root {
+            --theme-primary: #1da69a;
+            --theme-dark-navy: #1f2787;
+            --theme-bg-dashboard: #e9eef5;
+            --card-border: #d2dbe6;
+        }
+
+        .bg-dashboard {
+            background-color: var(--theme-bg-dashboard);
+            min-height: 100vh;
+            padding-bottom: 20px;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .theme-card {
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            border-top: 4px solid var(--theme-primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .brand-logo {
+            background-color: var(--theme-primary);
+            width: 100px;
+        }
+
+        .kpi-label {
+            letter-spacing: 0.2px;
+        }
+
+        .form-select {
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            box-shadow: 0 0 0 0.25rem rgba(29, 166, 154, 0.2);
+        }
+
+        .interactive-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+            border-top-color: var(--theme-dark-navy);
+        }
+
+        .chart-container {
+            min-height: 450px;
+        }
+    </style>
+</head>
+
+<body class="bg-dashboard">
+
+    <div class="container-fluid p-3 dashboard-wrapper">
+
+        <div class="row g-3 mb-3 align-items-stretch">
+
+            <div class="col-xl-3 col-lg-12 d-flex">
+                <div class="theme-card bg-white p-3 d-flex align-items-center w-100 shadow-sm interactive-card">
+                    <div
+                        class="brand-logo text-white d-flex flex-column align-items-center justify-content-center p-2 rounded">
+                        <span class="font-5 fw-bold">Nizcare</span>
+                    </div>
+                    <div class="ms-3">
+                        <h4 class="mb-0 fw-bold text-dark text-uppercase lh-sm" style="letter-spacing: 0.5px;">Insurance
+                            Data<br>Analysis</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-12">
+                <div class="row g-2 h-100">
+                    <div class="col-md-2 col-sm-4 col-6">
+                        <div
+                            class="theme-card bg-white h-100 d-flex flex-column justify-content-center align-items-center p-3 shadow-sm interactive-card text-center">
+                            <div class="kpi-label text-muted fw-bold small mb-2">Active Policies</div>
+                            <div class="kpi-value text-dark display-5 fw-normal lh-1">20</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 col-6">
+                        <div
+                            class="theme-card bg-white h-100 d-flex flex-column justify-content-center align-items-center p-3 shadow-sm interactive-card text-center">
+                            <div class="kpi-label text-muted fw-bold small mb-2">Employees Enrolled</div>
+                            <div class="kpi-value text-dark display-5 fw-normal lh-1">100</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 col-6">
+                        <div
+                            class="theme-card bg-white h-100 d-flex flex-column justify-content-center align-items-center p-3 shadow-sm interactive-card text-center">
+                            <div class="kpi-label text-muted fw-bold small mb-2">Employee Claims</div>
+                            <div class="kpi-value text-dark display-5 fw-normal lh-1">64</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 col-6">
+                        <div
+                            class="theme-card bg-white h-100 d-flex flex-column justify-content-center align-items-center p-3 shadow-sm interactive-card text-center">
+                            <div class="kpi-label text-muted fw-bold small mb-2 lh-sm">Claim Approval<br>Rate</div>
+                            <div class="kpi-value text-dark display-5 fw-normal lh-1">30%</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 col-6">
+                        <div
+                            class="theme-card bg-white h-100 d-flex flex-column justify-content-center align-items-center p-3 shadow-sm interactive-card text-center">
+                            <div class="kpi-label text-muted fw-bold small mb-2 lh-sm">Total Premium<br>Collected</div>
+                            <div class="kpi-value text-dark display-5 fw-normal lh-1">493K</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 col-6">
+                        <div
+                            class="theme-card bg-white h-100 d-flex flex-column justify-content-center align-items-center p-3 shadow-sm interactive-card text-center">
+                            <div class="kpi-label text-muted fw-bold small mb-2">Claim Ratio</div>
+                            <div class="kpi-value text-dark display-5 fw-normal lh-1">1.21</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row g-3 mb-3">
+            <div class="col-md-4">
+                <div class="theme-card bg-white p-2 shadow-sm interactive-card">
+                    <label class="fw-bold text-dark small mb-1 px-1">Company Name</label>
+                    <select class="form-select border-0 shadow-none text-muted">
+                        <option>All</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="theme-card bg-white p-2 shadow-sm interactive-card">
+                    <label class="fw-bold text-dark small mb-1 px-1">Third Party Administrator</label>
+                    <select class="form-select border-0 shadow-none text-muted">
+                        <option>All</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="theme-card bg-white p-2 shadow-sm interactive-card">
+                    <label class="fw-bold text-dark small mb-1 px-1">Policy Name</label>
+                    <select class="form-select border-0 shadow-none text-muted">
+                        <option>All</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-lg-6">
+                <div class="theme-card bg-white p-4 shadow-sm interactive-card d-flex flex-column h-100">
+                    <h6 class="text-center text-dark fw-bold mb-4">Employee Coverage Across Companies</h6>
+                    <div class="chart-container flex-grow-1 position-relative w-100">
+                        <canvas id="coverageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="theme-card bg-white p-4 shadow-sm interactive-card d-flex flex-column h-100">
+                    <h6 class="text-center text-dark fw-bold mb-4">Company VS Claim Ratio</h6>
+                    <div class="chart-container flex-grow-1 position-relative w-100">
+                        <canvas id="treemapChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@2.0.2/dist/chartjs-chart-treemap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.color = '#555';
+            Chart.defaults.plugins.tooltip.padding = 10;
+
+            Chart.register(ChartDataLabels);
+
+            const clrTeal = '#1da69a';
+
+            const barCtx = document.getElementById('coverageChart').getContext('2d');
+            new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Torres and Sons', 'Norton LLC', 'Ward, Myers and Dunlap', 'Warren, Lang and Fischer',
+                        'White PLC', 'Hardy PLC', 'Hunt Ltd', 'Mueller-Chavez', 'Walker, Kelly and Green',
+                        'Weaver and Sons', 'Harper Group', 'Harper, Logan and Reese', 'Simpson, Castro and Williams',
+                        'Boyd LLC', 'Chapman, Garcia and Reynolds', 'Decker-Bolton', 'Hartman-Cruz',
+                        'Moore-Carney', 'Vincent-Davis', 'Osborne LLC'
+                    ],
+                    datasets: [{
+                        data: [11, 9, 9, 8, 6, 5, 5, 5, 5, 5, 4, 4, 4, 3, 3, 3, 3, 3, 3, 2],
+                        backgroundColor: clrTeal,
+                        barPercentage: 0.8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'top',
+                            offset: 4,
+                            color: '#666',
+                            font: { size: 10 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 12,
+                            title: { display: true, text: 'Employees Insured', font: { weight: 'bold' } },
+                            grid: { borderDash: [4, 4], color: '#e0e0e0' },
+                            border: { display: false }
+                        },
+                        x: {
+                            title: { display: true, text: 'Company Name', font: { weight: 'bold' } },
+                            grid: { display: false },
+                            border: { display: false },
+                            ticks: {
+                                maxRotation: 45,
+                                minRotation: 45,
+                                font: { size: 9 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const treemapData = [
+                { company: 'Harper, Logan and Reese', ratio: 1.49, bg: '#292b6a' },
+                { company: 'Harper Group', ratio: 1.47, bg: '#1f4888' },
+                { company: 'Norton LLC', ratio: 1.45, bg: '#237db8' },
+                { company: 'Mueller-Chavez', ratio: 1.36, bg: '#21b5d6' },
+                { company: 'Simpson, Castro and Willi...', ratio: 1.33, bg: '#ffb5c5' },
+                { company: 'Vincent-Davis', ratio: 1.33, bg: '#e54d52' },
+                { company: 'Walker, Kelly a...', ratio: 1.33, bg: '#b93231' },
+                { company: 'Hardy PLC', ratio: 1.31, bg: '#8a2020' },
+                { company: 'Torres and Sons', ratio: 1.31, bg: '#7173a1' },
+                { company: 'Ward, Myers and Dunlap', ratio: 1.28, bg: '#6e90bf' },
+                { company: 'Warren, Lang and Fischer', ratio: 1.26, bg: '#6bb6db' },
+                { company: 'Weaver and Sons', ratio: 1.16, bg: '#74d1e2' },
+                { company: 'Moore-Carney', ratio: 1.14, bg: '#fcdbe3' },
+                { company: 'Decker-Bol...', ratio: 1.13, bg: '#f79796' },
+                { company: 'Osborne L...', ratio: 1.07, bg: '#d48a88' },
+                { company: 'Hartman-...', ratio: 1.05, bg: '#b87573' },
+                { company: 'White PLC', ratio: 1.03, bg: '#0b1435' },
+                { company: 'Hunt Ltd', ratio: 1.03, bg: '#0d254c' },
+                { company: 'Chapman, Garcia...', ratio: 1.02, bg: '#08405d' },
+                { company: 'Boyd LLC', ratio: 0.85, bg: '#0b5c68' }
+            ];
+
+            const treeCtx = document.getElementById('treemapChart').getContext('2d');
+
+            new Chart(treeCtx, {
+                type: 'treemap',
+                data: {
+                    datasets: [{
+                        tree: treemapData,
+                        key: 'ratio',
+                        groups: ['company'],
+                        backgroundColor: (ctx) => {
+                            if (ctx.type !== 'data') return 'transparent';
+                            let rawData = ctx.raw._data;
+                            return rawData.bg || (rawData.children && rawData.children[0].bg) || 'transparent';
+                        },
+                        borderColor: '#ffffff',
+                        borderWidth: 1.5,
+                        spacing: 0,
+                        labels: {
+                            display: true,
+                            align: 'left',
+                            position: 'top',
+                            color: '#ffffff',
+                            font: { size: 10, family: 'Segoe UI' },
+                            formatter: (ctx) => {
+                                if (ctx.type !== 'data') return '';
+                                let rawData = ctx.raw._data;
+                                let companyName = rawData.company || (rawData.children && rawData.children[0].company) || '';
+                                return [companyName, '', '', ctx.raw.v];
+                            }
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => {
+                                    let rawData = items[0].raw._data;
+                                    return rawData.company || (rawData.children && rawData.children[0].company) || '';
+                                },
+                                label: (item) => `Claim Ratio: ${item.raw.v}`
+                            }
+                        },
+                        datalabels: { display: false }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

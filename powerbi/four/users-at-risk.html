@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Analytics Report: Overview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Theme Configuration */
+        :root {
+            --theme-primary: #1da69a;
+            /* Requested Teal Accent replacing the default blue */
+            --theme-dark-navy: #151b4b;
+            /* Navy for logos and contrast */
+            --theme-bg-gray: #eaedf2;
+            /* Light gray-blue dashboard background */
+            --card-border-color: #d2d6df;
+            --thick-border-width: 4px;
+        }
+
+        .bg-dashboard {
+            background-color: var(--theme-bg-gray);
+            min-height: 100vh;
+            padding-bottom: 30px;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1700px;
+            margin: 0 auto;
+        }
+
+        /* Theme Cards with Subtle Thick Borders */
+        .theme-card {
+            border: var(--thick-border-width) solid var(--card-border-color);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Header Elements */
+        .brand-logo {
+            background-color: var(--theme-primary);
+            width: 100px;
+        }
+
+        .report-badge {
+            background-color: var(--theme-primary);
+            /* Primary #1da69a applied */
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-image {
+            width: 75px;
+            height: 75px;
+        }
+
+        /* Filter Boxes & Interactivity */
+        .filter-box {
+            color: #555;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        /* Premium Hover Micro-interactions */
+        .interactive-element:hover {
+            background-color: #f1f8f7;
+            border-color: var(--theme-primary) !important;
+            color: var(--theme-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(29, 166, 154, 0.15);
+        }
+
+        /* Active State for Filter Boxes */
+        .filter-box.active {
+            background-color: var(--theme-primary);
+            border-color: var(--theme-primary) !important;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(29, 166, 154, 0.3);
+        }
+
+        .interactive-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .interactive-card:hover {
+            box-shadow: 0 10px 20px rgba(29, 166, 154, 0.1) !important;
+            border-color: rgba(29, 166, 154, 0.5);
+        }
+
+        /* Table Styling */
+        .custom-table th {
+            background-color: var(--theme-primary) !important;
+            /* Replaced dark blue with requested #1da69a */
+            border-color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .table-footer-row td {
+            background-color: var(--theme-primary) !important;
+            border-color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .custom-table td {
+            font-size: 0.9rem;
+            color: #444;
+            border-color: #e9ecef;
+        }
+
+        /* Alternating Row Tint (Matching the image's alternating slight blue tint on the right columns) */
+        .custom-table tbody tr:nth-child(even) {
+            background-color: rgba(234, 237, 242, 0.5);
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: rgba(29, 166, 154, 0.05);
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f4f4f4;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--theme-primary);
+        }
+
+        .custom-select:focus {
+            border-color: var(--theme-primary);
+            box-shadow: 0 0 0 0.25rem rgba(29, 166, 154, 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-dashboard">
+
+    <div class="container-fluid p-2 dashboard-wrapper">
+
+        <div class="row g-2 align-items-center mb-3 px-2">
+            <div class="col-md-3">
+                <div
+                    class="brand-logo text-white d-flex flex-column align-items-center justify-content-center p-2 rounded shadow-sm">
+                    <span class="font-5 fw-bold">Nizcare</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-center">
+                <div class="report-badge text-white fw-bold px-5 py-3 rounded shadow-sm text-center w-100 fs-4">
+                    Health Analytics Report: Overview
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex justify-content-end align-items-center">
+                <div class="qr-text text-dark fw-bold small me-3 lh-sm text-end">
+                    Scan to<br>Download<br>the App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-image border p-1 bg-white rounded shadow-sm">
+            </div>
+        </div>
+
+        <div class="row g-2 px-2 mb-3 align-items-stretch">
+
+            <div class="col-xl-1 col-lg-2">
+                <div
+                    class="theme-card bg-white h-100 d-flex flex-column justify-content-center align-items-center py-2 shadow-sm interactive-card">
+                    <div class="stat-number display-5 fw-normal text-dark lh-1">28</div>
+                    <div class="stat-label text-muted small mt-1">Test Count</div>
+                </div>
+            </div>
+
+            <div class="col-xl-5 col-lg-4">
+                <div class="theme-card bg-white p-2 h-100 shadow-sm interactive-card">
+                    <div class="fw-bold text-dark small mb-2 px-1">Age Group</div>
+                    <div class="d-flex gap-2 px-1 filter-group">
+                        <div class="filter-box flex-fill text-center py-2 border rounded interactive-element">&lt;18
+                        </div>
+                        <div class="filter-box flex-fill text-center py-2 border rounded interactive-element">18-30
+                        </div>
+                        <div class="filter-box flex-fill text-center py-2 border rounded interactive-element">31-40
+                        </div>
+                        <div class="filter-box flex-fill text-center py-2 border rounded interactive-element">41-50
+                        </div>
+                        <div class="filter-box flex-fill text-center py-2 border rounded interactive-element">50</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3">
+                <div class="theme-card bg-white p-2 h-100 shadow-sm interactive-card">
+                    <div class="fw-bold text-dark small mb-2 px-1">Gender</div>
+                    <div class="d-flex gap-2 px-1 filter-group">
+                        <div class="filter-box flex-fill text-center py-2 border rounded interactive-element">Female
+                        </div>
+                        <div class="filter-box flex-fill text-center py-2 border rounded interactive-element">Male</div>
+                        <div class="filter-box flex-fill text-center py-2 border rounded interactive-element">Other
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3">
+                <div class="theme-card bg-white p-2 h-100 shadow-sm interactive-card d-flex flex-column">
+                    <div class="fw-bold text-dark small mb-2 px-1">Test Names</div>
+                    <div class="px-1 flex-grow-1 d-flex align-items-center">
+                        <select class="form-select form-select-sm text-muted custom-select w-100 py-2">
+                            <option>All</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row px-2">
+            <div class="col-12">
+                <div class="theme-card bg-white shadow-sm overflow-hidden p-0 interactive-card">
+                    <div class="table-responsive custom-scrollbar" style="max-height: 600px;">
+                        <table class="table table-bordered mb-0 align-middle custom-table">
+                            <thead class="sticky-top">
+                                <tr>
+                                    <th class="fw-bold text-white px-3 py-2" style="width: 15%;">User Name</th>
+                                    <th class="fw-bold text-white px-3 py-2 text-end" style="width: 10%;">Total Tests
+                                    </th>
+                                    <th class="fw-bold text-white px-3 py-2 text-end" style="width: 15%;">Total Abnormal
+                                        Tests</th>
+                                    <th class="fw-bold text-white px-3 py-2 text-end" style="width: 15%;">
+                                        Abnormality Ranking
+                                        <i class="fas fa-caret-down ms-1"></i>
+                                    </th>
+                                    <th class="fw-bold text-white px-3 py-2" style="width: 45%;">Failed Tests</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="px-3">Yuvaraj</td>
+                                    <td class="text-end px-3">28</td>
+                                    <td class="text-end px-3">23</td>
+                                    <td class="text-end px-3">0.82</td>
+                                    <td class="px-3 failed-tests-cell">Hemoglobin, Platelet Count, PCV/HCT, MCV, MCH,
+                                        MCHC, Neutrophils, Lymphocytes, Eosinophils, Monocytes, Basophils, RBC, WBC,
+                                        Glyco Hb (HbA1C), Cholesterol-HDL Direct, LDL Cholesterol, Triglycerides, VLDL
+                                        Cholesterol, CHOL/HDL RATIO, HDL/LDL RATIO, UREA*, Creatinine, SGPT*</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3">Sateesh</td>
+                                    <td class="text-end px-3">25</td>
+                                    <td class="text-end px-3">18</td>
+                                    <td class="text-end px-3">0.72</td>
+                                    <td class="px-3 failed-tests-cell">Hemoglobin, PCV/HCT, MCV, MCH, MCHC, Neutrophils,
+                                        Lymphocytes, Basophils, RBC, WBC, Cholesterol-HDL Direct, LDL Cholesterol,
+                                        Triglycerides, VLDL Cholesterol, CHOL/HDL RATIO, HDL/LDL RATIO, UREA*,
+                                        Creatinine</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3">Amit Kujur</td>
+                                    <td class="text-end px-3">25</td>
+                                    <td class="text-end px-3">14</td>
+                                    <td class="text-end px-3">0.56</td>
+                                    <td class="px-3 failed-tests-cell">Hemoglobin, PCV/HCT, MCV, MCH, MCHC, Lymphocytes,
+                                        RBC, LDL Cholesterol, Triglycerides, VLDL Cholesterol, CHOL/HDL RATIO, HDL/LDL
+                                        RATIO, Creatinine, SGPT*</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3">Manoj Oraon</td>
+                                    <td class="text-end px-3">28</td>
+                                    <td class="text-end px-3">13</td>
+                                    <td class="text-end px-3">0.46</td>
+                                    <td class="px-3 failed-tests-cell">Hemoglobin, Platelet Count, MCV, MCH, MCHC, RBC,
+                                        Glyco Hb (HbA1C), Cholesterol-Total, LDL Cholesterol, CHOL/HDL RATIO, HDL/LDL
+                                        RATIO, SGOT*, SGPT*</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3">Mr. Dnyaneshwar Namdeo Bodkhe</td>
+                                    <td class="text-end px-3">28</td>
+                                    <td class="text-end px-3">13</td>
+                                    <td class="text-end px-3">0.46</td>
+                                    <td class="px-3 failed-tests-cell">BMI, Hemoglobin, MCV, MCH, MCHC, Monocytes, RBC,
+                                        Glyco Hb (HbA1C), LDL Cholesterol, Triglycerides, VLDL Cholesterol, CHOL/HDL
+                                        RATIO, HDL/LDL RATIO</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3">Narendra Kumar</td>
+                                    <td class="text-end px-3">25</td>
+                                    <td class="text-end px-3">11</td>
+                                    <td class="text-end px-3">0.44</td>
+                                    <td class="px-3 failed-tests-cell">Hemoglobin, Platelet Count, PCV/HCT, MCH, MCHC,
+                                        Lymphocytes, Eosinophils</td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="sticky-bottom">
+                                <tr class="fw-bold text-white table-footer-row">
+                                    <td class="px-3">Total</td>
+                                    <td class="text-end px-3">30</td>
+                                    <td class="text-end px-3">26</td>
+                                    <td class="text-end px-3">0.87</td>
+                                    <td class="px-3"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Note: The "Users at Risk" UI specifically relies on data-tables and filters 
+            // rather than graphical charts. 
+
+            // Chart.js and DataLabels are registered globally here to support potential future 
+            // graphs integrated into this specific view, maintaining consistency with your tech stack.
+            if (typeof Chart !== 'undefined') {
+                Chart.register(ChartDataLabels);
+                Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+                Chart.defaults.color = '#333';
+            }
+
+            // Interactive Filter Button Logic (Micro-interactions)
+            const filterBoxes = document.querySelectorAll('.filter-box');
+
+            filterBoxes.forEach(box => {
+                box.addEventListener('click', function () {
+                    // Find the parent group to handle single-select exclusivity within the group
+                    const group = this.closest('.filter-group');
+
+                    if (group) {
+                        // Remove active class from all siblings in this specific group
+                        const siblings = group.querySelectorAll('.filter-box');
+                        siblings.forEach(sibling => sibling.classList.remove('active'));
+
+                        // Add active class to the clicked element
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Initialize first items as active for demonstration
+            const ageGroup = document.querySelectorAll('.filter-group')[0];
+            const genderGroup = document.querySelectorAll('.filter-group')[1];
+
+            if (ageGroup && ageGroup.children.length > 0) ageGroup.children[0].classList.add('active');
+            if (genderGroup && genderGroup.children.length > 0) genderGroup.children[0].classList.add('active');
+
+        });
+    </script>
+</body>
+
+</html>

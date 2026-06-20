@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Analytics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+            color: #333;
+        }
+
+        /* Theme Colors */
+        :root {
+            --theme-primary: #1da69a;
+            /* Requested Teal Accent */
+            --theme-dark-blue: #1a237e;
+            /* Severe / Dark elements */
+            --bg-color: #eef2f6;
+            /* Light gray-blue dashboard background */
+        }
+
+        .bg-dashboard {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+        }
+
+        .dashboard-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Header Styling */
+        .header-card {
+            border-left: 4px solid var(--theme-primary);
+        }
+
+        .brand-logo {
+            background-color: var(--theme-primary);
+            width: 100px;
+        }
+
+        .header-separator {
+            width: 4px;
+            height: 40px;
+            background-color: #dcdcdc;
+            border-radius: 2px;
+        }
+
+        .report-title {
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .qr-image {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+        }
+
+        /* Interactive Card Enhancements */
+        .interactive-card {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+            border-color: rgba(29, 166, 154, 0.2);
+        }
+
+        /* Action Icons (Top right of bar chart) */
+        .action-icon {
+            font-size: 0.9rem;
+            padding: 6px;
+            border-radius: 4px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .action-icon:hover {
+            background-color: #f0f0f0;
+            color: var(--theme-primary) !important;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        /* Legends & Filters */
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+        }
+
+        .custom-select {
+            max-width: 250px;
+            font-size: 0.8rem;
+            box-shadow: none !important;
+        }
+
+        .custom-select:focus {
+            border-color: var(--theme-primary);
+        }
+
+        /* Chart Canvas Reset */
+        .chart-container {
+            min-height: 350px;
+        }
+
+        /* Ensure right column charts have proper minimum height */
+        .col-lg-5 .chart-container {
+            min-height: 250px;
+        }
+    </style>
+</head>
+
+<body class="bg-dashboard">
+
+    <div class="container-fluid p-3 dashboard-wrapper">
+
+        <div
+            class="header-card bg-white shadow-sm rounded mb-3 p-3 d-flex align-items-center justify-content-between interactive-card">
+            <div class="d-flex align-items-center gap-3">
+                <div class="brand-logo text-white d-flex align-items-center justify-content-center rounded p-2">
+                    <span class="fw-bold fs-6">Nizcare</span>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center flex-grow-1">
+                <h3 class="fw-bold m-0 text-dark report-title text-center">Health Analytics: College-wise Risk Stats
+                </h3>
+                <div class="header-separator mx-4"></div>
+            </div>
+
+            <div class="d-flex align-items-center text-end">
+                <div class="qr-text text-dark fw-bold small me-3 lh-sm">
+                    Scan the QR to<br>Download Our App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-image border p-1 rounded">
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-lg-7">
+                <div class="chart-card bg-white shadow-sm rounded p-4 h-100 d-flex flex-column interactive-card">
+
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h6 class="fw-bold text-dark m-0">Top 5 Colleges with high-risk students(Mental Health)</h6>
+                        <div class="action-icons text-muted">
+                            <i class="fas fa-filter me-2 cursor-pointer action-icon"></i>
+                            <i class="fas fa-expand me-2 cursor-pointer action-icon"></i>
+                            <i class="fas fa-ellipsis-h cursor-pointer action-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="chart-legend mb-3 d-flex align-items-center small fw-bold text-muted">
+                        <span class="me-2 text-dark">Depression State</span>
+                        <span class="legend-dot rounded-circle d-inline-block me-1"
+                            style="background-color: #1da69a;"></span><span class="me-3 fw-normal">Moderately
+                            severe</span>
+                        <span class="legend-dot rounded-circle d-inline-block me-1"
+                            style="background-color: #1a237e;"></span><span class="fw-normal">Severe</span>
+                    </div>
+
+                    <div class="chart-container flex-grow-1 position-relative w-100">
+                        <canvas id="mentalHealthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 d-flex flex-column gap-3">
+
+                <div class="chart-card bg-white shadow-sm rounded p-4 flex-grow-1 d-flex flex-column interactive-card">
+                    <h6 class="fw-bold text-dark mb-4">Top 5 Colleges with high-risk students(Women Health)</h6>
+                    <div class="chart-container flex-grow-1 position-relative w-100 d-flex justify-content-center">
+                        <canvas id="womenHealthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card bg-white shadow-sm rounded p-4 flex-grow-1 d-flex flex-column interactive-card">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h6 class="fw-bold text-dark m-0">Top Problems in Each College</h6>
+                        <div class="college-filter d-flex flex-column">
+                            <label class="small text-dark fw-bold mb-1">College Name</label>
+                            <select class="form-select form-select-sm border-secondary-subtle custom-select">
+                                <option>A.V. Collegeof Arts, Science and Comme...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-container flex-grow-1 position-relative w-100 d-flex justify-content-center">
+                        <canvas id="topProblemsChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Register DataLabels Plugin globally
+            Chart.register(ChartDataLabels);
+
+            // Global Chart.js Defaults
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.color = '#666';
+            Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(0,0,0,0.8)';
+            Chart.defaults.plugins.tooltip.padding = 10;
+
+            // Theme Colors
+            const colorPrimary = '#1da69a'; // Moderately severe / main color
+            const colorSevere = '#1a237e';  // Severe
+            const colorOrange = '#f26d21';
+            const colorPurple = '#800080';
+            const colorPink = '#e84393';
+
+            // 1. MENTAL HEALTH (Stacked Bar Chart)
+            const ctxMental = document.getElementById('mentalHealthChart').getContext('2d');
+            new Chart(ctxMental, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['Sri Sai Vignan', 'Bharthi College'],
+                        ['Shantiniketan', "Women's Degree", 'College'],
+                        ["Megha Women's", 'Degree College'],
+                        ['Government', 'Polytechnic', 'College'],
+                        ['Jagruthi Degree', 'and PG College']
+                    ],
+                    datasets: [
+                        {
+                            label: 'Moderately severe',
+                            data: [98, 12, 9, 8, 6],
+                            backgroundColor: colorPrimary,
+                            barPercentage: 0.6
+                        },
+                        {
+                            label: 'Severe',
+                            data: [25, 6, 1, 0, 3],
+                            backgroundColor: colorSevere,
+                            barPercentage: 0.6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }, // Using custom HTML legend
+                        datalabels: {
+                            color: '#fff',
+                            font: { size: 11, weight: 'bold' },
+                            formatter: (value) => value > 0 ? value : '' // Hide zero values
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: { display: false },
+                            border: { display: false },
+                            ticks: { font: { size: 10 }, color: '#555' },
+                            title: { display: true, text: 'College Name', font: { weight: 'bold' } }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            max: 140,
+                            grid: { borderDash: [4, 4], color: '#e0e0e0' },
+                            border: { display: false },
+                            title: { display: true, text: 'User Count' }
+                        }
+                    }
+                }
+            });
+
+            // 2. WOMEN HEALTH (Pie Chart)
+            const ctxWomen = document.getElementById('womenHealthChart').getContext('2d');
+            new Chart(ctxWomen, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        'Sri Sai Vignan Bharthi Coll...',
+                        "Shantiniketan Women's D...",
+                        'Nalanda College',
+                        'Aadhya Degree College f...',
+                        'Jagruthi Degree and PG C...'
+                    ],
+                    datasets: [{
+                        data: [222, 52, 14, 10, 10],
+                        backgroundColor: [colorPrimary, colorSevere, colorOrange, colorPurple, colorPink],
+                        borderWidth: 1,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: 20 },
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, boxWidth: 8, font: { size: 11 }, padding: 15 }
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'end',
+                            offset: 5,
+                            color: '#555',
+                            font: { size: 11 },
+                            formatter: (value) => value
+                        }
+                    }
+                }
+            });
+
+            // 3. TOP PROBLEMS (Doughnut Chart)
+            const ctxProblems = document.getElementById('topProblemsChart').getContext('2d');
+            new Chart(ctxProblems, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'Are Your Periods Usually I...',
+                        'Mood Swings',
+                        'Active / Sedentary Life',
+                        'Hyperpigmentation ( Dar...',
+                        'Sleep Disturbances'
+                    ],
+                    datasets: [{
+                        data: [7, 7, 5, 4, 4],
+                        backgroundColor: [colorSevere, colorPrimary, colorOrange, colorPurple, colorPink],
+                        borderWidth: 1,
+                        borderColor: '#ffffff',
+                        cutout: '60%'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: 20 },
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, boxWidth: 8, font: { size: 11 }, padding: 15 }
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'end',
+                            offset: 5,
+                            color: '#555',
+                            font: { size: 11 },
+                            formatter: (value) => value
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

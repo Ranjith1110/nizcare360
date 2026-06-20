@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Automation Simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 100px;
+        }
+
+        /* Workflow Connector Lines */
+        .workflow-step {
+            position: relative;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .workflow-step::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background: #cbd5e1;
+            z-index: 0;
+        }
+
+        .workflow-step:last-child::after {
+            display: none;
+        }
+
+        /* Card Styling */
+        .node-card {
+            width: 100%;
+            max-width: 500px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .node-card.active {
+            border: 2px solid #0d6efd;
+            transform: scale(1.02);
+        }
+
+        .node-header {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 15px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* Color Coding based on your Story */
+        .bg-trigger {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+
+        /* Blueish */
+        .bg-condition {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* Yellow */
+        .bg-action {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        /* Green */
+        .bg-communication {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        /* Purple */
+
+        .btn-logic {
+            border-radius: 20px;
+            font-size: 0.85rem;
+            padding: 5px 20px;
+        }
+
+        #log-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-dark mb-5">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1"><i class="bi bi-diagram-3-fill me-2"></i>Automation Engine</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h2 class="fw-bold mb-4">Student Demo Enrollment Flow</h2>
+
+                <div class="workflow-step">
+                    <div class="node-card card">
+                        <div class="node-header bg-trigger text-start">1. Automation Trigger</div>
+                        <div class="card-body text-start">
+                            <h6 class="card-title fw-bold">Lead/Application Stage → <span
+                                    class="text-primary">Approved</span></h6>
+                            <p class="text-muted small mb-0">System detected a new approved lead. Automation started.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="node-card card">
+                        <div class="node-header bg-condition text-start">2. Decision Point</div>
+                        <div class="card-body">
+                            <p class="fw-semibold">Has the student already enrolled?</p>
+                            <div class="d-flex justify-content-center gap-3">
+                                <button class="btn btn-outline-success btn-logic"
+                                    onclick="processDecision('enrolled')">YES</button>
+                                <button class="btn btn-outline-danger btn-logic"
+                                    onclick="processDecision('not_enrolled')">NO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="branch-response" class="w-100 d-flex flex-column align-items-center">
+                </div>
+
+                <div id="comm-block" class="workflow-step d-none w-100 flex-column align-items-center">
+                    <div class="node-card card">
+                        <div class="node-header bg-communication text-start">11. Multi-Channel Communication</div>
+                        <div class="card-body text-start">
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <i class="bi bi-envelope-fill fs-3 text-primary"></i>
+                                    <p class="small mb-0">Email</p>
+                                </div>
+                                <div class="col-4">
+                                    <i class="bi bi-chat-dots-fill fs-3 text-success"></i>
+                                    <p class="small mb-0">SMS</p>
+                                </div>
+                                <div class="col-4">
+                                    <i class="bi bi-whatsapp fs-3 text-info" style="color:green !important;"></i>
+                                    <p class="small mb-0">What's App</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-step mt-4">
+                        <div class="node-card card bg-dark text-white">
+                            <div class="card-body text-center">
+                                <h6 class="mb-0 fw-bold"><i class="bi bi-check-circle-fill me-2 text-success"></i>
+                                    Workflow Completed</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="log-container">
+        <p class="fw-bold border-bottom pb-1">Live Automation Logs</p>
+        <div id="logs">
+            <div class="text-muted italic">Waiting for trigger...</div>
+        </div>
+    </div>
+
+    <script>
+        const branchContainer = document.getElementById('branch-response');
+        const logs = document.getElementById('logs');
+        const commBlock = document.getElementById('comm-block');
+
+        function addLog(msg) {
+            const div = document.createElement('div');
+            div.className = "mb-1 text-primary";
+            div.innerHTML = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            logs.prepend(div);
+        }
+
+        function processDecision(status) {
+            addLog(`Condition Check: Enrolled = ${status.toUpperCase()}`);
+
+            if (status === 'enrolled') {
+                branchContainer.innerHTML = `
+                <div class="workflow-step w-100 d-flex flex-column align-items-center">
+                    <div class="node-card card border-success">
+                        <div class="node-header bg-action text-start">Action</div>
+                        <div class="card-body text-start">
+                            <h6 class="fw-bold text-success"><i class="bi bi-send-check me-2"></i>Send Email (Enrolled)</h6>
+                            <p class="small text-muted mb-0">Welcome email and next instructions dispatched.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+                addLog("Path: TRUE. Sending Welcome Email.");
+            } else {
+                branchContainer.innerHTML = `
+                <div class="workflow-step w-100 d-flex flex-column align-items-center">
+                    <div class="node-card card border-warning">
+                        <div class="node-header bg-action text-start">Action</div>
+                        <div class="card-body text-start">
+                            <h6 class="fw-bold text-warning"><i class="bi bi-send-exclamation me-2"></i>Send Email (Not Enrolled)</h6>
+                            <p class="small text-muted mb-0">Sent demo invitation and reminder to complete application.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="workflow-step w-100 d-flex flex-column align-items-center">
+                    <div class="node-card card">
+                        <div class="node-header bg-trigger text-start">5. Stage Update</div>
+                        <div class="card-body text-start">
+                            <h6 class="fw-bold">Lead Status: <span class="badge bg-info">Slot Booking</span></h6>
+                        </div>
+                    </div>
+                </div>
+            `;
+                addLog("Path: FALSE. Sending Nurture Email.");
+            }
+
+            // Reveal the communication block after a short "processing" delay
+            setTimeout(() => {
+                commBlock.classList.remove('d-none');
+                commBlock.classList.add('d-flex');
+                addLog("Multi-channel follow-up triggered.");
+            }, 800);
+        }
+    </script>
+
+</body>
+
+</html>

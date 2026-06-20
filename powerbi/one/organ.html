@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Analytics Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        /* Dashboard Wrapper & Thick Borders */
+        .dashboard-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+            border: 5px solid #d0d4da;
+            /* Thick border matching design */
+        }
+
+        /* Reusable Border Classes */
+        .thick-border-bottom {
+            border-bottom: 5px solid #d0d4da;
+        }
+
+        .thick-border-end {
+            border-right: 5px solid #d0d4da;
+        }
+
+        /* Header Elements */
+        .brand-logo {
+            background-color: #1da69a;
+            width: 110px;
+        }
+
+        .report-title {
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .qr-image {
+            width: 70px;
+            height: 70px;
+        }
+
+        /* Sidebar Stats */
+        .sidebar {
+            background-color: #fafbfc;
+        }
+
+        .stat-box {
+            transition: background-color 0.2s;
+        }
+
+        .stat-box:hover {
+            background-color: #f1f3f6;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #444;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #222;
+        }
+
+        /* Charts Section */
+        .charts-row {
+            min-height: 500px;
+            /* Gives the horizontal bars room to breathe */
+        }
+
+        .chart-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Micro-interactions */
+        .interactive-card {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .interactive-card:hover {
+            background-color: #fdfdfd !important;
+        }
+
+        .interactive-element {
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .interactive-element:hover {
+            transform: scale(1.1);
+        }
+
+        /* Organ Breakdown Section */
+        .organ-row {
+            min-height: 250px;
+        }
+
+        .letter-spacing-1 {
+            letter-spacing: 1px;
+        }
+
+        .organ-icon {
+            display: inline-block;
+            filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.15));
+            /* Adds the 3D-ish realistic depth to the emojis/icons */
+            font-size: 3.5rem !important;
+            margin-bottom: 10px;
+        }
+
+        .organ-label {
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Canvas Reset */
+        .chart-container {
+            width: 100%;
+        }
+
+        canvas {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-light-gray p-3">
+
+    <div class="container-fluid dashboard-wrapper p-0 bg-white">
+
+        <div class="row g-0 align-items-center header-section p-3 thick-border-bottom">
+            <div class="col-md-3 d-flex align-items-center">
+                <div
+                    class="brand-logo text-white d-flex align-items-center justify-content-center rounded p-2 shadow-sm">
+                    <span class="fw-bold fs-6">Nizcare</span>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <h3 class="fw-bold m-0 text-dark report-title">Health Analytics Report: Organ-wise Risk Analysis</h3>
+            </div>
+            <div class="col-md-3 d-flex justify-content-end align-items-center">
+                <div class="qr-text text-dark fw-bold small me-3 text-end lh-sm">
+                    Scan the QR to<br>Download Our App
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://yira.ai" alt="QR Code"
+                    class="qr-image border p-1 rounded bg-white">
+            </div>
+        </div>
+
+        <div class="row g-0 main-grid">
+
+            <div class="col-lg-2 sidebar thick-border-end d-flex flex-column">
+                <div
+                    class="stat-box thick-border-bottom p-3 flex-fill interactive-card d-flex flex-column justify-content-center">
+                    <div class="stat-label">LOCATION'S</div>
+                    <select class="form-select form-select-sm mt-2 border-secondary-subtle">
+                        <option>All</option>
+                    </select>
+                </div>
+                <div
+                    class="stat-box thick-border-bottom p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
+                    <div class="stat-label">OVER ALL TEST GROUP<br>COUNT</div>
+                    <div class="stat-value mt-2">4780</div>
+                </div>
+                <div
+                    class="stat-box thick-border-bottom p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
+                    <div class="stat-label">NO OF FEMALES IN TEST<br>GROUP</div>
+                    <div class="stat-value mt-2">2755</div>
+                </div>
+                <div
+                    class="stat-box thick-border-bottom p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
+                    <div class="stat-label">NO OF MALES IN TEST<br>GROUP</div>
+                    <div class="stat-value mt-2">2025</div>
+                </div>
+                <div
+                    class="stat-box thick-border-bottom p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
+                    <div class="stat-label">NO OF VILLAGES</div>
+                    <div class="stat-value mt-2">6</div>
+                </div>
+                <div
+                    class="stat-box p-3 flex-fill text-center interactive-card d-flex flex-column justify-content-center">
+                    <div class="stat-label">DIAGNOSED ISSUE'S<br>FROM TESTS</div>
+                    <div class="stat-value mt-2">13</div>
+                </div>
+            </div>
+
+            <div class="col-lg-10 d-flex flex-column">
+
+                <div class="row g-0 flex-grow-1 thick-border-bottom charts-row">
+                    <div class="col-md-4 thick-border-end p-4 d-flex flex-column interactive-card bg-white">
+                        <h6 class="chart-title text-center mb-4">ANTICIPATED ISSUES VILLAGE WISE</h6>
+                        <div class="chart-container flex-grow-1 position-relative">
+                            <canvas id="villageChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 thick-border-end p-4 d-flex flex-column interactive-card bg-white">
+                        <h6 class="chart-title text-center mb-4">TEST WISE WOMEN RISK ANALYSIS</h6>
+                        <div class="chart-container flex-grow-1 position-relative">
+                            <canvas id="womenRiskChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 p-4 d-flex flex-column interactive-card bg-white">
+                        <h6 class="chart-title text-center mb-4">TEST WISE MEN RISK ANALYSIS</h6>
+                        <div class="chart-container flex-grow-1 position-relative">
+                            <canvas id="menRiskChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-0 organ-row bg-white p-4">
+                    <div class="col-12">
+                        <h5 class="text-center fw-bold text-dark text-uppercase mb-5 letter-spacing-1">
+                            WE CLINICALLY EXAMINED ENTIRE HEALTH DATA FOUND 4 MAJOR ISSUE'S
+                        </h5>
+                        <div class="d-flex justify-content-around align-items-center">
+
+                            <div class="organ-item text-center interactive-element" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Organ Wise Risk Analysis">
+                                <span class="organ-icon fs-1">🫀</span>
+                                <div class="organ-label fw-bold mt-2 text-dark">HEART</div>
+                            </div>
+
+                            <div class="organ-item text-center interactive-element">
+                                <span class="organ-icon fs-1">🩸</span>
+                                <div class="organ-label fw-bold mt-2 text-dark">ANEMIA</div>
+                            </div>
+
+                            <div class="organ-item text-center interactive-element">
+                                <span class="organ-icon fs-1">🫘</span>
+                                <div class="organ-label fw-bold mt-2 text-dark">KIDNEY</div>
+                            </div>
+
+                            <div class="organ-item text-center interactive-element">
+                                <span class="organ-icon fs-1">🦋</span>
+                                <div class="organ-label fw-bold mt-2 text-dark">THYROID</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Initialize Bootstrap Tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Register DataLabels Plugin Globally
+            Chart.register(ChartDataLabels);
+
+            // Global Chart Configuration
+            Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+            Chart.defaults.color = '#333';
+
+            const themeTeal = '#1da69a'; // User requested primary color for charts
+
+            // Shared options for all horizontal bar charts
+            const commonOptions = {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: { right: 40 } // Space for datalabels outside the bar
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: true },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'right',
+                        offset: 4,
+                        font: { weight: 'bold', size: 12 },
+                        color: '#000'
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: { display: false },
+                        border: { display: false },
+                        ticks: {
+                            callback: function (value) { return value === 1000 ? '1K' : value === 500 ? '500' : value === 0 ? '0K' : value === 0 ? '0' : ''; },
+                            font: { size: 10 }
+                        }
+                    },
+                    y: {
+                        grid: { display: false },
+                        border: { display: false },
+                        ticks: { font: { size: 10, weight: '500' }, color: '#444' }
+                    }
+                }
+            };
+
+            // 1. ANTICIPATED ISSUES VILLAGE WISE
+            new Chart(document.getElementById('villageChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['CHITTAT...', 'NETHAK...', 'ANUPALLE', 'KUPPAM...', 'C.RAMAP...', 'SORAKAY...'],
+                    datasets: [{
+                        data: [1030, 966, 809, 717, 186, 49],
+                        backgroundColor: themeTeal,
+                        barPercentage: 0.8
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        x: { ...commonOptions.scales.x, max: 1200 },
+                        y: { ...commonOptions.scales.y, title: { display: true, text: "Location's", font: { size: 10 } } }
+                    }
+                }
+            });
+
+            // 2. TEST WISE WOMEN RISK ANALYSIS
+            new Chart(document.getElementById('womenRiskChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['ANEMIA', 'STROKE /H...', 'HYPERLIPI...', 'AKI ACUTE...', 'HYPERGLY...', 'INFECTION', 'FANCONI ...', 'SUBCLINIC...', 'HYPERTHY...', 'GOUT ,RE...', 'HYPOGLYC...', 'ENTERIC F...'],
+                    datasets: [{
+                        data: [711, 705, 679, 532, 446, 443, 363, 323, 70, 63, 19, 6],
+                        backgroundColor: themeTeal,
+                        barPercentage: 0.8
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        x: { ...commonOptions.scales.x, max: 800 }
+                    }
+                }
+            });
+
+            // 3. TEST WISE MEN RISK ANALYSIS
+            new Chart(document.getElementById('menRiskChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['AKI ACUTE KID...', 'HYPERLIPIDEMIA', 'STROKE /HEART...', 'HYPERGLYCEMIC', 'GOUT ,RENAL S...', 'INFECTION', 'SUBCLINICAL-H...', 'ANEMIA', 'FANCONI SYND...', 'HYPERTHYROID...', 'HYPOGLYCEMIC', 'ENTERIC FEVER'],
+                    datasets: [{
+                        data: [987, 532, 322, 318, 217, 201, 136, 131, 43, 40, 23, 4],
+                        backgroundColor: themeTeal,
+                        barPercentage: 0.8
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        x: { ...commonOptions.scales.x, max: 1100 }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
